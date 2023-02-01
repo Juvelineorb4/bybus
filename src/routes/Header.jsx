@@ -7,7 +7,7 @@ const Header = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text>ByBus</Text>
+      <Text onPress={() => navigation.navigate("Home")}>ByBus</Text>
       <View style={styles.right}>
         <MaterialCommunityIcons
           name="bell-outline"

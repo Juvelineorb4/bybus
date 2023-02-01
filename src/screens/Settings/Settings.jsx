@@ -1,6 +1,8 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { settings } from "@/utils/constants/settings";
+import styles from "@/utils/styles/Settings.module.css";
+
 
 const Settings = ({ navigation }) => {
   const { buttons } = settings;
@@ -8,12 +10,13 @@ const Settings = ({ navigation }) => {
     <View>
       <Text>Settings</Text>
       {buttons.map((button) => (
-        <Button
+        <TouchableOpacity
           style={styles.button}
-          title={button.title}
           key={button.id}
           onPress={() => navigation.navigate(button.route)}
-        ></Button>
+        >
+          <Text>{button.title}</Text>
+        </TouchableOpacity>
       ))}
     </View>
   );
@@ -21,4 +24,3 @@ const Settings = ({ navigation }) => {
 
 export default Settings;
 
-const styles = StyleSheet.create({});

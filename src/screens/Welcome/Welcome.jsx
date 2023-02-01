@@ -1,16 +1,16 @@
-import styles from "@/utils/styles/global";
+import styles from "@/utils/styles/Welcome.module.css";
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
-      <Button
+      <TouchableOpacity
         style={styles.button}
-        title="Continue"
-        onPress={() => navigation.navigate('Home')}
-      ></Button>
+        onPress={() => navigation.navigate("Home")}
+      >
+        <Text>Home</Text>
+      </TouchableOpacity>
     </View>
   );
 };

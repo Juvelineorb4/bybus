@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import styles from "@/utils/styles/Settings.module.css";
 
 const PaymentMethods = () => {
   return (
@@ -10,5 +11,3 @@ const PaymentMethods = () => {
 }
 
 export default PaymentMethods
-
-const styles = StyleSheet.create({})

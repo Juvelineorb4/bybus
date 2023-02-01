@@ -1,19 +1,18 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import styles from "@/utils/styles/Plan.module.css";
 
-const Plan = ({navigation}) => {
+const Plan = ({ navigation }) => {
   return (
     <View>
-      <Text>Plan</Text>
-      <Button
+      <TouchableOpacity
         style={styles.button}
-        title="List Plans"
-        onPress={() => navigation.navigate('List')}
-      ></Button>
+        onPress={() => navigation.navigate("List")}
+      >
+        <Text>List Plans</Text>
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default Plan
-
-const styles = StyleSheet.create({})
+export default Plan;
