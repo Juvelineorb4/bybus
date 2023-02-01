@@ -1,25 +1,23 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { tickets } from '@/utils/constants'
+import { Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { tickets } from "@/utils/constants/tickets";
+import styles from "@/utils/styles/Tickets.module.css";
 
-const ChooseTicket = ({navigation}) => {
-  const {routes, buttons} = tickets
+const ChooseTicket = ({ navigation }) => {
+  const { routes, buttons } = tickets;
   return (
     <View>
-      <Text>Tickets</Text>
       {buttons.map((button) => (
-        <Button
+        <TouchableOpacity
           style={styles.button}
-          title={button.title}
           key={button.id}
           onPress={() => navigation.navigate(routes.create)}
-        ></Button>
+        >
+          <Text>{button.title}</Text>
+        </TouchableOpacity>
       ))}
-      
     </View>
-  )
-}
+  );
+};
 
-export default ChooseTicket
-
-const styles = StyleSheet.create({})
+export default ChooseTicket;

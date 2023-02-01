@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import styles from "@/utils/styles/Settings.module.css";
 
 const Permissions = () => {
   return (
@@ -10,5 +11,3 @@ const Permissions = () => {
 }
 
 export default Permissions
-
-const styles = StyleSheet.create({})

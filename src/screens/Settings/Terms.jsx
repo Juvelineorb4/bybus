@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import styles from "@/utils/styles/Settings.module.css";
 
 const Terms = () => {
   return (
@@ -10,5 +11,3 @@ const Terms = () => {
 }
 
 export default Terms
-
-const styles = StyleSheet.create({})

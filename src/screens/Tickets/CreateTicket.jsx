@@ -1,19 +1,18 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import styles from "@/utils/styles/Tickets.module.css";
 
-const CreateTicket = ({navigation}) => {
+const CreateTicket = ({ navigation }) => {
   return (
     <View>
-      <Text>CreateTicket</Text>
-      <Button
-          style={styles.button}
-          title='Buy'
-          onPress={() => navigation.navigate('PaymentView')}
-        ></Button>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("PaymentView")}
+      >
+        <Text>Buy</Text>
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default CreateTicket
-
-const styles = StyleSheet.create({})
+export default CreateTicket;

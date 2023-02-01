@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import styles from "@/utils/styles/Plan.module.css";
 
 const Selected = () => {
   return (
@@ -10,5 +11,3 @@ const Selected = () => {
 }
 
 export default Selected
-
-const styles = StyleSheet.create({})

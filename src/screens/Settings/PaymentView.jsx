@@ -1,21 +1,20 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { tickets } from "@/utils/constants";
+import { tickets } from "@/utils/constants/tickets";
+import styles from "@/utils/styles/Settings.module.css";
 
-const PaymentView = ({navigation}) => {
+const PaymentView = ({ navigation }) => {
   const { routes } = tickets;
   return (
     <View>
-      <Text>PaymentView</Text>
-      <Button
+      <TouchableOpacity
         style={styles.button}
-        title='Complete your purchase'
         onPress={() => navigation.navigate(routes.view)}
-      ></Button>
+      >
+        <Text>Complete your purchase</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 export default PaymentView;
-
-const styles = StyleSheet.create({});

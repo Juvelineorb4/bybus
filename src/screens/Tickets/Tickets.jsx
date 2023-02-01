@@ -1,22 +1,22 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { tickets } from '@/utils/constants'
+import { Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { tickets } from "@/utils/constants/tickets";
+import styles from "@/utils/styles/Tickets.module.css";
 
-const Tickets = ({navigation}) => {
-  const {routes} = tickets
+const Tickets = ({ navigation }) => {
+  const { routes } = tickets;
 
   return (
     <View>
-      <Text>Tickets</Text>
-      <Button
-          style={styles.button}
-          title='Buy Ticket'
-          onPress={() => navigation.navigate(routes.choose)}
-        ></Button>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate(routes.choose)}
+      >
+        <Text>Buy Ticket</Text>
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default Tickets
+export default Tickets;
 
-const styles = StyleSheet.create({})

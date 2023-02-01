@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
+import styles from "@/utils/styles/Profile.module.css";
 
 const Edit = () => {
   return (
@@ -10,5 +11,3 @@ const Edit = () => {
 }
 
 export default Edit
-
-const styles = StyleSheet.create({})
