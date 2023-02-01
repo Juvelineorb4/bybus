@@ -2,6 +2,7 @@
 export { default as Welcome } from "./Welcome/Welcome";
 export { default as Login } from "./Welcome/Login";
 export { default as Register } from "./Welcome/Register";
+export { default as Forgot } from "./Welcome/Forgot";
 
 /* Plan Tab */
 export { default as Plan } from "./Plan/Plan";

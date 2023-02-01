@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Tabs from "./Tabs";
-import { Welcome } from "@/screens";
+import { Forgot, Login, Register, Welcome } from "@/screens";
 import { routing } from "@/utils/constants";
 import Header from "./Header";
 
@@ -18,21 +18,47 @@ const Navigation = () => {
             backgroundColor: "red",
           },
         }}
-        initialRouteName={main.initial}
+        initialRouteName={main.WELCOME}
       >
+        <Stack.Screen
+          name={main.WELCOME}
+          component={Welcome}
+          options={{
+            headerShown: false,
+          }}
+          initialParams={{
+            LOGIN: main.LOGIN,
+            REGISTER: main.REGISTER,
+            FORGOT: main.FORGOT,
+          }}
+        />
+        <Stack.Screen
+          name={main.LOGIN}
+          component={Login}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name={main.REGISTER}
+          component={Register}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name={main.FORGOT}
+          component={Forgot}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={Tabs}
           options={{
             headerBackVisible: false,
-            headerTitle: () => (<Header/>)
-          }}
-        />
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{
-            headerShown: false
+            headerTitle: () => <Header />,
           }}
         />
         {routes.map((route) => (
@@ -41,8 +67,8 @@ const Navigation = () => {
             component={route.component}
             key={route.id}
             options={{
-              headerTitle: () => (<Header/>),
-              headerBackButtonMenuEnabled: false
+              headerTitle: () => <Header />,
+              headerBackButtonMenuEnabled: false,
             }}
           />
         ))}
