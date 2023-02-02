@@ -3,13 +3,12 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 const Welcome = ({ navigation, route }) => {
+  const login = route.params.LOGIN
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate(route.params.LOGIN, {
-          id: route.params.LOGIN
-        })}
+        onPress={() => navigation.navigate(route.params.LOGIN)}
       >
         <Text>Login</Text>
       </TouchableOpacity>

@@ -7,7 +7,7 @@ const Login = ({navigation, route}) => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate(route.params.id)}
+        onPress={() => navigation.navigate(route.params.HOME)}
       >
         <Text>Home</Text>
       </TouchableOpacity>
