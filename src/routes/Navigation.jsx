@@ -29,7 +29,6 @@ const Navigation = () => {
           initialParams={{
             LOGIN: main.LOGIN,
             REGISTER: main.REGISTER,
-            FORGOT: main.FORGOT,
           }}
         />
         <Stack.Screen

@@ -1,24 +1,80 @@
-/* Colors
-#FFCE48 Yellow
-#1A1528 Night Purple
-#FF8811 Travel Orange
-
-
-*/
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  background-color: #008000;
+  background-color: #ffce48;
+  width: 100%;
+  height: 100%;
+}
+.content {
+  bottom: -12%;
+  padding: 20px;
+}
+/* text */
+.name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.button {
-  background-color: white;
-  padding: 10px;
-  border-radius: 10px;
-  color: red;
-  text-align: center;
-  font-size: 15px;
-  width: 50%;
+.textName {
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1528;
+  margin-left: 10px;
 }
+
+.textTitle {
+  font-weight: 700;
+  font-size: 48px;
+  color: #1a1528;
+}
+.textSubtitle {
+  font-weight: 100;
+  font-size: 16px;
+  color: #1a1528d7;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signin,
+.register {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  border-radius: 16px;
+}
+.signin {
+  background-color: #1a1528;
+  margin-bottom: 16px;
+}
+.register {
+  background-color: #ff8811;
+  margin-bottom: 38px;
+}
+.textSignIn,
+.textRegister {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+.textSignIn {
+  color: white;
+}
+.textRegister {
+  color: #1a1528;
+}
+.textContinue {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+  color: #7951008e;
+}
+
+
