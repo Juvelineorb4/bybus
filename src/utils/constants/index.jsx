@@ -6,6 +6,7 @@ export const routing = {
     LOGIN: 'Login',
     REGISTER: 'Register',
     FORGOT: 'Forgot',
+    CONTINUE: 'Home',
     HOME: 'Home',
     PLAN: 'Plan',
     TICKETS: 'Tickets',

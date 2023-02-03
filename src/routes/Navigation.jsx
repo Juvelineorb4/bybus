@@ -29,32 +29,25 @@ const Navigation = () => {
           initialParams={{
             LOGIN: main.LOGIN,
             REGISTER: main.REGISTER,
-            FORGOT: main.FORGOT,
           }}
         />
         <Stack.Screen
           name={main.LOGIN}
           component={Login}
-          options={{
-            headerShown: false,
+          initialParams={{
+            HOME: main.HOME,
           }}
         />
         <Stack.Screen
           name={main.REGISTER}
           component={Register}
-          options={{
-            headerShown: false,
-          }}
         />
         <Stack.Screen
           name={main.FORGOT}
           component={Forgot}
-          options={{
-            headerShown: false,
-          }}
         />
         <Stack.Screen
-          name="Home"
+          name={main.HOME}
           component={Tabs}
           options={{
             headerBackVisible: false,

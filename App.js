@@ -1,19 +1,29 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 import Navigation from "@/routes/Navigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import { useCallback } from "react";
 
-// amplify configure
-import { Amplify } from 'aws-amplify'
-// vista login predeterminada
-import { withAuthenticator } from 'aws-amplify-react-native'
-import awsconfig from './src/aws-exports'
+SplashScreen.preventAutoHideAsync();
 
+export default function App() {
 
+  const [fontsLoaded] = useFonts({
+    Montserrat: require("@/utils/fonts/Montserrat.ttf"),
+  });
 
-Amplify.configure(awsconfig)
-function App() {
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
       <Navigation />
     </SafeAreaProvider>
   );
