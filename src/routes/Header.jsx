@@ -1,43 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import LeftHeader from "./LeftHeader";
+import RightHeader from "./RightHeader";
+import styles from "@/utils/styles/Header.module.css";
 
-const Header = () => {
-  const navigation = useNavigation();
+const Header = ({ mode = "" }) => {
   return (
     <View style={styles.container}>
-      <Text onPress={() => navigation.navigate("Home")}>ByBus</Text>
-      <View style={styles.right}>
-        <MaterialCommunityIcons
-          name="bell-outline"
-          size={24}
-          color="black"
-          onPress={() => navigation.navigate("Notifications")}
-        />
-        <MaterialCommunityIcons
-          name="account-circle"
-          size={24}
-          color="black"
-          onPress={() => navigation.navigate("Profile")}
-        />
-      </View>
+      {mode === "back-only" ? (
+        <View style={styles.header}>
+          <LeftHeader styled={styles.left} />
+        </View>
+      ) : mode === "with-back" ? (
+        <View style={styles.header}>
+          <LeftHeader text="ByBus" styled={styles.left} />
+          <RightHeader styled={styles.right} />
+        </View>
+      ) : (
+        <View style={styles.header}>
+          <LeftHeader text="ByBus" styled={styles.left} icon={false} />
+          <RightHeader styled={styles.right} />
+        </View>
+      )}
     </View>
   );
 };
 
 export default Header;
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "80%",
-  },
-  right: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-});

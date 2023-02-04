@@ -9,7 +9,7 @@ const CustomInput = ({
   name,
   rules = {},
   placeholder,
-  number,
+  security,
   styled = {},
   icon = {},
   text,
@@ -36,8 +36,8 @@ const CustomInput = ({
               placeholder={placeholder}
               placeholderTextColor={placeholderTextColor}
               {...styled.placeholder}
-              keyboardType={!number ? "default" : "decimal-pad"}
               style={styled.text}
+              secureTextEntry={security}
             />
             {iconRight && <Icon name={iconRight.name} color={iconRight.color} size={iconRight.size} />}
           </View>
