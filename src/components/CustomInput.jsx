@@ -12,7 +12,9 @@ const CustomInput = ({
   number,
   styled = {},
   icon = {},
-  text
+  text,
+  iconRight,
+  placeholderTextColor = {}
 }) => {
   return (
     <Controller
@@ -24,7 +26,7 @@ const CustomInput = ({
         fieldState: { error },
       }) => (
         <>
-         <Text style={styled.label}>{text}</Text>
+          {text && <Text style={styled.label}>{text}</Text>}
           <View style={[styled.input, error && { borderColor: "red" }]}>
             <Icon name={icon.name} color={icon.color} size={icon.size} />
             <TextInput
@@ -32,9 +34,12 @@ const CustomInput = ({
               onChangeText={onChange}
               onBlur={onBlur}
               placeholder={placeholder}
+              placeholderTextColor={placeholderTextColor}
+              {...styled.placeholder}
               keyboardType={!number ? "default" : "decimal-pad"}
               style={styled.text}
             />
+            {iconRight && <Icon name={iconRight.name} color={iconRight.color} size={iconRight.size} />}
           </View>
           {error && <Text style={styled.error}>{error.message || "Error"}</Text>}
         </>

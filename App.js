@@ -29,11 +29,3 @@ export default function App() {
   );
 }
 
-export default withAuthenticator(App, {
-  signUpConfig: {
-    hiddenDefaults: ["phone_number"],
-    signUpFields: [
-      { label: "Name", key: "name", required: true, type: "string" }
-    ]
-  }
-});

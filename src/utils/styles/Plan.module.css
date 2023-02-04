@@ -1,8 +1,7 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   flex: 1;
+  padding: 20px;
 }
 
 .button {
@@ -14,3 +13,4 @@
   font-size: 15px;
   width: 50%;
 }
+
