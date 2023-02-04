@@ -1,0 +1,6 @@
+type WalletUser  @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userID: ID!
+}
+
+
