@@ -30,5 +30,10 @@ export const settings = {
         title: 'About',
         route: 'About'
       },
+      {
+        id: 'btnSettings-7',
+        title: 'Logout',
+        route: 'Welcome'
+      },
     ]
   }

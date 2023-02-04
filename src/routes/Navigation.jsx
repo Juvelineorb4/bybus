@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Tabs from "./Tabs";
-import { Welcome } from "@/screens";
+import { Forgot, Login, Register, Welcome } from "@/screens";
 import { routing } from "@/utils/constants";
 import Header from "./Header";
 
@@ -18,21 +18,40 @@ const Navigation = () => {
             backgroundColor: "red",
           },
         }}
-        initialRouteName={main.initial}
+        initialRouteName={main.WELCOME}
       >
         <Stack.Screen
-          name="Home"
-          component={Tabs}
+          name={main.WELCOME}
+          component={Welcome}
           options={{
-            headerBackVisible: false,
-            headerTitle: () => (<Header/>)
+            headerShown: false,
+          }}
+          initialParams={{
+            LOGIN: main.LOGIN,
+            REGISTER: main.REGISTER,
           }}
         />
         <Stack.Screen
-          name="Welcome"
-          component={Welcome}
+          name={main.LOGIN}
+          component={Login}
+          initialParams={{
+            HOME: main.HOME,
+          }}
+        />
+        <Stack.Screen
+          name={main.REGISTER}
+          component={Register}
+        />
+        <Stack.Screen
+          name={main.FORGOT}
+          component={Forgot}
+        />
+        <Stack.Screen
+          name={main.HOME}
+          component={Tabs}
           options={{
-            headerShown: false
+            headerBackVisible: false,
+            headerTitle: () => <Header />,
           }}
         />
         {routes.map((route) => (
@@ -41,8 +60,8 @@ const Navigation = () => {
             component={route.component}
             key={route.id}
             options={{
-              headerTitle: () => (<Header/>),
-              headerBackButtonMenuEnabled: false
+              headerTitle: () => <Header />,
+              headerBackButtonMenuEnabled: false,
             }}
           />
         ))}

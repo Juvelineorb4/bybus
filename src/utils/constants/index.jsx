@@ -2,7 +2,16 @@ import * as Component from "@/screens";
 
 export const routing = {
   main: {
-    initial: "Welcome",
+    WELCOME: 'Welcome',
+    LOGIN: 'Login',
+    REGISTER: 'Register',
+    FORGOT: 'Forgot',
+    CONTINUE: 'Home',
+    HOME: 'Home',
+    PLAN: 'Plan',
+    TICKETS: 'Tickets',
+    PROFILE: 'Profile',
+    SETTINGS: 'Settings',
   },
   tabs: {
     inital: "Plan",
