@@ -33,12 +33,12 @@ const Plan = ({ navigation }) => {
        handleSubmut: ()=> void function para el boton de buscar 
        watch: para acceder a variables y modificar vistas textos ....
       */}
-        {/* <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} /> */}
-        {/* <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} collapsed /> */}
+        <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} />
+        <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} collapsed />
         {/* Ruta  selecionada */}
-        {/* <RouteSelected /> */}
+        <RouteSelected />
         {/* Ruta destino */}
-        {/* <RouteDestination /> */}
+        <RouteDestination />
       </View>
     </ScrollView>
   );
