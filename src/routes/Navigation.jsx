@@ -37,21 +37,28 @@ const Navigation = () => {
           initialParams={{
             HOME: main.HOME,
           }}
+          options={{
+            headerTransparent: true,
+            headerTitle: "",
+            header: () => <Header mode={`back-only`} />,
+          }}
         />
         <Stack.Screen
           name={main.REGISTER}
           component={Register}
+          options={{
+            headerTransparent: true,
+            headerTitle: "",
+            header: () => <Header mode={`back-only`} />,
+          }}
         />
-        <Stack.Screen
-          name={main.FORGOT}
-          component={Forgot}
-        />
+        <Stack.Screen name={main.FORGOT} component={Forgot} />
         <Stack.Screen
           name={main.HOME}
           component={Tabs}
           options={{
             headerBackVisible: false,
-            headerTitle: () => <Header />,
+            header: () => <Header />,
           }}
         />
         {routes.map((route) => (
@@ -60,8 +67,7 @@ const Navigation = () => {
             component={route.component}
             key={route.id}
             options={{
-              headerTitle: () => <Header />,
-              headerBackButtonMenuEnabled: false,
+              header: () => <Header mode="with-back" />,
             }}
           />
         ))}

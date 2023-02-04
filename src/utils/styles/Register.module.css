@@ -13,9 +13,8 @@
   padding: 20px;
   margin-top: 50px;
 }
-.text {
-  font-size: 20px;
-}
+/* Step One */
+
 .inputContainer {
   display: flex;
   flex-direction: row;
@@ -41,37 +40,7 @@
 .errorInput {
 }
 
-/* Line */
-.hairline {
-  position: relative;
-  margin: 20px 0px;
-}
-.line {
-  background-color: #efeded;
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  margin-top: 10px;
-}
-
-.textLine {
-  background-color: white;
-  font-size: 14px;
-  font-weight: 400;
-  padding: 0px 10px;
-  align-self: center;
-  color: #9d9d9d;
-}
-
-/* Selects */
-.selects {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-/* Buttons */
-.login {
+.continue {
   text-align: center;
   width: 100%;
   padding: 20px 10px;
@@ -79,45 +48,54 @@
   border-radius: 16px;
   margin-top: 40px;
 }
-.textLogin {
+.textContinue {
   text-align: center;
   font-weight: 700;
   color: white;
   font-size: 14px;
 }
 
-.extras {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 15px 10px;
-  border: 1px solid #efeded;
-  border-radius: 16px;
-}
-
-.textContent {
-  display: flex;
-}
-
-.title {
-  font-style: italic;
-  font-weight: 100;
-  font-size: 30px;
-  color: #1f1f1f;
-  text-align: center;
-}
-
-.subtitle {
-  font-weight: 400;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #404040;
-}
-
-.forgot,
-.rememberText {
+.terms {
   font-weight: 400;
   font-size: 14px;
   color: #404040;
+}
+
+/* Step Two */
+
+.imageContent {
+  /* flex: 1; */
+  align-items: center;
+  justify-content: center;
+}
+.camera {
+  text-align: center;
+  padding: 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.textCamera {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btnBg, .skip {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #efeded;
+  border-radius: 16px;
+}
+.btnText, .textSkip {
+  text-align: center;
+  font-weight: 700;
+  color: #1a1528;
+  font-size: 14px;
 }
