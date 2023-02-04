@@ -37,6 +37,14 @@
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": ["js", "jsx", "css"]
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Espero no tengas nudes"
+        }
+      ]
+    ]
   }
 }
