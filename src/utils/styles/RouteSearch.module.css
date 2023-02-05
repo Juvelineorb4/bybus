@@ -1,0 +1,127 @@
+.container {
+    width: 100%;
+    background-color: #1A1528;
+    border-radius: 16px;
+    overflow: hidden;
+
+}
+
+.text {
+    color: #FFFFFF
+}
+
+/* Route Search */
+.containerRouteSearch {
+    padding: 0px 15px 15px 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: #2A2537;
+    margin-bottom: 5px;
+
+}
+
+.textInput {
+    width: 85%;
+    margin-left: 15px;
+    color: #FFFFFF
+}
+
+.placeholder {
+    color: #FFFFFF
+}
+
+.containerOption {
+    margin-top: 10px;
+    flex-direction: row;
+}
+
+/* conatiner hora  */
+.containerHour {
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(241, 241, 241, 0.1);
+    padding: 12px 15px;
+    border-radius: 16px;
+}
+
+.containerTransport {
+    flex: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(241, 241, 241, 0.1);
+    padding: 12px 15px;
+    border-radius: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.containerSearchBtn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FF8811;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+/* Route Selected  */
+.containerRouteSelected {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px 15px 15px;
+}
+
+.containerText {
+    flex: 5
+}
+
+.contentText {
+    padding: 10px;
+}
+
+.line {
+    border: 1px solid #2A2537;
+    width: 100%;
+}
+
+.containerButton {
+    flex: 1;
+    justify-content: space-around;
+}
+
+.borderButton {
+    padding: 8px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.containerDecoration {
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.intento {
+    resize: horizontal;
+}
+
+/* Ruta destino */
+.containerRouteDestination {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px 15px 15px;
+}

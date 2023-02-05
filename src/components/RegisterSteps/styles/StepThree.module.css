@@ -1,0 +1,70 @@
+.content {
+  padding: 20px;
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.methods {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.travel {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.travelButton {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.textTravelButton {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+.lineDown {
+  background-color: #efeded;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -20px;
+  border-radius: 10px;
+}
+.lineTop {
+  background-color: #efeded;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: -20px;
+  border-radius: 10px;
+}
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  margin-top: 40px;
+}
+.textContinue {
+  text-align: center;
+  font-weight: 800;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+
+.titleTravel {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 28px;
+  color: #1a1528;
+}

@@ -12,7 +12,9 @@ const CustomInput = ({
   security,
   styled = {},
   icon = {},
-  text
+  text,
+  iconRight = {},
+  placeholderTextColor = {}
 }) => {
   return (
     <Controller
@@ -24,17 +26,20 @@ const CustomInput = ({
         fieldState: { error },
       }) => (
         <>
-         <Text style={styled.label}>{text}</Text>
+          {text && <Text style={styled.label}>{text}</Text>}
           <View style={[styled.input, error && { borderColor: "red" }]}>
-            <Icon name={icon.name} color={icon.color} size={icon.size} />
+            {icon && <Icon name={icon.name} color={icon.color} size={icon.size} />}
             <TextInput
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
               placeholder={placeholder}
+              placeholderTextColor={placeholderTextColor}
+              {...styled.placeholder}
               style={styled.text}
               secureTextEntry={security}
             />
+            {iconRight && <Icon name={iconRight.name} color={iconRight.color} size={iconRight.size} />}
           </View>
           {error && <Text style={styled.error}>{error.message || "Error"}</Text>}
         </>

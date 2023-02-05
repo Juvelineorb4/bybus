@@ -1,0 +1,82 @@
+.content {
+  padding: 20px;
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.imageContent {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.controls {
+  flex-direction: row;
+  justify-content: center;
+}
+.camera {
+  text-align: center;
+  padding: 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.textCamera {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.btnBg {
+  text-align: center;
+  padding: 15px;
+  border-radius: 16px;
+}
+.btnBg {
+  border: 1px solid #1a1528;
+  margin-left: 15px;
+  width: 60%;
+}
+.skip {
+  border: 1px solid #efeded;
+}
+.btnText {
+  text-align: center;
+  font-weight: 700;
+  color: #1a1528;
+  font-size: 14px;
+}
+.skip,
+.continueTwo {
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 16px;
+}
+.skip {
+  width: 30%;
+  border: 1px solid #efeded;
+}
+.textSkip,
+.textContinueTwo {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+.textSkip {
+  color: #1a1528;
+}
+.textContinueTwo {
+  color: white;
+}
+.continueTwo {
+  width: 65%;
+  background-color: #1a1528;
+  margin-left: 10px;
+}
