@@ -1,8 +1,7 @@
 import { Image, View } from "react-native";
 import React from "react";
 import styles from "@/utils/styles/Register.module.css";
-import StepOne from "../../components/RegisterSteps/StepOne";
-import StepTwo from "@/components/RegisterSteps/StepTwo";
+import StepFour from "@/components/RegisterSteps/StepFour";
 
 const Register = () => {
   return (
@@ -17,9 +16,7 @@ const Register = () => {
         }}
         source={require("@/utils/images/texture.png")}
       />
-      <View style={styles.content}>
-        <StepTwo />
-      </View>
+      <StepFour />
     </View>
   );
 };

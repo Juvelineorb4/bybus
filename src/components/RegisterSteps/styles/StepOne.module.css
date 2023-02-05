@@ -1,0 +1,52 @@
+.content {
+  padding: 20px;
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.form {
+  flex: 1;
+  justify-content: center;
+}
+
+.inputContainer {
+  flex-direction: row;
+  background-color: #fafafa;
+  padding: 15px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+.labelInput {
+  font-weight: 500;
+  font-size: 14px;
+  color: #404040;
+  margin-bottom: 5px;
+}
+.textInput {
+  width: 100%;
+  margin-left: 15px;
+}
+.errorInput {
+}
+
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  margin-top: 40px;
+}
+.textContinue {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+
+.terms {
+  font-weight: 400;
+  font-size: 14px;
+  color: #404040;
+}

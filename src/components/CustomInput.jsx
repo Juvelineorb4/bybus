@@ -13,7 +13,7 @@ const CustomInput = ({
   styled = {},
   icon = {},
   text,
-  iconRight,
+  iconRight = {},
   placeholderTextColor = {}
 }) => {
   return (
@@ -28,7 +28,7 @@ const CustomInput = ({
         <>
           {text && <Text style={styled.label}>{text}</Text>}
           <View style={[styled.input, error && { borderColor: "red" }]}>
-            <Icon name={icon.name} color={icon.color} size={icon.size} />
+            {icon && <Icon name={icon.name} color={icon.color} size={icon.size} />}
             <TextInput
               value={value}
               onChangeText={onChange}

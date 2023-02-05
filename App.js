@@ -10,7 +10,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Montserrat: require("@/utils/fonts/Montserrat.ttf"),
+    'Italic': require("@/utils/fonts/Montserrat-Italic-VariableFont_wght.ttf"),
+    'Regular': require("@/utils/fonts/Montserrat-VariableFont_wght.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

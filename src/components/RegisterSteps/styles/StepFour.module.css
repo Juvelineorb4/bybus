@@ -1,0 +1,12 @@
+.content {
+  padding: 20px;
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.enterCode {
+  flex: 1;
+  justify-content: center;
+}
