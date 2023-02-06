@@ -1,16 +1,130 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-  }
-  
-  .button {
-    background-color: red;
-    padding: 10px;
-    border-radius: 10px;
-    color: red;
-    text-align: center;
-    font-size: 15px;
-    width: 50%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.button {
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+  color: red;
+  text-align: center;
+  font-size: 15px;
+  width: 50%;
+}
+
+/* estilos del componente ticket */
+.containerTicket {
+  background: #1A1528;
+  border-radius: 24px;
+  padding: 30px 20px;
+  overflow: hidden;
+}
+
+.topTicket {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textHourTicket {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+.textMinTicket {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.tagTicket {
+  background-color: #FF8811;
+  border-width: 0px;
+}
+
+.textTagTicket {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1A1528;
+}
+
+.midTicket {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.textStateTicket {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.textToTicket {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.textCityTicket {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.lineDashedTicket {
+  border: 2px dashed #FFFFFF;
+}
+
+.bottomTicket {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.methodTitleTicked {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.priceTicked {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.separeContentTicket {
+  margin-bottom: 20px;
+}
+
+.circleDecorationTicket {
+  position: absolute;
+  background-color: #FFFFFF;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+}
+
+.circleLeft {
+  left: -15;
+  bottom: 57;
+}
+
+.circleRight {
+  right: -15;
+  bottom: 57;
+}
