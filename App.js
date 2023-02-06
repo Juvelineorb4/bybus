@@ -1,14 +1,15 @@
-import "react-native-gesture-handler";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import Navigation from "@/routes/Navigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
+import { ScrollView } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     Montserrat: require("@/utils/fonts/Montserrat.ttf"),
   });
@@ -24,7 +25,12 @@ export default function App() {
   }
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
-      <Navigation />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <BottomSheetModalProvider>
+          <Navigation />
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }
+

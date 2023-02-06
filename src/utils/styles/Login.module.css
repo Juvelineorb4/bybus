@@ -8,7 +8,10 @@
 }
 .content {
   width: 100%;
+  position: relative;
+  top: 0%;
   padding: 20px;
+  margin-top: 50px;
 }
 .text {
   font-size: 20px;
@@ -20,7 +23,6 @@
   align-items: center;
   width: 100%;
   background-color: #fafafa;
-  width: 100%;
   padding: 15px 20px;
   border-radius: 16px;
   margin-bottom: 20px;
@@ -68,7 +70,6 @@
   justify-content: space-between;
 }
 
-
 /* Buttons */
 .login {
   text-align: center;
@@ -76,7 +77,7 @@
   padding: 20px 10px;
   background-color: #1a1528;
   border-radius: 16px;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .textLogin {
   text-align: center;
@@ -96,13 +97,12 @@
 
 .textContent {
   display: flex;
-  width: 100%;
 }
 
 .title {
   font-style: italic;
   font-weight: 100;
-  font-size: 28px;
+  font-size: 30px;
   color: #1f1f1f;
   text-align: center;
 }
@@ -111,5 +111,13 @@
   font-weight: 400;
   font-size: 16px;
   text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+}
+
+.forgot,
+.rememberText {
+  font-weight: 400;
+  font-size: 14px;
   color: #404040;
 }

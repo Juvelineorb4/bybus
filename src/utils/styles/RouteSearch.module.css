@@ -1,0 +1,214 @@
+.container {
+    width: 100%;
+    background-color: #1A1528;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.text {
+    color: #FFFFFF
+}
+
+/* Route Search */
+.containerRouteSearch {
+    padding: 0px 15px 15px 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: #2A2537;
+    margin-bottom: 5px;
+
+}
+
+.textInput {
+    width: 85%;
+    margin-left: 15px;
+    color: #FFFFFF
+}
+
+.placeholder {
+    color: #FFFFFF
+}
+
+.containerOption {
+    margin-top: 10px;
+    flex-direction: row;
+}
+
+/* conatiner hora  */
+.containerHour {
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(241, 241, 241, 0.1);
+    padding: 12px 15px;
+    border-radius: 16px;
+}
+
+.containerTransport {
+    flex: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(241, 241, 241, 0.1);
+    padding: 12px 15px;
+    border-radius: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.containerSearchBtn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FF8811;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+/* Route Selected  */
+.containerRouteSelected {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px 15px 15px;
+}
+
+.containerText {
+    flex: 5
+}
+
+.contentText {
+    padding: 10px;
+}
+
+.line {
+    border: 1px solid #2A2537;
+    width: 100%;
+}
+
+.containerButton {
+    flex: 1;
+    justify-content: space-around;
+}
+
+.borderButton {
+    padding: 8px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.containerDecoration {
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.intento {
+    resize: horizontal;
+}
+
+/* Ruta destino */
+.containerRouteDestination {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px 15px 15px;
+}
+
+/* Route Card */
+
+.containerRouteCard {
+    background-color: #FFFFFF;
+    padding: 25px 15px 25px 15px;
+    overflow: hidden;
+
+}
+
+.containerTextTop {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.textHour {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 100;
+    font-size: 24px;
+}
+
+.textMin {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9D9D9D;
+}
+
+.ticketPrice {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 10px 5px 8px;
+    background-color: #FFCE48;
+    border-radius: 16px;
+    max-width: 120px;
+    min-width: 100px;
+    width: 100px;
+    margin-left: 5px;
+}
+
+.ticketText {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.IconBorder {
+    background-color: #F5F5F5;
+    padding: 8px;
+    border-radius: 16px;
+}
+
+.lineSolid {
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-color: #1A1528;
+}
+
+.lineDashed {
+    border-style: dashed;
+    border-bottom-width: 2px;
+    border-color: #C7C7C7;
+}
+
+/* Tag Travel */
+.containerTagTravel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px 5px 8px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #e6e3e3;
+}
+
+.TagTravelIcon {}
+
+.TagTravelText {
+    margin-left: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #1F1F1F;
+}
