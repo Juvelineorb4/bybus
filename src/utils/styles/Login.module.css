@@ -40,7 +40,6 @@
   width: 90%;
   margin-left: 15px;
   font-family: "Regular";
-
 }
 .errorInput {
 }
@@ -66,7 +65,6 @@
   align-self: center;
   color: #9d9d9d;
   font-family: "Regular";
-
 }
 
 /* Selects */
@@ -91,7 +89,6 @@
   color: white;
   font-size: 14px;
   font-family: "Regular";
-
 }
 
 .extras {
@@ -113,7 +110,6 @@
   color: #1f1f1f;
   text-align: center;
   font-family: "Italic";
-
 }
 
 .subtitle {
@@ -123,7 +119,6 @@
   margin-bottom: 30px;
   color: #404040;
   font-family: "Regular";
-
 }
 
 .forgot,
@@ -132,5 +127,4 @@
   font-size: 14px;
   color: #404040;
   font-family: "Regular";
-
 }

@@ -7,7 +7,7 @@
 }
 .form {
   flex: 1;
-  justify-content: center;
+  margin: 10px 0px;
 }
 
 .inputContainer {
@@ -15,13 +15,13 @@
   background-color: #fafafa;
   padding: 15px 20px;
   border-radius: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .labelInput {
   font-weight: 500;
   font-size: 14px;
   color: #404040;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 .textInput {
   width: 100%;
@@ -36,7 +36,7 @@
   padding: 20px 10px;
   background-color: #1a1528;
   border-radius: 16px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 .textContinue {
   text-align: center;
@@ -49,4 +49,23 @@
   font-weight: 400;
   font-size: 14px;
   color: #404040;
+}
+
+.textContainer {
+  margin-bottom: 30px;  
+}
+.title {
+  font-weight: 100;
+  font-size: 30px;
+  color: #1f1f1f;
+  text-align: center;
+  font-family: "Italic";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #404040;
+  font-family: "Regular";
 }

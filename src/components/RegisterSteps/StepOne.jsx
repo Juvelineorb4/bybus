@@ -3,13 +3,25 @@ import React from "react";
 import { CustomInput, CustomButton } from "@/components";
 import { useForm } from "react-hook-form";
 import styles from "./styles/StepOne.module.css";
+import CustomText from "../CustomText";
+import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
-const StepOne = (data) => {
+const StepOne = () => {
   const { control, handleSubmit } = useForm();
-
+  const navigation = useNavigation(); 
   return (
     <View style={styles.content}>
-      <View style={styles.form}>
+      <ScrollView style={styles.form}>
+        <CustomText
+          styled={{
+            title: styles.title,
+            subtitle: styles.subtitle,
+            container: styles.textContainer,
+          }}
+          title={`Account details`}
+          subtitle={`Fill in some details about you to create your new account.`}
+        />
         <CustomInput
           control={control}
           name={`username`}
@@ -80,13 +92,11 @@ const StepOne = (data) => {
           }}
         />
         <Text style={styles.terms}>I accept the Terms and Privacy Policy</Text>
-      </View>
+      </ScrollView>
       <View style={styles.controls}>
         <CustomButton
           text={`Continue`}
-          handlePress={() =>
-            handleSubmit(navigation.navigate(route.params.HOME))
-          }
+          handlePress={handleSubmit(() => navigation.navigate('Register_StepTwo'))}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}
         />

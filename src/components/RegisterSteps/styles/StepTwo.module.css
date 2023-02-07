@@ -6,8 +6,7 @@
   width: 100%;
 }
 .imageContent {
-  flex: 1;
-  justify-content: center;
+  flex: 3;
   align-items: center;
 }
 .controls {
@@ -79,4 +78,24 @@
   width: 65%;
   background-color: #1a1528;
   margin-left: 10px;
+}
+.textContainer {
+  flex: 1;
+  justify-content: center;
+}
+.title {
+  font-weight: 100;
+  font-size: 30px;
+  color: #1f1f1f;
+  text-align: center;
+  font-family: "Italic";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #404040;
+  font-family: "Regular";
 }
