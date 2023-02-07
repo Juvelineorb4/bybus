@@ -6,8 +6,7 @@
   width: 100%;
 }
 .methods {
-  flex: 1;
-  justify-content: center;
+  flex: 2;
   align-items: center;
 }
 .travel {
@@ -15,11 +14,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .travelButton {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   background-color: #1a1528;
   border-radius: 16px;
 }
@@ -35,7 +34,7 @@
   width: 100%;
   height: 2px;
   position: absolute;
-  bottom: -20px;
+  bottom: -15px;
   border-radius: 10px;
 }
 .lineTop {
@@ -43,7 +42,7 @@
   width: 100%;
   height: 2px;
   position: absolute;
-  top: -20px;
+  top: -15px;
   border-radius: 10px;
 }
 .continue {
@@ -52,7 +51,6 @@
   padding: 20px 10px;
   background-color: #1a1528;
   border-radius: 16px;
-  margin-top: 40px;
 }
 .textContinue {
   text-align: center;
@@ -67,4 +65,24 @@
   font-weight: 100;
   font-size: 28px;
   color: #1a1528;
+}
+.textContainer {
+  flex: 1;
+  justify-content: center;
+}
+.title {
+  font-weight: 100;
+  font-size: 28px;
+  color: #1f1f1f;
+  text-align: center;
+  font-family: "Italic";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-family: "Regular";
 }

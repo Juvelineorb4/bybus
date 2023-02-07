@@ -50,7 +50,7 @@ const Welcome = ({ navigation, route }) => {
           />
           <CustomButton
             text={intro.button}
-            handlePress={() => navigation.navigate("Home")}
+            handlePress={() => navigation.navigate("Welcome_Start")}
             textStyles={styles.textContinue}
             buttonStyles={styles.continueBtnn}
           />
