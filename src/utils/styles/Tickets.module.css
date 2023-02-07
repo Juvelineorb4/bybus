@@ -92,7 +92,6 @@
 }
 
 .methodTitleTicked {
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -100,7 +99,6 @@
 }
 
 .priceTicked {
-  font-family: 'Montserrat';
   font-style: italic;
   font-weight: 100;
   font-size: 14px;
