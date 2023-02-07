@@ -1,12 +1,26 @@
-import React, { useState } from "react";
-import { Button, Image, ScrollView, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import CustomImageSelect from "../CustomImageSelect";
-import styles from "@/utils/styles/Register.module.css";
+import styles from "./styles/StepTwo.module.css";
 import CustomButton from "../CustomButton";
+import CustomText from "../CustomText";
+import { useForm } from "react-hook-form";
+import { useNavigation } from "@react-navigation/native";
 
 export default function StepTwo() {
+  const { control, handleSubmit } = useForm();
+  const navigation = useNavigation();
   return (
-    <ScrollView>
+    <View style={styles.content}>
+      <CustomText
+        styled={{
+          title: styles.title,
+          subtitle: styles.subtitle,
+          container: styles.textContainer,
+        }}
+        title={`Profile picture`}
+        subtitle={`Fill in some details about you to create your new account.`}
+      />
       <CustomImageSelect
         styled={{
           container: styles.imageContent,
@@ -19,18 +33,24 @@ export default function StepTwo() {
         }}
         button={true}
       />
-      <View style={styles.buttons}>
+      <View style={styles.controls}>
         <CustomButton
           text={`Skip`}
+          handlePress={handleSubmit(() =>
+            navigation.navigate("Register_StepThree")
+          )}
           textStyles={styles.textSkip}
           buttonStyles={styles.skip}
         />
         <CustomButton
           text={`Continue`}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          handlePress={handleSubmit(() =>
+            navigation.navigate("Register_StepThree")
+          )}
+          textStyles={styles.textContinueTwo}
+          buttonStyles={styles.continueTwo}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 }

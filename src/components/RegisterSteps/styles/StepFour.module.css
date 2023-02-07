@@ -1,0 +1,46 @@
+.content {
+  padding: 20px;
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.enterCode {
+  flex: 1;
+}
+
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  margin-top: 40px;
+}
+.textContinue {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+}
+.textContainer {
+  flex: 1;
+  justify-content: center;
+}
+.title {
+  font-weight: 100;
+  font-size: 30px;
+  color: #1f1f1f;
+  text-align: center;
+  font-family: "Italic";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-family: "Regular";
+}
