@@ -85,7 +85,7 @@ const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
             <View style={styles.containerOption}>
                 {/* Hora */}
                 <TouchableOpacity style={styles.containerHour} onPress={showDatePicker}>
-                    <Text style={{ color: "white", marginRight: 5 }}>{`${new Date(date).toLocaleTimeString({ hour: '2-digit', minute: '2-digit' })}`}</Text>
+                    <Text style={{ color: "white", marginRight: 5 }}>{`${new Date(date).getHours()}:${new Date(date).getMinutes()}`}</Text>
                     <Icon name={"clock-outline"} color={"white"} size={20} />
                     <CustomDatePicker control={control} isVisible={isDatePickerVisible} setIsVisible={setDatePickerVisibility} />
                 </TouchableOpacity>

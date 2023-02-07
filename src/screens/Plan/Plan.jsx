@@ -1,7 +1,7 @@
-import { View, Alert, TouchableOpacity, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import React from "react";
 import { useForm } from 'react-hook-form';
-import { RouteSearch, RouteSelected, RouteDestination } from '@/components';
+import { RouteSearch } from '@/components';
 import styles from "@/utils/styles/Plan.module.css";
 
 const Plan = ({ navigation }) => {
@@ -9,24 +9,24 @@ const Plan = ({ navigation }) => {
     defaultValues: {
       departure: undefined,
       destination: undefined,
-      date: new Date()
+      date: new Date(),
     }
   });
 
   // resolver busqueda del route Search
   const handleSearch = (data) => {
-    console.log(data)
+    navigation.navigate("List")
   }
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("List")}
         >
           <Text>List Plans</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/*
        contenedor de Route Search 
        control : para decirle a que formulario pertenece
@@ -34,11 +34,6 @@ const Plan = ({ navigation }) => {
        watch: para acceder a variables y modificar vistas textos ....
       */}
         <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} />
-        <RouteSearch control={control} handleSubmit={handleSubmit(handleSearch)} watch={watch} collapsed />
-        {/* Ruta  selecionada */}
-        <RouteSelected />
-        {/* Ruta destino */}
-        <RouteDestination />
       </View>
     </ScrollView>
   );
