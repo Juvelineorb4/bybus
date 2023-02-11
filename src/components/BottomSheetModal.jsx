@@ -10,7 +10,7 @@ const BottomSheetModal = ({ children, bottomSheetStyle = {} }) => {
     /* El useMemogancho se puede utilizar para evitar que funciones costosas y que consumen muchos recursos se ejecuten innecesariamente.*/
 
     //variable para el porcentajes que se abrira la app
-    const snapPoints = useMemo(() => ["70%", "80%"], []);
+    const snapPoints = useMemo(() => ["50%", "100%"], []);
 
     // callbacks
     const handleSheetChange = useCallback((index) => {

@@ -21,6 +21,7 @@ const ProfileNavigator = () => {
         component={Edit}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
     </Stack.Navigator>

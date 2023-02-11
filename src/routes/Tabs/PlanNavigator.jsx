@@ -21,6 +21,7 @@ const PlanNavigator = () => {
         component={List}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -28,6 +29,7 @@ const PlanNavigator = () => {
         component={Selected}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
     </Stack.Navigator>

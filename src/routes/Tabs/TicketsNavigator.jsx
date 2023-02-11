@@ -21,6 +21,7 @@ const TicketsNavigator = () => {
         component={ChooseTicket}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -28,6 +29,7 @@ const TicketsNavigator = () => {
         component={CreateTicket}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -35,6 +37,7 @@ const TicketsNavigator = () => {
         component={ViewTicket}
         options={{
           header: () => <Header mode="with-back" />,
+          animation: 'slide_from_right'
         }}
       />
     </Stack.Navigator>

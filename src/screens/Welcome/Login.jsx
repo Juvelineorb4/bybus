@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import styles from "@/utils/styles/Login.module.css";
 import { CustomButton, CustomInput } from "@/components";
@@ -8,19 +8,19 @@ import CustomText from "@/components/CustomText";
 const Login = ({ navigation, route }) => {
   const { control, handleSubmit } = useForm();
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Image
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            top: "-35%",
-            resizeMode: "contain",
-          }}
-          source={require("@/utils/images/texture.png")}
-        />
-        <View style={styles.content}>
+    <View style={styles.container}>
+      <Image
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "-35%",
+          resizeMode: "contain",
+        }}
+        source={require("@/utils/images/texture.png")}
+      />
+      <View style={styles.content}>
+        <ScrollView style={styles.form}>
           <View styles={styles.textContent}>
             <Image
               style={{
@@ -74,49 +74,55 @@ const Login = ({ navigation, route }) => {
               security={true}
             />
           </View>
-          <View style={styles.buttons}>
-            <CustomButton
-              text={`Log In`}
-              handlePress={() =>
-                handleSubmit(navigation.navigate(route.params.HOME))
-              }
-              textStyles={styles.textLogin}
-              buttonStyles={styles.login}
-            />
-            <View style={styles.selects}>
-              <View style={styles.remember}>
-                <Text style={styles.rememberText}>Remember Me</Text>
-              </View>
-              <Text style={styles.forgot}>Forgot your password?</Text>
-            </View>
-            <View style={styles.hairline}>
-              <View style={styles.line} />
-              <Text style={styles.textLine}>Or log in with</Text>
-            </View>
+        </ScrollView>
 
-            <View style={styles.extras}>
-              <Image
-                style={{
-                  width: 30,
-                  height: 30,
-                  marginRight: 20,
-                  resizeMode: "contain",
-                }}
-                source={require("@/utils/images/google.png")}
-              />
-              <Image
-                style={{
-                  width: 30,
-                  height: 30,
-                  resizeMode: "contain",
-                }}
-                source={require("@/utils/images/facebook.png")}
-              />
-            </View>
+        <View style={styles.buttons}>
+          <CustomButton
+            text={`Log In`}
+            handlePress={() =>
+              handleSubmit(navigation.navigate(route.params.HOME))
+            }
+            textStyles={styles.textLogin}
+            buttonStyles={styles.login}
+          />
+          <View style={styles.selects}>
+            <CustomButton
+              text={`Remember Me`}
+              textStyles={styles.rememberText}
+            />
+            <CustomButton
+              text={`Forgot your password?`}
+              handlePress={() => navigation.navigate("Forgot_App")}
+              textStyles={styles.forgot}
+            />
+          </View>
+          <View style={styles.hairline}>
+            <View style={styles.line} />
+            <Text style={styles.textLine}>Or log in with</Text>
+          </View>
+
+          <View style={styles.extras}>
+            <Image
+              style={{
+                width: 30,
+                height: 30,
+                marginRight: 20,
+                resizeMode: "contain",
+              }}
+              source={require("@/utils/images/google.png")}
+            />
+            <Image
+              style={{
+                width: 30,
+                height: 30,
+                resizeMode: "contain",
+              }}
+              source={require("@/utils/images/facebook.png")}
+            />
           </View>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

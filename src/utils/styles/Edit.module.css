@@ -1,0 +1,63 @@
+.editImage {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.containerImage {
+    padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.editTitlte {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  text-align: center;
+  color: #1f1f1f;
+  margin-bottom: 15px;
+}
+
+/* Camera */
+.buttons {
+  align-items: center;
+}
+.textCamera {
+}
+.camera {
+  background-color: #1f1f1f;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: -30px;
+  margin-bottom: -25px;
+}
+.editInput {
+  padding: 20px;
+}
+.inputContainer {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  padding: 15px 20px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+.labelInput {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #404040;
+  margin-bottom: 5px;
+  font-family: "Regular";
+}
+.textInput {
+  width: 90%;
+  margin-left: 15px;
+  font-family: "Regular";
+}
+.errorInput {
+}

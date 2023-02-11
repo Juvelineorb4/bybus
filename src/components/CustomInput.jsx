@@ -5,6 +5,7 @@ import Icon from "./Icon";
 
 
 const CustomInput = ({
+  defaultValue,
   control,
   name,
   rules = {},
@@ -38,6 +39,7 @@ const CustomInput = ({
               {...styled.placeholder}
               style={styled.text}
               secureTextEntry={security}
+              defaultValue={defaultValue}
             />
             {iconRight && <Icon name={iconRight.name} color={iconRight.color} size={iconRight.size} />}
           </View>
