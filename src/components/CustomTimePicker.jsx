@@ -2,7 +2,7 @@ import React from "react";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Controller } from "react-hook-form";
 
-const CustomDatePicker = ({ control, isVisible, setIsVisible }) => {
+const CustomTimePicker = ({ control, isVisible, setIsVisible }) => {
   const hideDatePicker = () => {
     setIsVisible(false);
   };
@@ -14,18 +14,20 @@ const CustomDatePicker = ({ control, isVisible, setIsVisible }) => {
   return (
     <Controller
       control={control}
-      name={"date"}
+      name={"time"}
       render={({ field: { value, onChange }, fieldState: { error } }) => (
+        <>
           <DateTimePickerModal
             date={new Date(value)}
             isVisible={isVisible}
-            mode={"date"}
+            mode={"time"}
             onConfirm={(value) => handleConfirm(value, onChange)}
             onCancel={hideDatePicker}
           />
+        </>
       )}
     />
   );
 };
 
-export default CustomDatePicker;
+export default CustomTimePicker;

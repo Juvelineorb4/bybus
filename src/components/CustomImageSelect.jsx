@@ -49,7 +49,7 @@ const CustomImageSelect = ({ styled = {}, button }) => {
             status: true,
             name: "camera-outline",
             color: "white",
-            size: 30,
+            size: 24,
           }}
           handlePress={pickImage}
           textStyles={styled.text}

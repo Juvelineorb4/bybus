@@ -3,12 +3,12 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import styles from "@/utils/styles/Header.module.css";
 
-const LeftHeader = ({ text = "", icon = true}) => {
+const LeftHeader = ({ text = "", icon = true, route}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.left}>
       {icon && (
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.back}>
+        <TouchableOpacity onPress={() => navigation.pop()} style={styles.back}>
           <Image
             style={{
               width: 30,

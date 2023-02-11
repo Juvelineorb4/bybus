@@ -1,6 +1,7 @@
 .container {
-  flex: 1;
+  /* flex: 1; */
   padding: 20px;
+  background-color: #FFCE48;
 }
 
 .button {
