@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
+    "name": "bybus",
+    "slug": "bybus",
+    "owner": "bybus-dev",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
@@ -21,6 +22,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.bybus",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/utils/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -36,7 +39,11 @@
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "css"]
+      "sourceExts": [
+        "js",
+        "jsx",
+        "css"
+      ]
     },
     "plugins": [
       [

@@ -5,11 +5,15 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
-import { ScrollView } from "react-native";
+import usePushNotification from '@/hooks/usePushNotification'
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  // Aprendiendo como funcionar
+  usePushNotification();
+
+
   const [fontsLoaded] = useFonts({
     'Italic': require("@/utils/fonts/Montserrat-Italic-VariableFont_wght.ttf"),
     'Regular': require("@/utils/fonts/Montserrat-VariableFont_wght.ttf"),
