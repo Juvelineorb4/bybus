@@ -1,0 +1,57 @@
+.container {
+}
+.images {
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.paymentInputs {
+  flex-direction: row;
+}
+
+.inputCardNumber,
+.inputCardDate,
+.inputCardCode {
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fafafa;
+  padding: 15px 20px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+.textCardNumber {
+  width: 90%;
+  font-family: 'Regular';
+}
+.inputs {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.inputCardDate,
+.inputCardCode {
+  width: 48%;
+}
+.textCardDate,
+.textCardCode {
+  width: 100%;
+  font-family: 'Regular';
+  font-weight: 400;
+  color: #1a1528;
+}
+
+.button {
+  align-items: flex-end;
+}
+.btnBg {
+  text-align: center;
+  padding: 15px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.btnText {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: 'Regular';
+}

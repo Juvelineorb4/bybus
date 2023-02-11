@@ -1,0 +1,87 @@
+.container {
+    flex-direction: row;
+    border: 2px solid;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+
+/* icono izquierda */
+.iconLeft {
+    padding: 6px;
+}
+
+.contentCenter {
+    width: 240px;
+    margin: 0px 5px;
+}
+
+.title {
+    font-style: italic;
+    font-weight: 100;
+    font-size: 18px;
+    color: #1F1F1F;
+    margin-bottom: 1px;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #404040;
+    text-align: justify;
+}
+
+.iconRight {
+    padding: 6px;
+}
+
+
+
+/* Warning */
+.containerWarning {
+    border: 2px solid #F8F4CF;
+    background-color: #FFFDEE;
+}
+
+.iconWarning {
+    border-radius: 50px;
+    background-color: #FFF6A1;
+}
+
+/* Dangerous */
+.containerDangerous {
+    background-color: #FEEAEA;
+    border: 2px solid #F8CFCF;
+}
+
+.iconDangerous {
+    border-radius: 50px;
+    background-color: #FFA1A1;
+}
+
+/* Success */
+
+.containerSuccess {
+    background-color: #EAFEEA;
+    border: 2px solid #DCF8CF;
+}
+
+.iconSuccess {
+    border-radius: 50px;
+    background-color: #B9FFA1;
+}
+
+/* Other */
+
+.containerOther {
+    background-color: #FFF9F0;
+    border: 2px solid #F8E3CF;
+}
+
+.iconOther {
+    border-radius: 50px;
+    background-color: #FFD9A1;
+}

@@ -1,6 +1,13 @@
+# Enum
+
+
+# Tipos personalizados 
+
+
+# Tablas  Model 
 type WalletUser  @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  userID: ID!
+  id: ID! #Se colocara el id del usuario que se registra y confirma el registro 
+
 }
 
 

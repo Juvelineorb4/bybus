@@ -1,0 +1,44 @@
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Header from "../Header/Header";
+import { ChooseTicket, CreateTicket, Tickets, ViewTicket } from "@/screens";
+
+const Stack = createNativeStackNavigator();
+
+const TicketsNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName={`Tickets`}>
+      <Stack.Screen
+        name="Tickets"
+        component={Tickets}
+        options={{
+          headerBackVisible: false,
+          header: () => <Header />,
+        }}
+      />
+      <Stack.Screen
+        name="ChooseTicket"
+        component={ChooseTicket}
+        options={{
+          header: () => <Header mode="with-back" />,
+        }}
+      />
+      <Stack.Screen
+        name="CreateTicket"
+        component={CreateTicket}
+        options={{
+          header: () => <Header mode="with-back" />,
+        }}
+      />
+      <Stack.Screen
+        name="ViewTicket"
+        component={ViewTicket}
+        options={{
+          header: () => <Header mode="with-back" />,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default TicketsNavigator;
