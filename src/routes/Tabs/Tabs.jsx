@@ -10,49 +10,75 @@ const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
-    <Tab.Navigator initialRouteName={`Plan_Tab`}>
+    <Tab.Navigator
+      initialRouteName={`Plan_Tab`}
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: "white",
+          height: 65,
+          paddingBottom: 10,
+          paddingTop: 10
+        },
+      }}
+    >
       <Tab.Screen
         name={"Plan_Tab"}
         component={PlanNavigator}
         options={{
+          tabBarActiveTintColor: "#1A1528",
+          tabBarInactiveTintColor: "#404040",
           tabBarIcon: ({ color, size }) => (
             <Icon name={`map-outline`} color={color} size={size} />
           ),
           headerShown: false,
-          tabBarLabel: 'Plan'
+          tabBarLabel: "Plan",
+          tabBarLabelStyle: { fontSize: 12 },
         }}
       />
       <Tab.Screen
         name={"Tickets_Tab"}
         component={TicketsNavigator}
         options={{
+          tabBarActiveTintColor: "#1A1528",
+          tabBarInactiveTintColor: "#404040",
           tabBarIcon: ({ color, size }) => (
-            <Icon name={`ticket-confirmation-outline`} color={color} size={size} />
+            <Icon
+              name={`ticket-confirmation-outline`}
+              color={color}
+              size={size}
+            />
           ),
           headerShown: false,
-          tabBarLabel: 'Tickets'
+          tabBarLabel: "Tickets",
+          tabBarLabelStyle: { fontSize: 12 },
         }}
       />
       <Tab.Screen
         name={"Profile_Tab"}
         component={ProfileNavigator}
         options={{
+          tabBarActiveTintColor: "#1A1528",
+          tabBarInactiveTintColor: "#404040",
           tabBarIcon: ({ color, size }) => (
             <Icon name={`account-outline`} color={color} size={size} />
           ),
           headerShown: false,
-          tabBarLabel: 'Profile'
+          tabBarLabel: "Profile",
+          tabBarLabelStyle: { fontSize: 12 },
         }}
       />
       <Tab.Screen
         name={"Settings_Tab"}
         component={SettingsNavigator}
         options={{
+          tabBarActiveTintColor: "#1A1528",
+          tabBarInactiveTintColor: "#404040",
           tabBarIcon: ({ color, size }) => (
             <Icon name={`cog-outline`} color={color} size={size} />
           ),
           headerShown: false,
-          tabBarLabel: 'Settings'
+          tabBarLabel: "Settings",
+          tabBarLabelStyle: { fontSize: 12 },
         }}
       />
     </Tab.Navigator>

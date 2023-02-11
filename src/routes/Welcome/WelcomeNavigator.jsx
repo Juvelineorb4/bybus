@@ -5,6 +5,21 @@ import { Forgot, Introduction, Login, Welcome } from "@/screens";
 import RegisterNavigator from "./RegisterNavigator";
 import FirtsTime from "@/screens/Welcome/FirtsTime";
 import Strip from "@/screens/Welcome/Strip";
+import ForgotNavigator from "./ForgotNavigator";
+
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +47,7 @@ const WelcomeNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -58,9 +74,17 @@ const WelcomeNavigator = () => {
         component={RegisterNavigator}
         options={{
           headerShown: false,
+          animation: 'slide_from_right'
         }}
       />
-      <Stack.Screen name={"Forgot"} component={Forgot} />
+      <Stack.Screen
+        name={"Forgot_App"}
+        component={ForgotNavigator}
+        options={{
+          headerShown: false,
+          animation: 'slide_from_right'
+        }}
+      />
     </Stack.Navigator>
   );
 };

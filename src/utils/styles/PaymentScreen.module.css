@@ -1,0 +1,99 @@
+.container {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+}
+.textContainer {
+  /* flex: 1; */
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+}
+.subtitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  color: #404040;
+  margin: 5px 0px 15px;
+}
+.methods {
+  background: #fafafa;
+  border-radius: 24px;
+  flex: 1;
+  padding: 15px;
+}
+.travelCard, .mobile, .creditDebitCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+}
+.positionCard {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mobile, .creditDebitCard {
+  margin-top: 10px;
+}
+.creditDebitCard {
+  margin-bottom: 20px;
+}
+.cardTopText {
+  flex-direction: row;
+  align-items: center;
+}
+.cardTitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  color: #1a1528;
+  margin-left: 5px;
+}
+.predetermined {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.textPredetermined {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+.titleBalance {
+  font-family: "Regular";
+  font-weight: 700;
+  font-size: 14px;
+  color: #9d9d9d;
+}
+.subtitleBalance {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 20px;
+  color: #1f1f1f;
+}
+.activePredetermined {
+  font-family: "Regular";
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f1f1f;
+  margin-left: 3px;
+}
+.predeterminedOff {
+  text-align: center;
+  padding: 20px 14px;
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #9d9d9d;
+}
+.textPredeterminedOff {
+  text-align: center;
+  font-weight: 600;
+  color: #1f1f1f;
+  font-size: 14px;
+  font-family: "Italic";
+}

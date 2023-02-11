@@ -16,6 +16,7 @@ const RegisterNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -25,6 +26,7 @@ const RegisterNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -34,6 +36,7 @@ const RegisterNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -43,6 +46,7 @@ const RegisterNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
       <Stack.Screen
@@ -52,6 +56,7 @@ const RegisterNavigator = () => {
           headerTransparent: true,
           headerTitle: "",
           header: () => <Header mode={`back-only`} />,
+          animation: 'slide_from_right'
         }}
       />
     </Stack.Navigator>
