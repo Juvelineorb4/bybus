@@ -15,33 +15,18 @@ const Plan = ({ navigation }) => {
     },
   });
 
-  // resolver busqueda del route Search
   const handleSearch = (data) => {
     navigation.navigate("List");
   };
 
   return (
-    <View style={{flex: 1}}>
-      <View style={styles.container}>
-        <ScrollView>
-          {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("List")}
-        >
-          <Text>List Plans</Text>
-        </TouchableOpacity> */}
-          {/*
-       contenedor de Route Search 
-       control : para decirle a que formulario pertenece
-       handleSubmut: ()=> void function para el boton de buscar 
-       watch: para acceder a variables y modificar vistas textos ....
-      */}
-          <RouteSearch
-            control={control}
-            handleSubmit={handleSubmit(handleSearch)}
-            watch={watch}
-          />
-        </ScrollView>
+    <View style={styles.container}>
+      <View style={styles.containerSearch}>
+        <RouteSearch
+          control={control}
+          handleSubmit={handleSubmit(handleSearch)}
+          watch={watch}
+        />
       </View>
       <BottomSheetModal bottomSheetStyle={styles.bottom}>
         <ResultView navigation={navigation} />

@@ -2,7 +2,7 @@ export { default as CustomButton } from "./CustomButton";
 export { default as CustomInput } from "./CustomInput";
 export { default as Icon } from "./Icon";
 export { default as RouteSearch } from "./RouteSearch";
-export { default as CustomDatePicker } from "./CustomTimePicker";
+export { default as CustomDatePicker } from "./CustomTimeDatePicker";
 export { default as RouteSelected } from "./RouteSelected";
 export { default as RouteDestination } from "./RouteDestination";
 export { default as RouteCard } from "./RouteCard";

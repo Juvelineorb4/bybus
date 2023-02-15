@@ -13,7 +13,7 @@ const Settings = ({ navigation }) => {
       {buttons.map((button, index) => (
         <View key={index}>
           {button.route ? (
-            <TouchableOpacity onPress={() => navigation.navigate(button.route)}>
+            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(button.route)}>
               <View style={styles.line} />
               <CustomSelect
                 title={button.title}
@@ -33,7 +33,7 @@ const Settings = ({ navigation }) => {
               />
             </TouchableOpacity>
           ) : (
-            <TouchableOpacity>
+            <View>
               <View style={styles.line} />
               <CustomSelect
                 title={button.title}
@@ -51,7 +51,7 @@ const Settings = ({ navigation }) => {
                 icon={button.icon}
                 toogle={button.toogle}
               />
-            </TouchableOpacity>
+            </View>
           )}
         </View>
       ))}

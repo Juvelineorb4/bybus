@@ -1,28 +1,24 @@
-import { Text, View, TouchableOpacity } from "react-native";
-import React, { useEffect, useState } from "react";
-import styles from "@/utils/styles/Plan.module.css";
-import {
-  BottomSheetModal,
-  RouteSelected,
-  CustomDatePicker,
-  Icon,
-  RouteCard,
-} from "@/components";
-import { useForm } from "react-hook-form";
+import { Text, View, TouchableOpacity, Image } from "react-native";
+import React from "react";
+import styles from "@/utils/styles/ResultView.module.css";
+import { RouteCard } from "@/components";
 
 const ResultView = ({ navigation }) => {
   return (
-    <View style={styles.containerModal}>
-      {/* Title */}
-      <Text style={styles.titleModal}>Search Result</Text>
-      {/* Options */}
+    <View style={styles.container}>
+      <Text style={styles.title}>Search Result</Text>
       <View style={styles.optionsModal}>
-        {/* Date */}
-        <View style={styles.optionDateModal}>
+        {/* <View style={styles.optionDateModal}>
           <Text style={styles.textDateModal}>14:00</Text>
-          <Icon name={"clock-outline"} color={"black"} size={20} />
-        </View>
-        {/* Options transport */}
+          <Image
+            style={{
+              width: 24,
+              height: 24,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/clock-black.png")}
+          />
+        </View> */}
         <View style={styles.optionTransportModal}>
           <View
             style={[
@@ -30,13 +26,26 @@ const ResultView = ({ navigation }) => {
               { backgroundColor: "#F5F5F5", padding: 3 },
             ]}
           >
-            <Icon name={"bus"} color={"black"} size={20} />
+            <Image
+              style={{
+                width: 24,
+                height: 24,
+                resizeMode: "cover",
+              }}
+              source={require("@/utils/images/bus-black.png")}
+            />
           </View>
-          <Icon name={"chevron-down"} color={"black"} size={20} />
+          <Image
+            style={{
+              width: 24,
+              height: 24,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/arrow-down.png")}
+          />
         </View>
       </View>
-      {/* Result de busqueda */}
-      <TouchableOpacity onPress={() => navigation.navigate("Selected")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Selected")} activeOpacity={1}>
         <RouteCard />
       </TouchableOpacity>
       <RouteCard />
