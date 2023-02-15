@@ -1,13 +1,50 @@
-import { Text, View } from 'react-native'
-import React from 'react'
-import styles from "@/utils/styles/Settings.module.css";
+import { Image, Text, View } from "react-native";
+import React from "react";
+import styles from "@/utils/styles/Notifications.module.css";
+import { ScrollView } from "react-native-gesture-handler";
+import CustomDropDown from "@/components/CustomDropDown";
 
 const Notifications = () => {
+  const items = [
+    { label: "Latest", value: "latest" },
+    { label: "Newest", value: "newest" },
+  ];
   return (
-    <View>
-      <Text>Notifications</Text>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      <Image
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "-28%",
+          resizeMode: "contain",
+        }}
+        source={require("@/utils/images/texture.png")}
+      />
+      <ScrollView style={{ flex: 1 }}>
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            paddingVertical: 50,
+          }}
+        >
+          <View style={styles.countNotifications}>
+            <Text style={styles.textCountNotifications}>2</Text>
+          </View>
+          <Text style={styles.title}>New Notifications</Text>
+          <CustomDropDown
+            list={items}
+            styled={{
+              container: styles.picker,
+              item: styles.pickerItem,
+            }}
+            global={`notification`}
+          />
+        </View>
+      </ScrollView>
     </View>
-  )
-}
+  );
+};
 
-export default Notifications
+export default Notifications;

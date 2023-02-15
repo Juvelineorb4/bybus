@@ -10,7 +10,7 @@ export const settings = {
           color: "white",
         },
       },
-      toogle: true,
+      toogle: 'notifications',
       // routePush: false,
     },
     {

@@ -1,0 +1,49 @@
+.topContent {
+  padding: 20px;
+}
+.title {
+  text-align: center;
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+}
+.subtitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  color: #404040;
+}
+.line {
+  background-color: #efeded;
+  width: 100%;
+  height: 1px;
+}
+.containerSelect {
+  padding: 30px 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.textSelect {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 16px;
+  color: #9d9d9d;
+}
+.appVersion {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 16px;
+  text-align: right;
+  color: #1f1f1f;
+}
+.textSelectRight {
+    font-family: 'Italic';
+font-weight: 100;
+font-size: 14px;
+text-align: right;
+color: #1F1F1F;
+margin-right: 5px;
+}

@@ -109,10 +109,10 @@
   font-family: "Regular";
 }
 .card {
-  padding: 20px;
+  padding: 25px 20px;
 }
 .travels {
-  padding: 0px 20px 20px;
+  padding: 25px 20px;
 }
 .picker {
   width: 110px;
@@ -126,4 +126,10 @@
   font-weight: 400;
   font-size: 12px;
   color: #1f1f1f;
+}
+.line {
+  background-color: #efeded;
+  width: 150%;
+  height: 1px;
+  /* position: absolute; */
 }
