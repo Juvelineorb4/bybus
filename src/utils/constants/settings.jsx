@@ -1,39 +1,119 @@
 export const settings = {
-    buttons: [
-      {
-        id: 'btnSettings-1',
-        title: 'Payment Methods',
-        route: 'PaymentMethods'
+  buttons: [
+    {
+      title: "Notifications",
+      subtitle: "Get notified of changes to your route.",
+      icon: {
+        left: {
+          name: "bell-outline",
+          size: 20,
+          color: "white",
+        },
       },
-      {
-        id: 'btnSettings-2',
-        title: 'App Permissions',
-        route: 'Permissions'
+      toogle: true,
+      // routePush: false,
+    },
+    {
+      title: "Payment methods",
+      subtitle: "Set your payment preferences.",
+      icon: {
+        left: {
+          name: "credit-card-edit-outline",
+          size: 20,
+          color: "white",
+        },
+        right: {
+          name: "arrow-right",
+          size: 24,
+          color: "#404040",
+        },
       },
-      {
-        id: 'btnSettings-3',
-        title: 'Notifications',
-        route: 'Notifications'
+      route: "PaymentMethods",
+      // routePush: true,
+    },
+    {
+      title: "App permissions",
+      subtitle: "Set which permissions the app has access to.",
+      icon: {
+        left: {
+          name: "lock-outline",
+          size: 20,
+          color: "white",
+        },
+        right: {
+          name: "arrow-right",
+          size: 24,
+          color: "#404040",
+        },
       },
-      {
-        id: 'btnSettings-4',
-        title: 'Introduction',
-        route: 'Introduction'
+      route: "Permissions",
+      // routePush: true,
+    },
+    {
+      title: "Introduction",
+      subtitle: "Was guided through our new app.",
+      icon: {
+        left: {
+          name: "crosshairs-question",
+          size: 20,
+          color: "white",
+        },
+        right: {
+          name: "arrow-right",
+          size: 24,
+          color: "#404040",
+        },
       },
-      {
-        id: 'btnSettings-5',
-        title: 'Privacy & Policy',
-        route: 'Terms'
+      route: "Introduction",
+      // routePush: true,
+    },
+    {
+      title: "Privacy & Policy",
+      subtitle: "See details of our policy",
+      icon: {
+        left: {
+          name: "file-document-outline",
+          size: 20,
+          color: "white",
+        },
+        right: {
+          name: "arrow-right",
+          size: 24,
+          color: "#404040",
+        },
       },
-      {
-        id: 'btnSettings-6',
-        title: 'About',
-        route: 'About'
+      route: "Terms",
+      // routePush: true,
+    },
+    {
+      title: "App specs",
+      subtitle: "See details about the app",
+      icon: {
+        left: {
+          name: "information-outline",
+          size: 20,
+          color: "white",
+        },
+        right: {
+          name: "arrow-right",
+          size: 24,
+          color: "#404040",
+        },
       },
-      {
-        id: 'btnSettings-7',
-        title: 'Logout',
-        route: 'Welcome'
+      route: "About",
+      // routePush: true,
+    },
+    {
+      title: "Logout",
+      icon: {
+        left: {
+          name: "logout",
+          size: 20,
+          color: "white",
+        },
       },
-    ]
-  }
+      route: "Welcome",
+      // routePush: true,
+    },
+  ],
+};

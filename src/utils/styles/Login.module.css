@@ -1,33 +1,38 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
   background-color: white;
-  width: 100%;
-  height: 100%;
-}
-.content {
-  width: 100%;
-  position: relative;
-  top: 0%;
   padding: 20px;
-  margin-top: 50px;
 }
+
+.content {
+  margin-top: 50px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form {
+  flex: 1;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
 .text {
   font-size: 20px;
   font-family: "Regular";
 }
+
 .inputContainer {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: #fafafa;
   padding: 15px 20px;
   border-radius: 16px;
-  margin-bottom: 20px;
 }
+
 .labelInput {
   font-style: normal;
   font-weight: 500;
@@ -36,19 +41,21 @@
   margin-bottom: 5px;
   font-family: "Regular";
 }
+
 .textInput {
   width: 90%;
   margin-left: 15px;
   font-family: "Regular";
 }
-.errorInput {
-}
+
+.errorInput {}
 
 /* Line */
 .hairline {
   position: relative;
   margin: 20px 0px;
 }
+
 .line {
   background-color: #efeded;
   width: 100%;
@@ -81,8 +88,8 @@
   padding: 20px 10px;
   background-color: #1a1528;
   border-radius: 16px;
-  margin-top: 40px;
 }
+
 .textLogin {
   text-align: center;
   font-weight: 700;
@@ -92,7 +99,6 @@
 }
 
 .extras {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 15px 10px;
@@ -100,9 +106,6 @@
   border-radius: 16px;
 }
 
-.textContent {
-  display: flex;
-}
 
 .title {
   font-weight: 100;
