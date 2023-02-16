@@ -38,3 +38,9 @@ export const predeterminedPayment = atom({
   key: "predeterminedPaymentMethods",
   default: {},
 });
+
+/* User */
+export const userAuthenticated = atom({
+  key: "user",
+  default: undefined,
+});
