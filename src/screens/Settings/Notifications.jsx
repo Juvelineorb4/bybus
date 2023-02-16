@@ -1,37 +1,50 @@
-import { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
-import NotificationTypes from '@/components/NotificationTypes'
+import { Image, Text, View } from "react-native";
+import React from "react";
+import styles from "@/utils/styles/Notifications.module.css";
+import { ScrollView } from "react-native-gesture-handler";
+import CustomDropDown from "@/components/CustomDropDown";
 
-
-
-const NotificationsView = () => {
-  
-
+const Notifications = () => {
+  const items = [
+    { label: "Latest", value: "latest" },
+    { label: "Newest", value: "newest" },
+  ];
   return (
-    <View style={{ padding: 20 }}>
-      <Text>Notifications</Text>
-      <NotificationTypes
-        title={"Delay!"}
-        text={"We take care of the maintenance of the skins."}
-        warning
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      <Image
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "-28%",
+          resizeMode: "contain",
+        }}
+        source={require("@/utils/images/texture.png")}
       />
-      <NotificationTypes
-        title={"Eliminate happened"}
-        text={"A car driver has driven off the light rail. We are working to repair the damage."}
-        dangerous
-      />
-      <NotificationTypes
-        title={"Opening completed"}
-        text={"We  care of the maintenance of the skins."}
-        success
-      />
-      <NotificationTypes
-        title={"Free weekend"}
-        text={"Good weekend. We give all young people under 25 free rides on the bus."}
-        other
-      />
+      <ScrollView style={{ flex: 1 }}>
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            paddingVertical: 50,
+          }}
+        >
+          <View style={styles.countNotifications}>
+            <Text style={styles.textCountNotifications}>2</Text>
+          </View>
+          <Text style={styles.title}>New Notifications</Text>
+          <CustomDropDown
+            list={items}
+            styled={{
+              container: styles.picker,
+              item: styles.pickerItem,
+            }}
+            global={`notification`}
+          />
+        </View>
+      </ScrollView>
     </View>
-  )
-}
+  );
+};
 
-export default NotificationsView
+export default Notifications;

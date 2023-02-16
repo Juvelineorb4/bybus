@@ -80,6 +80,7 @@ const Profile = ({ navigation }) => {
             />
           </View>
         </View>
+        <View style={styles.line} />
         <View style={styles.travels}>
           <View style={styles.textTravels}>
             <CustomText
@@ -97,13 +98,16 @@ const Profile = ({ navigation }) => {
                 container: styles.picker,
                 item: styles.pickerItem,
               }}
+              global={`plan`}
             />
           </View>
-          <ScrollView horizontal>
-            <CustomTravelCard />
-            <CustomTravelCard />
-            <CustomTravelCard />
-          </ScrollView>
+          <View style={{paddingTop: 15}}>
+            <ScrollView horizontal>
+              <CustomTravelCard />
+              <CustomTravelCard />
+              <CustomTravelCard />
+            </ScrollView>
+          </View>
         </View>
       </View>
     </ScrollView>

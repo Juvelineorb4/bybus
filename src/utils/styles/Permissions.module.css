@@ -1,6 +1,25 @@
 .container {
+  flex: 1;
   background-color: white;
   position: relative;
+}
+.textContainer {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+  margin-bottom: 10px;
+
+}
+.subtitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  color: #404040;
 }
 .containerSelect {
   padding: 20px;
@@ -8,24 +27,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.title {
-  font-family: "Italic";
-  padding: 20px;
-  font-weight: 100;
-  font-size: 24px;
-  color: #1f1f1f;
-  margin-bottom: 10px;
-}
-.iconLeft {
-  padding: 16px;
-  align-items: center;
-  justify-content: center;
-  background: #1a1528;
-  border-radius: 16px;
-  margin-right: 10px;
-}
 .textContainerSelect {
-  width: 68%;
+  width: 75%;
 }
 .textTitleSelect {
   font-family: "Italic";

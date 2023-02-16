@@ -12,16 +12,17 @@ const CustomSelect = ({
   icon = { left: {}, right: {} },
   toogle,
 }) => {
-
   return (
     <View style={styled.container}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <View style={styled.iconLeft}>
-          <Icon
-            name={icon.left.name}
-            size={icon.left.size}
-            color={icon.left.color}
-          />
+          {icon.left && (
+            <Icon
+              name={icon.left.name}
+              size={icon.left.size}
+              color={icon.left.color}
+            />
+          )}
         </View>
         <CustomText title={title} subtitle={subtitle} styled={styled.text} />
       </View>
@@ -37,6 +38,7 @@ const CustomSelect = ({
       )}
       {toogle && (
         <CustomSwitch
+          global={toogle}
           styled={styled.switch}
           colors={{
             track: {
