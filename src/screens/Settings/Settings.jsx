@@ -1,9 +1,9 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import React from "react";
 import { settings } from "@/utils/constants/settings";
 import styles from "@/utils/styles/Settings.module.css";
 import CustomSelect from "@/components/CustomSelect";
-import { ScrollView } from "react-native-gesture-handler";
+// import { ScrollView } from "react-native-gesture-handler";
 
 const Settings = ({ navigation }) => {
   const { buttons } = settings;

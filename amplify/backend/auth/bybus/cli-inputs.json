@@ -3,8 +3,8 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "bybusdfe173914",
-    "userPoolName": "ByBusDemo",
+    "resourceNameTruncated": "bybus6febc6c8",
+    "userPoolName": "bybus",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -17,8 +17,13 @@
     "emailVerificationSubject": "Verification code: {####}",
     "emailVerificationMessage": "Verification code: {####}",
     "defaultPasswordPolicy": false,
-    "passwordPolicyMinLength": 7,
-    "passwordPolicyCharacters": [],
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+      "Requires Lowercase",
+      "Requires Numbers",
+      "Requires Symbols",
+      "Requires Uppercase"
+    ],
     "requiredAttributes": [
       "email",
       "name"
@@ -28,10 +33,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "ByBusDfe173914_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "bybus6febc6c8_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "fe173914",
-    "resourceName": "ByBusDemo",
+    "sharedId": "6febc6c8",
+    "resourceName": "bybus",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "usernameAttributes": [

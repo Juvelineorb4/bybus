@@ -1,26 +1,6 @@
 {
-  "api": {
-    "ByBusDemoDB": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDate": "2023-02-09T17:12:15.531Z",
-              "apiKeyExpirationDays": 7,
-              "description": ""
-            },
-            "authenticationType": "API_KEY"
-          }
-        }
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync"
-    }
-  },
   "auth": {
-    "ByBusDemo": {
+    "bybus": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -29,8 +9,13 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 7
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ],
+          "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
           "EMAIL",
@@ -47,6 +32,5 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
-  },
-  "function": {}
+  }
 }
