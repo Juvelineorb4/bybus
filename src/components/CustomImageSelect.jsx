@@ -6,13 +6,16 @@ import CustomButton from "./CustomButton";
 const CustomImageSelect = ({ styled = {}, button }) => {
   const [image, setImage] = useState(null);
   const pickImage = async () => {
+    ImagePicker.getPendingResultAsync
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1,
+      quality: 0.5,
+      base64: true
     });
     if (!result.canceled) {
+      console.error(result)
       setImage(result.assets[0].uri);
     }
   };
