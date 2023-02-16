@@ -10,7 +10,7 @@ const Settings = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Settings</Text>
-      {buttons.map((button, index) => (
+      {buttons.map((button, index) => ( 
         <View key={index}>
           {button.route ? (
             <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(button.route)}>
