@@ -1,12 +1,56 @@
-import { View, Text, Image, ScrollView } from "react-native";
-import React from "react";
+import { View, Text, Image, ScrollView, Alert } from "react-native";
+import React, { useEffect, useLayoutEffect } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import CustomText from "@/components/CustomText";
+import EnterCode from "@/components/EnterCode";
+import CustomTimer from "@/components/CustomTimer";
 import { CustomButton, CustomInput } from "@/components";
 import { useForm } from "react-hook-form";
+import { Auth } from 'aws-amplify';
 
 const ChangePassword = ({ navigation, route }) => {
-  const { control, handleSubmit } = useForm();
+  const { params } = route
+  const { control, handleSubmit, watch } = useForm({
+    defaultValues: {
+      email: params?.email,
+      code: ["", "", "", "", "", ""]
+    }
+  });
+  const pwd = watch("password")
+
+
+  // por si alguna razon el email no viene
+  useLayoutEffect(() => {
+    if (!route.params?.email) return navigation.goBack()
+  }, [])
+
+
+
+
+  const onHandleNewPassword = async (data) => {
+    const { email, password, code } = data
+    let newCode = ""
+    code.forEach(item => {
+      newCode = newCode + item
+    });
+    try {
+      if (!newCode.length === 6) return console.log("invalid code")
+      const result = await Auth.forgotPasswordSubmit(email, newCode, password);
+      console.log(result)
+    } catch (error) {
+      Alert.alert("Ooopss ", error.message)
+    }
+  }
+
+  const onResendCode = async () => {
+    try {
+      const result = await Auth.forgotPassword(route.params?.email)
+      console.log(result)
+    } catch (error) {
+      Alert.alert("Ooopss ", error.message)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Image
@@ -20,7 +64,10 @@ const ChangePassword = ({ navigation, route }) => {
         source={require("@/utils/images/texture.png")}
       />
       <View style={styles.content}>
-        <ScrollView>
+        <ScrollView
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.textContainer}>
             <Image
               style={{
@@ -59,14 +106,21 @@ const ChangePassword = ({ navigation, route }) => {
                 size: 25,
               }}
               security={true}
+              rules={{
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Min 8 characters"
+                },
+              }}
             />
-            <Text style={styles.textRules}>
+            {/* <Text style={styles.textRules}>
               Minimum 8 characters, with a combination of upper and lower case
               letters, characters and numbers.
-            </Text>
+            </Text> */}
             <CustomInput
               control={control}
-              name={`passwordConfirm`}
+              name={`password-confirm`}
               placeholder={"Please confirm your password..."}
               styled={{
                 text: styles.textInput,
@@ -81,13 +135,42 @@ const ChangePassword = ({ navigation, route }) => {
                 size: 25,
               }}
               security={true}
+              rules={{
+                required: "Password Repeat is required",
+                validate: value =>
+                  value == pwd || 'Password do not match'
+              }}
             />
           </View>
+          <Text style={styles.code}>
+            We send you a 6-digit security code to your email:{" "}
+            <Text style={styles.emailText}>{route.params?.email}</Text> .The code will
+            expire in:{" "}
+            {route.params?.email && (
+              <CustomTimer
+                styled={{
+                  timer: styles.timer,
+                }}
+                time={{
+                  string: "10:00",
+                  seconds: 600,
+                }}
+              />
+            )}
+          </Text>
+          <EnterCode
+            title={`Didn't you get your code?`}
+            subtitle={"Send the code again"}
+            styled={{
+              container: styles.enterCode,
+            }}
+            control={control}
+            onResendCode={onResendCode}
+          />
         </ScrollView>
-        <Text>{route.name}</Text>
         <CustomButton
           text={`Confirm New Password`}
-          handlePress={handleSubmit(() => navigation.navigate("Home"))}
+          handlePress={handleSubmit(onHandleNewPassword)}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}
         />

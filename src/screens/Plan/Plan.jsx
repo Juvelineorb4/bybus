@@ -21,9 +21,9 @@ const Plan = ({ navigation }) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView >
           {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("List")}

@@ -6,13 +6,19 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { RecoilRoot } from "recoil";
-import usePushNotification from '@/hooks/usePushNotification'
+// exportaciones amplify
+import { Amplify } from 'aws-amplify';
+import awsconfig from './src/aws-exports';
+// import usePushNotification from '@/hooks/usePushNotification'
 
+
+
+// Configuracion de Amplify 
+Amplify.configure(awsconfig);
 SplashScreen.preventAutoHideAsync();
-
 export default function App() {
   // Aprendiendo como funcionar
-  usePushNotification();
+  // usePushNotification();
 
 
   const [fontsLoaded] = useFonts({
@@ -30,14 +36,14 @@ export default function App() {
     return null;
   }
   return (
-      <SafeAreaProvider onLayout={onLayoutRootView}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <RecoilRoot>
-            <BottomSheetModalProvider>
-              <Navigation />
-            </BottomSheetModalProvider>
-          </RecoilRoot>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <RecoilRoot>
+          <BottomSheetModalProvider>
+            <Navigation />
+          </BottomSheetModalProvider>
+        </RecoilRoot>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
