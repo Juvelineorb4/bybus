@@ -1,22 +1,19 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-bybusdemo-dev-93315-authRole",
-      "UnauthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybusdemo-dev-93315-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybusdemo-dev-93315-authRole",
+      "AuthRoleName": "amplify-bybus-staging-171949-authRole",
+      "UnauthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybus-staging-171949-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybus-staging-171949-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-bybusdemo-dev-93315-deployment",
-      "UnauthRoleName": "amplify-bybusdemo-dev-93315-unauthRole",
-      "StackName": "amplify-bybusdemo-dev-93315",
-      "StackId": "arn:aws:cloudformation:us-east-1:936079929937:stack/amplify-bybusdemo-dev-93315/888c22d0-a306-11ed-9f4f-12235e503b61",
-      "AmplifyAppId": "d2bxwluwjivjd9"
+      "DeploymentBucketName": "amplify-bybus-staging-171949-deployment",
+      "UnauthRoleName": "amplify-bybus-staging-171949-unauthRole",
+      "StackName": "amplify-bybus-staging-171949",
+      "StackId": "arn:aws:cloudformation:us-east-1:936079929937:stack/amplify-bybus-staging-171949/c98e6f20-ac8b-11ed-b75e-0e59547d11e5",
+      "AmplifyAppId": "djeovpcxyv3zq"
     },
     "categories": {
       "auth": {
-        "ByBusDemo": {}
-      },
-      "api": {
-        "ByBusDemoDB": {}
+        "bybus": {}
       }
     }
   }

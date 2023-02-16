@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
 }
+
 .form {
   flex: 1;
   margin: 10px 0px;
@@ -17,17 +18,21 @@
   border-radius: 16px;
   margin-bottom: 10px;
 }
+
 .labelInput {
   font-weight: 500;
   font-size: 14px;
   color: #404040;
   margin-bottom: 3px;
 }
+
 .textInput {
-  width: 100%;
+  flex: 1;
   margin-left: 15px;
 }
+
 .errorInput {
+  color: red
 }
 
 .continue {
@@ -38,6 +43,7 @@
   border-radius: 16px;
   /* margin-top: 40px; */
 }
+
 .textContinue {
   text-align: center;
   font-weight: 700;
@@ -52,8 +58,9 @@
 }
 
 .textContainer {
-  margin-bottom: 30px;  
+  margin-bottom: 30px;
 }
+
 .title {
   font-weight: 100;
   font-size: 30px;
