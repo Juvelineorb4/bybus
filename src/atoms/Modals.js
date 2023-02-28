@@ -8,6 +8,10 @@ export const searchNotification = atom({
   key: "searchNotificationValue",
   default: "newest",
 });
+export const searchTicketPlan = atom({
+  key: "searchTicketPlanValue",
+  default: "adult-ticket",
+});
 /* Permits */
 export const notificationPermissions = atom({
   key: "notificationPermissionsValue",
@@ -43,4 +47,12 @@ export const predeterminedPayment = atom({
 export const userAuthenticated = atom({
   key: "user",
   default: undefined,
+});
+
+
+/* selected */
+
+export const userSelectedPlan = atom({
+  key: "userSelectedPlan",
+  default: false,
 });

@@ -83,7 +83,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                     let newValue = [...value]
                     newValue[4] = number
                     onChange(newValue)
-                    number ? six.current.focus() : five.current.focus();
+                    number ? six.current.focus() : four.current.focus();
                   }}
                   placeholder={`0`}
                   keyboardType="number-pad"
@@ -96,7 +96,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                     let newValue = [...value]
                     newValue[5] = number
                     onChange(newValue)
-                    number && six.current.focus()
+                    number ? six.current.focus() : five.current.focus();
                   }}
                   placeholder={`0`}
                   keyboardType="number-pad"

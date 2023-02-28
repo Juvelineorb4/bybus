@@ -33,14 +33,17 @@
   height: 58px;
   background: #ff8811;
   border-radius: 16px;
+  margin-left: 5%;
 }
 /* DATETIME PICKERS */
 .containerDatetime {
   flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
 }
 .borderDatetime {
   padding: 15px 10px;
-  width: 97px;
+  flex: 1;
   background: rgba(241, 241, 241, 0.04);
   border-radius: 12px;
   flex-direction: row;

@@ -1,7 +1,7 @@
 .tabBarContainer {
     flex-direction: row;
     height: 60px;
-    position: absolute;
+    /* position: absolute; */
     align-self: center;
     border: 1px solid #efeded;
     background-color: white;

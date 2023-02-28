@@ -1,0 +1,79 @@
+.container {
+  flex: 1;
+  background-color: white;
+}
+.topContent {
+  flex: 0.5;
+  background-color: white;
+}
+.text {
+  padding: 40px 20px 0px;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+}
+.content {
+  padding: 20px;
+  flex: 1;
+}
+.itemTicket,
+.containerSelect {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemActive {
+  width: 35px;
+  height: 35px;
+  border-radius: 500px;
+  align-items: center;
+  justify-content: center;
+}
+.itemCircle {
+  width: 15px;
+  height: 15px;
+  border-radius: 500px;
+  background-color: white;
+}
+.iconLeft {
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  background: #1a1528;
+  border-radius: 16px;
+  margin-right: 10px;
+}
+.textTitleSelect {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 18px;
+  color: #1f1f1f;
+}
+.textSubtitleSelect {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 12px;
+  color: #404040;
+}
+.button {
+  padding: 20px;
+}
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  margin-bottom: 5%;
+}
+
+.textContinue {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}

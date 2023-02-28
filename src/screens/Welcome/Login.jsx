@@ -14,7 +14,7 @@ const Login = ({ navigation, route }) => {
   const onHandleLogin = async (data) => {
     try {
       const result = await Auth.signIn(data.email, data.password)
-      console.log(result)
+      navigation.navigate('Home')
     } catch (error) {
       Alert.alert("Ooopss ", error.message)
     }

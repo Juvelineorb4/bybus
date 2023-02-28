@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import styles from "@/utils/styles/RouteSearch.module.css";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-const CustomTimeDatePicker = () => {
+const CustomTimeDatePicker = ({styled = {}, state}) => {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("time");
   const [show, setShow] = useState(false);
@@ -41,27 +40,27 @@ const CustomTimeDatePicker = () => {
   };
 
   return (
-    <View style={styles.containerDatetime}>
-      <TouchableOpacity activeOpacity={1} onPress={showDatepicker} style={[styles.borderDatetime, { marginRight: 10}]}>
-        <Text style={styles.textDatetime}>{selectedDate}</Text>
+    <View style={styled.container}>
+      <TouchableOpacity activeOpacity={1} onPress={showDatepicker} style={[styled.border]}>
+        <Text style={styled.text}>{selectedDate}</Text>
         <Image
           style={{
             width: 25,
             height: 25,
             resizeMode: "cover",
           }}
-          source={require("@/utils/images/calendar.png")}
+          source={state === 'black' ? require("@/utils/images/calendar-black.png") : require("@/utils/images/calendar.png")}
         />
       </TouchableOpacity>
-      <TouchableOpacity activeOpacity={1} onPress={showTimepicker} style={styles.borderDatetime}>
-        <Text style={styles.textDatetime}>{selectedTime}</Text>
+      <TouchableOpacity activeOpacity={1} onPress={showTimepicker} style={[styled.border, {marginLeft: '5%'}]}>
+        <Text style={styled.text}>{selectedTime}</Text>
         <Image
           style={{
             width: 28,
             height: 28,
             resizeMode: "cover",
           }}
-          source={require("@/utils/images/clock-white.png")}
+          source={state === 'black' ? require("@/utils/images/clock-black.png") : require("@/utils/images/clock-white.png")}
         />
       </TouchableOpacity>
       {show && (
