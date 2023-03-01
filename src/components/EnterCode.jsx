@@ -6,6 +6,7 @@ import { Controller, useWatch } from "react-hook-form";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
+  const global = require('@/utils/styles/global.js');
 
   const one = useRef();
   const two = useRef();
@@ -37,7 +38,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={one}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
                 <TextInput
                   onChangeText={(number) => {
@@ -110,8 +111,8 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
         </View>
         <TouchableOpacity onPress={onResendCode}>
           <CustomText title={title} subtitle={subtitle} styled={{
-            title: styles.title,
-            subtitle: styles.subtitle
+            title: [styles.title, global.midGray],
+            subtitle: [styles.subtitle, global.black]
           }} />
         </TouchableOpacity>
       </View>

@@ -6,11 +6,14 @@ import CustomSelect from "@/components/CustomSelect";
 import { CustomButton } from "@/components";
 
 const ChooseTicket = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
+
   const [active, setActive] = useState("");
   const { routes, buttons } = tickets;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.topContent}>
+    <View style={[styles.container, global.bgWhite]}>
+      <View style={[styles.topContent, global.bgWhite]}>
         <Image
           style={{
             width: "100%",
@@ -22,7 +25,7 @@ const ChooseTicket = ({ navigation }) => {
           source={require("@/utils/images/background-profile.png")}
         />
         <View style={styles.text}>
-          <Text style={styles.title}>Choose ticket</Text>
+          <Text style={[styles.title, global.black]}>Choose ticket</Text>
         </View>
       </View>
       <View style={styles.content}>
@@ -34,11 +37,11 @@ const ChooseTicket = ({ navigation }) => {
               styled={{
                 text: {
                   container: styles.textContainerSelect,
-                  title: styles.textTitleSelect,
-                  subtitle: styles.textSubtitleSelect,
+                  title: [styles.textTitleSelect, global.black],
+                  subtitle: [styles.textSubtitleSelect, global.topGray],
                 },
                 container: styles.containerSelect,
-                iconLeft: styles.iconLeft,
+                iconLeft: [styles.iconLeft, global.bgBlack],
               }}
               icon={button.icon}
             />
@@ -51,7 +54,7 @@ const ChooseTicket = ({ navigation }) => {
               ]}
               onPress={() => setActive("single")}
             >
-              <View style={styles.itemCircle}></View>
+              <View style={[styles.itemCircle, global.bgWhite]}></View>
             </TouchableOpacity>
           </View>
         ))}
@@ -60,8 +63,8 @@ const ChooseTicket = ({ navigation }) => {
         <CustomButton
           text={`Continue`}
           handlePress={() => navigation.navigate(routes.create)}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          textStyles={[styles.textContinue, global.white]}
+          buttonStyles={[styles.continue, global.bgBlack]}
         />
       </View>
     </View>

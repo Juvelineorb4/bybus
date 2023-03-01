@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const SelectedPlan = () => {
 
+  const global = require('@/utils/styles/global.js');
   const navigation = useNavigation();
 
   const [userSelected, setUserSelected] = useRecoilState(userSelectedPlan);
@@ -43,13 +44,13 @@ const SelectedPlan = () => {
             source={require("@/utils/images/back-icon.png")}
           />
         </TouchableOpacity>
-        <Text style={styles.title}>Your departure</Text>
+        <Text style={[styles.title, global.black]}>Your departure</Text>
         <View></View>
       </View>
       <View style={styles.content}>
         <View style={styles.topContent}>
-          <Text style={styles.textHour}>14:05</Text>
-          <View style={styles.notificationAdd}>
+          <Text style={[styles.textHour, global.black]}>14:05</Text>
+          <View style={[styles.notificationAdd, global.mainBgColor]}>
             <Image
               style={{
                 width: 28,
@@ -62,13 +63,13 @@ const SelectedPlan = () => {
         </View>
         <View style={styles.topTwoContent}>
           <View style={styles.departure}>
-            <Text style={styles.states}>Lara</Text>
-            <Text style={styles.city}>Barquisimeto</Text>
+            <Text style={[styles.states, global.midGray]}>Lara</Text>
+            <Text style={[styles.city, global.topGray]}>Barquisimeto</Text>
           </View>
-          <Text style={styles.to}>To</Text>
+          <Text style={[styles.to, global.topGray]}>To</Text>
           <View style={styles.destination}>
-            <Text style={styles.states}>Portuguesa</Text>
-            <Text style={styles.city}>Guanare</Text>
+            <Text style={[styles.states, global.midGray]}>Portuguesa</Text>
+            <Text style={[styles.city, global.topGray]}>Guanare</Text>
           </View>
         </View>
         <View style={styles.tags}>
@@ -81,7 +82,7 @@ const SelectedPlan = () => {
               }}
               source={require("@/utils/images/wifi.png")}
             />
-            <Text style={styles.tagText}>Free Wifi</Text>
+            <Text style={[styles.tagText, global.black]}>Free Wifi</Text>
           </View>
           <View style={styles.guarantees}>
             <Image
@@ -92,7 +93,7 @@ const SelectedPlan = () => {
               }}
               source={require("@/utils/images/guarantee.png")}
             />
-            <Text style={styles.tagText}>Travel Guarantees</Text>
+            <Text style={[styles.tagText, global.black]}>Travel Guarantees</Text>
           </View>
         </View>
         <View style={styles.buttons}>
@@ -100,12 +101,12 @@ const SelectedPlan = () => {
             list={items}
             styled={{
               container: styles.picker,
-              item: styles.pickerItem,
+              item: [styles.pickerItem, global.black],
             }}
             global={`ticket-plan`}
           />
-          <TouchableOpacity style={styles.buttonBuy} onPress={() => navigation.navigate("ViewTicketPlan")}>
-            <Text style={styles.textBuy}>Buy 5.00$</Text>
+          <TouchableOpacity style={[styles.buttonBuy, global.bgBlack]} onPress={() => navigation.navigate("ViewTicketPlan")}>
+            <Text style={[styles.textBuy, global.white]}>Buy 5.00$</Text>
           </TouchableOpacity>
         </View>
       </View>

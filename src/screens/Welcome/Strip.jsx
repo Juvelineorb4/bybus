@@ -6,6 +6,7 @@ import StripItem from "@/components/StripItem";
 import Paginator from "@/components/Paginator";
 
 const Strip = () => {
+  const global = require('@/utils/styles/global.js');
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const stripsRef = useRef(null);
@@ -16,7 +17,7 @@ const Strip = () => {
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgWhite]}>
       <View style={{flex: 3}}>
         <Animated.FlatList
           data={strip}

@@ -11,6 +11,8 @@ import SelectedPlan from "@/components/SelectedPlan";
 import { ScrollView } from "react-native-gesture-handler";
 
 const CreateTicket = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
+
   // const { control, handleSubmit, watch } = useForm({
   //   defaultValues: {
   //     departure: undefined,
@@ -45,8 +47,8 @@ const CreateTicket = ({ navigation }) => {
     setChildrenCount(childrenCount - 1);
   };
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.topContent}>
+    <ScrollView style={[styles.container, global.bgWhite]}>
+      <View style={[styles.topContent, global.bgWhite]}>
         <Image
           style={{
             width: "100%",
@@ -58,7 +60,7 @@ const CreateTicket = ({ navigation }) => {
           source={require("@/utils/images/background-profile.png")}
         />
         <View style={styles.text}>
-          <Text style={styles.title}>Create single ticket</Text>
+          <Text style={[styles.title, global.black]}>Create single ticket</Text>
         </View>
       </View>
       <View style={styles.content}>
@@ -116,11 +118,11 @@ const CreateTicket = ({ navigation }) => {
               styled={{
                 container: styles.containerDatetime,
                 border: styles.borderDatetime,
-                text: styles.textDatetime,
+                text: [styles.textDatetime, global.black],
               }}
               state={`black`}
             />
-            <TouchableOpacity activeOpacity={1} style={styles.searchButton}>
+            <TouchableOpacity activeOpacity={1} style={[styles.searchButton, global.mainBgColor]}>
               <Image
                 style={{
                   width: 32,
@@ -132,53 +134,53 @@ const CreateTicket = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         {!userSelected && <ResultView navigation={navigation} />}
         {userSelected && <SelectedPlan />}
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.tariff}>
-          <Text style={styles.titleTariff}>Tariff</Text>
+          <Text style={[styles.titleTariff, global.black]}>Tariff</Text>
           <View style={styles.panelTariff}>
             <View style={styles.optionTariff}>
-              <Text style={styles.subtitleTariff}>Adults</Text>
-              <Text style={styles.priceTariff}>$5.00</Text>
+              <Text style={[styles.subtitleTariff, global.black]}>Adults</Text>
+              <Text style={[styles.priceTariff, global.black]}>$5.00</Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
-                  style={styles.lessButton}
+                  style={[styles.lessButton, global.bgWhiteSoft]}
                   onPress={lessAdultCount}
                 >
-                  <Text style={styles.signBlack}>-</Text>
+                  <Text style={[styles.signBlack, global.black]}>-</Text>
                 </TouchableOpacity>
-                <Text style={styles.number}>{adultCout}</Text>
-                <TouchableOpacity style={styles.moreButton}>
-                  <Text style={styles.signWhite} onPress={moreAdultCount}>
+                <Text style={[styles.number, global.black]}>{adultCout}</Text>
+                <TouchableOpacity style={[styles.moreButton, global.bgBlack]}>
+                  <Text style={[styles.signWhite, global.white]} onPress={moreAdultCount}>
                     +
                   </Text>
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.optionTariff}>
-              <Text style={styles.subtitleTariff}>Children</Text>
-              <Text style={styles.priceTariff}>$3.50</Text>
+              <Text style={[styles.subtitleTariff, global.black]}>Children</Text>
+              <Text style={[styles.priceTariff, global.black]}>$3.50</Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
-                  style={styles.lessButton}
+                  style={[styles.lessButton, global.bgWhiteSoft]}
                   onPress={lessChildrenCount}
                 >
-                  <Text style={styles.signBlack}>-</Text>
+                  <Text style={[styles.signBlack, global.black]}>-</Text>
                 </TouchableOpacity>
-                <Text style={styles.number}>{childrenCount}</Text>
+                <Text style={[styles.number, global.black]}>{childrenCount}</Text>
                 <TouchableOpacity
-                  style={styles.moreButton}
+                  style={[styles.moreButton, global.bgBlack]}
                   onPress={moreChildrenCount}
                 >
-                  <Text style={styles.signWhite}>+</Text>
+                  <Text style={[styles.signWhite, global.white]}>+</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.total}>
           
         </View>
@@ -187,8 +189,8 @@ const CreateTicket = ({ navigation }) => {
         <CustomButton
           text={`Continue`}
           handlePress={() => navigation.navigate("PaymentView")}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          textStyles={[styles.textContinue, global.white]}
+          buttonStyles={[styles.continue, global.bgBlack]}
         />
       </View>
     </ScrollView>

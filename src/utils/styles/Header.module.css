@@ -10,8 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffce48;
-
+  /* background-color: #ffce48; */
 }
 .left,
 .right,
@@ -20,17 +19,17 @@
   align-items: center;
 }
 .back {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .textLogo {
   font-family: "Regular";
   font-weight: 700;
   font-size: 18px;
-  color: #1a1528;
+  /* color: #1a1528; */
   margin-left: 5px;
 }
 .notifications {
-  background: #1a1528;
+  /* background: #1a1528; */
   align-items: center;
   justify-content: center;
   border-radius: 10px;

@@ -4,8 +4,9 @@ import styles from "@/utils/styles/RouteSearch.module.css";
 import CustomTimeDatePicker from "./CustomTimeDatePicker";
 
 const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
+  const global = require('@/utils/styles/global.js');
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgBlack]}>
       <View style={styles.inputs}>
         <View style={styles.input}>
           <Image
@@ -59,10 +60,10 @@ const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
           styled={{
             container: styles.containerDatetime,
             border: styles.borderDatetime,
-            text: styles.textDatetime,
+            text: [styles.textDatetime, global.white],
           }}
         />
-        <TouchableOpacity activeOpacity={1} style={styles.search}>
+        <TouchableOpacity activeOpacity={1} style={[styles.search, global.mainBgColor]}>
           <Image
             style={{
               width: 32,

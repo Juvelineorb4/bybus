@@ -6,6 +6,9 @@ import { useRecoilState } from "recoil";
 import { userSelectedPlan } from "@/atoms/Modals";
 
 const ResultView = ({ navigation }) => {
+
+  const global = require('@/utils/styles/global.js');
+
   const [userSelected, setUserSelected] = useRecoilState(userSelectedPlan);
 
   const checkUserSelected = async () => {
@@ -23,7 +26,7 @@ const ResultView = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search Result</Text>
+      <Text style={[styles.title, global.black]}>Search Result</Text>
       <View style={styles.optionsModal}>
         <View style={styles.optionTransportModal}>
           <View

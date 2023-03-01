@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "@/utils/styles/Header.module.css";
 
 const LeftHeader = ({ text = "", icon = true, route}) => {
+  const global = require('@/utils/styles/global.js');
   const navigation = useNavigation();
   return (
     <View style={styles.left}>
@@ -31,7 +32,7 @@ const LeftHeader = ({ text = "", icon = true, route}) => {
           />
           <Text
             onPress={() => navigation.navigate("Home")}
-            style={styles.textLogo}
+            style={[styles.textLogo, global.black]}
           >
             {text}
           </Text>

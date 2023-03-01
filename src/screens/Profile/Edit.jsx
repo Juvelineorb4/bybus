@@ -6,6 +6,8 @@ import CustomImageSelect from "@/components/CustomImageSelect";
 import { useForm } from "react-hook-form";
 
 const Edit = () => {
+  const global = require('@/utils/styles/global.js');
+  
   const { control, handleSubmit } = useForm();
 
   return (
@@ -27,10 +29,10 @@ const Edit = () => {
               image: styles.image,
               buttons: styles.buttons,
               text: styles.textCamera,
-              camera: styles.camera,
+              camera: [styles.camera, global.bgBlack],
             }}
           />
-          <Text style={styles.editTitlte}>Edit your profile below</Text>
+          <Text style={[styles.editTitle, global.black]}>Edit your profile below</Text>
         </View>
       </View>
       <View style={styles.editInput}>
@@ -40,9 +42,9 @@ const Edit = () => {
           defaultValue={'Chrisesbueno'}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Username`}
           icon={{
@@ -57,9 +59,9 @@ const Edit = () => {
           defaultValue={'Christopher Alvarez'}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Full Name`}
           icon={{
@@ -74,9 +76,9 @@ const Edit = () => {
           defaultValue={'alvarezchristopherve@gmail.com'}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Email`}
           icon={{

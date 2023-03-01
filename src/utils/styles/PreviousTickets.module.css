@@ -11,7 +11,7 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 16px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-left: 5px;
 }
 .picker {
@@ -26,5 +26,5 @@
   font-family: "Regular";
   font-weight: 400;
   font-size: 13px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
 }

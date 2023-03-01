@@ -13,7 +13,7 @@
 .inputCardCode {
   flex-direction: row;
   justify-content: space-between;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   padding: 15px 20px;
   border-radius: 16px;
   margin-bottom: 15px;
@@ -36,7 +36,7 @@
   width: 100%;
   font-family: 'Regular';
   font-weight: 400;
-  color: #1a1528;
+  /* color: #1a1528; */
 }
 
 .button {
@@ -45,13 +45,13 @@
 .btnBg {
   text-align: center;
   padding: 15px;
-  background-color: #1a1528;
+  /* background-color: #1a1528; */
   border-radius: 16px;
 }
 .btnText {
   text-align: center;
   font-weight: 700;
-  color: white;
+  /* color: white; */
   font-size: 14px;
   font-family: 'Regular';
 }

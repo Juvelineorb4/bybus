@@ -10,6 +10,7 @@ import { userSelectedPlan } from "@/atoms/Modals";
 import SelectedPlan from "@/components/SelectedPlan";
 
 const Plan = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
   const userSelected = useRecoilValue(userSelectedPlan);
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
@@ -24,7 +25,7 @@ const Plan = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.mainBgColorSecond]}>
         <View style={styles.containerSearch}>
           <RouteSearch
             control={control}

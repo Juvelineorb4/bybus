@@ -6,6 +6,7 @@ import CustomButton from "../CustomButton";
 import styles from "../../utils/styles/Payment.module.css";
 
 const PaymentCard = ({ button, text }) => {
+  const global = require('@/utils/styles/global.js');
   const { control, handleSubmit } = useForm();
 
   return (
@@ -36,7 +37,7 @@ const PaymentCard = ({ button, text }) => {
           styled={{
             text: styles.textCardNumber,
             error: styles.errorCardNumber,
-            input: styles.inputCardNumber,
+            input: [styles.inputCardNumber, global.bgWhiteSoft],
           }}
           iconRight={{
             name: "credit-card-scan-outline",
@@ -50,9 +51,9 @@ const PaymentCard = ({ button, text }) => {
             name={`cardExpiration`}
             placeholder={"MM/YY"}
             styled={{
-              text: styles.textCardDate,
+              text: [styles.textCardDate, global.black],
               error: styles.errorCardDate,
-              input: styles.inputCardDate,
+              input: [styles.inputCardDate, global.bgWhiteSoft],
             }}
           />
           <CustomInput
@@ -60,9 +61,9 @@ const PaymentCard = ({ button, text }) => {
             name={`cardSecuredCode`}
             placeholder={"XXXX"}
             styled={{
-              text: styles.textCardCode,
+              text: [styles.textCardCode, global.black],
               error: styles.errorCardCode,
-              input: styles.inputCardCode,
+              input: [styles.inputCardCode, global.bgWhiteSoft],
             }}
           />
         </View>
@@ -70,8 +71,8 @@ const PaymentCard = ({ button, text }) => {
           <View style={styles.button}>
             <CustomButton
               text={text}
-              textStyles={styles.btnText}
-              buttonStyles={styles.btnBg}
+              textStyles={[styles.btnText, global.white]}
+              buttonStyles={[styles.btnBg, global.bgBlack]}
             />
           </View>
         )}
