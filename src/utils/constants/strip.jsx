@@ -23,7 +23,7 @@ export default [
         id: 'strip-4',
         image: Image.StripFour,
         title: 'Pay by mobile',
-        subtitle: `Buy tickets with the timetable. Use Mastercard, Visa, Dankort, Mobilepay and your travel card as payment methods.`
+        subtitle: `Buy tickets with the timetable. Use Mastercard, Visa, Mobilepay and your travel card as payment methods.`
     },
 ]
   

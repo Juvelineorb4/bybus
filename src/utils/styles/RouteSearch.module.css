@@ -1,7 +1,7 @@
 .container {
   flex: 1;
   margin: 20px;
-  background-color: #1a1528;
+  /* background-color: #1a1528; */
   border-radius: 28px;
   padding: 25px 20px 20px;
 }
@@ -31,16 +31,19 @@
   align-items: center;
   width: 58px;
   height: 58px;
-  background: #ff8811;
+  /* background: #ff8811; */
   border-radius: 16px;
+  margin-left: 5%;
 }
 /* DATETIME PICKERS */
 .containerDatetime {
   flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
 }
 .borderDatetime {
   padding: 15px 10px;
-  width: 97px;
+  flex: 1;
   background: rgba(241, 241, 241, 0.04);
   border-radius: 12px;
   flex-direction: row;
@@ -51,6 +54,6 @@
   font-family: "Regular";
   font-weight: 500;
   font-size: 17px;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 

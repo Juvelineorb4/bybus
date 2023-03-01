@@ -6,26 +6,27 @@ import CustomSelect from "@/components/CustomSelect";
 // import { ScrollView } from "react-native-gesture-handler";
 
 const Settings = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
   const { buttons } = settings;
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
+    <ScrollView style={[styles.container, global.bgWhite]}>
+      <Text style={[styles.title, global.black]}>Settings</Text>
       {buttons.map((button, index) => ( 
         <View key={index}>
           {button.route ? (
             <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(button.route)}>
-              <View style={styles.line} />
+              <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
                 title={button.title}
                 subtitle={button.subtitle}
                 styled={{
                   text: {
                     container: styles.textContainerSelect,
-                    title: styles.textTitleSelect,
-                    subtitle: styles.textSubtitleSelect,
+                    title: [styles.textTitleSelect, global.black],
+                    subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: styles.iconLeft,
+                  iconLeft: [styles.iconLeft, global.bgBlack],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -34,18 +35,18 @@ const Settings = ({ navigation }) => {
             </TouchableOpacity>
           ) : (
             <View>
-              <View style={styles.line} />
+              <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
                 title={button.title}
                 subtitle={button.subtitle}
                 styled={{
                   text: {
                     container: styles.textContainerSelect,
-                    title: styles.textTitleSelect,
-                    subtitle: styles.textSubtitleSelect,
+                    title: [styles.textTitleSelect, global.black],
+                    subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: styles.iconLeft,
+                  iconLeft: [styles.iconLeft, global.bgBlack],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}

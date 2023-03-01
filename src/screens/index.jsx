@@ -6,8 +6,6 @@ export { default as Forgot } from "./Welcome/Forgot";
 
 /* Plan Tab */
 export { default as Plan } from "./Plan/Plan";
-export { default as List } from "./Plan/List";
-export { default as Selected } from "./Plan/Selected";
 
 /* Tickets Tab */
 export { default as Tickets } from "./Tickets/Tickets";

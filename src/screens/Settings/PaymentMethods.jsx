@@ -10,6 +10,7 @@ import PaymentCard from "@/components/Payment/PaymentCard";
 import { ScrollView } from "react-native-gesture-handler";
 
 const PaymentMethods = () => {
+  const global = require('@/utils/styles/global.js');
   // const [predetermined, setPredetermined] = useState('')
   const [paymentValue, setPaymentValue] = useRecoilState(predeterminedPayment);
 
@@ -28,18 +29,18 @@ const PaymentMethods = () => {
     checkPaymentValue();
   }, []);
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, global.bgWhite]}>
       <CustomText
         title={`Payment methods`}
         subtitle={`Add a payment method and change its sequence when paying for your ticket.`}
         styled={{
-          title: styles.title,
-          subtitle: styles.subtitle,
+          title: [styles.title, global.black],
+          subtitle: [styles.subtitle, global.topGray],
           container: styles.textContainer,
         }}
       />
-      <View style={styles.methods}>
-        <View style={styles.travelCard}>
+      <View style={[styles.methods, global.bgWhiteSoft]}>
+        <View style={[styles.travelCard, global.bgWhite]}>
           <View style={styles.positionCard}>
             <CustomCardTitle
               title={`Travel Card`}
@@ -50,21 +51,21 @@ const PaymentMethods = () => {
               }}
               styled={{
                 topText: styles.cardTopText,
-                title: styles.cardTitle,
+                title: [styles.cardTitle, global.black],
               }}
             />
             {paymentValue === "Travel_Card" ? (
               <CustomButton
                 text={`Predetermined`}
-                textStyles={styles.textPredeterminedOff}
-                buttonStyles={styles.predeterminedOff}
+                textStyles={[styles.textPredeterminedOff, global.black]}
+                buttonStyles={[styles.predeterminedOff, global.bgWhite]}
               />
             ) : (
               <CustomButton
                 text={`Predetermined`}
                 handlePress={() => setPaymentValue("Travel_Card")}
-                textStyles={styles.textPredetermined}
-                buttonStyles={styles.predetermined}
+                textStyles={[styles.textPredetermined, global.white]}
+                buttonStyles={[styles.predetermined, global.bgBlack]}
               />
             )}
           </View>
@@ -80,8 +81,8 @@ const PaymentMethods = () => {
               title={`Balance`}
               subtitle={`00.00 $`}
               styled={{
-                title: styles.titleBalance,
-                subtitle: styles.subtitleBalance,
+                title: [styles.titleBalance, global.midGray],
+                subtitle: [styles.subtitleBalance, global.black],
                 container: styles.balanceTextContainer,
               }}
             />
@@ -94,11 +95,11 @@ const PaymentMethods = () => {
               }}
             >
               <Icon name={`check-decagram`} size={16} color={`#317f43`} />
-              <Text style={styles.activePredetermined}>Predetermined</Text>
+              <Text style={[styles.activePredetermined, global.black]}>Predetermined</Text>
             </View>
           )}
         </View>
-        <View style={styles.mobile}>
+        <View style={[styles.mobile, global.bgWhite]}>
           <View style={styles.positionCard}>
             <CustomCardTitle
               title={`Mobile Pay`}
@@ -140,7 +141,7 @@ const PaymentMethods = () => {
             </View>
           )}
         </View>
-        <View style={styles.creditDebitCard}>
+        <View style={[styles.creditDebitCard, global.bgWhite]}>
           <View style={styles.positionCard}>
             <CustomCardTitle
               title={`Card Bank`}

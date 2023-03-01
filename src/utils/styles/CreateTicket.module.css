@@ -1,0 +1,162 @@
+.container {
+  flex: 1;
+  /* background-color: white; */
+}
+.topContent {
+  flex: 0.5;
+  /* background-color: white; */
+}
+.content {
+  flex: 1;
+}
+.text {
+  padding: 60px 20px 40px;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  /* color: #1f1f1f; */
+}
+.search {
+  padding: 20px;
+}
+
+.input {
+  border: 1px solid #efeded;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 16px;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.inputText {
+  margin: 0px 5px;
+  width: 70%;
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 14px;
+}
+.button {
+  padding: 20px;
+}
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  /* background-color: #1a1528; */
+  border-radius: 16px;
+  margin-bottom: 5%;
+}
+
+.textContinue {
+  text-align: center;
+  font-weight: 700;
+  /* color: white; */
+  font-size: 14px;
+  font-family: "Regular";
+}
+
+/* DATE TIME PICKERS */
+.containerDatetime {
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+}
+.borderDatetime {
+  padding: 15px 10px;
+  flex: 1;
+  border: 1px solid #efeded;
+  border-radius: 12px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.textDatetime {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 17px;
+  /* color: #1a1528; */
+}
+.options {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.searchButton {
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  height: 58px;
+  /* background: #ff8811; */
+  border-radius: 16px;
+  margin-left: 5%;
+}
+/* line */
+.line {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* background-color: #efeded; */
+  width: 100%;
+  height: 1px;
+  /* position: absolute; */
+}
+
+/* Tariff */
+.tariff {
+  padding: 20px;
+}
+.titleTariff {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  /* color: #1f1f1f; */
+  text-align: center;
+  margin-bottom: 20px;
+}
+.subtitleTariff, .priceTariff, .buttonsTariff {
+  flex: 1;
+}
+.buttonsTariff,
+.optionTariff {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.panelTariff{
+  border: 1px solid #efeded;
+  padding: 20px;
+  border-radius: 20px;
+}
+.subtitleTariff, .priceTariff, .number {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 16px;
+  /* color: #1f1f1f; */
+}
+
+.lessButton,
+.moreButton {
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  /* background: #fafafa; */
+  border-radius: 8px;
+}
+.moreButton {
+  /* background: #1A1528; */
+}
+.signBlack {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 18px;
+  /* color: #1f1f1f; */
+}
+.signWhite {
+  /* color: #ffffff; */
+}
+.number {
+  margin: 15px;
+}

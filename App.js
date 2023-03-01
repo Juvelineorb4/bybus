@@ -6,10 +6,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { RecoilRoot } from "recoil";
-// exportaciones amplify
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-// import usePushNotification from '@/hooks/usePushNotification'
 
 
 

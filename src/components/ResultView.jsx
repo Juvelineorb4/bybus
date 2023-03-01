@@ -1,24 +1,33 @@
 import { Text, View, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/utils/styles/ResultView.module.css";
 import { RouteCard } from "@/components";
+import { useRecoilState } from "recoil";
+import { userSelectedPlan } from "@/atoms/Modals";
 
 const ResultView = ({ navigation }) => {
+
+  const global = require('@/utils/styles/global.js');
+
+  const [userSelected, setUserSelected] = useRecoilState(userSelectedPlan);
+
+  const checkUserSelected = async () => {
+    try {
+      setUserSelected(userSelected);
+    } catch (error) {
+      setUserSelected(null);
+    }
+  };
+  useEffect(() => {
+    checkUserSelected();
+  }, []);
+
+  const updateUserSelected = () => setUserSelected(!userSelected)
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search Result</Text>
+      <Text style={[styles.title, global.black]}>Search Result</Text>
       <View style={styles.optionsModal}>
-        {/* <View style={styles.optionDateModal}>
-          <Text style={styles.textDateModal}>14:00</Text>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/clock-black.png")}
-          />
-        </View> */}
         <View style={styles.optionTransportModal}>
           <View
             style={[
@@ -45,13 +54,10 @@ const ResultView = ({ navigation }) => {
           />
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Selected")} activeOpacity={1}>
+      <TouchableOpacity activeOpacity={1} onPress={updateUserSelected}>
         <RouteCard />
       </TouchableOpacity>
-      <RouteCard />
-      <RouteCard />
-      <RouteCard />
-      <RouteCard />
+
     </View>
   );
 };

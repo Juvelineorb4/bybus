@@ -1,23 +1,110 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: 1;
+  background-color: white;
+}
+.topContent {
+  flex: 0.5;
+}
+.text {
+  padding: 20px;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f1f1f;
+  opacity: 0.9;
+}
+.content {
+  flex: 1;
+  padding: 20px;
 }
 
 .button {
-  background-color: red;
-  padding: 10px;
-  border-radius: 10px;
-  color: red;
   text-align: center;
-  font-size: 15px;
-  width: 50%;
+  padding: 20px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  position: absolute;
+  top: -15%;
+  margin: 20px;
 }
 
+.textButton {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+.buttons {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.active,
+.previous {
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin: 30px 0px 4px;
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid #d9d9d9;
+}
+.active {
+  margin-right: 5px;
+}
+.previous {
+  margin-left: 5px;
+}
+.textActive,
+.textPrevious {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 16px;
+  color: #1a1528;
+}
+.leftContentActive,
+.contentActive {
+  flex-direction: row;
+  align-items: center;
+}
+.contentActive {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.textContentActive {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 20px;
+  color: #1f1f1f;
+  margin-left: 10px;
+}
+.picker {
+  width: 120px;
+  justify-content: center;
+  height: 50px;
+  padding-left: 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 16px;
+}
+.pickerItem {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 13px;
+  color: #1f1f1f;
+}
 /* estilos del componente ticket */
 .containerTicket {
-  background: #1A1528;
+  background: #1a1528;
   border-radius: 24px;
   padding: 30px 20px;
   overflow: hidden;
@@ -33,7 +120,7 @@
   font-style: italic;
   font-weight: 100;
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .textMinTicket {
@@ -43,7 +130,7 @@
 }
 
 .tagTicket {
-  background-color: #FF8811;
+  background-color: #ff8811;
   border-width: 0px;
 }
 
@@ -51,7 +138,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #1A1528;
+  color: #1a1528;
 }
 
 .midTicket {
@@ -64,14 +151,14 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .textToTicket {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .textCityTicket {
@@ -82,7 +169,7 @@
 }
 
 .lineDashedTicket {
-  border: 2px dashed #FFFFFF;
+  border: 2px dashed #ffffff;
 }
 
 .bottomTicket {
@@ -95,14 +182,14 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .priceTicked {
   font-style: italic;
   font-weight: 100;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .separeContentTicket {
@@ -111,7 +198,7 @@
 
 .circleDecorationTicket {
   position: absolute;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 30px;
   width: 30px;
   border-radius: 50px;
