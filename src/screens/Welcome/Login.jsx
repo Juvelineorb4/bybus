@@ -17,12 +17,10 @@ const Login = ({ navigation, route }) => {
   const onHandleLogin = async (data) => {
     try {
       const result = await Auth.signIn(data.email, data.password)
-      navigation.navigate('Home')
     } catch (error) {
       Alert.alert("Ooopss ", error.message)
     }
   }
-
 
   return (
     <View style={[styles.container, global.bgWhite]}>

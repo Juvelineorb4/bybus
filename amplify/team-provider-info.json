@@ -13,7 +13,15 @@
     },
     "categories": {
       "auth": {
+        "bybus": {},
+        "userPoolGroups": {}
+      },
+      "api": {
         "bybus": {}
+      },
+      "storage": {
+        "dynamo73b0ac4b": {},
+        "s3ImageProfile": {}
       }
     }
   }

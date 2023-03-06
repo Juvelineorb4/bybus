@@ -8,16 +8,21 @@ import { useForm } from "react-hook-form";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Auth } from 'aws-amplify';
 
+
+
 const StepFour = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { params } = route
+  const { registerForm } = params
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      email: params.email,
+      userSub: registerForm.userSub,
+      email: registerForm.email,
       code: ["", "", "", "", "", ""]
     }
   });
+
 
 
 
@@ -31,14 +36,12 @@ const StepFour = () => {
 
     try {
       if (!code.lenght === 6) return console.log("no tiene 6");
-      const result = await Auth.confirmSignUp(email, newCode)
-      console.log(result)
+      await Auth.confirmSignUp(email, newCode)
     } catch (error) {
-      Alert.alert("Ooops: ", error.message)
+      if (error.message == "User cannot be confirmed. Current status is CONFIRMED") return navigation.navigate("Home")
+      Alert.alert(error.message)
     }
   }
-
-
 
   return (
     <View style={styles.content}>
@@ -49,7 +52,7 @@ const StepFour = () => {
           container: styles.textContainer,
         }}
         title={`Enter code`}
-        subtitle={`We have sent you a confirmation code on the email ${params.email}`}
+        subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
       />
       <EnterCode
         title={`Didn't you get your code?`}

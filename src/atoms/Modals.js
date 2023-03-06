@@ -49,6 +49,17 @@ export const userAuthenticated = atom({
   default: undefined,
 });
 
+/* Token Notification */
+export const tokenNotification = atom({
+  key: "token",
+  default: undefined
+})
+
+export const imageProfile = atom({
+  key: "imageProfileValue",
+  default: undefined
+})
+
 
 /* selected */
 
