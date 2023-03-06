@@ -15,7 +15,8 @@ const CustomInput = ({
   icon = {},
   text,
   iconRight = {},
-  placeholderTextColor = {}
+  placeholderTextColor = {},
+  editable = true,
 }) => {
   const [securityChange, setSecurityChange] = useState(true)
   return (
@@ -41,6 +42,7 @@ const CustomInput = ({
               style={styled.text}
               secureTextEntry={security && securityChange}
               defaultValue={defaultValue}
+              editable={editable}
             />
             {/* si es de seguridad por defecto se colcoa el ojito */}
             {security ? iconRight &&

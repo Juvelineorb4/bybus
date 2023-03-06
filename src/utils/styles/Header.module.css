@@ -1,9 +1,11 @@
 .container {
   width: 100%;
 }
+
 .headerBO {
   padding: 35px 20px 10px;
 }
+
 .headerWB,
 .header {
   padding: 35px 20px 10px;
@@ -12,15 +14,18 @@
   align-items: center;
   /* background-color: #ffce48; */
 }
+
 .left,
 .right,
 .home {
   flex-direction: row;
   align-items: center;
 }
+
 .back {
   margin-right: 10px;
 }
+
 .textLogo {
   font-family: "Regular";
   font-weight: 700;
@@ -28,6 +33,7 @@
   /* color: #1a1528; */
   margin-left: 5px;
 }
+
 .notifications {
   /* background: #1a1528; */
   align-items: center;
@@ -36,10 +42,12 @@
   width: 40px;
   height: 40px;
 }
+
 .user {
   margin-left: 10px;
   border: 1px solid #dedede;
   border-radius: 100px;
   width: 40px;
   height: 40px;
+  overflow: hidden;
 }

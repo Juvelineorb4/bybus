@@ -31,7 +31,19 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ]
+    ],
+    "aws_appsync_graphqlEndpoint": "https://cg2znbd42bbh3erkmxlxsoe7em.appsync-api.us-east-1.amazonaws.com/graphql",
+    "aws_appsync_region": "us-east-1",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "dynamo73b0ac4b-staging",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_user_files_s3_bucket": "s3imageprofile171949-staging",
+    "aws_user_files_s3_bucket_region": "us-east-1"
 };
 
 
