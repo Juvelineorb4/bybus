@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import CustomImageSelect from "../CustomImageSelect";
 import styles from "./styles/StepTwo.module.css";
 import CustomButton from "../CustomButton";
 import CustomText from "../CustomText";
 import { useForm } from "react-hook-form";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function StepTwo() {
-  const { control, handleSubmit } = useForm();
   const navigation = useNavigation();
+  const route = useRoute();
+  const { control, handleSubmit } = useForm();
+
   return (
     <View style={styles.content}>
       <CustomText
@@ -37,7 +39,7 @@ export default function StepTwo() {
         <CustomButton
           text={`Skip`}
           handlePress={handleSubmit(() =>
-            navigation.navigate("Register_StepThree")
+            navigation.navigate("Register_StepFour", route.params)
           )}
           textStyles={styles.textSkip}
           buttonStyles={styles.skip}
@@ -45,7 +47,7 @@ export default function StepTwo() {
         <CustomButton
           text={`Continue`}
           handlePress={handleSubmit(() =>
-            navigation.navigate("Register_StepThree")
+            navigation.navigate("Register_StepFour", route.params)
           )}
           textStyles={styles.textContinueTwo}
           buttonStyles={styles.continueTwo}
