@@ -15,7 +15,7 @@ const CustomImageSelect = ({ styled = {}, button }) => {
       base64: true
     });
     if (!result.canceled) {
-      console.error(result)
+      console.log(result)
       setImage(result.assets[0].uri);
     }
   };
@@ -28,7 +28,7 @@ const CustomImageSelect = ({ styled = {}, button }) => {
             style={{
               width: 250,
               height: 250,
-              resizeMode: "contain",
+              resizeMode: "cover",
               borderRadius: 250,
             }}
           />
@@ -39,7 +39,7 @@ const CustomImageSelect = ({ styled = {}, button }) => {
             style={{
               width: 250,
               height: 250,
-              resizeMode: "contain",
+              resizeMode: "cover",
             }}
             source={require("@/utils/images/image-default.png")}
             onPress={pickImage}
