@@ -1,6 +1,6 @@
 .container {
-
-  background-color: white;
+  /* flex: 1; */
+  /* background-color: white; */
   position: relative;
 }
 .containerSelect {
@@ -14,14 +14,14 @@
   padding: 20px;
   font-weight: 100;
   font-size: 24px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-bottom: 10px;
 }
 .iconLeft {
   padding: 16px;
   align-items: center;
   justify-content: center;
-  background: #1a1528;
+  /* background: #1a1528; */
   border-radius: 16px;
   margin-right: 10px;
 }
@@ -32,16 +32,16 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 18px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
 }
 .textSubtitleSelect {
   font-family: "Regular";
   font-weight: 400;
   font-size: 12px;
-  color: #404040;
+  /* color: #404040; */
 }
 .line {
-  background-color: #efeded;
+  /* background-color: #efeded; */
   width: 150%;
   height: 1px;
   position: absolute;

@@ -6,8 +6,15 @@ export const tickets = {
   },
   buttons: [
     {
-      id: "btnTickets-1",
-      title: "Single Ticket",
+      title: "Single ticket",
+      subtitle: "I just need to go for a ride.",
+      icon: {
+        left: {
+          name: "ticket-confirmation-outline",
+          size: 20,
+          color: "white",
+        },
+      },
     },
   ],
 };

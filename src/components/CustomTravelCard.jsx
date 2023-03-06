@@ -4,6 +4,7 @@ import styles from "@/utils/styles/Travel.module.css";
 import Icon from "./Icon";
 
 const CustomTravelCard = () => {
+  const global = require('@/utils/styles/global.js');
   const [active, setActive] = useState(false);
   const handlePress = () => {
     setActive(!active);
@@ -19,10 +20,10 @@ const CustomTravelCard = () => {
         source={require("@/utils/images/icon.png")}
       />
       <View style={{marginLeft: 10}}>
-        <Text style={styles.time}>14:05</Text>
+        <Text style={[styles.time, global.black]}>14:05</Text>
         <View style={{ justifyContent: "space-between", flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={styles.from}>From</Text>
-          <Text style={styles.station}>Terminal Guanare</Text>
+          <Text style={[styles.from, global.midGray]}>From</Text>
+          <Text style={[styles.station, global.black]}>Terminal Guanare</Text>
         </View>
       </View>
       <TouchableOpacity onPress={handlePress} style={{marginLeft: 10}}>

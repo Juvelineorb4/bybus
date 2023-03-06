@@ -1,13 +1,13 @@
 .container {
   flex: 1;
-  background-color: white;
+  /* background-color: white; */
   align-items: center;
 }
 
 .imageContainer {
   flex: 1;
   justify-content: flex-end;
-  background-color: #ff8811;
+  /* background-color: #ff8811; */
   border-radius: 0px 0px 35px 35px;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
   font-weight: 100;
   font-size: 24px;
   text-align: center;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-top: 35px;
 }
 .subtitle {
@@ -32,20 +32,20 @@
   font-weight: 400;
   font-size: 16px;
   text-align: center;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-top: 15px;
 }
 .next {
   text-align: center;
   padding: 20px 30px;
-  background-color: #1a1528;
+  /* background-color: #1a1528; */
   border-radius: 16px;
   margin-top: 40px;
 }
 .textNext {
   text-align: center;
   font-weight: 700;
-  color: white;
+  /* color: white; */
   font-size: 14px;
   font-family: "Regular";
 }

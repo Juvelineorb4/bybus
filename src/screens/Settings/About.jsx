@@ -5,6 +5,7 @@ import CustomText from "@/components/CustomText";
 import { Icon } from "@/components";
 
 const About = () => {
+  const global = require('@/utils/styles/global.js');
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.topContent}>
@@ -18,40 +19,40 @@ const About = () => {
           source={require("@/utils/images/icon.png")}
         />
         <CustomText
-          styled={{ title: styles.title, subtitle: styles.subtitle }}
+          styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
           title="Welcome back"
           subtitle="Access your account"
         />
       </View>
       <View>
-        <View style={styles.line} />
+        <View style={[global.bgWhiteSmoke, styles.line]} />
         <View style={styles.containerSelect}>
-          <Text style={styles.textSelect}>App version</Text>
-          <Text style={styles.appVersion}>1.0.0</Text>
+          <Text style={[styles.textSelect, global.midGray]}>App version</Text>
+          <Text style={[styles.appVersion, global.black]}>1.0.0</Text>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.containerSelect}>
-          <Text style={styles.textSelect}>License</Text>
+          <Text style={[styles.textSelect, global.midGray]}>License</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}
           >
-            <Text style={styles.textSelectRight}>Read license agreement</Text>
+            <Text style={[styles.textSelectRight, global.black]}>Read license agreement</Text>
             <Icon name={`arrow-right`} size={20} color={`#1F1F1F`} />
           </TouchableOpacity>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.containerSelect}>
-          <Text style={styles.textSelect}>Review app</Text>
+          <Text style={[styles.textSelect, global.midGray]}>Review app</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}
           >
-            <Text style={styles.textSelectRight}>Have your say</Text>
+            <Text style={[styles.textSelectRight, global.black]}>Have your say</Text>
             <Icon name={`arrow-right`} size={20} color={`#1F1F1F`} />
           </TouchableOpacity>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
       </View>
     </View>
   );

@@ -5,11 +5,11 @@ import React from "react";
 import { Image, Text, View } from "react-native";
 
 const Welcome = ({ navigation, route }) => {
-
+  const global = require('@/utils/styles/global.js');
   const { content, signin, register, intro } = welcome;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.mainBgColorSecond]}>
       <Image
         style={{
           width: "100%",
@@ -30,28 +30,28 @@ const Welcome = ({ navigation, route }) => {
               }}
               source={require("@/utils/images/icon.png")}
             />
-            <Text style={styles.textName}>{content.name}</Text>
+            <Text style={[styles.textName, global.black]}>{content.name}</Text>
           </View>
-          <Text style={styles.textTitle}>{content.title}</Text>
-          <Text style={styles.textSubtitle}>{content.subtitle}</Text>
+          <Text style={[styles.textTitle, global.black]}>{content.title}</Text>
+          <Text style={[styles.textSubtitle, global.black]}>{content.subtitle}</Text>
         </View>
         <View style={styles.buttons}>
           <CustomButton
             text={signin.button}
             handlePress={() => navigation.navigate(route.params.LOGIN)}
-            textStyles={styles.textSignIn}
-            buttonStyles={styles.signin}
+            textStyles={[styles.textSignIn, global.white]}
+            buttonStyles={[styles.signin, global.bgBlack]}
           />
           <CustomButton
             text={register.button}
             handlePress={() => navigation.navigate(route.params.REGISTER)}
-            textStyles={styles.textRegister}
-            buttonStyles={styles.register}
+            textStyles={[styles.textRegister, global.black]}
+            buttonStyles={[styles.register, global.mainBgColor]}
           />
           <CustomButton
             text={intro.button}
             handlePress={() => navigation.navigate("Welcome_Start")}
-            textStyles={styles.textContinue}
+            textStyles={[styles.textContinue, global.midgray]}
             buttonStyles={styles.continueBtnn}
           />
         </View>

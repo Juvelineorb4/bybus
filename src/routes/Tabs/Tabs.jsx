@@ -17,7 +17,7 @@ import SettingsNavigator from "./SettingsNavigator";
 import styles from "@/utils/styles/Tabs.module.css";
 
 const Tab = createBottomTabNavigator();
-
+const global = require('@/utils/styles/global.js');
 const { width } = Dimensions.get("window");
 const MARGIN = 0;
 const TAB_BAR_WIDTH = width - 2 * MARGIN;
@@ -38,7 +38,7 @@ function MyTabBar({ state, descriptors, navigation }) {
   }, [state.index]);
   return (
     <View
-      style={[styles.tabBarContainer, { width: TAB_BAR_WIDTH, bottom: MARGIN }]}
+      style={[styles.tabBarContainer, global.bgWhite, { width: TAB_BAR_WIDTH, bottom: MARGIN }]}
     >
       <View
         style={{
@@ -48,7 +48,7 @@ function MyTabBar({ state, descriptors, navigation }) {
         }}
       >
         <Animated.View
-          style={[styles.slidingTab, { transform: [{ translateX }] }]}
+          style={[styles.slidingTab, global.mainBgColorSecond, { transform: [{ translateX }] }]}
         />
       </View>
       {state.routes.map((route, index) => {

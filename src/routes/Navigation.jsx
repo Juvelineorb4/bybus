@@ -42,7 +42,7 @@ const Navigation = () => {
       console.log("HUB: ", event)
       switch (event) {
         case "signIn":
-          setUserAuth(data);
+          checkUser();
           break;
         case "signOut":
           setUserAuth(undefined);

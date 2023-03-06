@@ -9,6 +9,9 @@ import { Auth } from 'aws-amplify';
 
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 const Login = ({ navigation, route }) => {
+
+  const global = require('@/utils/styles/global.js');
+
   const { control, handleSubmit } = useForm();
 
   const onHandleLogin = async (data) => {
@@ -19,9 +22,8 @@ const Login = ({ navigation, route }) => {
     }
   }
 
-
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgWhite]}>
       <Image
         style={{
           width: "100%",
@@ -50,7 +52,7 @@ const Login = ({ navigation, route }) => {
                 source={require("@/utils/images/icon.png")}
               />
               <CustomText
-                styled={{ title: styles.title, subtitle: styles.subtitle }}
+                styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
                 title="Welcome back"
                 subtitle="Access your account"
               />
@@ -62,9 +64,9 @@ const Login = ({ navigation, route }) => {
                 placeholder={"Write your email..."}
                 styled={{
                   text: styles.textInput,
-                  label: styles.labelInput,
+                  label: [styles.labelInput, global.topGray],
                   error: styles.errorInput,
-                  input: styles.inputContainer,
+                  input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
                 text={`Email`}
                 icon={{
@@ -74,7 +76,7 @@ const Login = ({ navigation, route }) => {
                 }}
                 rules={{
                   required: "Email is required",
-                  // pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
+                  pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
                 }}
               />
               <CustomInput
@@ -83,9 +85,9 @@ const Login = ({ navigation, route }) => {
                 placeholder={"Write your password..."}
                 styled={{
                   text: styles.textInput,
-                  label: styles.labelInput,
+                  label: [styles.labelInput, global.topGray],
                   error: styles.errorInput,
-                  input: styles.inputContainer,
+                  input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
                 text={`Password`}
                 icon={{
@@ -109,23 +111,23 @@ const Login = ({ navigation, route }) => {
             <CustomButton
               text={`Log In`}
               handlePress={handleSubmit(onHandleLogin)}
-              textStyles={styles.textLogin}
-              buttonStyles={styles.login}
+              textStyles={[styles.textLogin, global.white]}
+              buttonStyles={[styles.login, global.bgBlack]}
             />
             <View style={styles.selects}>
               <CustomButton
                 text={`Remember Me`}
-                textStyles={styles.rememberText}
+                textStyles={[styles.rememberText, global.topGray]}
               />
               <CustomButton
                 text={`Forgot your password?`}
                 handlePress={() => navigation.navigate("Forgot_App")}
-                textStyles={styles.forgot}
+                textStyles={[styles.forgot, global.topGray]}
               />
             </View>
             <View style={styles.hairline}>
-              <View style={styles.line} />
-              <Text style={styles.textLine}>Or log in with</Text>
+              <View style={[styles.line, global.bgWhiteSmoke]} />
+              <Text style={[styles.textLine, global.bgWhite, global.midGray]}>Or log in with</Text>
             </View>
 
             <View style={styles.extras}>

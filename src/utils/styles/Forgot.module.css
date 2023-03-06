@@ -1,6 +1,6 @@
 .container {
   flex: 1;
-  background-color: white;
+  /* background-color: white; */
   padding: 20px;
 }
 .content {
@@ -13,7 +13,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   padding: 15px 20px;
   border-radius: 16px;
   /* margin-bottom: 40px; */
@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #404040;
+  /* color: #404040; */
   margin-bottom: 5px;
   font-family: "Regular";
 }
@@ -39,13 +39,13 @@
   text-align: center;
   width: 100%;
   padding: 20px 10px;
-  background-color: #1a1528;
+  /* background-color: #1a1528; */
   border-radius: 16px;
 }
 .textContinue {
   text-align: center;
   font-weight: 700;
-  color: white;
+  /* color: white; */
   font-size: 14px;
   font-family: "Regular";
 }
@@ -61,7 +61,7 @@
 .title {
   font-weight: 100;
   font-size: 30px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   text-align: center;
   font-family: "Italic";
 }
