@@ -3,11 +3,13 @@
   align-items: center;
   justify-content: center;
 }
+
 .containerImage {
-    padding: 20px;
+  padding: 20px;
   align-items: center;
   justify-content: center;
 }
+
 .editTitlte {
   font-family: "Italic";
   font-weight: 100;
@@ -21,8 +23,9 @@
 .buttons {
   align-items: center;
 }
-.textCamera {
-}
+
+.textCamera {}
+
 .camera {
   background-color: #1f1f1f;
   border-radius: 50px;
@@ -34,9 +37,11 @@
   top: -30px;
   margin-bottom: -25px;
 }
+
 .editInput {
   padding: 20px;
 }
+
 .inputContainer {
   flex-direction: row;
   justify-content: center;
@@ -46,6 +51,7 @@
   border-radius: 16px;
   margin-bottom: 10px;
 }
+
 .labelInput {
   font-style: normal;
   font-weight: 500;
@@ -54,10 +60,27 @@
   margin-bottom: 5px;
   font-family: "Regular";
 }
+
 .textInput {
   width: 90%;
   margin-left: 15px;
   font-family: "Regular";
 }
-.errorInput {
+
+.errorInput {}
+
+.Button {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+
+.textButton {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
 }

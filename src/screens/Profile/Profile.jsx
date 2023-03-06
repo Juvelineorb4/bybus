@@ -1,5 +1,5 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@/utils/styles/Profile.module.css";
 import { CustomButton, Icon } from "@/components";
 import * as Clipboard from "expo-clipboard";
@@ -8,18 +8,29 @@ import CustomDropDown from "@/components/CustomDropDown";
 import { useForm } from "react-hook-form";
 import { ScrollView } from "react-native-gesture-handler";
 import CustomTravelCard from "@/components/CustomTravelCard";
-
+// Reocil
+import { useRecoilValue } from 'recoil'
+import { userAuthenticated, imageProfile } from '@/atoms/Modals'
 const Profile = ({ navigation }) => {
+  const userAuth = useRecoilValue(userAuthenticated);
+  const imgProfile = useRecoilValue(imageProfile)
   const { control, watch } = useForm();
   const picker = watch(["travels", "value"]);
   const [copiedText, setCopiedText] = useState("");
+
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync("#0000001");
   };
+
   const fetchCopiedText = async () => {
     const text = await Clipboard.getStringAsync();
     setCopiedText(text);
   };
+
+
+
+
+
 
   const items = [
     { label: "Latest", value: "latest" },
@@ -39,7 +50,17 @@ const Profile = ({ navigation }) => {
         />
         <View style={styles.profileContent}>
           <View style={styles.containerImage}>
-            <View style={styles.image}></View>
+            <View style={styles.image}>
+              <Image
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                  resizeMode: "cover"
+                }}
+                source={{ uri: imgProfile && imgProfile }}
+              />
+            </View>
             <CustomButton
               handlePress={() => navigation.navigate("EditProfile")}
               buttonStyles={styles.edit}
@@ -51,7 +72,7 @@ const Profile = ({ navigation }) => {
               }}
             />
           </View>
-          <Text style={styles.user}>Chrisesbueno</Text>
+          <Text style={styles.user}>{userAuth && userAuth.attributes?.name}</Text>
           <TouchableOpacity style={styles.idUser} onPress={copyToClipboard}>
             <View style={styles.icon}>
               <Icon name={"clipboard-outline"} size={15} color={`#1F1F1F`} />
@@ -101,7 +122,7 @@ const Profile = ({ navigation }) => {
               global={`plan`}
             />
           </View>
-          <View style={{paddingTop: 15}}>
+          <View style={{ paddingTop: 15 }}>
             <ScrollView horizontal>
               <CustomTravelCard />
               <CustomTravelCard />

@@ -2,26 +2,32 @@
   flex: 1;
   background-color: white;
 }
+
 .profile {
   flex: 1;
   align-items: center;
 }
+
 .content {
   flex: 1;
 }
+
 .profileContent {
   padding: 20px 0px;
   align-items: center;
 }
+
 .containerImage {
   justify-content: center;
   align-items: center;
 }
+
 .image {
   height: 150px;
   width: 150px;
   border: 5px solid #ff8811;
   border-radius: 500px;
+  overflow: hidden;
 }
 
 .edit {
@@ -35,6 +41,7 @@
   top: -30px;
   margin-bottom: -25px;
 }
+
 .user {
   font-family: "Italic";
   font-weight: 100;
@@ -43,6 +50,7 @@
   color: #1f1f1f;
   margin-bottom: 15px;
 }
+
 .idUser {
   flex-direction: row;
   align-items: center;
@@ -51,11 +59,13 @@
   padding: 8px;
   align-items: center;
 }
+
 .icon {
   background-color: #ff8811;
   border-radius: 20px;
   padding: 5px;
 }
+
 .id {
   margin-left: 10px;
   font-family: "Italic";
@@ -65,35 +75,42 @@
   color: #ffffff;
   opacity: 0.8;
 }
+
 .travels {
   border-bottom: 1px solid #404040;
 }
+
 .textTravels {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
+
 .containerTravel {
   width: 60%;
   margin-right: 20px;
 }
+
 .titleTravel {
   font-family: "Italic";
   font-weight: 100;
   font-size: 20px;
   color: #1f1f1f;
 }
+
 .subtitleTravel {
   font-family: "Regular";
   font-weight: 400;
   font-size: 12px;
   color: #404040;
 }
+
 .textCard {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .balance {
   text-align: center;
   padding: 16px;
@@ -101,6 +118,7 @@
   border: 1px solid #d9d9d9;
   border-radius: 16px;
 }
+
 .balanceText {
   text-align: center;
   font-weight: 400;
@@ -108,12 +126,15 @@
   font-size: 16px;
   font-family: "Regular";
 }
+
 .card {
   padding: 25px 20px;
 }
+
 .travels {
   padding: 25px 20px;
 }
+
 .picker {
   width: 110px;
   justify-content: center;
@@ -121,12 +142,14 @@
   border: 1px solid #d9d9d9;
   border-radius: 16px;
 }
+
 .pickerItem {
   font-family: "Regular";
   font-weight: 400;
   font-size: 12px;
   color: #1f1f1f;
 }
+
 .line {
   background-color: #efeded;
   width: 150%;

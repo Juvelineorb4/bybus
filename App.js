@@ -9,7 +9,7 @@ import { RecoilRoot } from "recoil";
 // exportaciones amplify
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-// import usePushNotification from '@/hooks/usePushNotification'
+
 
 
 
@@ -17,9 +17,6 @@ import awsconfig from './src/aws-exports';
 Amplify.configure(awsconfig);
 SplashScreen.preventAutoHideAsync();
 export default function App() {
-  // Aprendiendo como funcionar
-  // usePushNotification();
-
 
   const [fontsLoaded] = useFonts({
     Italic: require("@/utils/fonts/Montserrat-Italic-VariableFont_wght.ttf"),

@@ -80,7 +80,6 @@ function MyTabBar({ state, descriptors, navigation }) {
             target: route.key,
           });
         };
-        console.log(options);
         const tabBarIcon = options.tabBarIcon;
         return (
           <TouchableOpacity

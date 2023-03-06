@@ -1,7 +1,7 @@
 .tabBarContainer {
     flex-direction: row;
     height: 60px;
-    position: absolute;
+    /* position: absolute; */
     align-self: center;
     border: 1px solid #efeded;
     background-color: white;
@@ -10,6 +10,7 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
 .slidingTab {
     width: 60px;
     height: 60px;
