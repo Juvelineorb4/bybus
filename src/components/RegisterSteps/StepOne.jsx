@@ -7,10 +7,14 @@ import CustomText from "../CustomText";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { Auth } from 'aws-amplify';
+// recoil
+import { useRecoilValue } from 'recoil'
+import { tokenNotification } from '@/atoms/Modals'
 
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
 const StepOne = () => {
+  const token = useRecoilValue(tokenNotification)
   const { control, handleSubmit, watch } = useForm();
   const pwd = watch("password")
   const navigation = useNavigation();
@@ -18,17 +22,24 @@ const StepOne = () => {
 
   const onHandleRegister = async (data) => {
     const { name, email, password } = data
+    console.log(token)
     try {
-      const result = await Auth.signUp({
+      const { userSub, user } = await Auth.signUp({
         username: email.trim(),
         password: password.trim(),
         attributes: {
-          name: name.trim()
+          name: name.trim(),
+          'custom:notificationToken': token,
+        },
+        autoSignIn: { // optional - enables auto sign in after user is confirmed
+          enabled: true,
         }
       })
-      console.log(result)
-      navigation.navigate('Register_StepFour', {
-        email: email.trim()
+      navigation.navigate('Register_StepTwo', {
+        registerForm: {
+          userSub,
+          email: user.username
+        }
       })
     } catch (error) {
       console.error(error.message)

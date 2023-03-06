@@ -1,5 +1,5 @@
 .container {
-  flex: 1;
+
   background-color: white;
   position: relative;
 }
@@ -45,6 +45,4 @@
   width: 150%;
   height: 1px;
   position: absolute;
-  /* top: 0px; */
-  /* border-radius: 10px; */
 }

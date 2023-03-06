@@ -4,7 +4,7 @@ import styles from "@/utils/styles/Strip.module.css";
 import CustomButton from "./CustomButton";
 import { useNavigation } from "@react-navigation/native";
 
-const StripItem = ({ item }) => {
+const StripItem = ({ item, button = true }) => {
   const navigation = useNavigation();
   const { width } = useWindowDimensions();
   return (
@@ -18,12 +18,12 @@ const StripItem = ({ item }) => {
       <View style={[styles.textContainer, { width }]}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subtitle}>{item.subtitle}</Text>
-        <CustomButton
+        {button && <CustomButton
           text={`Next`}
           handlePress={() => navigation.navigate("Home")}
           textStyles={styles.textNext}
           buttonStyles={styles.next}
-        />
+        />}
       </View>
     </View>
   );

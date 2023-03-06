@@ -1,0 +1,50 @@
+.container {
+  flex: 1;
+  background-color: white;
+  position: relative;
+}
+.textContainer {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+  color: #1f1f1f;
+  margin-bottom: 10px;
+
+}
+.subtitle {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  color: #404040;
+}
+.containerSelect {
+  padding: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.textContainerSelect {
+  width: 75%;
+}
+.textTitleSelect {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 18px;
+  color: #1f1f1f;
+}
+.textSubtitleSelect {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 12px;
+  color: #404040;
+}
+.line {
+  background-color: #efeded;
+  width: 150%;
+  height: 1px;
+  position: absolute;
+}

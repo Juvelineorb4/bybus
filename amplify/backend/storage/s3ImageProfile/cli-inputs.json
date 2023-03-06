@@ -1,0 +1,15 @@
+{
+  "resourceName": "s3ImageProfile",
+  "policyUUID": "47ec610b",
+  "bucketName": "s3imageprofile",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE"
+}

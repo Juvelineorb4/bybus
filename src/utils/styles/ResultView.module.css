@@ -1,0 +1,50 @@
+.container {
+  margin: 5px 20px 70px;
+}
+
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 25px;
+  color: #1f1f1f;
+  text-align: center;
+}
+
+.optionsModal {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0 25px;
+}
+.optionDateModal {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  width: 90px;
+  padding: 10px;
+  border: 1px solid #efeded;
+  border-radius: 12px;
+}
+.textDateModal {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 14px;
+  color: #1f1f1f;
+}
+
+.optionTransportModal {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 55px;
+  width: 90px;
+  padding: 10px;
+  border: 1px solid #efeded;
+  border-radius: 12px;
+  margin-left: 5px;
+}
+.borderIconModal {
+  border-radius: 15px;
+}
+

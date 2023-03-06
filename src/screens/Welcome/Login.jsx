@@ -14,7 +14,6 @@ const Login = ({ navigation, route }) => {
   const onHandleLogin = async (data) => {
     try {
       const result = await Auth.signIn(data.email, data.password)
-      console.log(result)
     } catch (error) {
       Alert.alert("Ooopss ", error.message)
     }
@@ -75,7 +74,7 @@ const Login = ({ navigation, route }) => {
                 }}
                 rules={{
                   required: "Email is required",
-                  pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
+                  // pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
                 }}
               />
               <CustomInput

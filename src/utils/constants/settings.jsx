@@ -10,7 +10,7 @@ export const settings = {
           color: "white",
         },
       },
-      toogle: true,
+      toogle: 'notifications',
       // routePush: false,
     },
     {
@@ -112,7 +112,19 @@ export const settings = {
           color: "white",
         },
       },
-      route: "Welcome",
+      logout: "Logout"
+      // routePush: true,
+    },
+    {
+      title: "Login",
+      icon: {
+        left: {
+          name: "login",
+          size: 20,
+          color: "white",
+        },
+      },
+      login: "Welcome_App"
       // routePush: true,
     },
   ],

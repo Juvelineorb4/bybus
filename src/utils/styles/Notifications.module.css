@@ -1,0 +1,33 @@
+.countNotifications {
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1528;
+  border-radius: 50px;
+}
+.textCountNotifications {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 28px;
+  color: #ffffff;
+}
+.title {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 28px;
+  text-align: center;
+  color: #1f1f1f;
+  margin: 20px 0;
+}
+.picker {
+  width: 110px;
+  border: 1px solid #efeded;
+  border-radius: 12px;
+}
+.pickerItem {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 12px;
+  color: #1f1f1f;
+}
