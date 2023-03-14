@@ -1,0 +1,52 @@
+.ticketContent {
+  padding: 20px;
+}
+.textContent {
+  padding: 20px;
+}
+.titleTop {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+}
+.ticketsContainer {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #f1f1f162;
+  border-radius: 8px;
+}
+.titleTickets,
+.titlePrice {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 18px;
+}
+.titlePrice {
+  margin-left: 5px;
+}
+.buttons {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px 40px;
+}
+.guaranted, .tickets {
+  text-align: center;
+  flex: 1;
+  padding: 20px 10px;
+  border-radius: 16px;
+}
+.guaranted {
+  margin-left: 10px;
+}
+.tickets {
+  margin-right: 10px;
+}
+.textGuaranted, .textTickets {
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+  font-family: "Regular";
+}

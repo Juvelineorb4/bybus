@@ -11,7 +11,13 @@ module.exports = StyleSheet.create({
     color: '#fafafa'
   },
   bgWhiteSoft: {
-    backgroundColor: '#efeded'
+    backgroundColor: '#fafafa'
+  },
+  whiteSoftTwo: {
+    color: '#F1F1F1'
+  },
+  bgWhiteSoftTwo: {
+    backgroundColor: '#F1F1F1'
   },
   whiteSmoke: {
     color: '#efeded'
@@ -22,8 +28,14 @@ module.exports = StyleSheet.create({
   midGray: {
     color: '#9d9d9d'
   },
+  bgMidGray: {
+    backgroundColor: '#9d9d9d'
+  },
   topGray: {
     color: '#404040'
+  },
+  bgTopGray: {
+    backgroundColor: '#404040'
   },
   black: {
     color: '#1f1f1f'

@@ -188,7 +188,7 @@ const CreateTicket = ({ navigation }) => {
       <View style={styles.button}>
         <CustomButton
           text={`Continue`}
-          handlePress={() => navigation.navigate("PaymentView")}
+          handlePress={() => navigation.navigate("PaymentTicket")}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.bgBlack]}
         />
