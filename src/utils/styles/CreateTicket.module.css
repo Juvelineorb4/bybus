@@ -1,10 +1,8 @@
 .container {
   flex: 1;
-  /* background-color: white; */
 }
 .topContent {
   flex: 0.5;
-  /* background-color: white; */
 }
 .content {
   flex: 1;
@@ -16,7 +14,6 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 24px;
-  /* color: #1f1f1f; */
 }
 .search {
   padding: 20px;
@@ -46,7 +43,6 @@
   text-align: center;
   width: 100%;
   padding: 20px 10px;
-  /* background-color: #1a1528; */
   border-radius: 16px;
   margin-bottom: 5%;
 }
@@ -54,7 +50,6 @@
 .textContinue {
   text-align: center;
   font-weight: 700;
-  /* color: white; */
   font-size: 14px;
   font-family: "Regular";
 }
@@ -78,7 +73,6 @@
   font-family: "Regular";
   font-weight: 500;
   font-size: 17px;
-  /* color: #1a1528; */
 }
 .options {
   flex-direction: row;
@@ -89,7 +83,6 @@
   align-items: center;
   width: 58px;
   height: 58px;
-  /* background: #ff8811; */
   border-radius: 16px;
   margin-left: 5%;
 }
@@ -97,7 +90,6 @@
 .line {
   margin-top: 5px;
   margin-bottom: 5px;
-  /* background-color: #efeded; */
   width: 100%;
   height: 1px;
   /* position: absolute; */
@@ -111,7 +103,6 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 24px;
-  /* color: #1f1f1f; */
   text-align: center;
   margin-bottom: 20px;
 }
@@ -133,7 +124,6 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 16px;
-  /* color: #1f1f1f; */
 }
 
 .lessButton,
@@ -142,7 +132,6 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  /* background: #fafafa; */
   border-radius: 8px;
 }
 .moreButton {
@@ -152,7 +141,6 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 18px;
-  /* color: #1f1f1f; */
 }
 .signWhite {
   /* color: #ffffff; */
