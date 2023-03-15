@@ -119,7 +119,6 @@ const Navigation = () => {
             headerShown: false,
           }}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

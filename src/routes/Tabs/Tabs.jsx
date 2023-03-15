@@ -17,8 +17,6 @@ import SettingsNavigator from "./SettingsNavigator";
 import styles from "@/utils/styles/Tabs.module.css";
 
 
-
-
 const Tab = createBottomTabNavigator();
 const global = require('@/utils/styles/global.js');
 const { width } = Dimensions.get("window");
