@@ -43,13 +43,13 @@ async function registerForPushNotificationsAsync() {
             alert('Failed to get push token for push notification!');
             return;
         }
-        token = (await Notifications.getExpoPushTokenAsync()).data;
+        token = await Notifications.getExpoPushTokenAsync();
 
         console.log("Token: ", token)
 
 
     } else {
-        F
+
         alert('Must use physical device for Push Notifications');
     }
 

@@ -8,22 +8,31 @@ import { useForm } from "react-hook-form";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Auth } from 'aws-amplify';
 
-
+// recoil
+import { imageUri } from '@/atoms/Modals';
+import { useRecoilState } from 'recoil';
 
 const StepFour = () => {
+  const [imgUri, setImgUri] = useRecoilState(imageUri)
   const navigation = useNavigation();
   const route = useRoute();
   const { params } = route
-  const { registerForm } = params
+  const { email } = params
+
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      userSub: registerForm.userSub,
-      email: registerForm.email,
+      email: email,
       code: ["", "", "", "", "", ""]
     }
   });
 
 
+  useEffect(() => {
+    if (route.params?.image) {
+      setImgUri(route.params.image);
+      console.log("esta cargado")
+    }
+  }, [])
 
 
 
@@ -36,12 +45,20 @@ const StepFour = () => {
 
     try {
       if (!code.lenght === 6) return console.log("no tiene 6");
-      await Auth.confirmSignUp(email, newCode)
+      await Auth.confirmSignUp(email, newCode, {
+        forceAliasCreation: false,
+        clientMetadata: {}
+
+      })
     } catch (error) {
+      console.log(error.message)
       if (error.message == "User cannot be confirmed. Current status is CONFIRMED") return navigation.navigate("Home")
       Alert.alert(error.message)
     }
   }
+
+
+
 
   return (
     <View style={styles.content}>
@@ -52,7 +69,7 @@ const StepFour = () => {
           container: styles.textContainer,
         }}
         title={`Enter code`}
-        subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
+        subtitle={`We have sent you a confirmation code on the email ${email}`}
       />
       <EnterCode
         title={`Didn't you get your code?`}

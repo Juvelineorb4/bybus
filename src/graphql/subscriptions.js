@@ -53,12 +53,10 @@ export const onCreateWalletUser = /* GraphQL */ `
   ) {
     onCreateWalletUser(filter: $filter, owner: $owner) {
       userID
+      name
       email
       status
-      notificationToken {
-        type
-        token
-      }
+      notificationToken
       previousBalance
       owner
       createdAt
@@ -73,12 +71,10 @@ export const onUpdateWalletUser = /* GraphQL */ `
   ) {
     onUpdateWalletUser(filter: $filter, owner: $owner) {
       userID
+      name
       email
       status
-      notificationToken {
-        type
-        token
-      }
+      notificationToken
       previousBalance
       owner
       createdAt
@@ -93,12 +89,10 @@ export const onDeleteWalletUser = /* GraphQL */ `
   ) {
     onDeleteWalletUser(filter: $filter, owner: $owner) {
       userID
+      name
       email
       status
-      notificationToken {
-        type
-        token
-      }
+      notificationToken
       previousBalance
       owner
       createdAt

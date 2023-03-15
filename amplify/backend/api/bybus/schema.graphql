@@ -1,12 +1,5 @@
-type TokenType{
-  type: Token!
-  token: String!
-}
 
-enum Token {
-  IOS
-  ANDROID
-}
+
 enum WalletStatus{
   ALLOWED
   DENIED
@@ -30,9 +23,10 @@ type WalletUser @model @auth(rules:[
   {allow : private, provider: iam, operations: [read]}
 ]){
     userID: ID! @primaryKey
-    email:  String @s
+    name: String
+    email:  String 
     status: WalletStatus @default(value: "ALLOWED")
-    notificationToken: TokenType 
+    notificationToken: String 
     previousBalance: Int @default(value: "0")
     owner: String @auth(rules: [{allow: owner, operations: [read, delete]}])
 }

@@ -37,15 +37,15 @@ const Edit = () => {
     try {
       Auth.currentAuthenticatedUser();
       if (imageUri) {
-        const key = await uploadImage("profile.jpg", imageUri);
+        const key = await uploadImage("picture.jpg", imageUri);
         if (name) {
           await Auth.updateUserAttributes(userAuth, {
-            profile: key,
+            picture: key,
             name
           });
         } else {
           await Auth.updateUserAttributes(userAuth, {
-            profile: key,
+            picture: key,
           });
         }
       } else {

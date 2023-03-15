@@ -11,22 +11,21 @@ import WelcomeNavigator from "./Welcome/WelcomeNavigator";
 import { Auth, Hub } from 'aws-amplify';
 
 // recoil
-import { userAuthenticated, tokenNotification, imageProfile } from '@/atoms/Modals';
-import { useRecoilState } from 'recoil';
+import { userAuthenticated, tokenNotification, imageProfile, imageUri } from '@/atoms/Modals';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
-// graphql
-import { API } from 'aws-amplify';
-import * as mutations from '@/graphql/mutations';
 // Hooks Custom
 import usePushNotification from '@/hooks/usePushNotification'
 import useImageSelect from '@/hooks/useImageSelect'
 
 const Navigation = () => {
   const expoPushToken = usePushNotification();
-  const { downloadImage } = useImageSelect()
+  const { downloadImage, uploadImage } = useImageSelect()
   const [userAuth, setUserAuth] = useRecoilState(userAuthenticated);
-  const [token, setToken] = useRecoilState(tokenNotification)
-  const [imgProfile, setImgPorfile] = useRecoilState(imageProfile)
+  const setToken = useSetRecoilState(tokenNotification)
+  const [imgProfile, setImgProfile] = useRecoilState(imageProfile)
+  const [imgUri, setImgUri] = useRecoilState(imageUri)
+  const [autoSignIn, setAutoSignIn] = useState(false)
   const { main } = routing;
   const Stack = createNativeStackNavigator();
 
@@ -34,6 +33,11 @@ const Navigation = () => {
   useEffect(() => {
     setToken(expoPushToken)
   }, [expoPushToken])
+
+  useEffect(() => {
+    if (imgUri && userAuth) onHandlerUploadImage(userAuth, imgUri)
+  }, [userAuth])
+
 
   //para esuchar que esta succdiendo con auth 
   useEffect(() => {
@@ -45,13 +49,14 @@ const Navigation = () => {
           checkUser();
           break;
         case "signOut":
+          setImgProfile(undefined);
           setUserAuth(undefined);
           break;
         case "confirmSignUp":
-          console.log(data)
+          console.log("confirmSignUp: ", data)
           break;
         case "autoSignIn":
-          createWallet(data)
+          // setUserAuth(data)
           break;
         case "updateUserAttributes":
           checkUser();
@@ -59,6 +64,8 @@ const Navigation = () => {
       }
     });
     // Preguntar si el usuario existe 
+    console.log("yo por aqui paso siempre")
+    console.log(imgUri)
     checkUser();
     return unsubscribe;
   }, [])
@@ -67,43 +74,26 @@ const Navigation = () => {
     try {
       const result = await Auth.currentAuthenticatedUser();
       setUserAuth(result);
-      const url = await downloadImage(result.attributes.profile);
-      setImgPorfile(url);
+      const url = await downloadImage(result.attributes.picture);
+      setImgProfile(url);
     } catch (error) {
       console.error("Not signed in");
       setUserAuth(undefined);
     }
   }
 
-  const createWallet = async (data) => {
-    const { attributes } = data
+
+  const onHandlerUploadImage = async (user, uri) => {
     try {
-      const result = await API.graphql({
-        query: mutations.createWalletUser,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
-        variables: {
-          input: {
-            userID: attributes.sub,
-            email: attributes.email,
-            notificationToken: {
-              type: Platform.OS === "android" ? "ANDROID" : "IOS",
-              token: attributes["custom:notificationToken"]
-            },
-          },
-        },
-      })
-      console.log("Wallet: ", result)
-      const result2 = await Auth.updateUserAttributes(data, {
-        'custom:walletStatus': result.data.createWalletUser.userID
+      const key = await uploadImage("picture.jpg", uri);
+      setImgUri(undefined)
+      await Auth.updateUserAttributes(user, {
+        picture: key,
       });
-
-      console.log("Wallet2: ", result2)
     } catch (error) {
-      console.error("Wallet Error: ", error)
+      console.error(error);
     }
-
   }
-
 
   return (
     <NavigationContainer>

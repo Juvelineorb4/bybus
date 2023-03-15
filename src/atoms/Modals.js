@@ -55,6 +55,10 @@ export const tokenNotification = atom({
   default: undefined
 })
 
+export const imageUri = atom({
+  key: "imageUriValue",
+  default: undefined
+})
 export const imageProfile = atom({
   key: "imageProfileValue",
   default: undefined

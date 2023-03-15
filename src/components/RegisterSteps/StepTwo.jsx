@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import CustomImageSelect from "../CustomImageSelect";
 import styles from "./styles/StepTwo.module.css";
 import CustomButton from "../CustomButton";
 import CustomText from "../CustomText";
-import { useForm } from "react-hook-form";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function StepTwo() {
   const navigation = useNavigation();
+  const [imageUri, setImageUri] = useState(undefined)
   const route = useRoute();
-  const { control, handleSubmit } = useForm();
+  const [disabledBtn, setDisabledBtn] = useState(true)
 
+  useEffect(() => {
+    console.log(route.params)
+    if (imageUri) setDisabledBtn(false)
+  }, [imageUri])
+
+
+  
   return (
     <View style={styles.content}>
       <CustomText
@@ -34,23 +41,21 @@ export default function StepTwo() {
           btnBg: styles.btnBg,
         }}
         button={true}
+        uriSelect={setImageUri}
       />
       <View style={styles.controls}>
         <CustomButton
           text={`Skip`}
-          handlePress={handleSubmit(() =>
-            navigation.navigate("Register_StepFour", route.params)
-          )}
+          handlePress={() => navigation.navigate("Register_StepFour", route.params)}
           textStyles={styles.textSkip}
           buttonStyles={styles.skip}
         />
         <CustomButton
           text={`Continue`}
-          handlePress={handleSubmit(() =>
-            navigation.navigate("Register_StepFour", route.params)
-          )}
+          handlePress={() => navigation.navigate("Register_StepFour", { ...route.params, image: imageUri })}
           textStyles={styles.textContinueTwo}
           buttonStyles={styles.continueTwo}
+          disabled={disabledBtn}
         />
       </View>
     </View>
