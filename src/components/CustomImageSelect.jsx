@@ -57,7 +57,7 @@ const CustomImageSelect = ({ styled = {}, button, uriSelect }) => {
             style={{
               width: 250,
               height: 250,
-              resizeMode: "contain",
+              resizeMode: "cover",
             }}
             source={require("@/utils/images/image-default.png")}
             onPress={pickImage}

@@ -1,0 +1,131 @@
+.container {
+  flex: 1;
+}
+.topContent {
+  flex: 0.5;
+}
+.text {
+  padding: 40px 20px 40px;
+}
+.titleTop {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 24px;
+}
+.ticketsContainer {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #f1f1f162;
+  border-radius: 8px;
+}
+.titleTickets,
+.titlePrice {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 18px;
+}
+.titlePrice {
+  margin-left: 5px;
+}
+.content {
+  flex: 1;
+  padding: 20px;
+}
+.travel {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.travelButton {
+  text-align: center;
+  padding: 15px;
+  background-color: #1a1528;
+  border-radius: 16px;
+}
+.textTravelButton {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+.lineDown {
+  background-color: #efeded;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -15px;
+  border-radius: 10px;
+}
+.lineTop {
+  background-color: #efeded;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: -15px;
+  border-radius: 10px;
+}
+.continue {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #1a1528;
+  border-radius: 16px;
+  margin: 20px 0px 10px;
+}
+.textContinue {
+  text-align: center;
+  font-weight: 800;
+  color: white;
+  font-size: 14px;
+  font-family: "Regular";
+}
+
+.titleTravel {
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 28px;
+  color: #1a1528;
+}
+.textContainer {
+  flex: 1;
+  justify-content: center;
+}
+.title {
+  font-weight: 100;
+  font-size: 28px;
+  color: #1f1f1f;
+  text-align: center;
+  font-family: "Italic";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-family: "Regular";
+}
+.guarented {
+  margin-top: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 12px;
+}
+.orangeBox {
+  padding: 1px;
+  border-radius: 10px;
+}
+.titleGuarented {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 12px;
+}

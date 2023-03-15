@@ -1,0 +1,109 @@
+.container {
+  padding: 20px;
+  border-radius: 17px;
+}
+.top {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  margin-right: 8%;
+  font-family: "Italic";
+  font-weight: 100;
+  font-size: 25px;
+  text-align: center;
+}
+.topContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.textHour {
+  font-family: "Regular";
+  font-weight: 700;
+  font-size: 48px;
+  align-items: center;
+}
+.tagTransport {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* width: 40px; */
+  height: 40px;
+  border-radius: 12px;
+  padding: 5px 10px;
+}
+.codeTransporte {
+  margin-left: 5px;
+  font-family: "Regular";
+  font-weight: 700;
+  font-size: 12px;
+}
+.topTwoContent {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.states {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+}
+.city {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 16px;
+}
+.to {
+  font-family: "Regular";
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.destination {
+  align-items: flex-end;
+}
+.tags {
+  flex-direction: row;
+  padding: 20px 0px 0px;
+}
+.wifi,
+.guarantees {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px 5px 8px;
+  border-radius: 10px;
+}
+.wifi {
+  width: 105px;
+}
+.guarantees {
+  width: 160px;
+  margin-left: 10px;
+}
+.tagText {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.qrContent {
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.expires {
+  font-family: "Regular";
+  font-weight: 500;
+  font-size: 12px;
+  color: #404040;
+  opacity: 0.9;
+  margin-right: 5px;
+}
+.timer {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
