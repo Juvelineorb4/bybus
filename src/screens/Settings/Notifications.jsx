@@ -5,6 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import CustomDropDown from "@/components/CustomDropDown";
 
 const Notifications = () => {
+  const global = require('@/utils/styles/global.js');
   const items = [
     { label: "Latest", value: "latest" },
     { label: "Newest", value: "newest" },
@@ -29,15 +30,15 @@ const Notifications = () => {
             paddingVertical: 50,
           }}
         >
-          <View style={styles.countNotifications}>
-            <Text style={styles.textCountNotifications}>2</Text>
+          <View style={[styles.countNotifications, global.bgBlack]}>
+            <Text style={[styles.textCountNotifications, global.white]}>2</Text>
           </View>
-          <Text style={styles.title}>New Notifications</Text>
+          <Text style={[styles.title, global.black]}>New Notifications</Text>
           <CustomDropDown
             list={items}
             styled={{
               container: styles.picker,
-              item: styles.pickerItem,
+              item: [styles.pickerItem, global.black],
             }}
             global={`notification`}
           />

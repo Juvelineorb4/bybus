@@ -1,11 +1,12 @@
 import { View, Image, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "@/utils/styles/RouteSearch.module.css";
-import CustomTimePicker from "./CustomTimeDatePicker";
+import CustomTimeDatePicker from "./CustomTimeDatePicker";
 
 const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
+  const global = require('@/utils/styles/global.js');
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgBlack]}>
       <View style={styles.inputs}>
         <View style={styles.input}>
           <Image
@@ -55,9 +56,15 @@ const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
         </View>
       </View>
       <View style={styles.options}>
-        <CustomTimePicker />
-        <TouchableOpacity activeOpacity={1} style={styles.search}>
-        <Image
+        <CustomTimeDatePicker
+          styled={{
+            container: styles.containerDatetime,
+            border: styles.borderDatetime,
+            text: [styles.textDatetime, global.white],
+          }}
+        />
+        <TouchableOpacity activeOpacity={1} style={[styles.search, global.mainBgColor]}>
+          <Image
             style={{
               width: 32,
               height: 32,

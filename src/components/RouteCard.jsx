@@ -4,16 +4,17 @@ import styles from "@/utils/styles/RouteCard.module.css";
 import Icon from "./Icon";
 
 const RouteCard = () => {
+  const global = require('@/utils/styles/global.js');
   return (
     <View style={styles.container}>
       <View style={styles.containerText}>
         <View>
-          <Text style={styles.textHour}>14:05</Text>
-          <Text style={styles.textDate}>13/02/23</Text>
+          <Text style={[styles.textHour, global.black]}>14:05</Text>
+          <Text style={[styles.textDate, global.midGray]}>13/02/23</Text>
         </View>
         <View style={{ justifyContent: "space-between" }}>
-          <Text style={styles.textFrom}>From</Text>
-          <Text style={[styles.textDestination]}>Terminal Guanare</Text>
+          <Text style={[styles.textFrom, global.midGray]}>From</Text>
+          <Text style={[styles.textDestination, global.black]}>Terminal Guanare</Text>
         </View>
       </View>
       <View
@@ -35,7 +36,7 @@ const RouteCard = () => {
           />
         </View>
         <View style={[styles.lineDashed, { width: 30 }]} />
-        <View style={styles.borderIconBus}>
+        <View style={[styles.borderIconBus, global.bgBlack]}>
           <Image
             style={{
               width: 24,
@@ -46,7 +47,7 @@ const RouteCard = () => {
           />
         </View>
         <View style={[styles.lineSolid, { width: 40 }]} />
-        <View style={styles.borderIconWalk}>
+        <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
           <Image
             style={{
               width: 24,
@@ -56,7 +57,7 @@ const RouteCard = () => {
             source={require("@/utils/images/walk.png")}
           />
         </View>
-        <View style={[styles.ticketPrice]}>
+        <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
           <Image
             style={{
               width: 26,
@@ -65,7 +66,7 @@ const RouteCard = () => {
             }}
             source={require("@/utils/images/ticket.png")}
           />
-          <Text style={styles.ticketText}>5.00$</Text>
+          <Text style={[styles.ticketText, global.black]}>5.00$</Text>
         </View>
       </View>
     </View>

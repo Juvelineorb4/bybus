@@ -4,8 +4,9 @@ import styles from "@/utils/styles/Register.module.css";
 import { StepOne } from "@/components/RegisterSteps";
 
 const Register = () => {
+  const global = require('@/utils/styles/global.js');
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgWhite]}>
       <Image
         style={{
           width: "100%",

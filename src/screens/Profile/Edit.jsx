@@ -14,6 +14,7 @@ import { Auth } from 'aws-amplify'
 import useImageSelect from '@/hooks/useImageSelect'
 
 const Edit = () => {
+  const global = require('@/utils/styles/global.js');
   const { uploadImage, downloadImage } = useImageSelect();
   const [imageUri, setImageUri] = useState(undefined)
   const [enabledButton, setEnabledButton] = useState(true)
@@ -36,15 +37,15 @@ const Edit = () => {
     try {
       Auth.currentAuthenticatedUser();
       if (imageUri) {
-        const key = await uploadImage("profile.jpg", imageUri);
+        const key = await uploadImage("picture.jpg", imageUri);
         if (name) {
           await Auth.updateUserAttributes(userAuth, {
-            profile: key,
+            picture: key,
             name
           });
         } else {
           await Auth.updateUserAttributes(userAuth, {
-            profile: key,
+            picture: key,
           });
         }
       } else {
@@ -91,11 +92,11 @@ const Edit = () => {
               image: styles.image,
               buttons: styles.buttons,
               text: styles.textCamera,
-              camera: styles.camera,
+              camera: [styles.camera, global.bgBlack],
             }}
             uriSelect={setImageUri}
           />
-          <Text style={styles.editTitlte}>Edit your profile below</Text>
+          <Text style={[styles.editTitle, global.black]}>Edit your profile below</Text>
         </View>
       </View>
       <View style={styles.editInput}>
@@ -104,9 +105,9 @@ const Edit = () => {
           name={`name`}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Full Name`}
           icon={{
@@ -120,9 +121,9 @@ const Edit = () => {
           name={`email`}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Email`}
           icon={{

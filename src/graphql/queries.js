@@ -36,12 +36,10 @@ export const getWalletUser = /* GraphQL */ `
   query GetWalletUser($userID: ID!) {
     getWalletUser(userID: $userID) {
       userID
+      name
       email
       status
-      notificationToken {
-        type
-        token
-      }
+      notificationToken
       previousBalance
       owner
       createdAt
@@ -49,7 +47,6 @@ export const getWalletUser = /* GraphQL */ `
     }
   }
 `;
-
 export const listWalletUsers = /* GraphQL */ `
   query ListWalletUsers(
     $userID: ID
@@ -67,12 +64,10 @@ export const listWalletUsers = /* GraphQL */ `
     ) {
       items {
         userID
+        name
         email
         status
-        notificationToken {
-          type
-          token
-        }
+        notificationToken
         previousBalance
         owner
         createdAt

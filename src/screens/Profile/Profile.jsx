@@ -12,8 +12,10 @@ import CustomTravelCard from "@/components/CustomTravelCard";
 import { useRecoilValue } from 'recoil'
 import { userAuthenticated, imageProfile } from '@/atoms/Modals'
 const Profile = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
   const userAuth = useRecoilValue(userAuthenticated);
   const imgProfile = useRecoilValue(imageProfile)
+
   const { control, watch } = useForm();
   const picker = watch(["travels", "value"]);
   const [copiedText, setCopiedText] = useState("");
@@ -29,15 +31,12 @@ const Profile = ({ navigation }) => {
 
 
 
-
-
-
   const items = [
     { label: "Latest", value: "latest" },
     { label: "Newest", value: "newest" },
   ];
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={styles.profile}>
         <Image
           style={{
@@ -63,7 +62,7 @@ const Profile = ({ navigation }) => {
             </View>
             <CustomButton
               handlePress={() => navigation.navigate("EditProfile")}
-              buttonStyles={styles.edit}
+              buttonStyles={[styles.edit, global.bgBlack]}
               icon={{
                 status: true,
                 name: "image-edit-outline",
@@ -72,12 +71,12 @@ const Profile = ({ navigation }) => {
               }}
             />
           </View>
-          <Text style={styles.user}>{userAuth && userAuth.attributes?.name}</Text>
-          <TouchableOpacity style={styles.idUser} onPress={copyToClipboard}>
-            <View style={styles.icon}>
+          <Text style={[styles.user, global.black]}>{userAuth && userAuth.attributes?.name}</Text>
+          <TouchableOpacity style={[styles.idUser, global.bgBlack]} onPress={copyToClipboard}>
+            <View style={[styles.icon, global.mainBgColor]}>
               <Icon name={"clipboard-outline"} size={15} color={`#1F1F1F`} />
             </View>
-            <Text style={styles.id}>#0000001</Text>
+            <Text style={[styles.id, global.white]}>#0000001</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -86,8 +85,8 @@ const Profile = ({ navigation }) => {
           <View style={styles.textCard}>
             <CustomText
               styled={{
-                title: styles.titleTravel,
-                subtitle: styles.subtitleTravel,
+                title: [styles.titleTravel, global.black],
+                subtitle: [styles.subtitleTravel, global.topGray],
                 container: styles.containerTravel,
               }}
               title="Your balance"
@@ -96,18 +95,18 @@ const Profile = ({ navigation }) => {
             <CustomButton
               text={`00.00$`}
               handlePress={() => navigation.navigate("PaymentView")}
-              textStyles={styles.balanceText}
-              buttonStyles={styles.balance}
+              textStyles={[styles.balanceText, global.black]}
+              buttonStyles={[styles.balance, global.bgWhite]}
             />
           </View>
         </View>
-        <View style={styles.line} />
+        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.travels}>
           <View style={styles.textTravels}>
             <CustomText
               styled={{
-                title: styles.titleTravel,
-                subtitle: styles.subtitleTravel,
+                title: [styles.titleTravel, global.black],
+                subtitle: [styles.subtitleTravel, global.topGray],
                 container: styles.containerTravel,
               }}
               title="Journeys you follow"
@@ -117,7 +116,7 @@ const Profile = ({ navigation }) => {
               list={items}
               styled={{
                 container: styles.picker,
-                item: styles.pickerItem,
+                item: [styles.pickerItem, global.black],
               }}
               global={`plan`}
             />

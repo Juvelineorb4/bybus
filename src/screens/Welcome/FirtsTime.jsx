@@ -4,8 +4,9 @@ import styles from "@/utils/styles/FirtsTime.module.css";
 import { CustomButton } from "@/components";
 
 const FirtsTime = ({navigation, route}) => {
+  const global = require('@/utils/styles/global.js');
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.mainBgColorSecond]}>
       <View style={styles.content}>
         <Image
           style={{
@@ -15,16 +16,16 @@ const FirtsTime = ({navigation, route}) => {
           }}
           source={require("@/utils/images/icon.png")}
         />
-        <Text style={styles.title}>{`Welcome`}</Text>
+        <Text style={[styles.title, global.black]}>{`Welcome`}</Text>
         <Text
-          style={styles.subtitle}
+          style={[styles.subtitle, global.black]}
         >{`We are now with you wherever you go in Venezuela`}</Text>
       </View>
       <CustomButton
         text={`Plan Your Trip`}
         handlePress={() => navigation.navigate('Strip')}
-        textStyles={styles.firtsTimeText}
-        buttonStyles={styles.firtsTimeBtn}
+        textStyles={[styles.firtsTimeText, global.white]}
+        buttonStyles={[styles.firtsTimeBtn, global.bgBlack]}
       />
     </View>
   );

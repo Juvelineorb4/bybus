@@ -24,22 +24,20 @@ const StepOne = () => {
     const { name, email, password } = data
     console.log(token)
     try {
-      const { userSub, user } = await Auth.signUp({
+      const { user } = await Auth.signUp({
         username: email.trim(),
         password: password.trim(),
         attributes: {
           name: name.trim(),
-          'custom:notificationToken': token,
+          'custom:notificationToken': JSON.stringify(token),
+          'custom:userType': "customer"
         },
         autoSignIn: { // optional - enables auto sign in after user is confirmed
           enabled: true,
         }
       })
       navigation.navigate('Register_StepTwo', {
-        registerForm: {
-          userSub,
-          email: user.username
-        }
+        email: user.username
       })
     } catch (error) {
       console.error(error.message)

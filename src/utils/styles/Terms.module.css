@@ -2,14 +2,14 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 24px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-bottom: 10px;
 }
 .subtitle {
   font-family: "Regular";
   font-weight: 400;
   font-size: 14px;
-  color: #404040;
+  /* color: #404040; */
 }
 
 .listInfo {
@@ -19,6 +19,6 @@
   font-family: "Regular";
   font-weight: 200;
   font-size: 16px;
-  color: #1a1528;
+  /* color: #1a1528; */
   margin-bottom: 15px;
 }

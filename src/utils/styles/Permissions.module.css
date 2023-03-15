@@ -1,6 +1,6 @@
 .container {
   flex: 1;
-  background-color: white;
+  /* background-color: white; */
   position: relative;
 }
 .textContainer {
@@ -11,7 +11,7 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 24px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-bottom: 10px;
 
 }
@@ -19,7 +19,7 @@
   font-family: "Regular";
   font-weight: 400;
   font-size: 14px;
-  color: #404040;
+  /* color: #404040; */
 }
 .containerSelect {
   padding: 20px;
@@ -34,16 +34,16 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 18px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
 }
 .textSubtitleSelect {
   font-family: "Regular";
   font-weight: 400;
   font-size: 12px;
-  color: #404040;
+  /* color: #404040; */
 }
 .line {
-  background-color: #efeded;
+  /* background-color: #efeded; */
   width: 150%;
   height: 1px;
   position: absolute;

@@ -4,19 +4,23 @@ import { settings } from "@/utils/constants/settings";
 import styles from "@/utils/styles/Settings.module.css";
 import CustomSelect from "@/components/CustomSelect";
 import { Auth } from 'aws-amplify';
-// import { ScrollView } from "react-native-gesture-handler";
 import { userAuthenticated } from '@/atoms/Modals';
 import { useRecoilValue } from 'recoil';
+
+
 const Settings = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
   const userAuth = useRecoilValue(userAuthenticated)
   const { buttons } = settings;
 
   const signOut = async () => {
     try {
       await Auth.signOut();
+   
       setTimeout(() => {
         navigation.navigate("Welcome_App")
       }, 200);
+
     } catch (error) {
       console.log('error signing out: ', error);
     }
@@ -28,24 +32,24 @@ const Settings = ({ navigation }) => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
+    <ScrollView style={[styles.container, global.bgWhite]}>
+      <Text style={[styles.title, global.black]}>Settings</Text>
       {buttons.map((button, index) => (
         <View key={index}>
           {button.route ? (
             <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(button.route)}>
-              <View style={styles.line} />
+              <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
                 title={button.title}
                 subtitle={button.subtitle}
                 styled={{
                   text: {
                     container: styles.textContainerSelect,
-                    title: styles.textTitleSelect,
-                    subtitle: styles.textSubtitleSelect,
+                    title: [styles.textTitleSelect, global.black],
+                    subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: styles.iconLeft,
+                  iconLeft: [styles.iconLeft, global.bgBlack],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -54,18 +58,18 @@ const Settings = ({ navigation }) => {
             </TouchableOpacity>
           ) : button.toogle ? (
             <View>
-              <View style={styles.line} />
+              <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
                 title={button.title}
                 subtitle={button.subtitle}
                 styled={{
                   text: {
                     container: styles.textContainerSelect,
-                    title: styles.textTitleSelect,
-                    subtitle: styles.textSubtitleSelect,
+                    title: [styles.textTitleSelect, global.black],
+                    subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: styles.iconLeft,
+                  iconLeft: [styles.iconLeft, global.bgBlack],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -75,18 +79,18 @@ const Settings = ({ navigation }) => {
           ) : (userAuth && button.logout) ?
             <>
               <TouchableOpacity onPress={signOut}>
-                <View style={styles.line} />
+                <View style={[styles.line, global.bgWhiteSmoke]} />
                 <CustomSelect
                   title={button.title}
                   subtitle={button.subtitle}
                   styled={{
                     text: {
                       container: styles.textContainerSelect,
-                      title: styles.textTitleSelect,
-                      subtitle: styles.textSubtitleSelect,
+                      title: [styles.textTitleSelect, global.black],
+                      subtitle: [styles.textSubtitleSelect, global.topGray],
                     },
                     container: styles.containerSelect,
-                    iconLeft: styles.iconLeft,
+                    iconLeft: [styles.iconLeft, global.bgBlack],
                     iconRight: styles.iconRight,
                   }}
                   icon={button.icon}
@@ -96,18 +100,18 @@ const Settings = ({ navigation }) => {
             </>
             : (!userAuth && button.login) &&
             <TouchableOpacity onPress={signOut}>
-              <View style={styles.line} />
+              <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
                 title={button.title}
                 subtitle={button.subtitle}
                 styled={{
                   text: {
                     container: styles.textContainerSelect,
-                    title: styles.textTitleSelect,
-                    subtitle: styles.textSubtitleSelect,
+                    title: [styles.textTitleSelect, global.black],
+                    subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: styles.iconLeft,
+                  iconLeft: [styles.iconLeft, global.bgBlack],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}

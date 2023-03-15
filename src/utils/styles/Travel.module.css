@@ -12,7 +12,7 @@
   font-family: "Italic";
   font-weight: 100;
   font-size: 20px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
 }
 .from {
   font-family: "Regular";
@@ -24,6 +24,6 @@
   font-family: "Regular";
   font-weight: 500;
   font-size: 14px;
-  color: #1f1f1f;
+  /* color: #1f1f1f; */
   margin-left: 5px;
 }

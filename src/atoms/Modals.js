@@ -8,6 +8,10 @@ export const searchNotification = atom({
   key: "searchNotificationValue",
   default: "newest",
 });
+export const searchTicketPlan = atom({
+  key: "searchTicketPlanValue",
+  default: "adult-ticket",
+});
 /* Permits */
 export const notificationPermissions = atom({
   key: "notificationPermissionsValue",
@@ -51,7 +55,19 @@ export const tokenNotification = atom({
   default: undefined
 })
 
+export const imageUri = atom({
+  key: "imageUriValue",
+  default: undefined
+})
 export const imageProfile = atom({
   key: "imageProfileValue",
   default: undefined
 })
+
+
+/* selected */
+
+export const userSelectedPlan = atom({
+  key: "userSelectedPlan",
+  default: false,
+});

@@ -2,11 +2,10 @@
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: #ffce48;
+  /* background-color: #FFCE48; */
   width: 100%;
 }
 .content {
-  /* background-color: green; */
   padding: 20px;
   margin-top: 50px;
   flex: 1;
@@ -28,7 +27,7 @@
 .textName {
   font-weight: 700;
   font-size: 22px;
-  color: #1a1528;
+  /* color: #1a1528; */
   margin-left: 10px;
   font-family: "Regular";
 }
@@ -36,13 +35,13 @@
 .textTitle {
   font-weight: 700;
   font-size: 48px;
-  color: #1f1f1f;
+  /* color: #1a1528; */
   font-family: "Regular";
 }
 .textSubtitle {
   font-weight: 100;
   font-size: 16px;
-  color: #1f1f1f;
+  /* color: #1a1528; */
   margin-top: 16px;
   font-family: "Regular";
 }
@@ -60,11 +59,11 @@
   border-radius: 16px;
 }
 .signin {
-  background-color: #1a1528;
+  /* background-color: #1a1528; */
   margin-bottom: 16px;
 }
 .register {
-  background-color: #ff8811;
+  /* background-color: #FF8811; */
   margin-bottom: 28px;
 }
 .textSignIn,
@@ -75,15 +74,15 @@
   font-family: "Regular";
 }
 .textSignIn {
-  color: white;
+  /* color: white; */
 }
 .textRegister {
-  color: #1a1528;
+  /* color: #1a1528; */
 }
 .textContinue {
   font-style: italic;
   font-weight: 100;
   font-size: 14px;
-  color: #7951008e;
+  /* color: #795100d2; */
   font-family: "Regular";
 }

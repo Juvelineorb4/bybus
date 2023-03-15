@@ -10,6 +10,8 @@ import CustomTimer from "@/components/CustomTimer";
 import { Auth } from "aws-amplify";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 const Forgot = () => {
+  const global = require('@/utils/styles/global.js');
+
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
@@ -35,7 +37,7 @@ const Forgot = () => {
 
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container. global.white]}>
       <Image
         style={{
           width: "100%",
@@ -60,8 +62,8 @@ const Forgot = () => {
             />
             <CustomText
               styled={{
-                title: styles.title,
-                subtitle: styles.subtitle,
+                title: [styles.title, global.black],
+                subtitle: [styles.subtitle, global.topGray],
                 container: styles.textContainer,
               }}
               title={`Reset password`}
@@ -75,9 +77,9 @@ const Forgot = () => {
             placeholder={"Write your email..."}
             styled={{
               text: styles.textInput,
-              label: styles.labelInput,
+              label: [styles.labelInput, global.topGray],
               error: styles.errorInput,
-              input: styles.inputContainer,
+              input: [styles.inputContainer, global.bgWhiteSoft],
             }}
             text={`Email`}
             icon={{
@@ -90,7 +92,7 @@ const Forgot = () => {
               pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
             }}
           />
-          <Text style={styles.code}>
+          <Text style={[styles.code, global.topGray]}>
             We send you a 6-digit security code to your email:{" "}
             <Text style={styles.emailText}>{emailValue}</Text>
           </Text>
@@ -98,8 +100,8 @@ const Forgot = () => {
         <CustomButton
           text={`Confirm Code`}
           handlePress={handleSubmit(onHandleForgotPassword)}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          textStyles={[styles.textContinue, global.white]}
+          buttonStyles={[styles.continue, global.bgBlack]}
         />
       </View>
     </View>
