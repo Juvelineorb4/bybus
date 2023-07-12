@@ -21,33 +21,34 @@
 
 .text {
   font-size: 20px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 
-.inputContainer {
+.inputContainer, .inputContainerP {
   flex-direction: row;
   justify-content: center;
   align-items: center;
   /* background-color: #fafafa; */
   padding: 15px 20px;
   border-radius: 16px;
+  margin-bottom: 25px;
 }
 
-.labelInput {
-  font-style: normal;
-  font-weight: 500;
+.labelInput, .labelInputP {
   font-size: 14px;
-  /* color: #404040; */
-  margin-bottom: 5px;
-  font-family: "Regular";
+  color: #404040;
+  margin-bottom: 3px;
+  font-family: 'regular';
 }
 
-.textInput {
+.textInput, .textInputP {
   width: 90%;
   margin-left: 15px;
-  font-family: "Regular";
+  font-family: "regular";
 }
-
+.textInputP {
+  width: 78%;
+}
 .errorInput {}
 
 /* Line */
@@ -71,14 +72,12 @@
   padding: 0px 10px;
   align-self: center;
   /* color: #9d9d9d; */
-  font-family: "Regular";
+  font-family: "thin";
 }
 
 /* Selects */
 .selects {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex: 1;
 }
 
 /* Buttons */
@@ -92,10 +91,9 @@
 
 .textLogin {
   text-align: center;
-  font-weight: 700;
   /* color: white; */
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 
 .extras {
@@ -112,7 +110,7 @@
   font-size: 30px;
   /* color: #1f1f1f; */
   text-align: center;
-  font-family: "Italic";
+  font-family: "thinItalic";
 }
 
 .subtitle {
@@ -121,13 +119,13 @@
   text-align: center;
   margin-bottom: 30px;
   /* color: #404040; */
-  font-family: "Regular";
+  font-family: "thin";
 }
 
-.forgot,
-.rememberText {
+.forgot {
+  margin-top: 5px;
+  align-self: flex-end;
   font-weight: 400;
   font-size: 14px;
-  /* color: #404040; */
-  font-family: "Regular";
+  font-family: "regular";
 }

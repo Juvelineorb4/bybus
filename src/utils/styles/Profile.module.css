@@ -43,8 +43,7 @@
 }
 
 .user {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
   text-align: center;
   /* color: #1f1f1f; */
@@ -68,8 +67,7 @@
 
 .id {
   margin-left: 10px;
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 16px;
   text-align: center;
   /* color: #ffffff; */
@@ -93,15 +91,13 @@
 }
 
 .titleTravel {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 20px;
   /* color: #1f1f1f; */
 }
 
 .subtitleTravel {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 12px;
   /* color: #404040; */
 }
@@ -121,10 +117,9 @@
 
 .balanceText {
   text-align: center;
-  font-weight: 400;
   /* color: #1f1f1f; */
   font-size: 16px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 
 .card {
@@ -144,8 +139,7 @@
 }
 
 .pickerItem {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 12px;
   /* color: #1f1f1f; */
 }

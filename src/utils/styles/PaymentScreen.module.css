@@ -7,14 +7,12 @@
   /* flex: 1; */
 }
 .title {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
   /* color: #1f1f1f; */
 }
 .subtitle {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 14px;
   /* color: #404040; */
   margin: 5px 0px 15px;
@@ -45,8 +43,7 @@
   align-items: center;
 }
 .cardTitle {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 14px;
   /* color: #1a1528; */
   margin-left: 5px;
@@ -59,26 +56,22 @@
 }
 .textPredetermined {
   text-align: center;
-  font-weight: 700;
   /* color: white; */
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 .titleBalance {
-  font-family: "Regular";
-  font-weight: 700;
+  font-family: "regular";
   font-size: 14px;
   /* color: #9d9d9d; */
 }
 .subtitleBalance {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 20px;
   /* color: #1f1f1f; */
 }
 .activePredetermined {
-  font-family: "Regular";
-  font-weight: 700;
+  font-family: "regular";
   font-size: 14px;
   /* color: #1f1f1f; */
   margin-left: 3px;
@@ -92,8 +85,7 @@
 }
 .textPredeterminedOff {
   text-align: center;
-  font-weight: 600;
   /* color: #1f1f1f; */
   font-size: 14px;
-  font-family: "Italic";
+  font-family: "thinItalic";
 }

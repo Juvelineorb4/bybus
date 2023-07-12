@@ -13,13 +13,13 @@
 .inputCardCode {
   flex-direction: row;
   justify-content: space-between;
-  padding: 15px 20px;
+  padding: 15px 0px;
   border-radius: 16px;
   margin-bottom: 15px;
 }
 .textCardNumber {
   width: 90%;
-  font-family: 'Regular';
+  font-family: 'regular';
 }
 .inputs {
   flex-direction: row;
@@ -33,8 +33,7 @@
 .textCardDate,
 .textCardCode {
   width: 100%;
-  font-family: 'Regular';
-  font-weight: 400;
+  font-family: 'regular';
 }
 
 .button {
@@ -47,7 +46,6 @@
 }
 .btnText {
   text-align: center;
-  font-weight: 700;
   font-size: 14px;
-  font-family: 'Regular';
+  font-family: 'regular';
 }

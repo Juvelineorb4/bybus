@@ -48,9 +48,10 @@
 }
 .btnText {
   text-align: center;
-  font-weight: 700;
   color: #1a1528;
   font-size: 14px;
+  font-family: 'regular';
+
 }
 .skip,
 .continueTwo {
@@ -65,8 +66,8 @@
 .textSkip,
 .textContinueTwo {
   text-align: center;
-  font-weight: 700;
   font-size: 14px;
+  font-family: 'regular';
 }
 .textSkip {
   color: #1a1528;
@@ -84,18 +85,16 @@
   justify-content: center;
 }
 .title {
-  font-weight: 100;
   font-size: 30px;
   color: #1f1f1f;
   text-align: center;
-  font-family: "Italic";
+  font-family: "thinItalic";
 }
 
 .subtitle {
-  font-weight: 400;
   font-size: 16px;
   margin-bottom: 30px;
   text-align: center;
   color: #404040;
-  font-family: "Regular";
+  font-family: "thin";
 }

@@ -67,13 +67,9 @@ const CustomImageSelect = ({ styled = {}, button, uriSelect }) => {
       <View style={styled.buttons}>
         <CustomButton
           icon={{
-            status: true,
-            name: "camera-outline",
-            color: "white",
-            size: 24,
+            image: require('@/utils/images/capture.png')
           }}
           handlePress={pickImage}
-          textStyles={styled.text}
           buttonStyles={styled.camera}
         />
         {button && (

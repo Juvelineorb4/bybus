@@ -8,8 +8,7 @@
   padding: 40px 20px 40px;
 }
 .titleTop {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
 }
 .ticketsContainer {
@@ -23,8 +22,7 @@
 }
 .titleTickets,
 .titlePrice {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 18px;
 }
 .titlePrice {
@@ -49,10 +47,9 @@
 }
 .textTravelButton {
   text-align: center;
-  font-weight: 700;
   color: white;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 .lineDown {
   background-color: #efeded;
@@ -80,15 +77,13 @@
 }
 .textContinue {
   text-align: center;
-  font-weight: 800;
   color: white;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 
 .titleTravel {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 28px;
   color: #1a1528;
 }
@@ -97,20 +92,18 @@
   justify-content: center;
 }
 .title {
-  font-weight: 100;
   font-size: 28px;
   color: #1f1f1f;
   text-align: center;
-  font-family: "Italic";
+  font-family: "thinItalic";
 }
 
 .subtitle {
-  font-weight: 400;
   font-size: 16px;
   text-align: center;
   margin-bottom: 30px;
   color: #404040;
-  font-family: "Regular";
+  font-family: "thinItalic";
 }
 .guarented {
   margin-top: 20px;
@@ -125,7 +118,6 @@
   border-radius: 10px;
 }
 .titleGuarented {
-  font-family: "Regular";
-  font-weight: 500;
+  font-family: "regular";
   font-size: 12px;
 }

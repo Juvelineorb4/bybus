@@ -11,8 +11,7 @@
   padding: 60px 20px 40px;
 }
 .title {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
 }
 .search {
@@ -32,8 +31,7 @@
 .inputText {
   margin: 0px 5px;
   width: 70%;
-  font-family: "Regular";
-  font-weight: 500;
+  font-family: "regular";
   font-size: 14px;
 }
 .button {
@@ -49,9 +47,8 @@
 
 .textContinue {
   text-align: center;
-  font-weight: 700;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 
 /* DATE TIME PICKERS */
@@ -70,8 +67,7 @@
   justify-content: space-between;
 }
 .textDatetime {
-  font-family: "Regular";
-  font-weight: 500;
+  font-family: "regular";
   font-size: 17px;
 }
 .options {
@@ -100,8 +96,7 @@
   padding: 20px;
 }
 .titleTariff {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
@@ -121,8 +116,7 @@
   border-radius: 20px;
 }
 .subtitleTariff, .priceTariff, .number {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 16px;
 }
 
@@ -138,8 +132,7 @@
   /* background: #1A1528; */
 }
 .signBlack {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 18px;
 }
 .signWhite {

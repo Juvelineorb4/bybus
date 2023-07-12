@@ -51,7 +51,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={two}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
                 <TextInput
                   onChangeText={(number) => {
@@ -64,7 +64,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={three}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
                 <TextInput
                   onChangeText={(number) => {
@@ -77,7 +77,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={four}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
                 <TextInput
                   onChangeText={(number) => {
@@ -90,7 +90,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={five}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
                 <TextInput
                   onChangeText={(number) => {
@@ -103,7 +103,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   ref={six}
-                  style={styles.input}
+                  style={[styles.input, global.bgWhiteSoft, global.black]}
                 />
               </>
             )}
@@ -111,7 +111,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
         </View>
         <TouchableOpacity onPress={onResendCode}>
           <CustomText title={title} subtitle={subtitle} styled={{
-            title: [styles.title, global.midGray],
+            title: [styles.title, global.black],
             subtitle: [styles.subtitle, global.black]
           }} />
         </TouchableOpacity>

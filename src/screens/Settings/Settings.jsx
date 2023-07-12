@@ -49,7 +49,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.bgBlack],
+                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -69,7 +69,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.bgBlack],
+                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -90,7 +90,7 @@ const Settings = ({ navigation }) => {
                       subtitle: [styles.textSubtitleSelect, global.topGray],
                     },
                     container: styles.containerSelect,
-                    iconLeft: [styles.iconLeft, global.bgBlack],
+                    iconLeft: [styles.iconLeft, global.mainBgColorSecond],
                     iconRight: styles.iconRight,
                   }}
                   icon={button.icon}
@@ -111,7 +111,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.bgBlack],
+                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}

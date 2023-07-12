@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import React, { useEffect } from "react";
 import Icon from "./Icon";
 import CustomText from "./CustomText";
@@ -17,10 +17,14 @@ const CustomSelect = ({
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <View style={styled.iconLeft}>
           {icon.left && (
-            <Icon
-              name={icon.left.name}
-              size={icon.left.size}
-              color={icon.left.color}
+            <Image
+              style={{
+                width: 30,
+                height: 30,
+                resizeMode: "contain",
+                alignSelf: "center",
+              }}
+              source={icon.left}
             />
           )}
         </View>
@@ -29,10 +33,14 @@ const CustomSelect = ({
 
       {icon.right && (
         <View style={styled.iconRight}>
-          <Icon
-            name={icon.right.name}
-            size={icon.right.size}
-            color={icon.right.color}
+          <Image
+            style={{
+              width: 35,
+              height: 35,
+              resizeMode: "contain",
+              alignSelf: "center",
+            }}
+            source={icon.right}
           />
         </View>
       )}

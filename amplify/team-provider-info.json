@@ -1,27 +1,37 @@
 {
-  "staging": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-bybus-staging-171949-authRole",
-      "UnauthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybus-staging-171949-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::936079929937:role/amplify-bybus-staging-171949-authRole",
+      "AuthRoleName": "amplify-bybus-dev-180655-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-180655-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-180655-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-bybus-staging-171949-deployment",
-      "UnauthRoleName": "amplify-bybus-staging-171949-unauthRole",
-      "StackName": "amplify-bybus-staging-171949",
-      "StackId": "arn:aws:cloudformation:us-east-1:936079929937:stack/amplify-bybus-staging-171949/c98e6f20-ac8b-11ed-b75e-0e59547d11e5",
-      "AmplifyAppId": "djeovpcxyv3zq"
+      "DeploymentBucketName": "amplify-bybus-dev-180655-deployment",
+      "UnauthRoleName": "amplify-bybus-dev-180655-unauthRole",
+      "StackName": "amplify-bybus-dev-180655",
+      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-dev-180655/3c35e8a0-144c-11ee-92fb-12ffba6fc1b5",
+      "AmplifyAppId": "d3ghjlbnvi77h"
     },
     "categories": {
       "auth": {
-        "bybus": {},
+        "bybusAuth": {},
         "userPoolGroups": {}
       },
-      "api": {
-        "bybus": {}
+      "function": {
+        "AdminQueriesb7cd86a4": {
+          "deploymentBucketName": "amplify-bybus-dev-180655-deployment",
+          "s3Key": "amplify-builds/AdminQueriesb7cd86a4-6b66654359632b716649-build.zip"
+        },
+        "AdminQueriese70dfc87": {
+          "deploymentBucketName": "amplify-bybus-dev-180655-deployment",
+          "s3Key": "amplify-builds/AdminQueriese70dfc87-644141482b4d48416f45-build.zip"
+        },
+        "adminCreateUserCognito": {
+          "deploymentBucketName": "amplify-bybus-dev-180655-deployment",
+          "s3Key": "amplify-builds/adminCreateUserCognito-71303648415a53316b57-build.zip"
+        }
       },
       "storage": {
-        "dynamo73b0ac4b": {},
-        "s3ImageProfile": {}
+        "bybusS3": {}
       }
     }
   }

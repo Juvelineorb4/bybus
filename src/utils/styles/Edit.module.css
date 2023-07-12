@@ -9,8 +9,7 @@
   justify-content: center;
 }
 .editTitle {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
   text-align: center;
   /* color: #1f1f1f; */
@@ -47,17 +46,15 @@
   margin-bottom: 10px;
 }
 .labelInput {
-  font-style: normal;
-  font-weight: 500;
   font-size: 14px;
   /* color: #404040; */
   margin-bottom: 5px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 .textInput {
   width: 90%;
   margin-left: 15px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 .errorInput {
 }
@@ -71,8 +68,7 @@
 
 .textButton {
   text-align: center;
-  font-weight: 700;
   color: white;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }

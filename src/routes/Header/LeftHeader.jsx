@@ -9,14 +9,14 @@ const LeftHeader = ({ text = "", icon = true, route}) => {
   return (
     <View style={styles.left}>
       {icon && (
-        <TouchableOpacity onPress={() => navigation.pop()} style={styles.back}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.back}>
           <Image
             style={{
-              width: 30,
-              height: 30,
+              width: 45,
+              height: 45,
               resizeMode: "contain",
             }}
-            source={require("@/utils/images/back-icon.png")}
+            source={require("@/utils/images/arrow_back.png")}
           />
         </TouchableOpacity>
       )}

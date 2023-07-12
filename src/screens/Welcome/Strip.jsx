@@ -23,7 +23,7 @@ const Strip = () => {
           data={strip}
           renderItem={({ item }) => <StripItem item={item} />}
           horizontal
-          showsHorizontalScrollIndicator
+          // showsHorizontalScrollIndicator
           pagingEnabled
           bounces={false}
           onScroll={Animated.event(

@@ -69,11 +69,7 @@ const Login = ({ navigation, route }) => {
                   input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
                 text={`Email`}
-                icon={{
-                  name: "account-circle-outline",
-                  color: "#404040",
-                  size: 25,
-                }}
+                icon={require('@/utils/images/email.png')}
                 rules={{
                   required: "Email is required",
                   pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
@@ -82,19 +78,15 @@ const Login = ({ navigation, route }) => {
               <CustomInput
                 control={control}
                 name={`password`}
-                placeholder={"Write your password..."}
+                placeholder={"**********"}
                 styled={{
-                  text: styles.textInput,
-                  label: [styles.labelInput, global.topGray],
-                  error: styles.errorInput,
-                  input: [styles.inputContainer, global.bgWhiteSoft],
+                  text: styles.textInputP,
+                  label: [styles.labelInputP, global.topGray],
+                  error: styles.errorInputP,
+                  input: [styles.inputContainerP, global.bgWhiteSoft],
                 }}
                 text={`Password`}
-                icon={{
-                  name: "lock-outline",
-                  color: "#404040",
-                  size: 25,
-                }}
+                icon={require('@/utils/images/password.png')}
                 security={true}
                 rules={{
                   required: "Password is required",
@@ -116,10 +108,6 @@ const Login = ({ navigation, route }) => {
             />
             <View style={styles.selects}>
               <CustomButton
-                text={`Remember Me`}
-                textStyles={[styles.rememberText, global.topGray]}
-              />
-              <CustomButton
                 text={`Forgot your password?`}
                 handlePress={() => navigation.navigate("Forgot_App")}
                 textStyles={[styles.forgot, global.topGray]}
@@ -139,14 +127,6 @@ const Login = ({ navigation, route }) => {
                   resizeMode: "contain",
                 }}
                 source={require("@/utils/images/google.png")}
-              />
-              <Image
-                style={{
-                  width: 30,
-                  height: 30,
-                  resizeMode: "contain",
-                }}
-                source={require("@/utils/images/facebook.png")}
               />
             </View>
           </View>

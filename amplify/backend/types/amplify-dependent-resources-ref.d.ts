@@ -1,12 +1,17 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "bybus": {
+    "AdminQueries": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
+    "bybusgraphql": {
       "GraphQLAPIEndpointOutput": "string",
       "GraphQLAPIIdOutput": "string"
     }
   },
   "auth": {
-    "bybus": {
+    "bybusAuth": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -17,19 +22,35 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "userPoolGroups": {
       "adminGroupRole": "string",
-      "agencyGroupRole": "string"
+      "agencyGroupRole": "string",
+      "spGroupRole": "string"
+    }
+  },
+  "function": {
+    "AdminQueriesb7cd86a4": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "AdminQueriese70dfc87": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "adminCreateUserCognito": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
     }
   },
   "storage": {
-    "dynamo73b0ac4b": {
-      "Arn": "string",
-      "Name": "string",
-      "PartitionKeyName": "string",
-      "PartitionKeyType": "string",
-      "Region": "string",
-      "StreamArn": "string"
-    },
-    "s3ImageProfile": {
+    "bybusS3": {
       "BucketName": "string",
       "Region": "string"
     }

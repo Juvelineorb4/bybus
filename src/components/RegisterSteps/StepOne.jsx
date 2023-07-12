@@ -63,7 +63,7 @@ const StepOne = () => {
         <CustomInput
           control={control}
           name={`name`}
-          placeholder={"Write your username..."}
+          placeholder={"Christopher Alvarez"}
           styled={{
             text: styles.textInput,
             label: styles.labelInput,
@@ -71,11 +71,7 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Full Name`}
-          icon={{
-            name: "account-circle-outline",
-            color: "#404040",
-            size: 25,
-          }}
+          icon={require('@/utils/images/profile_default.png')}
           rules={{
             required: "Name is required",
             minLength: {
@@ -91,7 +87,7 @@ const StepOne = () => {
         <CustomInput
           control={control}
           name={`email`}
-          placeholder={"Write your email..."}
+          placeholder={"ejemplo@email.com"}
           styled={{
             text: styles.textInput,
             label: styles.labelInput,
@@ -99,11 +95,7 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Email`}
-          icon={{
-            name: "email-outline",
-            color: "#404040",
-            size: 25,
-          }}
+          icon={require('@/utils/images/email.png')}
           rules={{
             required: "Email is required",
             pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
@@ -112,7 +104,7 @@ const StepOne = () => {
         <CustomInput
           control={control}
           name={`password`}
-          placeholder={"Write your password..."}
+          placeholder={"********"}
           styled={{
             text: styles.textInput,
             label: styles.labelInput,
@@ -120,11 +112,7 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Password`}
-          icon={{
-            name: "lock-outline",
-            color: "#404040",
-            size: 25,
-          }}
+          icon={require('@/utils/images/password.png')}
           security={true}
           rules={{
             required: "Password is required",
@@ -138,7 +126,7 @@ const StepOne = () => {
         <CustomInput
           control={control}
           name={`password-repeat`}
-          placeholder={"Write your password again..."}
+          placeholder={"********"}
           styled={{
             text: styles.textInput,
             label: styles.labelInput,
@@ -146,11 +134,7 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Repeat Password`}
-          icon={{
-            name: "lock-outline",
-            color: "#404040",
-            size: 25,
-          }}
+          icon={require('@/utils/images/password.png')}
           security={true}
           rules={{
             required: "Password Repeat is required",

@@ -1,13 +1,35 @@
 {
   "api": {
-    "bybus": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
       "dependsOn": [
         {
           "attributes": [
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "bybus"
+          "resourceName": "bybusAuth"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueriesb7cd86a4"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "bybusgraphql": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybusAuth"
         }
       ],
       "output": {
@@ -20,7 +42,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authbybus"
+              "userPoolId": "authbybusAuth"
             }
           }
         }
@@ -30,7 +52,7 @@
     }
   },
   "auth": {
-    "bybus": {
+    "bybusAuth": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -39,12 +61,7 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ],
+          "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
@@ -72,20 +89,109 @@
             "IdentityPoolId"
           ],
           "category": "auth",
-          "resourceName": "bybus"
+          "resourceName": "bybusAuth"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Cognito-UserPool-Groups"
     }
   },
-  "function": {},
-  "storage": {
-    "dynamo73b0ac4b": {
+  "function": {
+    "AdminQueriesb7cd86a4": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybusAuth"
+        }
+      ],
       "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
+      "service": "Lambda"
     },
-    "s3ImageProfile": {
+    "AdminQueriese70dfc87": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybusAuth"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "adminCreateUserCognito": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybusAuth"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_AdminQueriesb7cd86a4_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueriesb7cd86a4"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueriesb7cd86a4_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueriesb7cd86a4"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueriese70dfc87_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueriese70dfc87"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueriese70dfc87_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueriese70dfc87"
+        }
+      ]
+    },
+    "AMPLIFY_function_adminCreateUserCognito_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "adminCreateUserCognito"
+        }
+      ]
+    },
+    "AMPLIFY_function_adminCreateUserCognito_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "adminCreateUserCognito"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "bybusS3": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

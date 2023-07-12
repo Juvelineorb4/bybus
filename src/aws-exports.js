@@ -3,10 +3,20 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_cognito_identity_pool_id": "us-east-1:cfc9d90a-62e0-4afb-9244-2afacbe678d5",
+    "aws_cloud_logic_custom": [
+        {
+            "name": "AdminQueries",
+            "endpoint": "https://zcqqape56k.execute-api.us-east-1.amazonaws.com/dev",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_appsync_graphqlEndpoint": "https://4ez4sufjtzdm5dv2d4nlju6k2i.appsync-api.us-east-1.amazonaws.com/graphql",
+    "aws_appsync_region": "us-east-1",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "aws_cognito_identity_pool_id": "us-east-1:3fccd199-8245-4637-80cb-c2857c56070d",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_rTBXIA8Fq",
-    "aws_user_pools_web_client_id": "25vkpoo3spods2crp4vas8kug7",
+    "aws_user_pools_id": "us-east-1_dEnWmfynK",
+    "aws_user_pools_web_client_id": "4va6agoj3c6b3u6ttdeh3565jv",
     "oauth": {},
     "aws_cognito_username_attributes": [
         "EMAIL"
@@ -22,27 +32,12 @@ const awsmobile = {
     ],
     "aws_cognito_password_protection_settings": {
         "passwordPolicyMinLength": 8,
-        "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-        ]
+        "passwordPolicyCharacters": []
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
     ],
-    "aws_appsync_graphqlEndpoint": "https://cg2znbd42bbh3erkmxlxsoe7em.appsync-api.us-east-1.amazonaws.com/graphql",
-    "aws_appsync_region": "us-east-1",
-    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
-    "aws_dynamodb_all_tables_region": "us-east-1",
-    "aws_dynamodb_table_schemas": [
-        {
-            "tableName": "dynamo73b0ac4b-staging",
-            "region": "us-east-1"
-        }
-    ],
-    "aws_user_files_s3_bucket": "s3imageprofile171949-staging",
+    "aws_user_files_s3_bucket": "bybuss3180655-dev",
     "aws_user_files_s3_bucket_region": "us-east-1"
 };
 
