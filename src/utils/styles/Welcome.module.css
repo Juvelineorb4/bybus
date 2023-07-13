@@ -25,25 +25,22 @@
 }
 
 .textName {
-  font-weight: 700;
   font-size: 22px;
   /* color: #1a1528; */
-  margin-left: 10px;
-  font-family: "Regular";
+  margin-left: 5px;
+  font-family: "bold";
 }
 
 .textTitle {
-  font-weight: 700;
   font-size: 48px;
   /* color: #1a1528; */
-  font-family: "Regular";
+  font-family: "bold";
 }
 .textSubtitle {
-  font-weight: 100;
   font-size: 16px;
   /* color: #1a1528; */
   margin-top: 16px;
-  font-family: "Regular";
+  font-family: "thin";
 }
 /* Buttons */
 .buttons {
@@ -69,9 +66,8 @@
 .textSignIn,
 .textRegister {
   text-align: center;
-  font-weight: 700;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }
 .textSignIn {
   /* color: white; */
@@ -80,9 +76,7 @@
   /* color: #1a1528; */
 }
 .textContinue {
-  font-style: italic;
-  font-weight: 100;
   font-size: 14px;
-  /* color: #795100d2; */
-  font-family: "Regular";
+  color: #795100d2;
+  font-family: "thinItalic";
 }

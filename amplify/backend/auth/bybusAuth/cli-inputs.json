@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "testAuthIdentityPool",
+    "identityPoolName": "bybusauth",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "bybus6febc6c8",
-    "userPoolName": "bybus",
+    "resourceNameTruncated": "bybusa7971c06",
+    "userPoolName": "bybusa7971c06_userpool_a7971c06",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,16 +14,11 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Verification code: {####}",
-    "emailVerificationMessage": "Verification code: {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
-    "passwordPolicyCharacters": [
-      "Requires Lowercase",
-      "Requires Numbers",
-      "Requires Symbols",
-      "Requires Uppercase"
-    ],
+    "passwordPolicyCharacters": [],
     "requiredAttributes": [
       "email",
       "name"
@@ -31,26 +26,32 @@
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [],
-    "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "bybus6febc6c8_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "bybusAa7971c06_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "6febc6c8",
-    "resourceName": "bybus",
+    "sharedId": "a7971c06",
+    "resourceName": "bybusAuth",
     "authSelections": "identityPoolAndUserPool",
-    "serviceName": "Cognito",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
     "usernameAttributes": [
       "email"
     ],
-    "useDefault": "manual",
-    "userPoolGroups": false,
+    "userPoolGroups": true,
+    "adminQueries": true,
+    "triggers": {},
+    "hostedUI": false,
     "userPoolGroupList": [
+      "sp",
       "admin",
       "agency"
     ],
-    "adminQueries": false,
-    "thirdPartyAuth": false,
-    "authProviders": [],
+    "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {
@@ -67,8 +68,7 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "triggers": {},
-    "hostedUI": false,
+    "adminQueryGroup": "sp",
     "parentStack": {
       "Ref": "AWS::StackId"
     },

@@ -5,8 +5,7 @@
   padding: 20px;
 }
 .titleTop {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
 }
 .ticketsContainer {
@@ -20,8 +19,7 @@
 }
 .titleTickets,
 .titlePrice {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 18px;
 }
 .titlePrice {
@@ -46,7 +44,6 @@
 }
 .textGuaranted, .textTickets {
   text-align: center;
-  font-weight: 800;
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "medium";
 }

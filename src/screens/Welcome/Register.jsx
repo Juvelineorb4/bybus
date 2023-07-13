@@ -1,7 +1,7 @@
 import { Image, View, Text } from "react-native";
 import React from "react";
 import styles from "@/utils/styles/Register.module.css";
-import { StepOne } from "@/components/RegisterSteps";
+import { StepFour, StepOne, StepThree, StepTwo } from "@/components/RegisterSteps";
 
 const Register = () => {
   const global = require('@/utils/styles/global.js');
@@ -17,7 +17,7 @@ const Register = () => {
         }}
         source={require("@/utils/images/texture.png")}
       />
-      <StepOne />
+      <StepFour />
     </View>
   );
 };

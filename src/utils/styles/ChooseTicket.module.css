@@ -10,8 +10,7 @@
   padding: 40px 20px 0px;
 }
 .title {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 24px;
   /* color: #1f1f1f; */
 }
@@ -47,14 +46,12 @@
   margin-right: 10px;
 }
 .textTitleSelect {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 18px;
   /* color: #1f1f1f; */
 }
 .textSubtitleSelect {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 12px;
   /* color: #404040; */
 }
@@ -72,8 +69,7 @@
 
 .textContinue {
   text-align: center;
-  font-weight: 700;
   /* color: white; */
   font-size: 14px;
-  font-family: "Regular";
+  font-family: "regular";
 }

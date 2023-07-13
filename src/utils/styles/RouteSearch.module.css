@@ -1,9 +1,7 @@
 .container {
-  flex: 1;
   margin: 20px;
-  /* background-color: #1a1528; */
   border-radius: 28px;
-  padding: 25px 20px 20px;
+  padding: 25px 20px 25px;
 }
 .input {
   border: 1px solid #efeded5d;
@@ -13,14 +11,15 @@
   border-radius: 16px;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 .inputText {
   margin: 0px 5px;
   width: 70%;
-  font-family: "Regular";
-  font-weight: 500;
-  font-size: 14px;
+  font-family: "light";
+  font-size: 16px;
 }
 .options {
   flex-direction: row;
@@ -51,9 +50,21 @@
   justify-content: space-between;
 }
 .textDatetime {
-  font-family: "Regular";
-  font-weight: 500;
-  font-size: 17px;
+  font-family: "light";
+  font-size: 15px;
   /* color: #ffffff; */
 }
 
+.departureList {
+  position: absolute;
+  flex-direction: column;
+  padding: 20px;
+  width: 113.5%;
+  top: 57;
+  height: 140px;
+  left: -1.5;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid green;
+  z-index: 4;
+}

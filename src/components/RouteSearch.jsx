@@ -1,59 +1,47 @@
-import { View, Image, TextInput, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/RouteSearch.module.css";
 import CustomTimeDatePicker from "./CustomTimeDatePicker";
+import { venezuela } from "@/utils/constants/venezuela";
+import CustomModalDeparture from "./CustomModalDeparture";
+import CustomModalArrival from "./CustomModalArrival";
+import { useRecoilValue } from "recoil";
+import { routeSearch } from "@/atoms/Modals";
+// import { dateRoute, timeRoute } from "@/atoms/Modals";
 
 const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
+  const route = useRecoilValue(routeSearch);
+
+  useEffect(() => {
+    console.log(route);
+  }, [route]);
+
   return (
     <View style={[styles.container, global.bgBlack]}>
       <View style={styles.inputs}>
-        <View style={styles.input}>
-          <Image
-            style={{
-              width: 28,
-              height: 28,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/target-white.png")}
-          />
-          <TextInput
-            style={styles.inputText}
-            placeholder={`Barquisimeto, Lara`}
-            placeholderTextColor={`#9d9d9d`}
-          />
-          <Image
-            style={{
-              width: 25,
-              height: 25,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/close.png")}
-          />
-        </View>
-        <View style={styles.input}>
-          <Image
-            style={{
-              width: 28,
-              height: 28,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/destination-white.png")}
-          />
-          <TextInput
-            style={styles.inputText}
-            placeholder={`Guanare, Portuguesa`}
-            placeholderTextColor={`#9d9d9d`}
-          />
-          <Image
-            style={{
-              width: 25,
-              height: 25,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/arrow-white.png")}
-          />
-        </View>
+        <CustomModalDeparture
+          control={control}
+          name={`departure`}
+          label={`Salida`}
+          placeholder={`Seleccione su salida`}
+          data={venezuela}
+        />
+
+        <CustomModalArrival
+          control={control}
+          name={`arrival`}
+          label={`Llegada`}
+          placeholder={`Seleccione la llegada`}
+          data={venezuela}
+        />
       </View>
       <View style={styles.options}>
         <CustomTimeDatePicker
@@ -63,7 +51,10 @@ const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
             text: [styles.textDatetime, global.white],
           }}
         />
-        <TouchableOpacity activeOpacity={1} style={[styles.search, global.mainBgColor]}>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={[styles.search, global.mainBgColor]}
+        >
           <Image
             style={{
               width: 32,

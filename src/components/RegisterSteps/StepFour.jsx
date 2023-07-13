@@ -13,12 +13,12 @@ import { Auth } from 'aws-amplify';
 const StepFour = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { params } = route
-  const { registerForm } = params
+  // const { params } = route
+  // const { registerForm } = params
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      userSub: registerForm.userSub,
-      email: registerForm.email,
+      // userSub: registerForm.userSub,
+      // email: registerForm.email,
       code: ["", "", "", "", "", ""]
     }
   });
@@ -27,21 +27,21 @@ const StepFour = () => {
 
 
 
-  const omHandleConfirm = async (data) => {
-    const { email, code } = data
-    let newCode = ""
-    code.forEach(item => {
-      newCode = newCode + item
-    });
+  // const omHandleConfirm = async (data) => {
+  //   const { email, code } = data
+  //   let newCode = ""
+  //   code.forEach(item => {
+  //     newCode = newCode + item
+  //   });
 
-    try {
-      if (!code.lenght === 6) return console.log("no tiene 6");
-      await Auth.confirmSignUp(email, newCode)
-    } catch (error) {
-      if (error.message == "User cannot be confirmed. Current status is CONFIRMED") return navigation.navigate("Home")
-      Alert.alert(error.message)
-    }
-  }
+  //   try {
+  //     if (!code.lenght === 6) return console.log("no tiene 6");
+  //     await Auth.confirmSignUp(email, newCode)
+  //   } catch (error) {
+  //     if (error.message == "User cannot be confirmed. Current status is CONFIRMED") return navigation.navigate("Home")
+  //     Alert.alert(error.message)
+  //   }
+  // }
 
   return (
     <View style={styles.content}>
@@ -52,7 +52,8 @@ const StepFour = () => {
           container: styles.textContainer,
         }}
         title={`Enter code`}
-        subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
+        // subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
+        subtitle={`We have sent you a confirmation code on the email`}
       />
       <EnterCode
         title={`Didn't you get your code?`}
@@ -64,7 +65,7 @@ const StepFour = () => {
       />
       <CustomButton
         text={`Confirm Account`}
-        handlePress={handleSubmit(omHandleConfirm)}
+        // handlePress={handleSubmit(omHandleConfirm)}
         textStyles={styles.textContinue}
         buttonStyles={styles.continue}
       />

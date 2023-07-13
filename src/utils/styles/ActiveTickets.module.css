@@ -8,8 +8,7 @@
   margin-top: 20px;
 }
 .textContentActive {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 16px;
   /* color: #1f1f1f; */
   margin-left: 5px;
@@ -23,8 +22,7 @@
   border-radius: 16px;
 }
 .pickerItem {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "regular";
   font-size: 13px;
   /* color: #1f1f1f; */
 }

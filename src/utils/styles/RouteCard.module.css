@@ -11,34 +11,29 @@
   padding: 10px;
 }
 .textFrom {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "light";
   font-size: 16px;
   /* color: #9d9d9d; */
   margin-bottom: 5px;
 }
 .textHour {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 28px;
   /* color: #1f1f1f; */
 }
 .textDate {
-  font-family: "Regular";
-  font-weight: 400;
+  font-family: "light";
   font-size: 16px;
   /* color: #9d9d9d; */
 }
 .textDestination {
-  font-family: "Italic";
-  font-weight: 100;
-  font-size: 18px;
+  font-family: "thinItalic";
+  font-size: 17px;
   /* color: #1f1f1f; */
 }
 .ticketText {
-  font-family: "Regular";
-  font-weight: 500;
-  font-size: 16px;
+  font-family: "light";
+  font-size: 15px;
   /* color: #1a1528; */
 }
 .borderIconWalk {

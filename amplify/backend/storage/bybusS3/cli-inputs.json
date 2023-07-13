@@ -1,7 +1,7 @@
 {
-  "resourceName": "s3ImageProfile",
-  "policyUUID": "47ec610b",
-  "bucketName": "s3imageprofile",
+  "resourceName": "bybusS3",
+  "policyUUID": "fd8a716c",
+  "bucketName": "bybuss3",
   "storageAccess": "authAndGuest",
   "guestAccess": [
     "READ"
@@ -11,5 +11,6 @@
     "READ",
     "DELETE"
   ],
-  "triggerFunction": "NONE"
+  "triggerFunction": "NONE",
+  "groupAccess": {}
 }

@@ -67,3 +67,18 @@ export const userSelectedPlan = atom({
   key: "userSelectedPlan",
   default: false,
 });
+
+
+/* Route */
+
+export const routeSearch = atom({
+  key: 'routeSearchValue',
+  default: {
+    time: '',
+    date: '',
+    departureState: {},
+    departureCity: '',
+    arrivalState: {},
+    arrivalCity: ''
+  },
+});

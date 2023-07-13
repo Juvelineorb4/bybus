@@ -14,14 +14,15 @@ const RightHeader = ({ styled = {} }) => {
   const imgProfile = useRecoilValue(imageProfile)
   return (
     <View style={styles.right}>
-      <View style={[styles.notifications, global.bgBlack]}>
-        <Icon
-          name="bell-outline"
-          size={25}
-          color="#FFFFFF"
-          handlePress={() => navigation.navigate("Notifications")}
-        />
-      </View>
+      <Image
+            style={{
+              width: 37,
+              height: 37,
+              resizeMode: "cover",
+              alignSelf: "center",
+            }}
+            source={require('@/utils/images/notification_default.png')}
+          />
       <View style={styles.user}>
         {/* Falta colocar una imagen por defaul cuando nadie est elogeado */}
         <Image

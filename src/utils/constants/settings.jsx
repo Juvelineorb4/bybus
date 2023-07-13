@@ -4,11 +4,7 @@ export const settings = {
       title: "Notifications",
       subtitle: "Get notified of changes to your route.",
       icon: {
-        left: {
-          name: "bell-outline",
-          size: 20,
-          color: "white",
-        },
+        left: require('@/utils/images/notification_default.png')
       },
       toogle: 'notifications',
       // routePush: false,
@@ -17,16 +13,8 @@ export const settings = {
       title: "Payment methods",
       subtitle: "Set your payment preferences.",
       icon: {
-        left: {
-          name: "credit-card-edit-outline",
-          size: 20,
-          color: "white",
-        },
-        right: {
-          name: "arrow-right",
-          size: 24,
-          color: "#404040",
-        },
+        left: require('@/utils/images/guarented.png'),
+        right: require('@/utils/images/arrow_right.png'),
       },
       route: "PaymentMethods",
       // routePush: true,
@@ -35,16 +23,8 @@ export const settings = {
       title: "App permissions",
       subtitle: "Set which permissions the app has access to.",
       icon: {
-        left: {
-          name: "lock-outline",
-          size: 20,
-          color: "white",
-        },
-        right: {
-          name: "arrow-right",
-          size: 24,
-          color: "#404040",
-        },
+        left: require('@/utils/images/editcard.png'),
+        right: require('@/utils/images/arrow_right.png'),
       },
       route: "Permissions",
       // routePush: true,
@@ -53,16 +33,8 @@ export const settings = {
       title: "Introduction",
       subtitle: "Was guided through our new app.",
       icon: {
-        left: {
-          name: "crosshairs-question",
-          size: 20,
-          color: "white",
-        },
-        right: {
-          name: "arrow-right",
-          size: 24,
-          color: "#404040",
-        },
+        left: require('@/utils/images/walk.png'),
+        right: require('@/utils/images/arrow_right.png'),
       },
       route: "Introduction",
       // routePush: true,
@@ -71,16 +43,8 @@ export const settings = {
       title: "Privacy & Policy",
       subtitle: "See details of our policy",
       icon: {
-        left: {
-          name: "file-document-outline",
-          size: 20,
-          color: "white",
-        },
-        right: {
-          name: "arrow-right",
-          size: 24,
-          color: "#404040",
-        },
+        left: require('@/utils/images/question_black.png'),
+        right: require('@/utils/images/arrow_right.png'),
       },
       route: "Terms",
       // routePush: true,
@@ -89,16 +53,8 @@ export const settings = {
       title: "App specs",
       subtitle: "See details about the app",
       icon: {
-        left: {
-          name: "information-outline",
-          size: 20,
-          color: "white",
-        },
-        right: {
-          name: "arrow-right",
-          size: 24,
-          color: "#404040",
-        },
+        left: require('@/utils/images/info.png'),
+        right: require('@/utils/images/arrow_right.png'),
       },
       route: "About",
       // routePush: true,
@@ -106,11 +62,7 @@ export const settings = {
     {
       title: "Logout",
       icon: {
-        left: {
-          name: "logout",
-          size: 20,
-          color: "white",
-        },
+        left: require('@/utils/images/exit.png')
       },
       logout: "Logout"
       // routePush: true,
@@ -118,11 +70,7 @@ export const settings = {
     {
       title: "Login",
       icon: {
-        left: {
-          name: "login",
-          size: 20,
-          color: "white",
-        },
+        left: require('@/utils/images/exit.png')
       },
       login: "Welcome_App"
       // routePush: true,

@@ -137,9 +137,10 @@ const TabIcon = ({ isFocused, tabIcon, label, index }) => {
       <Text
         style={{
           color: isFocused ? "#261F3C" : "#404040",
-          fontSize: 13,
-          fontFamily: "Regular",
+          fontSize: 12,
+          fontFamily: "light",
           fontWeight: "thin",
+          marginTop: -2
         }}
       >
         {label}

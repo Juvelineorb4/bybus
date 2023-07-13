@@ -3,8 +3,7 @@
 }
 
 .title {
-  font-family: "Italic";
-  font-weight: 100;
+  font-family: "thinItalic";
   font-size: 25px;
   /* color: #1f1f1f; */
   text-align: center;
@@ -27,8 +26,7 @@
   border-radius: 12px;
 }
 .textDateModal {
-  font-family: "Regular";
-  font-weight: 500;
+  font-family: "regular";
   font-size: 14px;
   color: #1f1f1f;
 }

@@ -39,11 +39,6 @@ const PaymentCard = ({ button, text }) => {
             error: styles.errorCardNumber,
             input: [styles.inputCardNumber, global.bgWhiteSoft],
           }}
-          iconRight={{
-            name: "credit-card-scan-outline",
-            color: "#404040",
-            size: 25,
-          }}
         />
         <View style={styles.inputs}>
           <CustomInput
