@@ -32,8 +32,6 @@ import {
     /* Guardar valor por item seleccionado */
     const [selectRoute, setSelectRoute] = useRecoilState(routeSearch);
   
-    useEffect(() => {
-    }, []);
   
     return (
       <Controller

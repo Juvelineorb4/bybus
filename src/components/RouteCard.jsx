@@ -1,19 +1,21 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import styles from "@/utils/styles/RouteCard.module.css";
 import Icon from "./Icon";
+import { useNavigation } from "@react-navigation/native";
 
-const RouteCard = () => {
+const RouteCard = ({data}) => {
   const global = require('@/utils/styles/global.js');
+  const navigation = useNavigation()
   return (
-    <View style={styles.container}>
+    <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('CreateTicket')} style={styles.container}>
       <View style={styles.containerText}>
         <View>
-          <Text style={[styles.textHour, global.black]}>14:05</Text>
-          <Text style={[styles.textDate, global.midGray]}>13/02/23</Text>
+          <Text style={[styles.textHour, global.black]}>{data.time}</Text>
+          <Text style={[styles.textDate, global.midGray]}>{data.date}</Text>
         </View>
         <View style={{ justifyContent: "space-between" }}>
-          <Text style={[styles.textFrom, global.midGray]}>From</Text>
+          <Text style={[styles.textFrom, global.midGray]}>Salida desde:</Text>
           <Text style={[styles.textDestination, global.black]}>Terminal Guanare</Text>
         </View>
       </View>
@@ -69,7 +71,7 @@ const RouteCard = () => {
           <Text style={[styles.ticketText, global.black]}>5.00$</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

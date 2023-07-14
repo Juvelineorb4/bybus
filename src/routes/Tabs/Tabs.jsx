@@ -12,7 +12,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@/components";
 import PlanNavigator from "./PlanNavigator";
 import TicketsNavigator from "./TicketsNavigator";
-import ProfileNavigator from "./ProfileNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 import styles from "@/utils/styles/Tabs.module.css";
 
@@ -21,7 +20,7 @@ const global = require('@/utils/styles/global.js');
 const { width } = Dimensions.get("window");
 const MARGIN = 0;
 const TAB_BAR_WIDTH = width - 2 * MARGIN;
-const TAB_WIDTH = TAB_BAR_WIDTH / 4;
+const TAB_WIDTH = TAB_BAR_WIDTH / 3;
 
 function MyTabBar({ state, descriptors, navigation }) {
   const [translateX] = useState(new Animated.Value(0));
@@ -167,7 +166,7 @@ const Tabs = () => {
             inActiveIcon: require("@/utils/images/plan.png"),
           },
           headerShown: false,
-          tabBarLabel: "Plan",
+          tabBarLabel: "Busca tu viaje",
         }}
       />
       <Tab.Screen
@@ -180,10 +179,10 @@ const Tabs = () => {
             inActiveIcon: require("@/utils/images/ticket.png"),
           },
           headerShown: false,
-          tabBarLabel: "Tickets",
+          tabBarLabel: "Mis tickets",
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name={"Profile_Tab"}
         key={`Profile_Tab`}
         component={ProfileNavigator}
@@ -195,18 +194,18 @@ const Tabs = () => {
           headerShown: false,
           tabBarLabel: "Profile",
         }}
-      />
+      /> */}
       <Tab.Screen
         name={"Settings_Tab"}
         key={`Settings_Tab`}
         component={SettingsNavigator}
         options={{
           tabBarIcon: {
-            activeIcon: require("@/utils/images/settings.png"),
-            inActiveIcon: require("@/utils/images/settings.png"),
+            activeIcon: require("@/utils/images/profile.png"),
+            inActiveIcon: require("@/utils/images/profile.png"),
           },
           headerShown: false,
-          tabBarLabel: "Settings",
+          tabBarLabel: "Configuración",
         }}
       />
     </Tab.Navigator>

@@ -1,63 +1,47 @@
 import { Text, View, TouchableOpacity, Image } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ResultView.module.css";
 import { RouteCard } from "@/components";
-import { useRecoilState } from "recoil";
-import { userSelectedPlan } from "@/atoms/Modals";
+import { Auth, API } from "aws-amplify";
+import * as queries from "@/graphql/queries";
+import * as customQueries from "@/graphql/customQueries";
+import * as mutations from "@/graphql/mutations";
 
-const ResultView = ({ navigation }) => {
-
-  const global = require('@/utils/styles/global.js');
-
-  const [userSelected, setUserSelected] = useRecoilState(userSelectedPlan);
-
-  const checkUserSelected = async () => {
+const ResultView = ({ data }) => {
+  const global = require("@/utils/styles/global.js");
+  const [search, setSearch] = useState([]);
+  const Bookins = async () => {
     try {
-      setUserSelected(userSelected);
+      const listBook = await API.graphql({
+        query: customQueries.listBookingsByCitiesAndStates,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+        variables: {
+          departureCity: data.departureCity,
+          departureState: data.departureState,
+          arrivalCity: data.arrivalCity,
+          arrivalState: data.arrivalState,
+        },
+      });
+      console.log(listBook);
     } catch (error) {
-      setUserSelected(null);
-    }
+      console.log(error)
+    } 
   };
   useEffect(() => {
-    checkUserSelected();
+    if (data) Bookins();
   }, []);
-
-  const updateUserSelected = () => setUserSelected(!userSelected)
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, global.black]}>Search Result</Text>
-      <View style={styles.optionsModal}>
-        <View style={styles.optionTransportModal}>
-          <View
-            style={[
-              styles.borderIconModal,
-              { backgroundColor: "#F5F5F5", padding: 3 },
-            ]}
-          >
-            <Image
-              style={{
-                width: 24,
-                height: 24,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/bus-black.png")}
-            />
-          </View>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/arrow-down.png")}
-          />
-        </View>
-      </View>
-      <TouchableOpacity activeOpacity={1} onPress={updateUserSelected}>
-        <RouteCard />
+      <Text style={[styles.title, global.black]}>
+        Resultados de la busqueda
+      </Text>
+      <Text style={[styles.titleSearch, global.black]}>
+        Viajes disponibles hasta: {`${data.arrivalState}, ${data.arrivalCity}`}
+      </Text>
+      <TouchableOpacity activeOpacity={1} style={{ marginTop: 20 }}>
+        {search && <RouteCard data={search} />}
       </TouchableOpacity>
-
     </View>
   );
 };

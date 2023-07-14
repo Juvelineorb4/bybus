@@ -6,12 +6,13 @@ export { default as Forgot } from "./Welcome/Forgot";
 
 /* Plan Tab */
 export { default as Plan } from "./Plan/Plan";
+export { default as PaymentTicket } from "./Plan/PaymentTicket";
+export { default as CreateTicket } from "./Plan/CreateTicket";
+export { default as ViewTicket } from "./Plan/ViewTicket";
 
 /* Tickets Tab */
 export { default as Tickets } from "./Tickets/Tickets";
-export { default as ChooseTicket } from "./Tickets/ChooseTicket";
-export { default as CreateTicket } from "./Tickets/CreateTicket";
-export { default as ViewTicket } from "./Tickets/ViewTicket";
+
 
 /* Profile Tab */
 export { default as Profile } from "./Profile/Profile";
