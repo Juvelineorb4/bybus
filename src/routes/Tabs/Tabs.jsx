@@ -12,7 +12,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@/components";
 import PlanNavigator from "./PlanNavigator";
 import TicketsNavigator from "./TicketsNavigator";
-import ProfileNavigator from "./ProfileNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 import styles from "@/utils/styles/Tabs.module.css";
 
