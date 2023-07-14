@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Header from "../Header/Header";
-import { Plan, ViewTicket } from "@/screens";
+import { CreateTicket, Plan, ViewTicket, PaymentTicket } from "@/screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,11 +17,27 @@ const PlanNavigator = () => {
         }}
       />
       <Stack.Screen
-        name="ViewTicketPlan"
+        name="CreateTicket"
+        component={CreateTicket}
+        options={{
+          header: () => <Header mode="with-back" />,
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="PaymentTicket"
+        component={PaymentTicket}
+        options={{
+          header: () => <Header mode="with-back" />,
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="ViewTicket"
         component={ViewTicket}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
     </Stack.Navigator>

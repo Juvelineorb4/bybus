@@ -21,7 +21,7 @@ const PaymentTicket = ({ navigation }) => {
           source={require("@/utils/images/background-profile.png")}
         />
         <View style={styles.text}>
-          <Text style={[styles.titleTop, global.black]}>Buy single ticket</Text>
+          <Text style={[styles.titleTop, global.black]}>Hora de pagar tu viaje</Text>
           <View style={[styles.ticketsContainer]}>
             <Text style={[styles.titleTickets, global.black]}>2 adults</Text>
             <Text style={[styles.titlePrice, global.black]}>$5.00</Text>
@@ -29,16 +29,7 @@ const PaymentTicket = ({ navigation }) => {
         </View>
       </View>
       <View style={[styles.content, global.bgWhite]}>
-        <View style={styles.travel}>
-          <Text style={styles.titleTravel}>Travel card</Text>
-          <CustomButton
-            text={`Connect`}
-            textStyles={[styles.textTravelButton, global.white]}
-            buttonStyles={[styles.travelButton, global.bgBlack]}
-          />
-          <View style={[styles.lineDown, global.bgWhiteSoft]} />
-        </View>
-        <PaymentCard button={true} text="Add Card" />
+        <PaymentCard button={true} text="Pagar" />
         <View style={[styles.guarented, global.bgWhiteSoft]}>
           <Image
             style={{
@@ -49,18 +40,9 @@ const PaymentTicket = ({ navigation }) => {
             source={require("@/utils/images/guarented.png")}
           />
           <Text style={[styles.titleGuarented, global.topGray]}>
-            Guarantee included in the purchase
+            Esta compra esta protegida y tiene garantia
           </Text>
-          <View style={[styles.orangeBox, global.mainBgColor]}>
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/qa.png")}
-            />
-          </View>
+          
         </View>
         <CustomButton
           text={`Continue`}

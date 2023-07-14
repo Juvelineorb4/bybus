@@ -4,8 +4,15 @@
 
 .title {
   font-family: "thinItalic";
-  font-size: 25px;
+  font-size: 20px;
   /* color: #1f1f1f; */
+  text-align: center;
+}
+.titleSearch {
+  font-family: "thin";
+  font-size: 16px;
+  /* color: #1f1f1f; */
+  margin-top: 10px;
   text-align: center;
 }
 

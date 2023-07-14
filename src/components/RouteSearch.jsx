@@ -12,17 +12,16 @@ import CustomTimeDatePicker from "./CustomTimeDatePicker";
 import { venezuela } from "@/utils/constants/venezuela";
 import CustomModalDeparture from "./CustomModalDeparture";
 import CustomModalArrival from "./CustomModalArrival";
-import { useRecoilValue } from "recoil";
-import { routeSearch } from "@/atoms/Modals";
+import { useForm } from "react-hook-form";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { planSearch, routeSearch } from "@/atoms/Modals";
 // import { dateRoute, timeRoute } from "@/atoms/Modals";
 
-const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
+const RouteSearch = () => {
   const global = require("@/utils/styles/global.js");
+  const { control } = useForm();
   const route = useRecoilValue(routeSearch);
-
-  useEffect(() => {
-    console.log(route);
-  }, [route]);
+  const [result, setResult] = useRecoilState(planSearch);
 
   return (
     <View style={[styles.container, global.bgBlack]}>
@@ -54,6 +53,17 @@ const RouteSearch = ({ control, handleSubmit, watch, collapsed = false }) => {
         <TouchableOpacity
           activeOpacity={1}
           style={[styles.search, global.mainBgColor]}
+          onPress={() =>
+            setResult({
+              time: route?.time,
+              date: route?.date,
+              departureState: route?.departureState?.estado,
+              departureCity: route?.departureCity,
+              arrivalState: route?.arrivalState?.estado,
+              arrivalCity: route?.arrivalCity,
+              active: true
+            })
+          }
         >
           <Image
             style={{

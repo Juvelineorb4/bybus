@@ -11,7 +11,7 @@ import SelectedPlan from "@/components/SelectedPlan";
 import { ScrollView } from "react-native-gesture-handler";
 
 const CreateTicket = ({ navigation }) => {
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
 
   // const { control, handleSubmit, watch } = useForm({
   //   defaultValues: {
@@ -54,95 +54,131 @@ const CreateTicket = ({ navigation }) => {
             width: "100%",
             height: "100%",
             position: "absolute",
-            borderBottomLeftRadius: 40,
+            borderBottomLeftRadius: 20,
             resizeMode: "cover",
           }}
           source={require("@/utils/images/background-profile.png")}
         />
         <View style={styles.text}>
-          <Text style={[styles.title, global.black]}>Create single ticket</Text>
+          <Text style={[styles.title, global.black]}>Gestiona tu viaje</Text>
         </View>
       </View>
       <View style={styles.content}>
-        <View style={styles.search}>
-          <View style={styles.inputs}>
-            <View style={styles.input}>
-              <Image
+        <View style={styles.selectPlan}>
+          <Text
+            style={{
+              fontFamily: "thinItalic",
+              fontSize: 24,
+              marginTop: 10,
+              marginBottom: 15,
+            }}
+          >
+            Tu viaje seleccionado
+          </Text>
+          <View style={styles.contentSelectPlan}>
+            <View style={styles.departure}>
+            <Text
                 style={{
-                  width: 28,
-                  height: 28,
-                  resizeMode: "cover",
+                  fontFamily: "thin",
+                  fontSize: 20,
+                  marginBottom: 5,
                 }}
-                source={require("@/utils/images/target-black.png")}
-              />
-              <TextInput
-                style={styles.inputText}
-                placeholder={`Barquisimeto, Lara`}
-                placeholderTextColor={`#9d9d9d`}
-              />
-              <Image
-                style={{
-                  width: 25,
-                  height: 25,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/close.png")}
-              />
+              >
+                Desde:
+              </Text>
+              <View style={{
+                flex: 1,
+                justifyContent: 'space-between'
+              }}>
+              <Text
+                  style={{
+                    fontFamily: "thinItalic",
+                    fontSize: 16,
+                    marginBottom: 10
+                  }}
+                >
+                  Lara, Barquisimeto
+                </Text>
+
+                <View style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'
+                }}>
+                <Text
+                  style={{
+                    fontFamily: "light",
+                    fontSize: 24,
+                  }}
+                >
+                  14:05
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "thin",
+                    fontSize: 24,
+                  }}
+                >
+                  02-07-2023
+                </Text>
+                </View>
+                
+              </View>
             </View>
-            <View style={styles.input}>
-              <Image
+            <View style={styles.arrival}>
+              <Text
                 style={{
-                  width: 28,
-                  height: 28,
-                  resizeMode: "cover",
+                  fontFamily: "thin",
+                  fontSize: 20,
+                  marginBottom: 5,
                 }}
-                source={require("@/utils/images/destination.png")}
-              />
-              <TextInput
-                style={styles.inputText}
-                placeholder={`Guanare, Portuguesa`}
-                placeholderTextColor={`#9d9d9d`}
-              />
-              <Image
-                style={{
-                  width: 25,
-                  height: 25,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/arrow-white.png")}
-              />
+              >
+                Hasta:
+              </Text>
+              <View style={{
+                flex: 1,
+                justifyContent: 'space-between'
+              }}>
+              <Text
+                  style={{
+                    fontFamily: "thinItalic",
+                    fontSize: 16,
+                    marginBottom: 10
+                  }}
+                >
+                  Lara, Barquisimeto
+                </Text>
+
+                <View style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'
+                }}>
+                <Text
+                  style={{
+                    fontFamily: "light",
+                    fontSize: 24,
+                  }}
+                >
+                  14:05
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "thin",
+                    fontSize: 24,
+                  }}
+                >
+                  02-07-2023
+                </Text>
+                </View>
+                
+              </View>
             </View>
-          </View>
-          <View style={styles.options}>
-            <CustomTimeDatePicker
-              styled={{
-                container: styles.containerDatetime,
-                border: styles.borderDatetime,
-                text: [styles.textDatetime, global.black],
-              }}
-              state={`black`}
-            />
-            <TouchableOpacity activeOpacity={1} style={[styles.searchButton, global.mainBgColor]}>
-              <Image
-                style={{
-                  width: 32,
-                  height: 32,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/search-black.png")}
-              />
-            </TouchableOpacity>
           </View>
         </View>
-        <View style={[styles.line, global.bgWhiteSmoke]} />
-        {!userSelected && <ResultView navigation={navigation} />}
-        {userSelected && <SelectedPlan />}
-        <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.tariff}>
-          <Text style={[styles.titleTariff, global.black]}>Tariff</Text>
+          <Text style={[styles.titleTariff, global.black]}>Tarifas</Text>
           <View style={styles.panelTariff}>
             <View style={styles.optionTariff}>
-              <Text style={[styles.subtitleTariff, global.black]}>Adults</Text>
+              <Text style={[styles.subtitleTariff, global.black]}>Adultos</Text>
               <Text style={[styles.priceTariff, global.black]}>$5.00</Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
@@ -153,14 +189,19 @@ const CreateTicket = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={[styles.number, global.black]}>{adultCout}</Text>
                 <TouchableOpacity style={[styles.moreButton, global.bgBlack]}>
-                  <Text style={[styles.signWhite, global.white]} onPress={moreAdultCount}>
+                  <Text
+                    style={[styles.signWhite, global.white]}
+                    onPress={moreAdultCount}
+                  >
                     +
                   </Text>
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.optionTariff}>
-              <Text style={[styles.subtitleTariff, global.black]}>Children</Text>
+              <Text style={[styles.subtitleTariff, global.black]}>
+              Niños
+              </Text>
               <Text style={[styles.priceTariff, global.black]}>$3.50</Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
@@ -169,7 +210,9 @@ const CreateTicket = ({ navigation }) => {
                 >
                   <Text style={[styles.signBlack, global.black]}>-</Text>
                 </TouchableOpacity>
-                <Text style={[styles.number, global.black]}>{childrenCount}</Text>
+                <Text style={[styles.number, global.black]}>
+                  {childrenCount}
+                </Text>
                 <TouchableOpacity
                   style={[styles.moreButton, global.bgBlack]}
                   onPress={moreChildrenCount}
@@ -180,10 +223,7 @@ const CreateTicket = ({ navigation }) => {
             </View>
           </View>
         </View>
-        <View style={[styles.line, global.bgWhiteSmoke]} />
-        <View style={styles.total}>
-          
-        </View>
+        <View style={styles.total}></View>
       </View>
       <View style={styles.button}>
         <CustomButton

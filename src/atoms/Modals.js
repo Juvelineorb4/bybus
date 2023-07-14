@@ -52,14 +52,13 @@ export const userAuthenticated = atom({
 /* Token Notification */
 export const tokenNotification = atom({
   key: "token",
-  default: undefined
-})
+  default: undefined,
+});
 
 export const imageProfile = atom({
   key: "imageProfileValue",
-  default: undefined
-})
-
+  default: undefined,
+});
 
 /* selected */
 
@@ -68,17 +67,29 @@ export const userSelectedPlan = atom({
   default: false,
 });
 
-
 /* Route */
 
 export const routeSearch = atom({
-  key: 'routeSearchValue',
+  key: "routeSearchValue",
   default: {
-    time: '',
-    date: '',
+    time: "",
+    date: "",
     departureState: {},
-    departureCity: '',
+    departureCity: "",
     arrivalState: {},
-    arrivalCity: ''
+    arrivalCity: "",
+  },
+});
+
+export const planSearch = atom({
+  key: "planSearchValue",
+  default: {
+    time: "",
+    date: "",
+    departureState: "",
+    departureCity: "",
+    arrivalState: "",
+    arrivalCity: "",
+    active: false,
   },
 });

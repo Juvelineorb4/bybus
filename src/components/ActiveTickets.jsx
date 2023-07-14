@@ -21,16 +21,8 @@ const ActiveTickets = () => {
           }}
           source={require("@/utils/images/ticket.png")}
         />
-        <Text style={[styles.textContentActive, global.black]}>Active tickets</Text>
+        <Text style={[styles.textContentActive, global.black]}>Tickets activos</Text>
       </View>
-      <CustomDropDown
-        list={items}
-        styled={{
-          container: styles.picker,
-          item: [styles.pickerItem, global.black],
-        }}
-        global={`plan`}
-      />
     </View>
   );
 };

@@ -20,16 +20,9 @@ const PreviousTickets = () => {
           }}
           source={require("@/utils/images/previous.png")}
         />
-        <Text style={[styles.textContentPrevious, global.black]}>Previous tickets</Text>
+        <Text style={[styles.textContentPrevious, global.black]}>Tickets antiguos</Text>
       </View>
-      <CustomDropDown
-        list={items}
-        styled={{
-          container: styles.picker,
-          item: [styles.pickerItem, global.black],
-        }}
-        global={`plan`}
-      />
+
     </View>
   );
 };
