@@ -111,20 +111,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "AdminQueriese70dfc87": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybusAuth"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "adminCreateUserCognito": {
       "build": true,
       "dependsOn": [

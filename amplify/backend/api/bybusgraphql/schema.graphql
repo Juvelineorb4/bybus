@@ -193,6 +193,31 @@ type DepartureArrivalStopFields {
   address: String
 }
 
+input ModelBookingFilterInput {
+  id: ID
+  code: String
+  agencyID: ID
+  officeID: ID
+  transport: ID
+  departure: ModelDepartureArrivalStopFieldsFilterInput
+  arrival: ModelDepartureArrivalStopFieldsFilterInput
+  stock: Int
+  price: Float
+  createdBy: ID
+  owner: String
+  and: [ModelBookingFilterInput]
+  or: [ModelBookingFilterInput]
+  not: ModelBookingFilterInput
+}
+
+input ModelDepartureArrivalStopFieldsFilterInput {
+  time: AWSTime
+  date: AWSDate
+  city: String
+  state: String
+  address: String
+}
+
 type StopBooking
   @model
   @auth(
@@ -232,11 +257,7 @@ type Customer
   name: String
   lastName: String
   ci: String
-  email: String
-    @index(
-      name: "userbyEmail"
-      queryField: "getUserbyEmail"
-    )
+  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
   phone: String
   bookingID: ID @index(name: "byBookingToCustomer")
   ticketID: ID

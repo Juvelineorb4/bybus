@@ -34,13 +34,6 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "AdminQueriese70dfc87": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
     "adminCreateUserCognito": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

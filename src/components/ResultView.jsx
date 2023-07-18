@@ -10,22 +10,22 @@ import * as mutations from "@/graphql/mutations";
 const ResultView = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const [search, setSearch] = useState([]);
+
   const Bookins = async () => {
     try {
       const listBook = await API.graphql({
-        query: customQueries.listBookingsByCitiesAndStates,
+        query: queries.listBookings,
         authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: {
-          departureCity: data.departureCity,
-          departureState: data.departureState,
-          arrivalCity: data.arrivalCity,
-          arrivalState: data.arrivalState,
+          filter: {
+              code:  { eq: 'J0000000ZULMAR2023072002' },
+          },
         },
       });
-      console.log(listBook);
+      console.log("ejele", listBook.data.listBookings.items);
     } catch (error) {
-      console.log(error)
-    } 
+      console.log(error);
+    }
   };
   useEffect(() => {
     if (data) Bookins();
