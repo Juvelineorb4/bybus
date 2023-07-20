@@ -11,24 +11,23 @@ const ResultView = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const [search, setSearch] = useState([]);
 
-  const Bookins = async () => {
-    try {
-      const listBook = await API.graphql({
-        query: queries.listBookings,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
-        variables: {
-          filter: {
-              code:  { eq: 'J0000000ZULMAR2023072002' },
-          },
+  const Bookings = async () => {
+    const list = await API.graphql({
+      query: queries.listBookings,
+      authMode: "AMAZON_COGNITO_USER_POOLS",
+      variables: {
+        filter: {
+          and: [
+            { departureCity: { eq: data.departureCity } },
+            { arrivalCity: { eq: data.arrivalCity } },
+          ],
         },
-      });
-      console.log("ejele", listBook.data.listBookings.items);
-    } catch (error) {
-      console.log(error);
-    }
+      },
+    });
+    setSearch(list.data.listBookings.items);
   };
   useEffect(() => {
-    if (data) Bookins();
+    if (data) Bookings();
   }, []);
 
   return (
@@ -40,7 +39,7 @@ const ResultView = ({ data }) => {
         Viajes disponibles hasta: {`${data.arrivalState}, ${data.arrivalCity}`}
       </Text>
       <TouchableOpacity activeOpacity={1} style={{ marginTop: 20 }}>
-        {search && <RouteCard data={search} />}
+        {search && search.map((item, index) => <RouteCard data={item} key={index} />)}
       </TouchableOpacity>
     </View>
   );

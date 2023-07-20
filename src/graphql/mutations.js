@@ -154,7 +154,8 @@ export const createAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -221,7 +222,8 @@ export const updateAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -288,7 +290,8 @@ export const deleteAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -356,7 +359,8 @@ export const createOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -424,7 +428,8 @@ export const updateOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -492,7 +497,8 @@ export const deleteOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -633,7 +639,8 @@ export const createTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -667,7 +674,8 @@ export const updateTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -701,7 +709,8 @@ export const deleteTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -787,7 +796,8 @@ export const createBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -866,7 +876,8 @@ export const updateBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -945,7 +956,8 @@ export const deleteBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -1750,6 +1762,57 @@ export const deleteUser = /* GraphQL */ `
       }
       owner
       googleOwner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTodo = /* GraphQL */ `
+  mutation CreateTodo(
+    $input: CreateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    createTodo(input: $input, condition: $condition) {
+      id
+      name
+      type {
+        city
+        state
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTodo = /* GraphQL */ `
+  mutation UpdateTodo(
+    $input: UpdateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    updateTodo(input: $input, condition: $condition) {
+      id
+      name
+      type {
+        city
+        state
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTodo = /* GraphQL */ `
+  mutation DeleteTodo(
+    $input: DeleteTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    deleteTodo(input: $input, condition: $condition) {
+      id
+      name
+      type {
+        city
+        state
+      }
       createdAt
       updatedAt
     }

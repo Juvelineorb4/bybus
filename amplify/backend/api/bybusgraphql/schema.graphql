@@ -1,3 +1,7 @@
+# type modal inputs
+
+###############################
+
 type EmailSusbcription
   @model
   @auth(
@@ -179,38 +183,14 @@ type Booking
     @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
   departure: DepartureArrivalStopFields
   arrival: DepartureArrivalStopFields
-  stock: Int
+  departureCity: String!
+  arrivalCity: String! 
   price: Float
   createdBy: ID
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
 type DepartureArrivalStopFields {
-  time: AWSTime
-  date: AWSDate
-  city: String
-  state: String
-  address: String
-}
-
-input ModelBookingFilterInput {
-  id: ID
-  code: String
-  agencyID: ID
-  officeID: ID
-  transport: ID
-  departure: ModelDepartureArrivalStopFieldsFilterInput
-  arrival: ModelDepartureArrivalStopFieldsFilterInput
-  stock: Int
-  price: Float
-  createdBy: ID
-  owner: String
-  and: [ModelBookingFilterInput]
-  or: [ModelBookingFilterInput]
-  not: ModelBookingFilterInput
-}
-
-input ModelDepartureArrivalStopFieldsFilterInput {
   time: AWSTime
   date: AWSDate
   city: String
@@ -428,4 +408,15 @@ input RegisterUserInput {
   rif: String!
   phone: String
   userType: String!
+}
+
+type Todo @model @searchable @auth(rules: [{ allow: public, provider: iam }]) {
+  id: ID!
+  name: String!
+  type: TodoType
+}
+
+type TodoType{
+  city: String
+  state: String
 }

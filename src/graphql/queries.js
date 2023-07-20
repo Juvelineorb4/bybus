@@ -211,7 +211,8 @@ export const getAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -314,7 +315,8 @@ export const getOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -560,7 +562,8 @@ export const getTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -701,7 +704,8 @@ export const getBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -746,7 +750,8 @@ export const listBookings = /* GraphQL */ `
           state
           address
         }
-        stock
+        departureCity
+        arrivalCity
         price
         createdBy
         owner
@@ -801,7 +806,8 @@ export const bookingsByAgencyID = /* GraphQL */ `
           state
           address
         }
-        stock
+        departureCity
+        arrivalCity
         price
         createdBy
         owner
@@ -856,7 +862,8 @@ export const bookingsByOfficeID = /* GraphQL */ `
           state
           address
         }
-        stock
+        departureCity
+        arrivalCity
         price
         createdBy
         owner
@@ -911,7 +918,8 @@ export const bookingsByTransport = /* GraphQL */ `
           state
           address
         }
-        stock
+        departureCity
+        arrivalCity
         price
         createdBy
         owner
@@ -1702,6 +1710,87 @@ export const listUsers = /* GraphQL */ `
         updatedAt
       }
       nextToken
+    }
+  }
+`;
+export const getTodo = /* GraphQL */ `
+  query GetTodo($id: ID!) {
+    getTodo(id: $id) {
+      id
+      name
+      type {
+        city
+        state
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTodos = /* GraphQL */ `
+  query ListTodos(
+    $filter: ModelTodoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        type {
+          city
+          state
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const searchTodos = /* GraphQL */ `
+  query SearchTodos(
+    $filter: SearchableTodoFilterInput
+    $sort: [SearchableTodoSortInput]
+    $limit: Int
+    $nextToken: String
+    $from: Int
+    $aggregates: [SearchableTodoAggregationInput]
+  ) {
+    searchTodos(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+      from: $from
+      aggregates: $aggregates
+    ) {
+      items {
+        id
+        name
+        type {
+          city
+          state
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+      total
+      aggregateItems {
+        name
+        result {
+          ... on SearchableAggregateScalarResult {
+            value
+          }
+          ... on SearchableAggregateBucketResult {
+            buckets {
+              key
+              doc_count
+            }
+          }
+        }
+      }
     }
   }
 `;

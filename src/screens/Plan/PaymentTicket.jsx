@@ -4,9 +4,10 @@ import styles from "@/utils/styles/PaymentTicket.module.css";
 import { CustomButton } from "@/components";
 import PaymentCard from "@/components/Payment/PaymentCard";
 
-const PaymentTicket = ({ navigation }) => {
+const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-
+  const { booking, tickets} = route.params
+  console.log(tickets)
   return (
     <ScrollView style={styles.container}>
       <View style={[styles.topContent, global.bgWhite]}>
@@ -23,8 +24,8 @@ const PaymentTicket = ({ navigation }) => {
         <View style={styles.text}>
           <Text style={[styles.titleTop, global.black]}>Hora de pagar tu viaje</Text>
           <View style={[styles.ticketsContainer]}>
-            <Text style={[styles.titleTickets, global.black]}>2 adults</Text>
-            <Text style={[styles.titlePrice, global.black]}>$5.00</Text>
+            <Text style={[styles.titleTickets, global.black]}>{tickets} boletos de viaje</Text>
+            <Text style={[styles.titlePrice, global.black]}>${tickets * booking.price}.00</Text>
           </View>
         </View>
       </View>

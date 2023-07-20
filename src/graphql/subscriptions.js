@@ -143,7 +143,8 @@ export const onCreateAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -210,7 +211,8 @@ export const onUpdateAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -277,7 +279,8 @@ export const onDeleteAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -345,7 +348,8 @@ export const onCreateOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -413,7 +417,8 @@ export const onUpdateOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -481,7 +486,8 @@ export const onDeleteOffice = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -613,7 +619,8 @@ export const onCreateTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -647,7 +654,8 @@ export const onUpdateTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -681,7 +689,8 @@ export const onDeleteTransport = /* GraphQL */ `
           agencyID
           officeID
           transport
-          stock
+          departureCity
+          arrivalCity
           price
           createdBy
           owner
@@ -767,7 +776,8 @@ export const onCreateBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -846,7 +856,8 @@ export const onUpdateBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -925,7 +936,8 @@ export const onDeleteBooking = /* GraphQL */ `
         state
         address
       }
-      stock
+      departureCity
+      arrivalCity
       price
       createdBy
       owner
@@ -1748,6 +1760,48 @@ export const onDeleteUser = /* GraphQL */ `
       }
       owner
       googleOwner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onCreateTodo(filter: $filter) {
+      id
+      name
+      type {
+        city
+        state
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onUpdateTodo(filter: $filter) {
+      id
+      name
+      type {
+        city
+        state
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onDeleteTodo(filter: $filter) {
+      id
+      name
+      type {
+        city
+        state
+      }
       createdAt
       updatedAt
     }
