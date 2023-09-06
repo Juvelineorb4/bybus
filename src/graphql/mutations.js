@@ -1,9 +1,163 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const registerAgencyUser = /* GraphQL */ `
-  mutation RegisterAgencyUser($input: RegisterUserInput!) {
-    registerAgencyUser(input: $input)
+export const deleteAgency = /* GraphQL */ `
+  mutation DeleteAgency(
+    $input: DeleteAgencyInput!
+    $condition: ModelAgencyConditionInput
+  ) {
+    deleteAgency(input: $input, condition: $condition) {
+      id
+      cognitoID
+      pin
+      name
+      rif
+      email
+      phone
+      officies {
+        items {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          departureCity
+          arrivalCity
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCustomer = /* GraphQL */ `
+  mutation DeleteCustomer(
+    $input: DeleteCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    deleteCustomer(input: $input, condition: $condition) {
+      id
+      name
+      lastName
+      ci
+      email
+      phone
+      bookingID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+      }
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTicket = /* GraphQL */ `
+  mutation DeleteTicket(
+    $input: DeleteTicketInput!
+    $condition: ModelTicketConditionInput
+  ) {
+    deleteTicket(input: $input, condition: $condition) {
+      id
+      code
+      bookingID
+      stop
+      customerID
+      seating
+      status
+      description
+      url
+      owner
+      createdAt
+      updatedAt
+      stopBookingTicketsId
+    }
+  }
+`;
+export const deleteOrderTicket = /* GraphQL */ `
+  mutation DeleteOrderTicket(
+    $input: DeleteOrderTicketInput!
+    $condition: ModelOrderTicketConditionInput
+  ) {
+    deleteOrderTicket(input: $input, condition: $condition) {
+      id
+      orderID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+      }
+      owner
+      createdAt
+      updatedAt
+      orderDetailOrderTicketsId
+    }
   }
 `;
 export const createEmailSusbcription = /* GraphQL */ `
@@ -108,7 +262,9 @@ export const createAgency = /* GraphQL */ `
     $condition: ModelAgencyConditionInput
   ) {
     createAgency(input: $input, condition: $condition) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -135,7 +291,7 @@ export const createAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -156,6 +312,7 @@ export const createAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -176,7 +333,9 @@ export const updateAgency = /* GraphQL */ `
     $condition: ModelAgencyConditionInput
   ) {
     updateAgency(input: $input, condition: $condition) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -203,7 +362,7 @@ export const updateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -224,74 +383,7 @@ export const updateAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAgency = /* GraphQL */ `
-  mutation DeleteAgency(
-    $input: DeleteAgencyInput!
-    $condition: ModelAgencyConditionInput
-  ) {
-    deleteAgency(input: $input, condition: $condition) {
-      userID
-      name
-      rif
-      email
-      phone
-      officies {
-        items {
-          id
-          agencyID
-          name
-          state
-          city
-          address
-          email
-          phone
-          owner
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          departureCity
-          arrivalCity
+          stock
           price
           createdBy
           owner
@@ -326,7 +418,7 @@ export const createOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -361,6 +453,7 @@ export const createOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -395,7 +488,7 @@ export const updateOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -430,6 +523,7 @@ export const updateOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -464,7 +558,7 @@ export const deleteOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -499,6 +593,7 @@ export const deleteOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -565,7 +660,7 @@ export const createEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -587,7 +682,7 @@ export const updateEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -609,7 +704,7 @@ export const deleteEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -641,6 +736,7 @@ export const createTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -676,6 +772,7 @@ export const updateTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -711,6 +808,7 @@ export const deleteTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -782,6 +880,8 @@ export const createBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -796,8 +896,7 @@ export const createBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -862,6 +961,8 @@ export const updateBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -876,8 +977,7 @@ export const updateBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -942,6 +1042,8 @@ export const deleteBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -956,8 +1058,7 @@ export const deleteBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -1156,41 +1257,6 @@ export const updateCustomer = /* GraphQL */ `
     }
   }
 `;
-export const deleteCustomer = /* GraphQL */ `
-  mutation DeleteCustomer(
-    $input: DeleteCustomerInput!
-    $condition: ModelCustomerConditionInput
-  ) {
-    deleteCustomer(input: $input, condition: $condition) {
-      id
-      name
-      lastName
-      ci
-      email
-      phone
-      bookingID
-      ticketID
-      ticket {
-        id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
-        createdAt
-        updatedAt
-        stopBookingTicketsId
-      }
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createTicket = /* GraphQL */ `
   mutation CreateTicket(
     $input: CreateTicketInput!
@@ -1219,28 +1285,6 @@ export const updateTicket = /* GraphQL */ `
     $condition: ModelTicketConditionInput
   ) {
     updateTicket(input: $input, condition: $condition) {
-      id
-      code
-      bookingID
-      stop
-      customerID
-      seating
-      status
-      description
-      url
-      owner
-      createdAt
-      updatedAt
-      stopBookingTicketsId
-    }
-  }
-`;
-export const deleteTicket = /* GraphQL */ `
-  mutation DeleteTicket(
-    $input: DeleteTicketInput!
-    $condition: ModelTicketConditionInput
-  ) {
-    deleteTicket(input: $input, condition: $condition) {
       id
       code
       bookingID
@@ -1294,37 +1338,6 @@ export const updateOrderTicket = /* GraphQL */ `
     $condition: ModelOrderTicketConditionInput
   ) {
     updateOrderTicket(input: $input, condition: $condition) {
-      id
-      orderID
-      ticketID
-      ticket {
-        id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
-        createdAt
-        updatedAt
-        stopBookingTicketsId
-      }
-      owner
-      createdAt
-      updatedAt
-      orderDetailOrderTicketsId
-    }
-  }
-`;
-export const deleteOrderTicket = /* GraphQL */ `
-  mutation DeleteOrderTicket(
-    $input: DeleteOrderTicketInput!
-    $condition: ModelOrderTicketConditionInput
-  ) {
-    deleteOrderTicket(input: $input, condition: $condition) {
       id
       orderID
       ticketID
@@ -1767,54 +1780,8 @@ export const deleteUser = /* GraphQL */ `
     }
   }
 `;
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    createTodo(input: $input, condition: $condition) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    updateTodo(input: $input, condition: $condition) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    deleteTodo(input: $input, condition: $condition) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
+export const registerAgencyAdmin = /* GraphQL */ `
+  mutation RegisterAgencyAdmin($input: RegisterUserInput!) {
+    registerAgencyAdmin(input: $input)
   }
 `;

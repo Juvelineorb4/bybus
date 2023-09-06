@@ -15,7 +15,33 @@ const CreateTicket = ({ navigation, route }) => {
   const userSelected = useRecoilValue(userSelectedPlan);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
+  const [full, setFull] = useState(false);
+  const [quantityId, setQuantityId] = useState([]);
   const { booking } = route.params;
+  const handleMoreId = async (data) => {
+    if (quantityId.length + 1 === quantity) {
+      setFull(true)
+      return;
+    }
+    const { cedula } = data;
+      console.log(cedula)
+    setQuantityId([...quantityId, 1]);
+    setFull(false)
+  };
+
+  const onHandleOrder = async (data) => {
+    const { cedula } = data;
+    navigation.navigate("PaymentTicket", {
+      booking: booking,
+      tickets: quantity,
+      customer: cedula
+    })
+    console.log({
+      booking: booking,
+      tickets: quantity,
+      customer: cedula
+    })
+  }
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
@@ -241,13 +267,13 @@ const CreateTicket = ({ navigation, route }) => {
           <CustomInput
             control={control}
             name={`cedula`}
-            placeholder={"C.I. 00000000"}
+            placeholder={"00000000"}
             styled={{
               text: styles.textInput,
               label: [styles.labelInput, global.topGray],
               error: styles.errorInput,
               input: [styles.inputContainer, global.bgWhiteSoft],
-              placeholder: styles.placeholder
+              placeholder: styles.placeholder,
             }}
             text={`Cedula(s)`}
             icon={require("@/utils/images/profile_default.png")}
@@ -255,36 +281,80 @@ const CreateTicket = ({ navigation, route }) => {
               required: "Requerido",
             }}
           />
-          <Text style={{
-            fontFamily: 'thinItalic',
-            fontSize: 14,
-          }}>Todos los boletos seran asociados a una unica cedula? si no es asi entonces aprieta el boton de abajo</Text>
-          <TouchableOpacity style={[{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignSelf: 'center',
-            width: 200,
-            borderRadius: 8,
-            paddingVertical: 20,
-            marginTop: 20
-          }, global.mainBgColorSecond]}>
-            <Text style={[{
-              fontFamily: 'light',
-              fontSize: 16
-            }, global.white]}>Agregar mas cedulas</Text>
+          {/* {quantityId.map((_, index) => (
+            <CustomInput
+              key={index}
+              control={control}
+              name={`cedula_${index}`}
+              placeholder={"00000000"}
+              styled={{
+                text: styles.textInput,
+                label: [styles.labelInput, global.topGray],
+                error: styles.errorInput,
+                input: [styles.inputContainer, global.bgWhiteSoft],
+                placeholder: styles.placeholder,
+              }}
+              icon={require("@/utils/images/profile_default.png")}
+              rules={{
+                required: "Requerido",
+              }}
+            />
+          ))} */}
+          {/* {quantityId.length < 1 && (
+            <Text
+              style={{
+                fontFamily: "thinItalic",
+                fontSize: 14,
+              }}
+            >
+              ¿Todos los boletos de viaje seran asociados a una unica cedula? Si
+              no es asi entonces agrega mas cedulas abajo
+            </Text>
+          )} */}
+          {/* <TouchableOpacity
+            onPress={handleMoreId}
+            style={[
+              {
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                alignSelf: "center",
+                width: 200,
+                borderRadius: 8,
+                paddingVertical: 20,
+                marginTop: 20,
+              },
+              global.mainBgColorSecond,
+            ]}
+          >
+            <Text
+              style={[
+                {
+                  fontFamily: "light",
+                  fontSize: 16,
+                },
+                global.white,
+              ]}
+            >
+              Agregar mas cedulas
+            </Text>
           </TouchableOpacity>
+          {full && <Text
+              style={{
+                fontFamily: "light",
+                fontSize: 14,
+                color: 'red',
+                paddingTop: 10
+              }}
+            >
+              Solo puedes agregar las misma cantidad de cedulas que tienes de boletos
+            </Text>} */}
         </View>
       </View>
       <View style={styles.button}>
         <CustomButton
           text={`Continue`}
-          handlePress={() =>
-            navigation.navigate("PaymentTicket", {
-              booking: booking,
-              tickets: quantity,
-            })
-          }
+          handlePress={handleSubmit(onHandleOrder)}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.bgBlack]}
         />

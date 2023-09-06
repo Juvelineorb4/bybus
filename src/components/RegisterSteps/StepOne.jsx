@@ -29,7 +29,7 @@ const StepOne = () => {
         password: password.trim(),
         attributes: {
           name: name.trim(),
-          'custom:notificationToken': token,
+          // 'custom:notificationToken': token,
         },
         autoSignIn: { // optional - enables auto sign in after user is confirmed
           enabled: true,

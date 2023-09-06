@@ -1,4 +1,4 @@
-export const listBookingsID = /* GraphQL */ `
+export const listBookings = /* GraphQL */ `
   query ListBookings(
     $filter: ModelBookingFilterInput
     $limit: Int
@@ -11,6 +11,37 @@ export const listBookingsID = /* GraphQL */ `
         agencyID
         officeID
         transport
+        tickets {
+          items {
+            id
+            status
+          }
+          nextToken
+        }
+        stops {
+          nextToken
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+        }
+        stock
+        price
+        createdBy
+        createdAt
+        updatedAt
       }
       nextToken
     }

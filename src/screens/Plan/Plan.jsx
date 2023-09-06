@@ -47,7 +47,7 @@ const Plan = () => {
                 textAlign: "center",
               }}
             >
-              No hay resultados de tu busqueda
+              Empieza a buscar tu proximo viaje
             </Text>
           </View>
         )}

@@ -163,9 +163,11 @@ export const getAgencySubscriptionbyEmail = /* GraphQL */ `
   }
 `;
 export const getAgency = /* GraphQL */ `
-  query GetAgency($userID: ID!) {
-    getAgency(userID: $userID) {
-      userID
+  query GetAgency($id: ID!) {
+    getAgency(id: $id) {
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -192,7 +194,7 @@ export const getAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -213,6 +215,7 @@ export const getAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -229,21 +232,55 @@ export const getAgency = /* GraphQL */ `
 `;
 export const listAgencies = /* GraphQL */ `
   query ListAgencies(
-    $userID: ID
     $filter: ModelAgencyFilterInput
     $limit: Int
     $nextToken: String
-    $sortDirection: ModelSortDirection
   ) {
-    listAgencies(
-      userID: $userID
+    listAgencies(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAgencyByEmail = /* GraphQL */ `
+  query GetAgencyByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAgencyFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getAgencyByEmail(
+      email: $email
+      sortDirection: $sortDirection
       filter: $filter
       limit: $limit
       nextToken: $nextToken
-      sortDirection: $sortDirection
     ) {
       items {
-        userID
+        id
+        cognitoID
+        pin
         name
         rif
         email
@@ -282,7 +319,7 @@ export const getOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -317,6 +354,7 @@ export const getOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -441,7 +479,7 @@ export const getEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -465,7 +503,7 @@ export const listEmployees = /* GraphQL */ `
         name
         email
         phone
-        ping
+        pin
         type
         agencyID
         officeID
@@ -499,7 +537,7 @@ export const employeesByAgencyID = /* GraphQL */ `
         name
         email
         phone
-        ping
+        pin
         type
         agencyID
         officeID
@@ -533,7 +571,7 @@ export const employeesByOfficeID = /* GraphQL */ `
         name
         email
         phone
-        ping
+        pin
         type
         agencyID
         officeID
@@ -564,6 +602,7 @@ export const getTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -690,6 +729,8 @@ export const getBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -704,8 +745,7 @@ export const getBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -736,6 +776,8 @@ export const listBookings = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -750,11 +792,9 @@ export const listBookings = /* GraphQL */ `
           state
           address
         }
-        departureCity
-        arrivalCity
+        stock
         price
         createdBy
-        owner
         createdAt
         updatedAt
       }
@@ -792,6 +832,8 @@ export const bookingsByAgencyID = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -806,8 +848,7 @@ export const bookingsByAgencyID = /* GraphQL */ `
           state
           address
         }
-        departureCity
-        arrivalCity
+        stock
         price
         createdBy
         owner
@@ -848,6 +889,8 @@ export const bookingsByOfficeID = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -862,8 +905,7 @@ export const bookingsByOfficeID = /* GraphQL */ `
           state
           address
         }
-        departureCity
-        arrivalCity
+        stock
         price
         createdBy
         owner
@@ -904,6 +946,8 @@ export const bookingsByTransport = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -918,8 +962,7 @@ export const bookingsByTransport = /* GraphQL */ `
           state
           address
         }
-        departureCity
-        arrivalCity
+        stock
         price
         createdBy
         owner
@@ -1710,87 +1753,6 @@ export const listUsers = /* GraphQL */ `
         updatedAt
       }
       nextToken
-    }
-  }
-`;
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        type {
-          city
-          state
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const searchTodos = /* GraphQL */ `
-  query SearchTodos(
-    $filter: SearchableTodoFilterInput
-    $sort: [SearchableTodoSortInput]
-    $limit: Int
-    $nextToken: String
-    $from: Int
-    $aggregates: [SearchableTodoAggregationInput]
-  ) {
-    searchTodos(
-      filter: $filter
-      sort: $sort
-      limit: $limit
-      nextToken: $nextToken
-      from: $from
-      aggregates: $aggregates
-    ) {
-      items {
-        id
-        name
-        type {
-          city
-          state
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-      total
-      aggregateItems {
-        name
-        result {
-          ... on SearchableAggregateScalarResult {
-            value
-          }
-          ... on SearchableAggregateBucketResult {
-            buckets {
-              key
-              doc_count
-            }
-          }
-        }
-      }
     }
   }
 `;

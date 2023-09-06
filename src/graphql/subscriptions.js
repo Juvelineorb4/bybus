@@ -97,7 +97,9 @@ export const onCreateAgency = /* GraphQL */ `
     $owner: String
   ) {
     onCreateAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -124,7 +126,7 @@ export const onCreateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -145,6 +147,7 @@ export const onCreateAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -165,7 +168,9 @@ export const onUpdateAgency = /* GraphQL */ `
     $owner: String
   ) {
     onUpdateAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -192,7 +197,7 @@ export const onUpdateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -213,6 +218,7 @@ export const onUpdateAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -233,7 +239,9 @@ export const onDeleteAgency = /* GraphQL */ `
     $owner: String
   ) {
     onDeleteAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -260,7 +268,7 @@ export const onDeleteAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -281,6 +289,7 @@ export const onDeleteAgency = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -315,7 +324,7 @@ export const onCreateOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -350,6 +359,7 @@ export const onCreateOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -384,7 +394,7 @@ export const onUpdateOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -419,6 +429,7 @@ export const onUpdateOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -453,7 +464,7 @@ export const onDeleteOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -488,6 +499,7 @@ export const onDeleteOffice = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -545,7 +557,7 @@ export const onCreateEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -567,7 +579,7 @@ export const onUpdateEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -589,7 +601,7 @@ export const onDeleteEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -621,6 +633,7 @@ export const onCreateTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -656,6 +669,7 @@ export const onUpdateTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -691,6 +705,7 @@ export const onDeleteTransport = /* GraphQL */ `
           transport
           departureCity
           arrivalCity
+          stock
           price
           createdBy
           owner
@@ -762,6 +777,8 @@ export const onCreateBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -776,8 +793,7 @@ export const onCreateBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -842,6 +858,8 @@ export const onUpdateBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -856,8 +874,7 @@ export const onUpdateBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -922,6 +939,8 @@ export const onDeleteBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -936,8 +955,7 @@ export const onDeleteBooking = /* GraphQL */ `
         state
         address
       }
-      departureCity
-      arrivalCity
+      stock
       price
       createdBy
       owner
@@ -1760,48 +1778,6 @@ export const onDeleteUser = /* GraphQL */ `
       }
       owner
       googleOwner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onCreateTodo(filter: $filter) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onUpdateTodo(filter: $filter) {
-      id
-      name
-      type {
-        city
-        state
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onDeleteTodo(filter: $filter) {
-      id
-      name
-      type {
-        city
-        state
-      }
       createdAt
       updatedAt
     }

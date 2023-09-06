@@ -1,14 +1,15 @@
-import { Image, ScrollView, Text, View } from "react-native";
-import React from "react";
+import { Image, ScrollView, Text, View, Alert } from "react-native";
+import React, { useState } from "react";
 import CustomInput from "../CustomInput";
 import { useForm } from "react-hook-form";
 import CustomButton from "../CustomButton";
 import styles from "../../utils/styles/Payment.module.css";
+import { AntDesign } from '@expo/vector-icons';
 
-const PaymentCard = ({ button, text }) => {
-  const global = require('@/utils/styles/global.js');
+const PaymentCard = ({ button, text, order, handlePress }) => {
+  const global = require("@/utils/styles/global.js");
   const { control, handleSubmit } = useForm();
-
+  const [aproved, setAproved] = useState(false)
   return (
     <View style={styles.container}>
       <View style={styles.images}>
@@ -64,8 +65,22 @@ const PaymentCard = ({ button, text }) => {
         </View>
         {button && (
           <View style={styles.button}>
+            {aproved && <View style={{marginRight: 10, flexDirection: 'row', alignItems: 'center'}}>
+            <AntDesign name="checkcircleo" size={16} color="green" />
+            <Text style={{fontSize: 14, fontFamily: 'thin', marginLeft: 4}}>Pago aprobado</Text>
+            </View>}
             <CustomButton
               text={text}
+              handlePress={() => {
+                if (aproved) return;
+                Alert.alert(
+                  "Orden de pago",
+                  `Has pagado $${order.mount}.00 por ${order.quantity} boleto(s), para ${order.arrival}, bajo la cedula(s) ${order.id}`,
+                  [{ text: "Aceptar", onPress: () => console.log("Aceptado") }]
+                );
+                setAproved(true)
+                handlePress()
+              }}
               textStyles={[styles.btnText, global.white]}
               buttonStyles={[styles.btnBg, global.bgBlack]}
             />

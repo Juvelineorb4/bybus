@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "bybusauth",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "bybusa7971c06",
-    "userPoolName": "bybusa7971c06_userpool_a7971c06",
+    "resourceNameTruncated": "bybus93bc2b29",
+    "userPoolName": "bybus",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,8 +14,8 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your verification code",
-    "emailVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Verification code: {####}",
+    "emailVerificationMessage": "Verification code: {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
@@ -26,32 +26,27 @@
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [
-      "email"
-    ],
-    "userpoolClientReadAttributes": [
-      "email"
-    ],
-    "userpoolClientLambdaRole": "bybusAa7971c06_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "bybus93bc2b29_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "a7971c06",
-    "resourceName": "bybusAuth",
+    "sharedId": "93bc2b29",
+    "resourceName": "bybus",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "manual",
-    "thirdPartyAuth": false,
+    "serviceName": "Cognito",
     "usernameAttributes": [
       "email"
     ],
+    "useDefault": "manual",
     "userPoolGroups": true,
-    "adminQueries": true,
-    "triggers": {},
-    "hostedUI": false,
     "userPoolGroupList": [
       "sp",
       "admin",
       "agency"
     ],
-    "serviceName": "Cognito",
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {
@@ -68,7 +63,8 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "adminQueryGroup": "sp",
+    "triggers": {},
+    "hostedUI": false,
     "parentStack": {
       "Ref": "AWS::StackId"
     },

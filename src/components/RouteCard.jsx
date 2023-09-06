@@ -9,7 +9,7 @@ const RouteCard = ({ data }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      activeOpacity={1}
+      activeOpacity={0.7}
       onPress={() => navigation.navigate("CreateTicket", {
         booking: data
       })}
