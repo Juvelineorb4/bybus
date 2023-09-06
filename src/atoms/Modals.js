@@ -46,7 +46,7 @@ export const predeterminedPayment = atom({
 /* User */
 export const userAuthenticated = atom({
   key: "user",
-  default: undefined,
+  default: null,
 });
 
 /* Token Notification */

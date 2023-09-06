@@ -1,27 +1,5 @@
 {
   "api": {
-    "AdminQueries": {
-      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybusAuth"
-        },
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "AdminQueriesb7cd86a4"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
     "bybusgraphql": {
       "dependsOn": [
         {
@@ -29,21 +7,21 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "bybusAuth"
+          "resourceName": "bybus"
         }
       ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "AWS_IAM"
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authbybus"
+              }
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authbybusAuth"
-            }
+            "authenticationType": "AWS_IAM"
           }
         }
       },
@@ -52,7 +30,7 @@
     }
   },
   "auth": {
-    "bybusAuth": {
+    "bybus": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -89,7 +67,7 @@
             "IdentityPoolId"
           ],
           "category": "auth",
-          "resourceName": "bybusAuth"
+          "resourceName": "bybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -97,21 +75,13 @@
     }
   },
   "function": {
-    "AdminQueriesb7cd86a4": {
+    "bybus508ffe57": {
       "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybusAuth"
-        }
-      ],
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "AdminQueriese70dfc87": {
+    "createAgencyAdmin": {
       "build": true,
       "dependsOn": [
         {
@@ -119,21 +89,15 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "bybusAuth"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "adminCreateUserCognito": {
-      "build": true,
-      "dependsOn": [
+          "resourceName": "bybus"
+        },
         {
           "attributes": [
-            "UserPoolId"
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
           ],
-          "category": "auth",
-          "resourceName": "bybusAuth"
+          "category": "api",
+          "resourceName": "bybusgraphql"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -141,57 +105,41 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_AdminQueriesb7cd86a4_deploymentBucketName": {
+    "AMPLIFY_function_bybus508ffe57_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "AdminQueriesb7cd86a4"
+          "resourceName": "bybus508ffe57"
         }
       ]
     },
-    "AMPLIFY_function_AdminQueriesb7cd86a4_s3Key": {
+    "AMPLIFY_function_bybus508ffe57_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "AdminQueriesb7cd86a4"
+          "resourceName": "bybus508ffe57"
         }
       ]
     },
-    "AMPLIFY_function_AdminQueriese70dfc87_deploymentBucketName": {
+    "AMPLIFY_function_createAgencyAdmin_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "AdminQueriese70dfc87"
+          "resourceName": "createAgencyAdmin"
         }
       ]
     },
-    "AMPLIFY_function_AdminQueriese70dfc87_s3Key": {
+    "AMPLIFY_function_createAgencyAdmin_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "AdminQueriese70dfc87"
-        }
-      ]
-    },
-    "AMPLIFY_function_adminCreateUserCognito_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "adminCreateUserCognito"
-        }
-      ]
-    },
-    "AMPLIFY_function_adminCreateUserCognito_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "adminCreateUserCognito"
+          "resourceName": "createAgencyAdmin"
         }
       ]
     }
   },
   "storage": {
-    "bybusS3": {
+    "s3bybus": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

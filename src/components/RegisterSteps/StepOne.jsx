@@ -30,6 +30,7 @@ const StepOne = () => {
         attributes: {
           name: name.trim(),
           'custom:notificationToken': token,
+          'custom:userType': "customer"
         },
         autoSignIn: { // optional - enables auto sign in after user is confirmed
           enabled: true,

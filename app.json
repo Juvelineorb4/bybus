@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
-    "version": "1.0.0",
+    "name": "bybus-dev",
+    "slug": "bybus-dev",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -12,7 +12,8 @@
       "backgroundColor": "#FFCE48"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/03332bf0-024e-4dc4-a1bc-3c781c042c30"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -26,15 +27,13 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/utils/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./src/utils/images/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "1a4c7d5d-2e72-4b44-b2d0-d00178789da8"
-      }
     },
     "packagerOpts": {
       "config": "metro.config.js",
@@ -51,6 +50,14 @@
           "photosPermission": "Espero no tengas nudes"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "03332bf0-024e-4dc4-a1bc-3c781c042c30"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }

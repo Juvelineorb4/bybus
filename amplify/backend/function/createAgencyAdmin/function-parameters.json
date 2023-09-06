@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "auth": {
+      "bybus": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "bybusgraphql": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
