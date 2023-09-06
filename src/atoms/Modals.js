@@ -93,3 +93,8 @@ export const planSearch = atom({
     active: false,
   },
 });
+
+export const loadingSearch = atom({
+  key: "loadingSearchValue",
+  default: false,
+});

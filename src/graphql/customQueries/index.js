@@ -1,28 +1,28 @@
-export const listBookingsByCitiesAndStates = /* GraphQL */ `
-  query ListBookingsByCitiesAndStates(
-    $departureCity: String
-    $departureState: String
-    $arrivalCity: String
-    $arrivalState: String
+export const listBookings = /* GraphQL */ `
+  query ListBookings(
+    $filter: ModelBookingFilterInput
+    $limit: Int
+    $nextToken: String
   ) {
-    listBookings(
-      filter: {
-        departure: {
-          city: { eq: $departureCity }
-          state: { eq: $departureState }
-        }
-        arrival: {
-          city: { eq: $arrivalCity }
-          state: { eq: $arrivalState }
-        }
-      }
-    ) {
+    listBookings(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         code
         agencyID
         officeID
         transport
+        tickets {
+          items {
+            id
+            status
+          }
+          nextToken
+        }
+        stops {
+          nextToken
+        }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -40,8 +40,10 @@ export const listBookingsByCitiesAndStates = /* GraphQL */ `
         stock
         price
         createdBy
-        owner
+        createdAt
+        updatedAt
       }
+      nextToken
     }
   }
 `;

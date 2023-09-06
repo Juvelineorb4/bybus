@@ -14,7 +14,7 @@ import CustomModalDeparture from "./CustomModalDeparture";
 import CustomModalArrival from "./CustomModalArrival";
 import { useForm } from "react-hook-form";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { planSearch, routeSearch } from "@/atoms/Modals";
+import { planSearch, routeSearch, loadingSearch } from "@/atoms/Modals";
 // import { dateRoute, timeRoute } from "@/atoms/Modals";
 
 const RouteSearch = () => {
@@ -22,6 +22,7 @@ const RouteSearch = () => {
   const { control } = useForm();
   const route = useRecoilValue(routeSearch);
   const [result, setResult] = useRecoilState(planSearch);
+  const [loading, setLoading] = useRecoilState(loadingSearch);
 
   return (
     <View style={[styles.container, global.bgBlack]}>
@@ -53,7 +54,7 @@ const RouteSearch = () => {
         <TouchableOpacity
           activeOpacity={1}
           style={[styles.search, global.mainBgColor]}
-          onPress={() =>
+          onPress={() => {
             setResult({
               time: route?.time,
               date: route?.date,
@@ -61,9 +62,10 @@ const RouteSearch = () => {
               departureCity: route?.departureCity,
               arrivalState: route?.arrivalState?.estado,
               arrivalCity: route?.arrivalCity,
-              active: true
-            })
-          }
+              active: true,
+            });
+            setLoading(true)
+          }}
         >
           <Image
             style={{

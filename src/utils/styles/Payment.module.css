@@ -37,7 +37,9 @@
 }
 
 .button {
-  align-items: flex-end;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .btnBg {
   text-align: center;

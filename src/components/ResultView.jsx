@@ -1,4 +1,10 @@
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ResultView.module.css";
 import { RouteCard } from "@/components";
@@ -6,30 +12,37 @@ import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as customQueries from "@/graphql/customQueries";
 import * as mutations from "@/graphql/mutations";
+import { loadingSearch } from "@/atoms/Modals";
+import { useRecoilState } from "recoil";
 
 const ResultView = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const [search, setSearch] = useState([]);
-  const Bookins = async () => {
+  const [loading, setLoading] = useRecoilState(loadingSearch);
+  const Bookings = async () => {
     try {
-      const listBook = await API.graphql({
-        query: customQueries.listBookingsByCitiesAndStates,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
+      const list = await API.graphql({
+        query: customQueries.listBookings,
+        authMode: "AWS_IAM",
         variables: {
-          departureCity: data.departureCity,
-          departureState: data.departureState,
-          arrivalCity: data.arrivalCity,
-          arrivalState: data.arrivalState,
+          filter: {
+            and: [
+              { departureCity: { eq: data.departureCity } },
+              { arrivalCity: { eq: data.arrivalCity } },
+            ],
+          },
         },
       });
-      console.log(listBook);
+      setSearch(list.data.listBookings.items);
+        setLoading(false);
+      console.log(list.data.listBookings);
     } catch (error) {
-      console.log(error)
-    } 
+      console.log(error);
+    }
   };
   useEffect(() => {
-    if (data) Bookins();
-  }, []);
+    if (data) Bookings();
+  }, [data]);
 
   return (
     <View style={styles.container}>
@@ -37,10 +50,50 @@ const ResultView = ({ data }) => {
         Resultados de la busqueda
       </Text>
       <Text style={[styles.titleSearch, global.black]}>
-        Viajes disponibles hasta: {`${data.arrivalState}, ${data.arrivalCity}`}
+        {`Viajes disponibles hasta: ${data.arrivalState}, ${data.arrivalCity}`}
       </Text>
       <TouchableOpacity activeOpacity={1} style={{ marginTop: 20 }}>
-        {search && <RouteCard data={search} />}
+        {loading ? (
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              marginTop: 30,
+            }}
+          >
+            <ActivityIndicator size="large" color="#ffce48" />
+          </View>
+        ) : search.length !== 0 ? (
+          search.map((item, index) => <RouteCard data={item} key={index} />)
+        ) : (
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              marginTop: 20,
+            }}
+          >
+            <Image
+              style={{
+                width: 100,
+                height: 100,
+                resizeMode: "cover",
+              }}
+              source={require("@/utils/images/search-big.png")}
+            />
+            <Text
+              style={[
+                {
+                  fontFamily: "thin",
+                  textAlign: "center",
+                },
+                global.black,
+              ]}
+            >
+              {`No hay viajes disponibles hasta: ${data.arrivalState}, ${data.arrivalCity}`}
+            </Text>
+          </View>
+        )}
       </TouchableOpacity>
     </View>
   );

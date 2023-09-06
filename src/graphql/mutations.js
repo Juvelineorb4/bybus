@@ -1,18 +1,15 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const registerAgencyUser = /* GraphQL */ `
-  mutation RegisterAgencyUser($input: RegisterUserInput!) {
-    registerAgencyUser(input: $input)
-  }
-`;
-export const createAgency = /* GraphQL */ `
-  mutation CreateAgency(
-    $input: CreateAgencyInput!
+export const deleteAgency = /* GraphQL */ `
+  mutation DeleteAgency(
+    $input: DeleteAgencyInput!
     $condition: ModelAgencyConditionInput
   ) {
-    createAgency(input: $input, condition: $condition) {
-      userID
+    deleteAgency(input: $input, condition: $condition) {
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -53,7 +50,7 @@ export const createAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -86,6 +83,321 @@ export const createAgency = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteCustomer = /* GraphQL */ `
+  mutation DeleteCustomer(
+    $input: DeleteCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    deleteCustomer(input: $input, condition: $condition) {
+      id
+      name
+      lastName
+      ci
+      email
+      phone
+      bookingID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteTicket = /* GraphQL */ `
+  mutation DeleteTicket(
+    $input: DeleteTicketInput!
+    $condition: ModelTicketConditionInput
+  ) {
+    deleteTicket(input: $input, condition: $condition) {
+      id
+      code
+      bookingID
+      stop
+      customerID
+      seating
+      status
+      description
+      url
+      owner
+      createdAt
+      updatedAt
+      stopBookingTicketsId
+      __typename
+    }
+  }
+`;
+export const deleteOrderTicket = /* GraphQL */ `
+  mutation DeleteOrderTicket(
+    $input: DeleteOrderTicketInput!
+    $condition: ModelOrderTicketConditionInput
+  ) {
+    deleteOrderTicket(input: $input, condition: $condition) {
+      id
+      orderID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      orderDetailOrderTicketsId
+      __typename
+    }
+  }
+`;
+export const createEmailSusbcription = /* GraphQL */ `
+  mutation CreateEmailSusbcription(
+    $input: CreateEmailSusbcriptionInput!
+    $condition: ModelEmailSusbcriptionConditionInput
+  ) {
+    createEmailSusbcription(input: $input, condition: $condition) {
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateEmailSusbcription = /* GraphQL */ `
+  mutation UpdateEmailSusbcription(
+    $input: UpdateEmailSusbcriptionInput!
+    $condition: ModelEmailSusbcriptionConditionInput
+  ) {
+    updateEmailSusbcription(input: $input, condition: $condition) {
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteEmailSusbcription = /* GraphQL */ `
+  mutation DeleteEmailSusbcription(
+    $input: DeleteEmailSusbcriptionInput!
+    $condition: ModelEmailSusbcriptionConditionInput
+  ) {
+    deleteEmailSusbcription(input: $input, condition: $condition) {
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createAgencySubscription = /* GraphQL */ `
+  mutation CreateAgencySubscription(
+    $input: CreateAgencySubscriptionInput!
+    $condition: ModelAgencySubscriptionConditionInput
+  ) {
+    createAgencySubscription(input: $input, condition: $condition) {
+      id
+      name
+      rif
+      email
+      phone
+      subscriptionDate
+      status
+      scheduledDate
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateAgencySubscription = /* GraphQL */ `
+  mutation UpdateAgencySubscription(
+    $input: UpdateAgencySubscriptionInput!
+    $condition: ModelAgencySubscriptionConditionInput
+  ) {
+    updateAgencySubscription(input: $input, condition: $condition) {
+      id
+      name
+      rif
+      email
+      phone
+      subscriptionDate
+      status
+      scheduledDate
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteAgencySubscription = /* GraphQL */ `
+  mutation DeleteAgencySubscription(
+    $input: DeleteAgencySubscriptionInput!
+    $condition: ModelAgencySubscriptionConditionInput
+  ) {
+    deleteAgencySubscription(input: $input, condition: $condition) {
+      id
+      name
+      rif
+      email
+      phone
+      subscriptionDate
+      status
+      scheduledDate
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createAgency = /* GraphQL */ `
+  mutation CreateAgency(
+    $input: CreateAgencyInput!
+    $condition: ModelAgencyConditionInput
+  ) {
+    createAgency(input: $input, condition: $condition) {
+      id
+      cognitoID
+      pin
+      name
+      rif
+      email
+      phone
+      officies {
+        items {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -126,7 +438,9 @@ export const updateAgency = /* GraphQL */ `
     $condition: ModelAgencyConditionInput
   ) {
     updateAgency(input: $input, condition: $condition) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -167,7 +481,7 @@ export const updateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -200,120 +514,8 @@ export const updateAgency = /* GraphQL */ `
             nextToken
             __typename
           }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteAgency = /* GraphQL */ `
-  mutation DeleteAgency(
-    $input: DeleteAgencyInput!
-    $condition: ModelAgencyConditionInput
-  ) {
-    deleteAgency(input: $input, condition: $condition) {
-      userID
-      name
-      rif
-      email
-      phone
-      officies {
-        items {
-          id
-          agencyID
-          name
-          state
-          city
-          address
-          email
-          phone
-          employees {
-            nextToken
-            __typename
-          }
-          transports {
-            nextToken
-            __typename
-          }
-          bookings {
-            nextToken
-            __typename
-          }
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -368,7 +570,7 @@ export const createOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -421,6 +623,8 @@ export const createOffice = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -475,7 +679,7 @@ export const updateOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -528,6 +732,8 @@ export const updateOffice = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -582,7 +788,7 @@ export const deleteOffice = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -635,6 +841,8 @@ export const deleteOffice = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -724,7 +932,7 @@ export const createEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -747,7 +955,7 @@ export const updateEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -770,7 +978,7 @@ export const deleteEmployee = /* GraphQL */ `
       name
       email
       phone
-      ping
+      pin
       type
       agencyID
       officeID
@@ -813,6 +1021,8 @@ export const createTransport = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -878,6 +1088,8 @@ export const updateTransport = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -943,6 +1155,8 @@ export const deleteTransport = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -1068,6 +1282,8 @@ export const createBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -1184,6 +1400,8 @@ export const updateBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -1300,6 +1518,8 @@ export const deleteBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -1458,6 +1678,43 @@ export const deleteStopBooking = /* GraphQL */ `
     }
   }
 `;
+export const createCustomer = /* GraphQL */ `
+  mutation CreateCustomer(
+    $input: CreateCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    createCustomer(input: $input, condition: $condition) {
+      id
+      name
+      lastName
+      ci
+      email
+      phone
+      bookingID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const updateCustomer = /* GraphQL */ `
   mutation UpdateCustomer(
     $input: UpdateCustomerInput!
@@ -1495,39 +1752,25 @@ export const updateCustomer = /* GraphQL */ `
     }
   }
 `;
-export const deleteCustomer = /* GraphQL */ `
-  mutation DeleteCustomer(
-    $input: DeleteCustomerInput!
-    $condition: ModelCustomerConditionInput
+export const createTicket = /* GraphQL */ `
+  mutation CreateTicket(
+    $input: CreateTicketInput!
+    $condition: ModelTicketConditionInput
   ) {
-    deleteCustomer(input: $input, condition: $condition) {
+    createTicket(input: $input, condition: $condition) {
       id
-      name
-      lastName
-      ci
-      email
-      phone
+      code
       bookingID
-      ticketID
-      ticket {
-        id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
-        createdAt
-        updatedAt
-        stopBookingTicketsId
-        __typename
-      }
+      stop
+      customerID
+      seating
+      status
+      description
+      url
       owner
       createdAt
       updatedAt
+      stopBookingTicketsId
       __typename
     }
   }
@@ -1555,25 +1798,35 @@ export const updateTicket = /* GraphQL */ `
     }
   }
 `;
-export const deleteTicket = /* GraphQL */ `
-  mutation DeleteTicket(
-    $input: DeleteTicketInput!
-    $condition: ModelTicketConditionInput
+export const createOrderTicket = /* GraphQL */ `
+  mutation CreateOrderTicket(
+    $input: CreateOrderTicketInput!
+    $condition: ModelOrderTicketConditionInput
   ) {
-    deleteTicket(input: $input, condition: $condition) {
+    createOrderTicket(input: $input, condition: $condition) {
       id
-      code
-      bookingID
-      stop
-      customerID
-      seating
-      status
-      description
-      url
+      orderID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        seating
+        status
+        description
+        url
+        owner
+        createdAt
+        updatedAt
+        stopBookingTicketsId
+        __typename
+      }
       owner
       createdAt
       updatedAt
-      stopBookingTicketsId
+      orderDetailOrderTicketsId
       __typename
     }
   }
@@ -1611,35 +1864,68 @@ export const updateOrderTicket = /* GraphQL */ `
     }
   }
 `;
-export const deleteOrderTicket = /* GraphQL */ `
-  mutation DeleteOrderTicket(
-    $input: DeleteOrderTicketInput!
-    $condition: ModelOrderTicketConditionInput
+export const createOrderDetail = /* GraphQL */ `
+  mutation CreateOrderDetail(
+    $input: CreateOrderDetailInput!
+    $condition: ModelOrderDetailConditionInput
   ) {
-    deleteOrderTicket(input: $input, condition: $condition) {
+    createOrderDetail(input: $input, condition: $condition) {
       id
-      orderID
-      ticketID
-      ticket {
+      amount
+      paymentMethod
+      documentType
+      customerDocument
+      customerName
+      customerEmail
+      total
+      isGuest
+      paymentID
+      payment {
         id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
+        reference
+        amount
+        metadata
+        userID
         createdAt
         updatedAt
-        stopBookingTicketsId
+        owner
         __typename
       }
-      owner
+      orderTickets {
+        items {
+          id
+          orderID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          orderDetailOrderTicketsId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      userID
       createdAt
       updatedAt
-      orderDetailOrderTicketsId
+      userOrdersId
+      owner
       __typename
     }
   }
@@ -1653,8 +1939,11 @@ export const updateOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -1716,635 +2005,11 @@ export const deleteOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
-      isGuest
-      paymentID
-      payment {
-        id
-        reference
-        amount
-        metadata
-        userID
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      orderTickets {
-        items {
-          id
-          orderID
-          ticketID
-          ticket {
-            id
-            code
-            bookingID
-            stop
-            customerID
-            seating
-            status
-            description
-            url
-            owner
-            createdAt
-            updatedAt
-            stopBookingTicketsId
-            __typename
-          }
-          owner
-          createdAt
-          updatedAt
-          orderDetailOrderTicketsId
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      userID
-      createdAt
-      updatedAt
-      userOrdersId
-      owner
-      __typename
-    }
-  }
-`;
-export const updatePayment = /* GraphQL */ `
-  mutation UpdatePayment(
-    $input: UpdatePaymentInput!
-    $condition: ModelPaymentConditionInput
-  ) {
-    updatePayment(input: $input, condition: $condition) {
-      id
-      reference
-      amount
-      metadata
-      userID
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const deletePayment = /* GraphQL */ `
-  mutation DeletePayment(
-    $input: DeletePaymentInput!
-    $condition: ModelPaymentConditionInput
-  ) {
-    deletePayment(input: $input, condition: $condition) {
-      id
-      reference
-      amount
-      metadata
-      userID
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const createOrderDetailHistory = /* GraphQL */ `
-  mutation CreateOrderDetailHistory(
-    $input: CreateOrderDetailHistoryInput!
-    $condition: ModelOrderDetailHistoryConditionInput
-  ) {
-    createOrderDetailHistory(input: $input, condition: $condition) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateOrderDetailHistory = /* GraphQL */ `
-  mutation UpdateOrderDetailHistory(
-    $input: UpdateOrderDetailHistoryInput!
-    $condition: ModelOrderDetailHistoryConditionInput
-  ) {
-    updateOrderDetailHistory(input: $input, condition: $condition) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteOrderDetailHistory = /* GraphQL */ `
-  mutation DeleteOrderDetailHistory(
-    $input: DeleteOrderDetailHistoryInput!
-    $condition: ModelOrderDetailHistoryConditionInput
-  ) {
-    deleteOrderDetailHistory(input: $input, condition: $condition) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createEmailSusbcription = /* GraphQL */ `
-  mutation CreateEmailSusbcription(
-    $input: CreateEmailSusbcriptionInput!
-    $condition: ModelEmailSusbcriptionConditionInput
-  ) {
-    createEmailSusbcription(input: $input, condition: $condition) {
-      id
-      email
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateEmailSusbcription = /* GraphQL */ `
-  mutation UpdateEmailSusbcription(
-    $input: UpdateEmailSusbcriptionInput!
-    $condition: ModelEmailSusbcriptionConditionInput
-  ) {
-    updateEmailSusbcription(input: $input, condition: $condition) {
-      id
-      email
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteEmailSusbcription = /* GraphQL */ `
-  mutation DeleteEmailSusbcription(
-    $input: DeleteEmailSusbcriptionInput!
-    $condition: ModelEmailSusbcriptionConditionInput
-  ) {
-    deleteEmailSusbcription(input: $input, condition: $condition) {
-      id
-      email
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createAgencySubscription = /* GraphQL */ `
-  mutation CreateAgencySubscription(
-    $input: CreateAgencySubscriptionInput!
-    $condition: ModelAgencySubscriptionConditionInput
-  ) {
-    createAgencySubscription(input: $input, condition: $condition) {
-      id
-      name
-      rif
-      email
-      phone
-      subscriptionDate
-      status
-      scheduledDate
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateAgencySubscription = /* GraphQL */ `
-  mutation UpdateAgencySubscription(
-    $input: UpdateAgencySubscriptionInput!
-    $condition: ModelAgencySubscriptionConditionInput
-  ) {
-    updateAgencySubscription(input: $input, condition: $condition) {
-      id
-      name
-      rif
-      email
-      phone
-      subscriptionDate
-      status
-      scheduledDate
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteAgencySubscription = /* GraphQL */ `
-  mutation DeleteAgencySubscription(
-    $input: DeleteAgencySubscriptionInput!
-    $condition: ModelAgencySubscriptionConditionInput
-  ) {
-    deleteAgencySubscription(input: $input, condition: $condition) {
-      id
-      name
-      rif
-      email
-      phone
-      subscriptionDate
-      status
-      scheduledDate
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createCustomer = /* GraphQL */ `
-  mutation CreateCustomer(
-    $input: CreateCustomerInput!
-    $condition: ModelCustomerConditionInput
-  ) {
-    createCustomer(input: $input, condition: $condition) {
-      id
-      name
-      lastName
-      ci
-      email
-      phone
-      bookingID
-      ticketID
-      ticket {
-        id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
-        createdAt
-        updatedAt
-        stopBookingTicketsId
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const createTicket = /* GraphQL */ `
-  mutation CreateTicket(
-    $input: CreateTicketInput!
-    $condition: ModelTicketConditionInput
-  ) {
-    createTicket(input: $input, condition: $condition) {
-      id
-      code
-      bookingID
-      stop
-      customerID
-      seating
-      status
-      description
-      url
-      owner
-      createdAt
-      updatedAt
-      stopBookingTicketsId
-      __typename
-    }
-  }
-`;
-export const createOrderTicket = /* GraphQL */ `
-  mutation CreateOrderTicket(
-    $input: CreateOrderTicketInput!
-    $condition: ModelOrderTicketConditionInput
-  ) {
-    createOrderTicket(input: $input, condition: $condition) {
-      id
-      orderID
-      ticketID
-      ticket {
-        id
-        code
-        bookingID
-        stop
-        customerID
-        seating
-        status
-        description
-        url
-        owner
-        createdAt
-        updatedAt
-        stopBookingTicketsId
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      orderDetailOrderTicketsId
-      __typename
-    }
-  }
-`;
-export const createOrderDetail = /* GraphQL */ `
-  mutation CreateOrderDetail(
-    $input: CreateOrderDetailInput!
-    $condition: ModelOrderDetailConditionInput
-  ) {
-    createOrderDetail(input: $input, condition: $condition) {
-      id
-      amount
-      paymentMethod
-      customerName
-      customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -2413,5 +2078,397 @@ export const createPayment = /* GraphQL */ `
       owner
       __typename
     }
+  }
+`;
+export const updatePayment = /* GraphQL */ `
+  mutation UpdatePayment(
+    $input: UpdatePaymentInput!
+    $condition: ModelPaymentConditionInput
+  ) {
+    updatePayment(input: $input, condition: $condition) {
+      id
+      reference
+      amount
+      metadata
+      userID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deletePayment = /* GraphQL */ `
+  mutation DeletePayment(
+    $input: DeletePaymentInput!
+    $condition: ModelPaymentConditionInput
+  ) {
+    deletePayment(input: $input, condition: $condition) {
+      id
+      reference
+      amount
+      metadata
+      userID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createOrderDetailHistory = /* GraphQL */ `
+  mutation CreateOrderDetailHistory(
+    $input: CreateOrderDetailHistoryInput!
+    $condition: ModelOrderDetailHistoryConditionInput
+  ) {
+    createOrderDetailHistory(input: $input, condition: $condition) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateOrderDetailHistory = /* GraphQL */ `
+  mutation UpdateOrderDetailHistory(
+    $input: UpdateOrderDetailHistoryInput!
+    $condition: ModelOrderDetailHistoryConditionInput
+  ) {
+    updateOrderDetailHistory(input: $input, condition: $condition) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteOrderDetailHistory = /* GraphQL */ `
+  mutation DeleteOrderDetailHistory(
+    $input: DeleteOrderDetailHistoryInput!
+    $condition: ModelOrderDetailHistoryConditionInput
+  ) {
+    deleteOrderDetailHistory(input: $input, condition: $condition) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const registerAgencyAdmin = /* GraphQL */ `
+  mutation RegisterAgencyAdmin($input: RegisterUserInput!) {
+    registerAgencyAdmin(input: $input)
   }
 `;

@@ -1,978 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateOffice = /* GraphQL */ `
-  subscription OnCreateOffice(
-    $filter: ModelSubscriptionOfficeFilterInput
-    $owner: String
-  ) {
-    onCreateOffice(filter: $filter, owner: $owner) {
-      id
-      agencyID
-      name
-      state
-      city
-      address
-      email
-      phone
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      transports {
-        items {
-          id
-          model
-          serial
-          type
-          officeID
-          bookings {
-            nextToken
-            __typename
-          }
-          createdBy
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateOffice = /* GraphQL */ `
-  subscription OnUpdateOffice(
-    $filter: ModelSubscriptionOfficeFilterInput
-    $owner: String
-  ) {
-    onUpdateOffice(filter: $filter, owner: $owner) {
-      id
-      agencyID
-      name
-      state
-      city
-      address
-      email
-      phone
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      transports {
-        items {
-          id
-          model
-          serial
-          type
-          officeID
-          bookings {
-            nextToken
-            __typename
-          }
-          createdBy
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteOffice = /* GraphQL */ `
-  subscription OnDeleteOffice(
-    $filter: ModelSubscriptionOfficeFilterInput
-    $owner: String
-  ) {
-    onDeleteOffice(filter: $filter, owner: $owner) {
-      id
-      agencyID
-      name
-      state
-      city
-      address
-      email
-      phone
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      transports {
-        items {
-          id
-          model
-          serial
-          type
-          officeID
-          bookings {
-            nextToken
-            __typename
-          }
-          createdBy
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onCreateState = /* GraphQL */ `
-  subscription OnCreateState($filter: ModelSubscriptionStateFilterInput) {
-    onCreateState(filter: $filter) {
-      id
-      name
-      cities
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateState = /* GraphQL */ `
-  subscription OnUpdateState($filter: ModelSubscriptionStateFilterInput) {
-    onUpdateState(filter: $filter) {
-      id
-      name
-      cities
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteState = /* GraphQL */ `
-  subscription OnDeleteState($filter: ModelSubscriptionStateFilterInput) {
-    onDeleteState(filter: $filter) {
-      id
-      name
-      cities
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onCreateEmployee = /* GraphQL */ `
-  subscription OnCreateEmployee(
-    $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
-  ) {
-    onCreateEmployee(filter: $filter, owner: $owner) {
-      id
-      name
-      email
-      phone
-      ping
-      type
-      agencyID
-      officeID
-      permissions
-      owner
-      lastConnection
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateEmployee = /* GraphQL */ `
-  subscription OnUpdateEmployee(
-    $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
-  ) {
-    onUpdateEmployee(filter: $filter, owner: $owner) {
-      id
-      name
-      email
-      phone
-      ping
-      type
-      agencyID
-      officeID
-      permissions
-      owner
-      lastConnection
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteEmployee = /* GraphQL */ `
-  subscription OnDeleteEmployee(
-    $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
-  ) {
-    onDeleteEmployee(filter: $filter, owner: $owner) {
-      id
-      name
-      email
-      phone
-      ping
-      type
-      agencyID
-      officeID
-      permissions
-      owner
-      lastConnection
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onCreateTransport = /* GraphQL */ `
-  subscription OnCreateTransport(
-    $filter: ModelSubscriptionTransportFilterInput
-    $owner: String
-  ) {
-    onCreateTransport(filter: $filter, owner: $owner) {
-      id
-      model
-      serial
-      type
-      officeID
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdBy
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onUpdateTransport = /* GraphQL */ `
-  subscription OnUpdateTransport(
-    $filter: ModelSubscriptionTransportFilterInput
-    $owner: String
-  ) {
-    onUpdateTransport(filter: $filter, owner: $owner) {
-      id
-      model
-      serial
-      type
-      officeID
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdBy
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onDeleteTransport = /* GraphQL */ `
-  subscription OnDeleteTransport(
-    $filter: ModelSubscriptionTransportFilterInput
-    $owner: String
-  ) {
-    onDeleteTransport(filter: $filter, owner: $owner) {
-      id
-      model
-      serial
-      type
-      officeID
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdBy
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onCreateOrderDetailHistory = /* GraphQL */ `
-  subscription OnCreateOrderDetailHistory(
-    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onCreateOrderDetailHistory(
-      filter: $filter
-      owner: $owner
-      googleOwner: $googleOwner
-    ) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateOrderDetailHistory = /* GraphQL */ `
-  subscription OnUpdateOrderDetailHistory(
-    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onUpdateOrderDetailHistory(
-      filter: $filter
-      owner: $owner
-      googleOwner: $googleOwner
-    ) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteOrderDetailHistory = /* GraphQL */ `
-  subscription OnDeleteOrderDetailHistory(
-    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onDeleteOrderDetailHistory(
-      filter: $filter
-      owner: $owner
-      googleOwner: $googleOwner
-    ) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-          __typename
-        }
-        orderTickets {
-          items {
-            id
-            orderID
-            ticketID
-            owner
-            createdAt
-            updatedAt
-            orderDetailOrderTicketsId
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-        __typename
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onCreateUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onUpdateUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-    $googleOwner: String
-  ) {
-    onDeleteUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          payment {
-            id
-            reference
-            amount
-            metadata
-            userID
-            createdAt
-            updatedAt
-            owner
-            __typename
-          }
-          orderTickets {
-            nextToken
-            __typename
-          }
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const onCreateEmailSusbcription = /* GraphQL */ `
   subscription OnCreateEmailSusbcription(
     $filter: ModelSubscriptionEmailSusbcriptionFilterInput
@@ -1075,7 +103,9 @@ export const onCreateAgency = /* GraphQL */ `
     $owner: String
   ) {
     onCreateAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -1116,7 +146,7 @@ export const onCreateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -1149,6 +179,8 @@ export const onCreateAgency = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -1189,7 +221,9 @@ export const onUpdateAgency = /* GraphQL */ `
     $owner: String
   ) {
     onUpdateAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -1230,7 +264,7 @@ export const onUpdateAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -1263,6 +297,8 @@ export const onUpdateAgency = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -1303,7 +339,9 @@ export const onDeleteAgency = /* GraphQL */ `
     $owner: String
   ) {
     onDeleteAgency(filter: $filter, owner: $owner) {
-      userID
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -1344,7 +382,7 @@ export const onDeleteAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -1377,6 +415,8 @@ export const onDeleteAgency = /* GraphQL */ `
             nextToken
             __typename
           }
+          departureCity
+          arrivalCity
           departure {
             time
             date
@@ -1407,6 +447,639 @@ export const onDeleteAgency = /* GraphQL */ `
       owner
       createdAt
       updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateOffice = /* GraphQL */ `
+  subscription OnCreateOffice(
+    $filter: ModelSubscriptionOfficeFilterInput
+    $owner: String
+  ) {
+    onCreateOffice(filter: $filter, owner: $owner) {
+      id
+      agencyID
+      name
+      state
+      city
+      address
+      email
+      phone
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      transports {
+        items {
+          id
+          model
+          serial
+          type
+          officeID
+          bookings {
+            nextToken
+            __typename
+          }
+          createdBy
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateOffice = /* GraphQL */ `
+  subscription OnUpdateOffice(
+    $filter: ModelSubscriptionOfficeFilterInput
+    $owner: String
+  ) {
+    onUpdateOffice(filter: $filter, owner: $owner) {
+      id
+      agencyID
+      name
+      state
+      city
+      address
+      email
+      phone
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      transports {
+        items {
+          id
+          model
+          serial
+          type
+          officeID
+          bookings {
+            nextToken
+            __typename
+          }
+          createdBy
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteOffice = /* GraphQL */ `
+  subscription OnDeleteOffice(
+    $filter: ModelSubscriptionOfficeFilterInput
+    $owner: String
+  ) {
+    onDeleteOffice(filter: $filter, owner: $owner) {
+      id
+      agencyID
+      name
+      state
+      city
+      address
+      email
+      phone
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      transports {
+        items {
+          id
+          model
+          serial
+          type
+          officeID
+          bookings {
+            nextToken
+            __typename
+          }
+          createdBy
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateState = /* GraphQL */ `
+  subscription OnCreateState($filter: ModelSubscriptionStateFilterInput) {
+    onCreateState(filter: $filter) {
+      id
+      name
+      cities
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateState = /* GraphQL */ `
+  subscription OnUpdateState($filter: ModelSubscriptionStateFilterInput) {
+    onUpdateState(filter: $filter) {
+      id
+      name
+      cities
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteState = /* GraphQL */ `
+  subscription OnDeleteState($filter: ModelSubscriptionStateFilterInput) {
+    onDeleteState(filter: $filter) {
+      id
+      name
+      cities
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateEmployee = /* GraphQL */ `
+  subscription OnCreateEmployee(
+    $filter: ModelSubscriptionEmployeeFilterInput
+    $owner: String
+  ) {
+    onCreateEmployee(filter: $filter, owner: $owner) {
+      id
+      name
+      email
+      phone
+      pin
+      type
+      agencyID
+      officeID
+      permissions
+      owner
+      lastConnection
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateEmployee = /* GraphQL */ `
+  subscription OnUpdateEmployee(
+    $filter: ModelSubscriptionEmployeeFilterInput
+    $owner: String
+  ) {
+    onUpdateEmployee(filter: $filter, owner: $owner) {
+      id
+      name
+      email
+      phone
+      pin
+      type
+      agencyID
+      officeID
+      permissions
+      owner
+      lastConnection
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteEmployee = /* GraphQL */ `
+  subscription OnDeleteEmployee(
+    $filter: ModelSubscriptionEmployeeFilterInput
+    $owner: String
+  ) {
+    onDeleteEmployee(filter: $filter, owner: $owner) {
+      id
+      name
+      email
+      phone
+      pin
+      type
+      agencyID
+      officeID
+      permissions
+      owner
+      lastConnection
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateTransport = /* GraphQL */ `
+  subscription OnCreateTransport(
+    $filter: ModelSubscriptionTransportFilterInput
+    $owner: String
+  ) {
+    onCreateTransport(filter: $filter, owner: $owner) {
+      id
+      model
+      serial
+      type
+      officeID
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdBy
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateTransport = /* GraphQL */ `
+  subscription OnUpdateTransport(
+    $filter: ModelSubscriptionTransportFilterInput
+    $owner: String
+  ) {
+    onUpdateTransport(filter: $filter, owner: $owner) {
+      id
+      model
+      serial
+      type
+      officeID
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdBy
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteTransport = /* GraphQL */ `
+  subscription OnDeleteTransport(
+    $filter: ModelSubscriptionTransportFilterInput
+    $owner: String
+  ) {
+    onDeleteTransport(filter: $filter, owner: $owner) {
+      id
+      model
+      serial
+      type
+      officeID
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdBy
+      createdAt
+      updatedAt
+      owner
       __typename
     }
   }
@@ -1501,6 +1174,8 @@ export const onCreateBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -1617,6 +1292,8 @@ export const onUpdateBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -1733,6 +1410,8 @@ export const onDeleteBooking = /* GraphQL */ `
         nextToken
         __typename
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -2179,8 +1858,11 @@ export const onCreateOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -2242,8 +1924,11 @@ export const onUpdateOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -2305,8 +1990,11 @@ export const onDeleteOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -2409,6 +2097,375 @@ export const onDeletePayment = /* GraphQL */ `
       createdAt
       updatedAt
       owner
+      __typename
+    }
+  }
+`;
+export const onCreateOrderDetailHistory = /* GraphQL */ `
+  subscription OnCreateOrderDetailHistory(
+    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onCreateOrderDetailHistory(
+      filter: $filter
+      owner: $owner
+      googleOwner: $googleOwner
+    ) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateOrderDetailHistory = /* GraphQL */ `
+  subscription OnUpdateOrderDetailHistory(
+    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onUpdateOrderDetailHistory(
+      filter: $filter
+      owner: $owner
+      googleOwner: $googleOwner
+    ) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteOrderDetailHistory = /* GraphQL */ `
+  subscription OnDeleteOrderDetailHistory(
+    $filter: ModelSubscriptionOrderDetailHistoryFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onDeleteOrderDetailHistory(
+      filter: $filter
+      owner: $owner
+      googleOwner: $googleOwner
+    ) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        documentType
+        customerDocument
+        customerName
+        customerEmail
+        total
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        orderTickets {
+          items {
+            id
+            orderID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            orderDetailOrderTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+        __typename
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onCreateUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onUpdateUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+    $googleOwner: String
+  ) {
+    onDeleteUser(filter: $filter, owner: $owner, googleOwner: $googleOwner) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          orderTickets {
+            nextToken
+            __typename
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
       __typename
     }
   }
