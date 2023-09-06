@@ -51,7 +51,7 @@ const Navigation = () => {
           console.log(data)
           break;
         case "autoSignIn":
-          createWallet(data)
+          // createWallet(data)
           break;
         case "updateUserAttributes":
           checkUser();
@@ -75,34 +75,34 @@ const Navigation = () => {
     }
   }
 
-  const createWallet = async (data) => {
-    const { attributes } = data
-    try {
-      const result = await API.graphql({
-        query: mutations.createWalletUser,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
-        variables: {
-          input: {
-            userID: attributes.sub,
-            email: attributes.email,
-            notificationToken: {
-              type: Platform.OS === "android" ? "ANDROID" : "IOS",
-              token: attributes["custom:notificationToken"]
-            },
-          },
-        },
-      })
-      console.log("Wallet: ", result)
-      const result2 = await Auth.updateUserAttributes(data, {
-        'custom:walletStatus': result.data.createWalletUser.userID
-      });
+  // const createWallet = async (data) => {
+  //   const { attributes } = data
+  //   try {
+  //     const result = await API.graphql({
+  //       query: mutations.createWalletUser,
+  //       authMode: "AMAZON_COGNITO_USER_POOLS",
+  //       variables: {
+  //         input: {
+  //           userID: attributes.sub,
+  //           email: attributes.email,
+  //           notificationToken: {
+  //             type: Platform.OS === "android" ? "ANDROID" : "IOS",
+  //             token: attributes["custom:notificationToken"]
+  //           },
+  //         },
+  //       },
+  //     })
+  //     console.log("Wallet: ", result)
+  //     const result2 = await Auth.updateUserAttributes(data, {
+  //       'custom:walletStatus': result.data.createWalletUser.userID
+  //     });
 
-      console.log("Wallet2: ", result2)
-    } catch (error) {
-      console.error("Wallet Error: ", error)
-    }
+  //     console.log("Wallet2: ", result2)
+  //   } catch (error) {
+  //     console.error("Wallet Error: ", error)
+  //   }
 
-  }
+  // }
 
 
   return (

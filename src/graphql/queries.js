@@ -1,513 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getOffice = /* GraphQL */ `
-  query GetOffice($id: ID!) {
-    getOffice(id: $id) {
-      id
-      agencyID
-      name
-      state
-      city
-      address
-      email
-      phone
-      employees {
-        items {
-          id
-          name
-          email
-          phone
-          ping
-          type
-          agencyID
-          officeID
-          permissions
-          owner
-          lastConnection
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      transports {
-        items {
-          id
-          model
-          serial
-          type
-          officeID
-          createdBy
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-      }
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      owner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listOffices = /* GraphQL */ `
-  query ListOffices(
-    $filter: ModelOfficeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listOffices(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        agencyID
-        name
-        state
-        city
-        address
-        email
-        phone
-        employees {
-          nextToken
-        }
-        transports {
-          nextToken
-        }
-        bookings {
-          nextToken
-        }
-        owner
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getState = /* GraphQL */ `
-  query GetState($id: ID!) {
-    getState(id: $id) {
-      id
-      name
-      cities
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listStates = /* GraphQL */ `
-  query ListStates(
-    $filter: ModelStateFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listStates(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        cities
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getEmployee = /* GraphQL */ `
-  query GetEmployee($id: ID!) {
-    getEmployee(id: $id) {
-      id
-      name
-      email
-      phone
-      ping
-      type
-      agencyID
-      officeID
-      permissions
-      owner
-      lastConnection
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listEmployees = /* GraphQL */ `
-  query ListEmployees(
-    $filter: ModelEmployeeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        email
-        phone
-        ping
-        type
-        agencyID
-        officeID
-        permissions
-        owner
-        lastConnection
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getTransport = /* GraphQL */ `
-  query GetTransport($id: ID!) {
-    getTransport(id: $id) {
-      id
-      model
-      serial
-      type
-      officeID
-      bookings {
-        items {
-          id
-          code
-          agencyID
-          officeID
-          transport
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdBy
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const listTransports = /* GraphQL */ `
-  query ListTransports(
-    $filter: ModelTransportFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTransports(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        model
-        serial
-        type
-        officeID
-        bookings {
-          nextToken
-        }
-        createdBy
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getOrderDetailHistory = /* GraphQL */ `
-  query GetOrderDetailHistory($id: ID!) {
-    getOrderDetailHistory(id: $id) {
-      id
-      orderID
-      order {
-        id
-        amount
-        paymentMethod
-        customerName
-        customerEmail
-        isGuest
-        paymentID
-        payment {
-          id
-          reference
-          amount
-          metadata
-          userID
-          createdAt
-          updatedAt
-          owner
-        }
-        orderTickets {
-          nextToken
-        }
-        userID
-        createdAt
-        updatedAt
-        userOrdersId
-        owner
-      }
-      userID
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listOrderDetailHistories = /* GraphQL */ `
-  query ListOrderDetailHistories(
-    $filter: ModelOrderDetailHistoryFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listOrderDetailHistories(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        orderID
-        order {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-        }
-        userID
-        owner
-        googleOwner
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      name
-      email
-      status
-      notificationToken
-      previousBalance
-      orders {
-        items {
-          id
-          amount
-          paymentMethod
-          customerName
-          customerEmail
-          isGuest
-          paymentID
-          userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
-        }
-        nextToken
-      }
-      owner
-      googleOwner
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        email
-        status
-        notificationToken
-        previousBalance
-        orders {
-          nextToken
-        }
-        owner
-        googleOwner
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const officesByAgencyID = /* GraphQL */ `
-  query OfficesByAgencyID(
-    $agencyID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelOfficeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    officesByAgencyID(
-      agencyID: $agencyID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        agencyID
-        name
-        state
-        city
-        address
-        email
-        phone
-        employees {
-          nextToken
-        }
-        transports {
-          nextToken
-        }
-        bookings {
-          nextToken
-        }
-        owner
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const employeesByAgencyID = /* GraphQL */ `
-  query EmployeesByAgencyID(
-    $agencyID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelEmployeeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    employeesByAgencyID(
-      agencyID: $agencyID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        name
-        email
-        phone
-        ping
-        type
-        agencyID
-        officeID
-        permissions
-        owner
-        lastConnection
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const employeesByOfficeID = /* GraphQL */ `
-  query EmployeesByOfficeID(
-    $officeID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelEmployeeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    employeesByOfficeID(
-      officeID: $officeID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        name
-        email
-        phone
-        ping
-        type
-        agencyID
-        officeID
-        permissions
-        owner
-        lastConnection
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const transportsByOfficeID = /* GraphQL */ `
-  query TransportsByOfficeID(
-    $officeID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelTransportFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    transportsByOfficeID(
-      officeID: $officeID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        model
-        serial
-        type
-        officeID
-        bookings {
-          nextToken
-        }
-        createdBy
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
 export const getEmailSusbcription = /* GraphQL */ `
   query GetEmailSusbcription($id: ID!) {
     getEmailSusbcription(id: $id) {
@@ -670,9 +163,11 @@ export const getAgencySubscriptionbyEmail = /* GraphQL */ `
   }
 `;
 export const getAgency = /* GraphQL */ `
-  query GetAgency($userID: ID!) {
-    getAgency(userID: $userID) {
-      userID
+  query GetAgency($id: ID!) {
+    getAgency(id: $id) {
+      id
+      cognitoID
+      pin
       name
       rif
       email
@@ -699,7 +194,7 @@ export const getAgency = /* GraphQL */ `
           name
           email
           phone
-          ping
+          pin
           type
           agencyID
           officeID
@@ -718,6 +213,8 @@ export const getAgency = /* GraphQL */ `
           agencyID
           officeID
           transport
+          departureCity
+          arrivalCity
           stock
           price
           createdBy
@@ -735,21 +232,15 @@ export const getAgency = /* GraphQL */ `
 `;
 export const listAgencies = /* GraphQL */ `
   query ListAgencies(
-    $userID: ID
     $filter: ModelAgencyFilterInput
     $limit: Int
     $nextToken: String
-    $sortDirection: ModelSortDirection
   ) {
-    listAgencies(
-      userID: $userID
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      sortDirection: $sortDirection
-    ) {
+    listAgencies(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        userID
+        id
+        cognitoID
+        pin
         name
         rif
         email
@@ -766,6 +257,420 @@ export const listAgencies = /* GraphQL */ `
         owner
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAgencyByEmail = /* GraphQL */ `
+  query GetAgencyByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAgencyFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getAgencyByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getOffice = /* GraphQL */ `
+  query GetOffice($id: ID!) {
+    getOffice(id: $id) {
+      id
+      agencyID
+      name
+      state
+      city
+      address
+      email
+      phone
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          permissions
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      transports {
+        items {
+          id
+          model
+          serial
+          type
+          officeID
+          createdBy
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          departureCity
+          arrivalCity
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listOffices = /* GraphQL */ `
+  query ListOffices(
+    $filter: ModelOfficeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOffices(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const officesByAgencyID = /* GraphQL */ `
+  query OfficesByAgencyID(
+    $agencyID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelOfficeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    officesByAgencyID(
+      agencyID: $agencyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getState = /* GraphQL */ `
+  query GetState($id: ID!) {
+    getState(id: $id) {
+      id
+      name
+      cities
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listStates = /* GraphQL */ `
+  query ListStates(
+    $filter: ModelStateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listStates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        cities
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getEmployee = /* GraphQL */ `
+  query GetEmployee($id: ID!) {
+    getEmployee(id: $id) {
+      id
+      name
+      email
+      phone
+      pin
+      type
+      agencyID
+      officeID
+      permissions
+      owner
+      lastConnection
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listEmployees = /* GraphQL */ `
+  query ListEmployees(
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        email
+        phone
+        pin
+        type
+        agencyID
+        officeID
+        permissions
+        owner
+        lastConnection
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const employeesByAgencyID = /* GraphQL */ `
+  query EmployeesByAgencyID(
+    $agencyID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    employeesByAgencyID(
+      agencyID: $agencyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        email
+        phone
+        pin
+        type
+        agencyID
+        officeID
+        permissions
+        owner
+        lastConnection
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const employeesByOfficeID = /* GraphQL */ `
+  query EmployeesByOfficeID(
+    $officeID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    employeesByOfficeID(
+      officeID: $officeID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        email
+        phone
+        pin
+        type
+        agencyID
+        officeID
+        permissions
+        owner
+        lastConnection
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTransport = /* GraphQL */ `
+  query GetTransport($id: ID!) {
+    getTransport(id: $id) {
+      id
+      model
+      serial
+      type
+      officeID
+      bookings {
+        items {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          departureCity
+          arrivalCity
+          stock
+          price
+          createdBy
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdBy
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listTransports = /* GraphQL */ `
+  query ListTransports(
+    $filter: ModelTransportFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTransports(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        model
+        serial
+        type
+        officeID
+        bookings {
+          nextToken
+        }
+        createdBy
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const transportsByOfficeID = /* GraphQL */ `
+  query TransportsByOfficeID(
+    $officeID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTransportFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    transportsByOfficeID(
+      officeID: $officeID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        model
+        serial
+        type
+        officeID
+        bookings {
+          nextToken
+        }
+        createdBy
+        createdAt
+        updatedAt
+        owner
       }
       nextToken
     }
@@ -824,6 +729,8 @@ export const getBooking = /* GraphQL */ `
         }
         nextToken
       }
+      departureCity
+      arrivalCity
       departure {
         time
         date
@@ -869,6 +776,8 @@ export const listBookings = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -886,7 +795,6 @@ export const listBookings = /* GraphQL */ `
         stock
         price
         createdBy
-        owner
         createdAt
         updatedAt
       }
@@ -924,6 +832,8 @@ export const bookingsByAgencyID = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -979,6 +889,8 @@ export const bookingsByOfficeID = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -1034,6 +946,8 @@ export const bookingsByTransport = /* GraphQL */ `
         stops {
           nextToken
         }
+        departureCity
+        arrivalCity
         departure {
           time
           date
@@ -1700,6 +1614,143 @@ export const listPayments = /* GraphQL */ `
         createdAt
         updatedAt
         owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getOrderDetailHistory = /* GraphQL */ `
+  query GetOrderDetailHistory($id: ID!) {
+    getOrderDetailHistory(id: $id) {
+      id
+      orderID
+      order {
+        id
+        amount
+        paymentMethod
+        customerName
+        customerEmail
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+        }
+        orderTickets {
+          nextToken
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+      }
+      userID
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listOrderDetailHistories = /* GraphQL */ `
+  query ListOrderDetailHistories(
+    $filter: ModelOrderDetailHistoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderDetailHistories(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        orderID
+        order {
+          id
+          amount
+          paymentMethod
+          customerName
+          customerEmail
+          isGuest
+          paymentID
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+        }
+        userID
+        owner
+        googleOwner
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          customerName
+          customerEmail
+          isGuest
+          paymentID
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+        }
+        nextToken
+      }
+      owner
+      googleOwner
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        email
+        status
+        notificationToken
+        previousBalance
+        orders {
+          nextToken
+        }
+        owner
+        googleOwner
+        createdAt
+        updatedAt
       }
       nextToken
     }

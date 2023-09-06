@@ -17,7 +17,7 @@ const Register = () => {
         }}
         source={require("@/utils/images/texture.png")}
       />
-      <StepFour />
+      <StepOne />
     </View>
   );
 };

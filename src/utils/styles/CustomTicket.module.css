@@ -64,18 +64,18 @@
 }
 .wifi,
 .guarantees {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* justify-content: center; */
   padding: 5px 12px 5px 8px;
   border-radius: 10px;
 }
 .wifi {
-  width: 105px;
+  width: 140px;
 }
 .guarantees {
-  width: 160px;
-  margin-left: 10px;
+  width: 140px;
+  /* margin-left: 10px; */
 }
 .tagText {
   font-family: "regular";

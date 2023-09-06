@@ -25,6 +25,14 @@ const PlanNavigator = () => {
         }}
       />
       <Stack.Screen
+        name="ViewTicket"
+        component={ViewTicket}
+        options={{
+          header: () => <Header />,
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
         name="PaymentTicket"
         component={PaymentTicket}
         options={{
@@ -32,14 +40,7 @@ const PlanNavigator = () => {
           animation: "slide_from_right",
         }}
       />
-      <Stack.Screen
-        name="ViewTicket"
-        component={ViewTicket}
-        options={{
-          header: () => <Header mode="with-back" />,
-          animation: "slide_from_right",
-        }}
-      />
+      
     </Stack.Navigator>
   );
 };

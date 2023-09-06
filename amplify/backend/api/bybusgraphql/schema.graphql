@@ -51,25 +51,50 @@ enum SusbcriptionAgencyStatus {
 
 type Agency
   @model
-  @auth(
-    rules: [
-      { allow: owner, operations: [read, update] }
-      { allow: private, provider: iam, operations: [read] }
-      { allow: public, provider: iam, operations: [read] }
-      { allow: groups, groups: ["sp"], operations: [read, update] }
-    ]
-  ) {
-  userID: ID! @primaryKey
+  @auth(rules: [{ allow: owner, operations: [read, update] }]) {
+  id: ID
+  cognitoID: ID
+  pin: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+      ]
+    )
   name: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+      ]
+    )
   rif: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+      ]
+    )
   email: String
+    @index(name: "agencyByEmail", queryField: "getAgencyByEmail")
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+      ]
+    )
   phone: String
-  officies: [Office] @hasMany(indexName: "byAgencyToOffice", fields: ["userID"])
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+      ]
+    )
+  officies: [Office] @hasMany(indexName: "byAgencyToOffice", fields: ["id"])
   employees: [Employee]
-    @hasMany(indexName: "byAgencyToEmployee", fields: ["userID"])
-  bookings: [Booking]
-    @hasMany(indexName: "byAgencyToBooking", fields: ["userID"])
-  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+    @hasMany(indexName: "byAgencyToEmployee", fields: ["id"])
+  bookings: [Booking] @hasMany(indexName: "byAgencyToBooking", fields: ["id"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
 type Office
@@ -114,7 +139,7 @@ type Employee
   name: String
   email: String
   phone: String
-  ping: String
+  pin: String
   type: EmployeeType @default(value: "OWNER")
   agencyID: ID @index(name: "byAgencyToEmployee")
   officeID: ID @index(name: "byOfficeToEmployee")
@@ -168,7 +193,6 @@ type Booking
   ) {
   id: ID!
   code: String
-  # J000000000BARCAR0707202300
   agencyID: ID! @index(name: "byAgencyToBooking")
   officeID: ID! @index(name: "byOfficeToBooking")
   transport: ID! @index(name: "byTransportToBooking")
@@ -177,6 +201,8 @@ type Booking
   tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
   stops: [StopBooking]
     @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
+  departureCity: String!
+  arrivalCity: String!
   departure: DepartureArrivalStopFields
   arrival: DepartureArrivalStopFields
   stock: Int
@@ -220,6 +246,7 @@ type Customer
   @auth(
     rules: [
       { allow: owner }
+      { allow: private, provider: iam, operations: [read] }
       { allow: public, provider: iam, operations: [create, read] }
       {
         allow: groups
@@ -232,11 +259,7 @@ type Customer
   name: String
   lastName: String
   ci: String
-  email: String
-    @index(
-      name: "userbyEmail"
-      queryField: "getUserbyEmail"
-    )
+  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
   phone: String
   bookingID: ID @index(name: "byBookingToCustomer")
   ticketID: ID
@@ -302,13 +325,21 @@ type OrderDetail
   id: ID!
   amount: Float!
   paymentMethod: String
+  documentType: DocumentType
+  customerDocument: String
   customerName: String
   customerEmail: String
+  total: Int
   isGuest: Boolean
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
   userID: ID @index(name: "byUserToOrderDetail")
+}
+enum DocumentType {
+  V
+  E
+  P
 }
 
 type Payment
@@ -396,15 +427,15 @@ enum StatusUser {
 }
 
 type Mutation {
-  registerAgencyUser(input: RegisterUserInput!): String
-    @function(name: "adminCreateUserCognito-${env}")
+  registerAgencyAdmin(input: RegisterUserInput!): String
+    @function(name: "createAgencyAdmin-${env}")
+    @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
 }
 
 input RegisterUserInput {
   name: String!
   username: String!
-  password: String!
   rif: String!
-  phone: String
-  userType: String!
+  phone: String!
+  agencySubsTableID: String!
 }
