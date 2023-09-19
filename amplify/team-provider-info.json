@@ -28,6 +28,9 @@
       },
       "storage": {
         "s3bybus": {}
+      },
+      "api": {
+        "bybusgraphql": {}
       }
     }
   }

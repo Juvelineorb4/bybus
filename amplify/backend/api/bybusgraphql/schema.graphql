@@ -185,8 +185,8 @@ type Booking
   @model
   @auth(
     rules: [
-      { allow: public, provider: iam, operations: [read] }
-      { allow: private, provider: iam, operations: [read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
       { allow: owner }
       { allow: groups, groups: ["sp"], operations: [read] }
     ]
@@ -223,8 +223,8 @@ type StopBooking
   @model
   @auth(
     rules: [
-      { allow: public, provider: iam, operations: [read] }
-      { allow: private, provider: iam, operations: [read] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
       { allow: owner }
       { allow: groups, groups: ["sp"], operations: [read] }
     ]
@@ -246,8 +246,8 @@ type Customer
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam, operations: [read] }
-      { allow: public, provider: iam, operations: [create, read] }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]
@@ -272,8 +272,8 @@ type Ticket
   @auth(
     rules: [
       { allow: owner }
-      { allow: public, provider: iam, operations: [create, read] }
-      { allow: private, provider: iam, operations: [create, read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
       { allow: groups, groups: ["sp"], operations: [read] }
     ]
   ) {
@@ -295,8 +295,8 @@ type OrderTicket
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam, operations: [create, read] }
-      { allow: public, provider: iam, operations: [create, read] }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]
@@ -316,8 +316,8 @@ type OrderDetail
   @auth(
     rules: [
       { allow: owner }
-      { allow: public, provider: iam, operations: [create, read] }
-      { allow: private, provider: iam, operations: [create, read] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]
@@ -336,6 +336,7 @@ type OrderDetail
   isGuest: Boolean
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
+  bookingID: ID
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
   userID: ID @index(name: "byUserToOrderDetail")
 }
@@ -350,8 +351,8 @@ type Payment
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam, operations: [create, read] }
-      { allow: public, provider: iam, operations: [create, read] }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]

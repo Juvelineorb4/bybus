@@ -104,40 +104,6 @@
       "service": "Lambda"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_bybus508ffe57_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "bybus508ffe57"
-        }
-      ]
-    },
-    "AMPLIFY_function_bybus508ffe57_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "bybus508ffe57"
-        }
-      ]
-    },
-    "AMPLIFY_function_createAgencyAdmin_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "createAgencyAdmin"
-        }
-      ]
-    },
-    "AMPLIFY_function_createAgencyAdmin_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "createAgencyAdmin"
-        }
-      ]
-    }
-  },
   "storage": {
     "s3bybus": {
       "dependsOn": [],

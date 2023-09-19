@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bybus-dev",
-    "slug": "bybus-dev",
+    "name": "viajes",
+    "slug": "viajes",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
@@ -13,35 +13,29 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/03332bf0-024e-4dc4-a1bc-3c781c042c30"
+      "url": "https://u.expo.dev/405c0b8f-173f-4074-9680-cad80d10c052"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "runtimeVersion": "exposdk:48.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.bybus",
+      "runtimeVersion": "exposdk:48.0.0",
+      "package": "com.bybus.viajes",
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/utils/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ]
+      "permissions": ["android.permission.RECORD_AUDIO"]
     },
     "web": {
       "favicon": "./src/utils/images/favicon.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": [
-        "js",
-        "jsx",
-        "css"
-      ]
+      "sourceExts": ["js", "jsx", "css"]
     },
     "plugins": [
       [
@@ -53,7 +47,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "03332bf0-024e-4dc4-a1bc-3c781c042c30"
+        "projectId": "405c0b8f-173f-4074-9680-cad80d10c052"
       }
     },
     "runtimeVersion": {
