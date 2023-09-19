@@ -66,34 +66,34 @@ const Forgot = () => {
                 subtitle: [styles.subtitle, global.topGray],
                 container: styles.textContainer,
               }}
-              title={`Reset password`}
-              subtitle={`Type the email associated with your account`}
+              title={`Cambiar contrasena`}
+              subtitle={`Escribe el correo asosciado a tu cuenta`}
             />
           </View>
 
           <CustomInput
             control={control}
             name={`email`}
-            placeholder={"Write your email..."}
+            placeholder={"ejemplo@email.com"}
             styled={{
               text: styles.textInput,
               label: [styles.labelInput, global.topGray],
               error: styles.errorInput,
               input: [styles.inputContainer, global.bgWhiteSoft],
             }}
-            text={`Email`}
+            text={`Correo electronico`}
             icon={{
               name: "email-outline",
               color: "#404040",
               size: 25,
             }}
             rules={{
-              required: "Email is required",
-              pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
+              required: "Requerido",
+              pattern: { value: EMAIL_REGEX, message: "Invalido" }
             }}
           />
           <Text style={[styles.code, global.topGray]}>
-            We send you a 6-digit security code to your email:{" "}
+            Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
             <Text style={styles.emailText}>{emailValue}</Text>
           </Text>
         </ScrollView>

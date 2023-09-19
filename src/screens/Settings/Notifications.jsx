@@ -33,7 +33,7 @@ const Notifications = () => {
           <View style={[styles.countNotifications, global.bgBlack]}>
             <Text style={[styles.textCountNotifications, global.white]}>2</Text>
           </View>
-          <Text style={[styles.title, global.black]}>New Notifications</Text>
+          <Text style={[styles.title, global.black]}>Nuevas notificaciones</Text>
           <CustomDropDown
             list={items}
             styled={{

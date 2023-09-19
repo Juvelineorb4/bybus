@@ -36,7 +36,7 @@ const Strip = () => {
           ref={stripsRef}
         />
       </View>
-      <Paginator data={strip} scrollX={scrollX} />
+      {/* <Paginator data={strip} scrollX={scrollX} /> */}
     </View>
   );
 };

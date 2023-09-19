@@ -89,8 +89,8 @@ const Profile = ({ navigation }) => {
                 subtitle: [styles.subtitleTravel, global.topGray],
                 container: styles.containerTravel,
               }}
-              title="Your balance"
-              subtitle="Add your travel card so it can be used to pay for your tickets."
+              title="Tu balance"
+              subtitle="Agrega tu tarjeta como metodo de pago preferencial."
             />
             <CustomButton
               text={`00.00$`}
@@ -109,8 +109,8 @@ const Profile = ({ navigation }) => {
                 subtitle: [styles.subtitleTravel, global.topGray],
                 container: styles.containerTravel,
               }}
-              title="Journeys you follow"
-              subtitle="Get notified of changes with your route."
+              title="Tus viajes activos"
+              subtitle="Recibiras notificaciones de tu viaje."
             />
             <CustomDropDown
               list={items}

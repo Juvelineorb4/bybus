@@ -2,16 +2,16 @@ export const welcome = {
   content: {
     name: "ByBus",
     logo: "",
-    title: "Plan your next trip",
-    subtitle: `Wherever you're travelling in Venezuela, we'll help you find the best route for you.`,
+    title: "Escoge tu siguiente destino",
+    subtitle: `A donde quiera que vayas en Venezuela, nosotros te ayudaremos a encontrar tu mejor manera de viaje.`,
   },
   signin: {
-    button: "Sign In",
+    button: "Inicia Sesion",
   },
   register: {
-    button: "Create Account",
+    button: "Crear cuenta",
   },
   intro: {
-    button: "Continue Without Account",
+    button: "Continuar como invitado",
   },
 };

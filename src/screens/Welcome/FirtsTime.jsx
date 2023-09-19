@@ -8,24 +8,24 @@ const FirtsTime = ({navigation, route}) => {
   return (
     <View style={[styles.container, global.mainBgColorSecond]}>
       <View style={styles.content}>
-        <Image
+        {/* <Image
           style={{
-            width: 70,
-            height: 70,
-            resizeMode: "contain",
+            width: 200,
+            height: 40,
+            resizeMode: "cover",
           }}
           source={require("@/utils/images/icon.png")}
-        />
-        <Text style={[styles.title, global.black]}>{`Welcome`}</Text>
+        /> */}
+        <Text style={[styles.title, global.white]}>{`Bienvenido`}</Text>
         <Text
-          style={[styles.subtitle, global.black]}
-        >{`We are now with you wherever you go in Venezuela`}</Text>
+          style={[styles.subtitle, global.white]}
+        >{`Llegamos a cualquier parte de Venezuela`}</Text>
       </View>
       <CustomButton
-        text={`Plan Your Trip`}
+        text={`Busca tu proximo destino`}
         handlePress={() => navigation.navigate('Strip')}
         textStyles={[styles.firtsTimeText, global.white]}
-        buttonStyles={[styles.firtsTimeBtn, global.bgBlack]}
+        buttonStyles={[styles.firtsTimeBtn, global.mainBgColor]}
       />
     </View>
   );

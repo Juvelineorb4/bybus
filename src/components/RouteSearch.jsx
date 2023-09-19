@@ -53,7 +53,7 @@ const RouteSearch = () => {
         />
         <TouchableOpacity
           activeOpacity={1}
-          style={[styles.search, global.mainBgColor]}
+          style={[styles.search, global.mainBgColorSecond]}
           onPress={() => {
             setResult({
               time: route?.time,

@@ -20,10 +20,10 @@ const StripItem = ({ item, button = true }) => {
         <Text style={[styles.title, global.black]}>{item.title}</Text>
         <Text style={[styles.subtitle, global.black]}>{item.subtitle}</Text>
         {button && <CustomButton
-          text={`Next`}
+          text={`Siguiente`}
           handlePress={() => navigation.navigate("Home")}
           textStyles={[styles.textNext, global.white]}
-          buttonStyles={[styles.next, global.bgBlack]}
+          buttonStyles={[styles.next, global.mainBgColor]}
         />}
       </View>
     </View>

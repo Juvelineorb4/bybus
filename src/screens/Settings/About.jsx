@@ -20,35 +20,35 @@ const About = () => {
         />
         <CustomText
           styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
-          title="Welcome back"
-          subtitle="Access your account"
+          title="Bienvenido de nuevo"
+          subtitle="Accede a tu cuenta"
         />
       </View>
       <View>
         <View style={[global.bgWhiteSmoke, styles.line]} />
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>App version</Text>
+          <Text style={[styles.textSelect, global.midGray]}>Version de la Aplicacion</Text>
           <Text style={[styles.appVersion, global.black]}>1.0.0</Text>
         </View>
         <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>License</Text>
+          <Text style={[styles.textSelect, global.midGray]}>Licencia</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}
           >
-            <Text style={[styles.textSelectRight, global.black]}>Read license agreement</Text>
+            <Text style={[styles.textSelectRight, global.black]}>Leer licencia de acuerdo</Text>
             <Icon name={`arrow-right`} size={20} color={`#1F1F1F`} />
           </TouchableOpacity>
         </View>
         <View style={[styles.line, global.bgWhiteSmoke]} />
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>Review app</Text>
+          <Text style={[styles.textSelect, global.midGray]}>Nuestros comentarios</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}
           >
-            <Text style={[styles.textSelectRight, global.black]}>Have your say</Text>
+            <Text style={[styles.textSelectRight, global.black]}>Que dicen</Text>
             <Icon name={`arrow-right`} size={20} color={`#1F1F1F`} />
           </TouchableOpacity>
         </View>

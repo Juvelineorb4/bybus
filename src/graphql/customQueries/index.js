@@ -47,3 +47,46 @@ export const listBookings = /* GraphQL */ `
     }
   }
 `;
+
+export const listOrderDetails = /* GraphQL */ `
+  query ListOrderDetails(
+    $filter: ModelOrderDetailFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderDetails(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        amount
+        paymentMethod
+        customerName
+        customerEmail
+        isGuest
+        paymentID
+        payment {
+          id
+          reference
+          amount
+          metadata
+          userID
+          createdAt
+          updatedAt
+          owner
+        }
+        orderTickets {
+          items {
+            id
+            ticketID
+          }
+          nextToken
+        }
+        userID
+        createdAt
+        updatedAt
+        userOrdersId
+        owner
+      }
+      nextToken
+    }
+  }
+`;

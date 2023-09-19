@@ -7,6 +7,7 @@ import ActiveTickets from "@/components/ActiveTickets";
 import PreviousTickets from "@/components/PreviousTickets";
 
 const Tickets = ({ navigation }) => {
+  const global = require('@/utils/styles/global.js');
   const { routes } = tickets;
   const [active, setActive] = useState(true);
   const onHandlePress = () => {
@@ -16,7 +17,7 @@ const Tickets = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topContent}>
-        <Image
+        {/* <Image
           style={{
             width: "100%",
             height: 100,
@@ -25,8 +26,14 @@ const Tickets = ({ navigation }) => {
             resizeMode: "cover",
           }}
           source={require("@/utils/images/background-profile.png")}
-        />
-        <View style={styles.text}>
+        /> */}
+        <View style={[styles.text, {
+          width: "100%",
+          height: 100,
+          // position: "absolute",
+          borderBottomLeftRadius: 16,
+          // resizeMode: "cover",
+        }, global.mainBgColorSecond]}>
           <Text style={styles.title}>Mis tickets</Text>
         </View>
       </View>
@@ -43,19 +50,19 @@ const Tickets = ({ navigation }) => {
             onPress={onHandlePress}
             style={[
               styles.active,
-              { backgroundColor: active ? "#FF8811" : "#fafafa" },
+              { backgroundColor: active ? "#0077B6" : "#fafafa" },
             ]}
           >
-            <Text style={styles.textActive}>Active</Text>
+            <Text style={[styles.textActive, active ? global.white : global.black]}>Activos</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={onHandlePress}
             style={[
               styles.previous,
-              { backgroundColor: active ? "#fafafa" : "#FF8811" },
+              { backgroundColor: active ? "#fafafa" : "#0077B6" },
             ]}
           >
-            <Text style={styles.textPrevious}>Previous</Text>
+            <Text style={[styles.textPrevious, active ? global.black : global.white]}>Anteriores</Text>
           </TouchableOpacity>
         </View>
         {active ? <ActiveTickets /> : <PreviousTickets/>  }

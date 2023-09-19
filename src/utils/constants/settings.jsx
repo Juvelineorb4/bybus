@@ -1,8 +1,8 @@
 export const settings = {
   buttons: [
     {
-      title: "Notifications",
-      subtitle: "Get notified of changes to your route.",
+      title: "Notificaciones",
+      subtitle: "Recibe notificaciones sobre tus viajes y ofertas.",
       icon: {
         left: require('@/utils/images/notification_default.png')
       },
@@ -10,8 +10,8 @@ export const settings = {
       // routePush: false,
     },
     {
-      title: "Payment methods",
-      subtitle: "Set your payment preferences.",
+      title: "Metodos de pago",
+      subtitle: "Escoge tu metodo de pago preferencial.",
       icon: {
         left: require('@/utils/images/guarented.png'),
         right: require('@/utils/images/arrow_right.png'),
@@ -20,8 +20,8 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "App permissions",
-      subtitle: "Set which permissions the app has access to.",
+      title: "Permisos",
+      subtitle: "Selecciona los permisos que podemos tener acceso.",
       icon: {
         left: require('@/utils/images/editcard.png'),
         right: require('@/utils/images/arrow_right.png'),
@@ -30,8 +30,8 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "Introduction",
-      subtitle: "Was guided through our new app.",
+      title: "Introduccion",
+      subtitle: "Guia resumen de nuestra app.",
       icon: {
         left: require('@/utils/images/walk.png'),
         right: require('@/utils/images/arrow_right.png'),
@@ -40,8 +40,8 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "Privacy & Policy",
-      subtitle: "See details of our policy",
+      title: "Politicas y Privacidad",
+      subtitle: "Mira las politicas de nuestra aplicacion",
       icon: {
         left: require('@/utils/images/question_black.png'),
         right: require('@/utils/images/arrow_right.png'),
@@ -50,8 +50,8 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "App specs",
-      subtitle: "See details about the app",
+      title: "Especificaciones de la App",
+      subtitle: "Mira los detalles de nuestra aplicacion",
       icon: {
         left: require('@/utils/images/info.png'),
         right: require('@/utils/images/arrow_right.png'),
@@ -60,7 +60,7 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "Logout",
+      title: "Cierra Sesion",
       icon: {
         left: require('@/utils/images/exit.png')
       },
@@ -68,7 +68,7 @@ export const settings = {
       // routePush: true,
     },
     {
-      title: "Login",
+      title: "Inicia Sesion",
       icon: {
         left: require('@/utils/images/exit.png')
       },

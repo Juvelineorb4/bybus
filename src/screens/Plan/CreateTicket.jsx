@@ -353,7 +353,7 @@ const CreateTicket = ({ navigation, route }) => {
       </View>
       <View style={styles.button}>
         <CustomButton
-          text={`Continue`}
+          text={`Continuar`}
           handlePress={handleSubmit(onHandleOrder)}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.bgBlack]}

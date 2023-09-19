@@ -96,7 +96,7 @@ const Edit = () => {
             }}
             uriSelect={setImageUri}
           />
-          <Text style={[styles.editTitle, global.black]}>Edit your profile below</Text>
+          <Text style={[styles.editTitle, global.black]}>Edita tu perfil</Text>
         </View>
       </View>
       <View style={styles.editInput}>
@@ -109,7 +109,7 @@ const Edit = () => {
             error: styles.errorInput,
             input: [styles.inputContainer, global.bgWhiteSoft],
           }}
-          text={`Full Name`}
+          text={`Nombre completo`}
           icon={{
             name: "account-circle-outline",
             color: "#404040",
@@ -125,7 +125,7 @@ const Edit = () => {
             error: styles.errorInput,
             input: [styles.inputContainer, global.bgWhiteSoft],
           }}
-          text={`Email`}
+          text={`Correo electronico`}
           icon={{
             name: "account-circle-outline",
             color: "#404040",
@@ -136,7 +136,7 @@ const Edit = () => {
 
 
         <CustomButton
-          text={`Update Perfil`}
+          text={`Actualizar perfil`}
           handlePress={handleSubmit(onHandleUpdateProfile)}
           textStyles={styles.textButton}
           buttonStyles={styles.Button}
