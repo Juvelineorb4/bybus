@@ -11,7 +11,7 @@ const PaymentView = ({ navigation }) => {
         style={styles.button}
         onPress={() => navigation.navigate(routes.view)}
       >
-        <Text>Complete your purchase</Text>
+        <Text>Completa tu compra</Text>
       </TouchableOpacity>
     </View>
   );

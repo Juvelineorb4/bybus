@@ -8,8 +8,8 @@ const Terms = () => {
   return (
     <ScrollView style={{ flex: 1, padding: 20, backgroundColor: 'white' }}>
       <CustomText
-        title={`Privacy and Cookie Policy`}
-        subtitle={`How we process personal data at ByBus C.A.`}
+        title={`Politicas y Privacidad`}
+        subtitle={`Como procesamos tu informacion personal en ByBus C.A.`}
         styled={{
           title: [styles.title, global.black],
           subtitle: [styles.subtitle. global.topGray],

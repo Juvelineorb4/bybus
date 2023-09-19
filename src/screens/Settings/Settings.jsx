@@ -47,7 +47,7 @@ const Settings = ({ navigation }) => {
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={styles.profile}>
-        <Image
+        {/* <Image
           style={{
             width: "100%",
             height: "100%",
@@ -55,7 +55,12 @@ const Settings = ({ navigation }) => {
             resizeMode: "cover",
           }}
           source={require("@/utils/images/background-profile.png")}
-        />
+        /> */}
+        <View style={[{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+        }, global.mainBgColorSecond]}/>
         <View style={styles.profileContent}>
           <View style={styles.containerImage}>
             <View style={styles.image}>
@@ -101,7 +106,7 @@ const Settings = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Text style={[styles.title, global.black]}>Settings</Text>
+      <Text style={[styles.title, global.black]}>Configuracion</Text>
       {buttons.map((button, index) => (
         <View key={index}>
           {button.route ? (

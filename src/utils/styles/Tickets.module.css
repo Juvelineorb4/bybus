@@ -4,15 +4,17 @@
 }
 .topContent {
   /* flex: 1; */
+  
   margin-bottom: 20px;
 }
 .text {
   padding: 20px 20px;
+  height: 100px;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "lightItalic";
   font-size: 24px;
-  color: #1f1f1f;
+  color: #ffffff;
   position: relative;
   top: 20px;
   margin-bottom: 10px;
@@ -25,7 +27,6 @@
 }
 .content {
   flex: 1;
-  padding: 20px;
 }
 
 .button {
@@ -45,6 +46,7 @@
   font-family: "regular";
 }
 .buttons {
+  padding: 20px 20px 0px;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -67,7 +69,6 @@
 .textPrevious {
   font-family: "thinItalic";
   font-size: 16px;
-  color: #1a1528;
 }
 .leftContentActive,
 .contentActive {

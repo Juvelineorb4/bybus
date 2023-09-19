@@ -6,8 +6,8 @@ import styles from "@/utils/styles/PreviousTickets.module.css";
 const PreviousTickets = () => {
   const global = require('@/utils/styles/global.js');
   const items = [
-    { label: "Latest", value: "latest" },
-    { label: "Newest", value: "newest" },
+    { label: "Antiguas", value: "latest" },
+    { label: "Nuevas", value: "newest" },
   ];
   return (
     <View style={styles.contentPrevious}>

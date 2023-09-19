@@ -22,7 +22,7 @@ const CustomTravelCard = () => {
       <View style={{marginLeft: 10}}>
         <Text style={[styles.time, global.black]}>14:05</Text>
         <View style={{ justifyContent: "space-between", flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={[styles.from, global.midGray]}>From</Text>
+          <Text style={[styles.from, global.midGray]}>Desde</Text>
           <Text style={[styles.station, global.black]}>Terminal Guanare</Text>
         </View>
       </View>

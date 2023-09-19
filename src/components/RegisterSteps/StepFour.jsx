@@ -46,20 +46,20 @@ const StepFour = () => {
           subtitle: styles.subtitle,
           container: styles.textContainer,
         }}
-        title={`Enter code`}
+        title={`Ingresar codigo`}
         // subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
-        subtitle={`We have sent you a confirmation code on the email`}
+        subtitle={`Te enviamos un correo electronico`}
       />
       <EnterCode
-        title={`Didn't you get your code?`}
-        subtitle={"Send the code again"}
+        title={`No recibiste ningun correo?`}
+        subtitle={"Enviar de nuevo"}
         styled={{
           container: styles.enterCode,
         }}
         control={control}
       />
       <CustomButton
-        text={`Confirm Account`}
+        text={`Confirmar cuenta`}
         handlePress={handleSubmit(omHandleConfirm)}
         textStyles={styles.textContinue}
         buttonStyles={styles.continue}

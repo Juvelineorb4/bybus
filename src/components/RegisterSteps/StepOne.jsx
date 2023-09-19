@@ -56,8 +56,8 @@ const StepOne = () => {
             subtitle: styles.subtitle,
             container: styles.textContainer,
           }}
-          title={`Account details`}
-          subtitle={`Fill in some details about you to create your new account.`}
+          title={`Detalles de tu cuenta`}
+          subtitle={`Llena la informacion para que creemos tu cuenta nueva.`}
 
         />
         <CustomInput
@@ -70,17 +70,17 @@ const StepOne = () => {
             error: styles.errorInput,
             input: styles.inputContainer,
           }}
-          text={`Full Name`}
+          text={`Nombre completo`}
           icon={require('@/utils/images/profile_default.png')}
           rules={{
-            required: "Name is required",
+            required: "Requerido",
             minLength: {
               value: 3,
-              message: "Min 3 characters"
+              message: "Minimo 3 caracteres"
             },
             maxLength: {
               value: 24,
-              message: "Max 24 characters"
+              message: "Maximo 24 caracteres"
             }
           }}
         />
@@ -94,11 +94,11 @@ const StepOne = () => {
             error: styles.errorInput,
             input: styles.inputContainer,
           }}
-          text={`Email`}
+          text={`Correo electronico`}
           icon={require('@/utils/images/email.png')}
           rules={{
-            required: "Email is required",
-            pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
+            required: "Requerido",
+            pattern: { value: EMAIL_REGEX, message: "Invalido" }
           }}
         />
         <CustomInput
@@ -111,14 +111,14 @@ const StepOne = () => {
             error: styles.errorInput,
             input: styles.inputContainer,
           }}
-          text={`Password`}
+          text={`Contrasena`}
           icon={require('@/utils/images/password.png')}
           security={true}
           rules={{
-            required: "Password is required",
+            required: "Requerido",
             minLength: {
               value: 8,
-              message: "Min 8 characters"
+              message: "Minimo 8 caracteres"
             },
           }}
 
@@ -133,20 +133,20 @@ const StepOne = () => {
             error: styles.errorInput,
             input: styles.inputContainer,
           }}
-          text={`Repeat Password`}
+          text={`Repetir contrasena`}
           icon={require('@/utils/images/password.png')}
           security={true}
           rules={{
-            required: "Password Repeat is required",
+            required: "Requerido",
             validate: value =>
-              value == pwd || 'Password do not match'
+              value == pwd || 'No coinciden'
           }}
         />
-        <Text style={styles.terms}>I accept the Terms and Privacy Policy</Text>
+        <Text style={styles.terms}>Acepto los Terminos y Condiciones</Text>
       </ScrollView>
       <View style={styles.controls}>
         <CustomButton
-          text={`Continue`}
+          text={`Continuar`}
           handlePress={handleSubmit(onHandleRegister)}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}

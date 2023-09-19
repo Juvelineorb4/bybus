@@ -74,7 +74,7 @@ const CustomImageSelect = ({ styled = {}, button, uriSelect }) => {
         />
         {button && (
           <CustomButton
-            text="Select Image"
+            text="Seleccionar imagen"
             handlePress={pickImage}
             textStyles={styled.btnText}
             buttonStyles={styled.btnBg}

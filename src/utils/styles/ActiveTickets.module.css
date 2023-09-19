@@ -1,11 +1,10 @@
-.leftContentActive,
 .contentActive {
+  flex: 1;
+  padding: 20px
+}
+.leftContentActive {
   flex-direction: row;
   align-items: center;
-}
-.contentActive {
-  justify-content: space-between;
-  margin-top: 20px;
 }
 .textContentActive {
   font-family: "thinItalic";

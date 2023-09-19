@@ -24,7 +24,7 @@ const Login = ({ navigation, route }) => {
 
   return (
     <View style={[styles.container, global.bgWhite]}>
-      <Image
+      {/* <Image
         style={{
           width: "100%",
           height: "100%",
@@ -33,7 +33,7 @@ const Login = ({ navigation, route }) => {
           resizeMode: "contain",
         }}
         source={require("@/utils/images/texture.png")}
-      />
+      /> */}
       <View style={styles.content}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
@@ -44,35 +44,36 @@ const Login = ({ navigation, route }) => {
             <View styles={styles.textContent}>
               <Image
                 style={{
-                  width: 60,
-                  height: 60,
-                  resizeMode: "contain",
+                  width: 200,
+                  height: 40,
+                  resizeMode: "cover",
                   alignSelf: "center",
+                  marginVertical: 15
                 }}
                 source={require("@/utils/images/icon.png")}
               />
               <CustomText
                 styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
-                title="Welcome back"
-                subtitle="Access your account"
+                title="Bienvenido de nuevo"
+                subtitle="Accede a tu cuenta"
               />
             </View>
             <View style={styles.signin}>
               <CustomInput
                 control={control}
                 name={`email`}
-                placeholder={"Write your email..."}
+                placeholder={"ejemplo@email.com"}
                 styled={{
                   text: styles.textInput,
                   label: [styles.labelInput, global.topGray],
                   error: styles.errorInput,
                   input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
-                text={`Email`}
+                text={`Correo electronico`}
                 icon={require('@/utils/images/email.png')}
                 rules={{
-                  required: "Email is required",
-                  pattern: { value: EMAIL_REGEX, message: "Invalid Email" }
+                  required: "Requerido",
+                  pattern: { value: EMAIL_REGEX, message: "Invalido" }
                 }}
               />
               <CustomInput
@@ -85,14 +86,14 @@ const Login = ({ navigation, route }) => {
                   error: styles.errorInputP,
                   input: [styles.inputContainerP, global.bgWhiteSoft],
                 }}
-                text={`Password`}
+                text={`Contrasena`}
                 icon={require('@/utils/images/password.png')}
                 security={true}
                 rules={{
-                  required: "Password is required",
+                  required: "Requerido",
                   minLength: {
                     value: 8,
-                    message: "Min 8 characters"
+                    message: "Minimo 8 caracteres"
                   },
                 }}
               />
@@ -101,21 +102,23 @@ const Login = ({ navigation, route }) => {
           </View>
           <View style={styles.buttons}>
             <CustomButton
-              text={`Log In`}
-              handlePress={handleSubmit(onHandleLogin)}
+              text={`Iniciar sesion`}
+              // handlePress={handleSubmit(onHandleLogin)}
+              handlePress={() => navigation.navigate("Welcome_Start")}
+
               textStyles={[styles.textLogin, global.white]}
-              buttonStyles={[styles.login, global.bgBlack]}
+              buttonStyles={[styles.login, global.mainBgColor]}
             />
             <View style={styles.selects}>
               <CustomButton
-                text={`Forgot your password?`}
+                text={`Olvidaste tu contrasena?`}
                 handlePress={() => navigation.navigate("Forgot_App")}
                 textStyles={[styles.forgot, global.topGray]}
               />
             </View>
             <View style={styles.hairline}>
               <View style={[styles.line, global.bgWhiteSmoke]} />
-              <Text style={[styles.textLine, global.bgWhite, global.midGray]}>Or log in with</Text>
+              <Text style={[styles.textLine, global.bgWhite, global.midGray]}>O inicia sesion con</Text>
             </View>
 
             <View style={styles.extras}>

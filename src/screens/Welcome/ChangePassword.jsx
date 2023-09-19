@@ -84,22 +84,22 @@ const ChangePassword = ({ navigation, route }) => {
                 subtitle: styles.subtitle,
                 container: styles.textContainer,
               }}
-              title={`Create password`}
-              subtitle={`Create a new password for your account`}
+              title={`Crear contrasena`}
+              subtitle={`Crear una nueva contrasena para tu cuenta`}
             />
           </View>
           <View>
             <CustomInput
               control={control}
               name={`password`}
-              placeholder={"Write your new password..."}
+              placeholder={"*********"}
               styled={{
                 text: styles.textInput,
                 label: styles.labelInput,
                 error: styles.errorInput,
                 input: styles.inputContainer,
               }}
-              text={`New Password`}
+              text={`Nueva contrasena`}
               icon={{
                 name: "lock-outline",
                 color: "#404040",
@@ -107,10 +107,10 @@ const ChangePassword = ({ navigation, route }) => {
               }}
               security={true}
               rules={{
-                required: "Password is required",
+                required: "Requerido",
                 minLength: {
                   value: 8,
-                  message: "Min 8 characters"
+                  message: "Minimo 8 caracteres"
                 },
               }}
             />
@@ -121,14 +121,14 @@ const ChangePassword = ({ navigation, route }) => {
             <CustomInput
               control={control}
               name={`password-confirm`}
-              placeholder={"Please confirm your password..."}
+              placeholder={"********"}
               styled={{
                 text: styles.textInput,
                 label: styles.labelInput,
                 error: styles.errorInput,
                 input: styles.inputContainer,
               }}
-              text={`Confirm Password`}
+              text={`Confirmar contrasena`}
               icon={{
                 name: "lock-outline",
                 color: "#404040",
@@ -136,16 +136,15 @@ const ChangePassword = ({ navigation, route }) => {
               }}
               security={true}
               rules={{
-                required: "Password Repeat is required",
+                required: "Requerido",
                 validate: value =>
-                  value == pwd || 'Password do not match'
+                  value == pwd || 'No coinciden las contrasenas'
               }}
             />
           </View>
           <Text style={styles.code}>
-            We send you a 6-digit security code to your email:{" "}
-            <Text style={styles.emailText}>{route.params?.email}</Text> .The code will
-            expire in:{" "}
+          Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
+            <Text style={styles.emailText}>{route.params?.email}</Text> .El codigo expirara en:{" "}
             {route.params?.email && (
               <CustomTimer
                 styled={{
@@ -159,8 +158,8 @@ const ChangePassword = ({ navigation, route }) => {
             )}
           </Text>
           <EnterCode
-            title={`Didn't you get your code?`}
-            subtitle={"Send the code again"}
+            title={`No te llego ningun codigo?`}
+            subtitle={"Enviar de nuevo"}
             styled={{
               container: styles.enterCode,
             }}
@@ -169,7 +168,7 @@ const ChangePassword = ({ navigation, route }) => {
           />
         </ScrollView>
         <CustomButton
-          text={`Confirm New Password`}
+          text={`Confirmar nueva contrasena`}
           handlePress={handleSubmit(onHandleNewPassword)}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}

@@ -13,8 +13,8 @@ const Permissions = () => {
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <CustomText
-        title={`Permits`}
-        subtitle={`We collect data in the app to make your journey as smooth as possible.`}
+        title={`Permisos`}
+        subtitle={`Recolectamos y usamos tu informacion en medida de lo que nos permitas`}
         styled={{
           title: [styles.title, global.black],
           subtitle: styles.subtitle,
