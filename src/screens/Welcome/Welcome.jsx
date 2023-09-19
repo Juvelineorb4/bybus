@@ -24,36 +24,37 @@ const Welcome = ({ navigation, route }) => {
           <View style={styles.name}>
             <Image
               style={{
-                width: 36,
-                height: 36,
-                resizeMode: "contain",
+                width: 200,
+                height: 40,
+                resizeMode: "cover",
+                marginLeft: -20
               }}
               source={require("@/utils/images/icon.png")}
             />
-            <Text style={[styles.textName, global.black]}>{content.name}</Text>
+            {/* <Text style={[styles.textName, global.black]}>{content.name}</Text> */}
           </View>
-          <Text style={[styles.textTitle, global.black]}>{content.title}</Text>
-          <Text style={[styles.textSubtitle, global.black]}>{content.subtitle}</Text>
+          <Text style={[styles.textTitle, global.mainColor]}>{content.title}</Text>
+          <Text style={[styles.textSubtitle, global.white]}>{content.subtitle}</Text>
         </View>
         <View style={styles.buttons}>
           <CustomButton
             text={signin.button}
             handlePress={() => navigation.navigate(route.params.LOGIN)}
-            textStyles={[styles.textSignIn, global.white]}
-            buttonStyles={[styles.signin, global.bgBlack]}
+            textStyles={[styles.textSignIn, global.mainColor]}
+            buttonStyles={[styles.signin, global.bgWhite]}
           />
           <CustomButton
             text={register.button}
             handlePress={() => navigation.navigate(route.params.REGISTER)}
-            textStyles={[styles.textRegister, global.black]}
+            textStyles={[styles.textRegister, global.white]}
             buttonStyles={[styles.register, global.mainBgColor]}
           />
-          <CustomButton
+          {/* <CustomButton
             text={intro.button}
             handlePress={() => navigation.navigate("Welcome_Start")}
             textStyles={[styles.textContinue, global.midgray]}
             buttonStyles={styles.continueBtnn}
-          />
+          /> */}
         </View>
       </View>
     </View>

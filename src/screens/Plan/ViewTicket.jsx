@@ -50,7 +50,7 @@ const ViewTicket = ({ navigation, route }) => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <Text style={[styles.titleTickets2, global.black]}>Email</Text>
+              <Text style={[styles.titleTickets2, global.black]}>Correo</Text>
               <Text style={[styles.titlePrice2, global.black]}>
                 {customer.email}
               </Text>

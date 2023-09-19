@@ -24,18 +24,18 @@ const LeftHeader = ({ text = "", icon = true, route}) => {
         <View style={styles.home}>
           <Image
             style={{
-              width: 30,
-              height: 30,
-              resizeMode: "contain",
+              width: 100,
+              height: 40,
+              resizeMode: "cover",
             }}
             source={require("@/utils/images/icon.png")}
           />
-          <Text
+          {/* <Text
             onPress={() => navigation.navigate("Home")}
             style={[styles.textLogo, global.black]}
           >
             {text}
-          </Text>
+          </Text> */}
         </View>
       )}
     </View>

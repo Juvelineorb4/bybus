@@ -6,7 +6,7 @@ export const tickets = {
   },
   buttons: [
     {
-      title: "Single ticket",
+      title: "Boleto standar",
       subtitle: "I just need to go for a ride.",
       icon: {
         left: {

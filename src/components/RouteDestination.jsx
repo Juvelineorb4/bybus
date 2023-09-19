@@ -14,7 +14,7 @@ const RouteDestination = () => {
     return (
         <View style={[styles.container, styles.containerRouteDestination]}>
             <View style={[styles.contentText, { flex: 5 }]}>
-                <CustomText text="Destination" />
+                <CustomText text="Destino" />
                 <CustomText gray text="Guanare, Portuguesa" />
             </View>
             <View style={styles.containerButton}>

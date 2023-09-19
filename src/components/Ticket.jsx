@@ -36,7 +36,7 @@ const Ticket = () => {
             {/* Bolita blanca */}
             {/* Content Bottom */}
             <View style={[styles.bottomTicket]}>
-                <Text style={styles.methodTitleTicked}>Price with travel Card</Text>
+                <Text style={styles.methodTitleTicked}>Precio con tu tarjeta de Viaje</Text>
                 <Text style={styles.priceTicked}>5.00$</Text>
             </View>
         </View>

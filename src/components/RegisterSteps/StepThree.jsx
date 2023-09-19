@@ -45,15 +45,14 @@ const StepThree = () => {
           subtitle: styles.subtitle,
           container: styles.textContainer,
         }}
-        title={`Add payment method`}
-        subtitle={`Connect your travel card or add your 
-        debate/credit card.`}
+        title={`Agregar metodo de pago`}
+        subtitle={`Conecta tus metodos de pago a tu tarjeta de viaje`}
       />
       <View style={styles.methods}>
         <View style={styles.travel}>
           <View style={styles.lineTop} />
 
-          <Text style={styles.titleTravel}>Travel card</Text>
+          <Text style={styles.titleTravel}>Tarjeta de viaje</Text>
           <CustomButton
             text={`Connect`}
             textStyles={styles.textTravelButton}
@@ -61,10 +60,10 @@ const StepThree = () => {
           />
           <View style={styles.lineDown} />
         </View>
-        <PaymentCard button={true} text="Add Card" />
+        <PaymentCard button={true} text="Agregar tarjeta" />
       </View>
       <CustomButton
-        text={`Continue`}
+        text={`Continuar`}
         handlePress={handleSubmit(onHandleRegister)}
         textStyles={styles.textContinue}
         buttonStyles={styles.continue}

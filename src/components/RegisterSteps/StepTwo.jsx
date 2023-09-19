@@ -20,8 +20,8 @@ export default function StepTwo() {
           subtitle: styles.subtitle,
           container: styles.textContainer,
         }}
-        title={`Profile picture`}
-        subtitle={`Fill in some details about you to create your new account.`}
+        title={`Foto de Perfil`}
+        subtitle={`Proporcionanos una foto de perfil para identificarte`}
       />
       <CustomImageSelect
         styled={{
@@ -37,7 +37,7 @@ export default function StepTwo() {
       />
       <View style={styles.controls}>
         <CustomButton
-          text={`Skip`}
+          text={`Saltar`}
           handlePress={handleSubmit(() =>
             navigation.navigate("Register_StepFour", route.params)
           )}
@@ -45,7 +45,7 @@ export default function StepTwo() {
           buttonStyles={styles.skip}
         />
         <CustomButton
-          text={`Continue`}
+          text={`Continuar`}
           handlePress={handleSubmit(() =>
             navigation.navigate("Register_StepFour", route.params)
           )}

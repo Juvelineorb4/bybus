@@ -31,8 +31,8 @@ const PaymentMethods = () => {
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <CustomText
-        title={`Payment methods`}
-        subtitle={`Add a payment method and change its sequence when paying for your ticket.`}
+        title={`Metodos de pago`}
+        subtitle={`Agrega un metodo de pago y cambia tu metodo preferencial.`}
         styled={{
           title: [styles.title, global.black],
           subtitle: [styles.subtitle, global.topGray],
@@ -43,7 +43,7 @@ const PaymentMethods = () => {
         <View style={[styles.travelCard, global.bgWhite]}>
           <View style={styles.positionCard}>
             <CustomCardTitle
-              title={`Travel Card`}
+              title={`Tarjeta de viaje`}
               icon={{
                 name: "dots-grid",
                 size: 20,
@@ -56,13 +56,13 @@ const PaymentMethods = () => {
             />
             {paymentValue === "Travel_Card" ? (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 textStyles={[styles.textPredeterminedOff, global.black]}
                 buttonStyles={[styles.predeterminedOff, global.bgWhite]}
               />
             ) : (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 handlePress={() => setPaymentValue("Travel_Card")}
                 textStyles={[styles.textPredetermined, global.white]}
                 buttonStyles={[styles.predetermined, global.bgBlack]}
@@ -95,7 +95,7 @@ const PaymentMethods = () => {
               }}
             >
               <Icon name={`check-decagram`} size={16} color={`#317f43`} />
-              <Text style={[styles.activePredetermined, global.black]}>Predetermined</Text>
+              <Text style={[styles.activePredetermined, global.black]}>Predeterminado</Text>
             </View>
           )}
         </View>
@@ -115,13 +115,13 @@ const PaymentMethods = () => {
             />
             {paymentValue === "Mobile_Pay" ? (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 textStyles={styles.textPredeterminedOff}
                 buttonStyles={styles.predeterminedOff}
               />
             ) : (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 handlePress={() => setPaymentValue("Mobile_Pay")}
                 textStyles={styles.textPredetermined}
                 buttonStyles={styles.predetermined}
@@ -137,7 +137,7 @@ const PaymentMethods = () => {
               }}
             >
               <Icon name={`check-decagram`} size={16} color={`#317f43`} />
-              <Text style={styles.activePredetermined}>Predetermined</Text>
+              <Text style={styles.activePredetermined}>Predeterminado</Text>
             </View>
           )}
         </View>
@@ -157,13 +157,13 @@ const PaymentMethods = () => {
             />
             {paymentValue === "CreditDebit_Card" ? (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 textStyles={styles.textPredeterminedOff}
                 buttonStyles={styles.predeterminedOff}
               />
             ) : (
               <CustomButton
-                text={`Predetermined`}
+                text={`Predeterminado`}
                 handlePress={() => setPaymentValue("CreditDebit_Card")}
                 textStyles={styles.textPredetermined}
                 buttonStyles={styles.predetermined}
@@ -171,7 +171,7 @@ const PaymentMethods = () => {
             )}
           </View>
           <View style={{marginVertical: 15}}>
-            <PaymentCard button={true} text={`Add Card`} />
+            <PaymentCard button={true} text={`Agregar tarjeta`} />
           </View>
           {paymentValue === "CreditDebit_Card" && (
             <View
@@ -181,7 +181,7 @@ const PaymentMethods = () => {
               }}
             >
               <Icon name={`check-decagram`} size={16} color={`#317f43`} />
-              <Text style={styles.activePredetermined}>Predetermined</Text>
+              <Text style={styles.activePredetermined}>Predeterminado</Text>
             </View>
           )}
         </View>
