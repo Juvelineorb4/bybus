@@ -27,6 +27,7 @@ export default function StepTwo() {
         styled={{
           container: styles.imageContent,
           image: styles.image,
+          defaultImage: styles.defaultImage,
           buttons: styles.buttons,
           text: styles.textCamera,
           camera: styles.camera,

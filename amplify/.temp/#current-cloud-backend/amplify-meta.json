@@ -1,0 +1,205 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bybus-dev-171204-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-171204-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-171204-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bybus-dev-171204-deployment",
+      "UnauthRoleName": "amplify-bybus-dev-171204-unauthRole",
+      "StackName": "amplify-bybus-dev-171204",
+      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-dev-171204/578a9c60-4758-11ee-afae-0ac4265df69d",
+      "AmplifyAppId": "d2rxqiq1km3s0s"
+    }
+  },
+  "api": {
+    "bybusgraphql": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authbybus"
+              }
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AWS_IAM"
+          }
+        },
+        "GraphQLAPIIdOutput": "iienhua77zfkrmweayh2i2akx4",
+        "GraphQLAPIEndpointOutput": "https://ynuhf5f7w5gjvk4wk76fesbn4e.appsync-api.us-east-1.amazonaws.com/graphql"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-09-21T18:29:34.496Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apibybusgraphql"
+      },
+      "lastPushDirHash": "XNlPnvw00wPwV+1FwYjMJeCzoKY="
+    }
+  },
+  "auth": {
+    "bybus": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "NAME"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_oFqO1VjQw",
+        "AppClientIDWeb": "52akfkjktvckgpavoubdup3ttn",
+        "AppClientID": "6isol6p0n4p9a08dv6ti9pe215",
+        "IdentityPoolId": "us-east-1:ff394307-6076-4ecd-a05c-1a9ce37528de",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:074471573912:userpool/us-east-1_oFqO1VjQw",
+        "IdentityPoolName": "testAuthIdentityPool__dev",
+        "UserPoolName": "bybus"
+      },
+      "lastPushTimeStamp": "2023-09-21T18:29:24.871Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/auth/bybus-cloudformation-template.json",
+        "logicalId": "authbybus"
+      }
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "bybus",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups",
+      "output": {
+        "spGroupRole": "arn:aws:iam::074471573912:role/us-east-1_oFqO1VjQw-spGroupRole",
+        "adminGroupRole": "arn:aws:iam::074471573912:role/us-east-1_oFqO1VjQw-adminGroupRole",
+        "agencyGroupRole": "arn:aws:iam::074471573912:role/us-east-1_oFqO1VjQw-agencyGroupRole"
+      },
+      "lastPushTimeStamp": "2023-09-21T18:29:24.925Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      }
+    }
+  },
+  "function": {
+    "bybus508ffe57": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::074471573912:role/bybusLambdaRolefc2516b1-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:074471573912:function:bybus508ffe57-dev",
+        "Name": "bybus508ffe57-dev",
+        "LambdaExecutionRole": "bybusLambdaRolefc2516b1-dev"
+      },
+      "lastPushTimeStamp": "2023-09-21T18:29:24.957Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/function/bybus508ffe57-cloudformation-template.json",
+        "logicalId": "functionbybus508ffe57"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-bybus-dev-171204-deployment",
+        "s3Key": "amplify-builds/bybus508ffe57-792b7159656937526230-build.zip"
+      },
+      "lastBuildTimeStamp": "2023-09-21T16:29:22.171Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-09-21T16:29:22.231Z",
+      "distZipFilename": "bybus508ffe57-792b7159656937526230-build.zip",
+      "lastPushDirHash": "H+fSio/8/WsKBE893E8RtHmTZUA="
+    },
+    "createAgencyAdmin": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        },
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::074471573912:role/bybusLambdaRole78d2cbac-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:074471573912:function:createAgencyAdmin-dev",
+        "Name": "createAgencyAdmin-dev",
+        "LambdaExecutionRole": "bybusLambdaRole78d2cbac-dev"
+      },
+      "lastPushTimeStamp": "2023-09-21T18:29:24.982Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/function/createAgencyAdmin-cloudformation-template.json",
+        "logicalId": "functioncreateAgencyAdmin"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-bybus-dev-171204-deployment",
+        "s3Key": "amplify-builds/createAgencyAdmin-4358487343384f34436c-build.zip"
+      }
+    }
+  },
+  "storage": {
+    "s3bybus": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
+      "output": {
+        "BucketName": "s3bybus171204-dev",
+        "Region": "us-east-1"
+      },
+      "lastPushTimeStamp": "2023-09-21T18:29:25.006Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-bybus-dev-171204-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storages3bybus"
+      }
+    }
+  }
+}

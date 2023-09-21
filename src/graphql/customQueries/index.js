@@ -18,9 +18,6 @@ export const listBookings = /* GraphQL */ `
           }
           nextToken
         }
-        stops {
-          nextToken
-        }
         departureCity
         arrivalCity
         departure {

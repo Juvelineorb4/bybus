@@ -51,7 +51,7 @@ const CustomSelect = ({
           colors={{
             track: {
               false: "#767577",
-              true: "#FF8811",
+              true: "#00B4D8",
             },
             thumb: {
               false: "#f4f3f4",
