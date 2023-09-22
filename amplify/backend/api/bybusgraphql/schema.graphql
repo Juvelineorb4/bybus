@@ -142,7 +142,9 @@ type Employee
   pin: String
   type: EmployeeType @default(value: "OWNER")
   agencyID: ID @index(name: "byAgencyToEmployee")
+  agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID @index(name: "byOfficeToEmployee")
+  office: Office @belongsTo(fields: ["officeID"])
   permissions: [PermissionsEmployees]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
   lastConnection: String
@@ -246,7 +248,6 @@ type Customer
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam, operations: [read] }
       { allow: public, provider: iam, operations: [create, read] }
       {
         allow: groups
@@ -271,9 +272,9 @@ type Ticket
   @model
   @auth(
     rules: [
+      { allow: public, provider: iam, operations: [read] }
+      { allow: private, provider: iam, operations: [read] }
       { allow: owner }
-      { allow: public, provider: iam }
-      { allow: private, provider: iam }
       { allow: groups, groups: ["sp"], operations: [read] }
     ]
   ) {
@@ -295,8 +296,7 @@ type OrderTicket
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam }
-      { allow: public, provider: iam }
+      { allow: public, provider: iam, operations: [create, read] }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]
@@ -316,8 +316,7 @@ type OrderDetail
   @auth(
     rules: [
       { allow: owner }
-      { allow: public, provider: iam }
-      { allow: private, provider: iam }
+      { allow: public, provider: iam, operations: [create, read] }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]
@@ -328,22 +327,14 @@ type OrderDetail
   id: ID!
   amount: Float!
   paymentMethod: String
-  documentType: DocumentType
-  customerDocument: String
   customerName: String
   customerEmail: String
-  total: Int
+  customerDocument: String
   isGuest: Boolean
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
-  bookingID: ID
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
   userID: ID @index(name: "byUserToOrderDetail")
-}
-enum DocumentType {
-  V
-  E
-  P
 }
 
 type Payment
@@ -351,8 +342,7 @@ type Payment
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, provider: iam }
-      { allow: public, provider: iam }
+      { allow: public, provider: iam, operations: [create, read] }
       {
         allow: groups
         groups: ["sp", "admin", "agency", "office"]

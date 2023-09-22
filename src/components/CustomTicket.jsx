@@ -49,7 +49,7 @@ const CustomTicket = ({ data }) => {
           </View>
         </View>
       </View>
-      <Image
+      {/* <Image
         style={{
           width: "128%",
           height: 38,
@@ -57,7 +57,7 @@ const CustomTicket = ({ data }) => {
           resizeMode: "contain",
         }}
         source={require("@/utils/images/line-ticket.png")}
-      />
+      /> */}
       <View style={styles.qrContent}>
         <QRCode
           value={data.order}

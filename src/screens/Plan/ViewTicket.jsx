@@ -10,16 +10,16 @@ const ViewTicket = ({ navigation, route }) => {
   const total = quantity * data.price;
   return (
     <ScrollView>
-      <ImageBackground
+      {/* <ImageBackground
         style={{
           width: "100%",
           height: "100%",
           resizeMode: "cover",
         }}
         source={require("@/utils/images/background-profile.png")}
-      >
+      > */}
         <View style={styles.textContent}>
-          <Text style={[styles.titleTop, global.black]}>Tu(s) boleto(s)</Text>
+          <Text style={[styles.titleTop, global.mainColor]}>Tu(s) boleto(s)</Text>
           <View style={[styles.ticketsContainer]}>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
@@ -80,7 +80,7 @@ const ViewTicket = ({ navigation, route }) => {
             buttonStyles={[styles.guaranted, global.mainBgColor]}
           />
         </View>
-      </ImageBackground>
+      {/* </ImageBackground> */}
     </ScrollView>
   );
 };

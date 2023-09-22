@@ -663,7 +663,50 @@ export const createEmployee = /* GraphQL */ `
       pin
       type
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       permissions
       owner
       lastConnection
@@ -685,7 +728,50 @@ export const updateEmployee = /* GraphQL */ `
       pin
       type
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       permissions
       owner
       lastConnection
@@ -707,7 +793,50 @@ export const deleteEmployee = /* GraphQL */ `
       pin
       type
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       permissions
       owner
       lastConnection
@@ -1374,6 +1503,7 @@ export const createOrderDetail = /* GraphQL */ `
       paymentMethod
       customerName
       customerEmail
+      customerDocument
       isGuest
       paymentID
       payment {
@@ -1417,6 +1547,7 @@ export const updateOrderDetail = /* GraphQL */ `
       paymentMethod
       customerName
       customerEmail
+      customerDocument
       isGuest
       paymentID
       payment {
@@ -1460,6 +1591,7 @@ export const deleteOrderDetail = /* GraphQL */ `
       paymentMethod
       customerName
       customerEmail
+      customerDocument
       isGuest
       paymentID
       payment {
@@ -1557,6 +1689,7 @@ export const createOrderDetailHistory = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1600,6 +1733,7 @@ export const updateOrderDetailHistory = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1643,6 +1777,7 @@ export const deleteOrderDetailHistory = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1691,6 +1826,7 @@ export const createUser = /* GraphQL */ `
           paymentMethod
           customerName
           customerEmail
+          customerDocument
           isGuest
           paymentID
           userID
@@ -1727,6 +1863,7 @@ export const updateUser = /* GraphQL */ `
           paymentMethod
           customerName
           customerEmail
+          customerDocument
           isGuest
           paymentID
           userID
@@ -1763,6 +1900,7 @@ export const deleteUser = /* GraphQL */ `
           paymentMethod
           customerName
           customerEmail
+          customerDocument
           isGuest
           paymentID
           userID
