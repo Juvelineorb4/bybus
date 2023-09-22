@@ -16,12 +16,12 @@
 .camera {
   text-align: center;
   padding: 10px;
-  background-color: #1a1528;
+  background-color: #00B4D8;
   border-radius: 16px;
 }
 .textCamera {
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
   color: white;
   font-size: 14px;
 }
@@ -39,7 +39,7 @@
   border-radius: 16px;
 }
 .btnBg {
-  border: 1px solid #1a1528;
+  border: 1px solid #00B4D8;
   margin-left: 15px;
   width: 60%;
 }
@@ -48,7 +48,7 @@
 }
 .btnText {
   text-align: center;
-  color: #1a1528;
+  color: #00B4D8;
   font-size: 14px;
   font-family: 'regular';
 
@@ -61,7 +61,7 @@
 }
 .skip {
   width: 30%;
-  border: 1px solid #efeded;
+  border: 1px solid #00B4D8;
 }
 .textSkip,
 .textContinueTwo {
@@ -70,25 +70,26 @@
   font-family: 'regular';
 }
 .textSkip {
-  color: #1a1528;
+  color: #00B4D8;
 }
 .textContinueTwo {
   color: white;
 }
 .continueTwo {
   width: 65%;
-  background-color: #1a1528;
+  background-color: #00B4D8;
   margin-left: 10px;
 }
 .textContainer {
-  flex: 1;
-  justify-content: center;
+  margin: 30px 0;
 }
+
 .title {
   font-size: 30px;
-  color: #1f1f1f;
+  color: #00B4D8;
   text-align: center;
-  font-family: "thinItalic";
+  font-family: "light";
+  margin-bottom: 10px;
 }
 
 .subtitle {
@@ -97,4 +98,12 @@
   text-align: center;
   color: #404040;
   font-family: "thin";
+}
+
+.defaultImage {
+  width: 220px;
+  height: 220px;
+  border-radius: 500px;
+  border: 2.5px solid #00B4D8;
+  margin-bottom: 2rem;
 }

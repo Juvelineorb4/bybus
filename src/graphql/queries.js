@@ -482,7 +482,50 @@ export const getEmployee = /* GraphQL */ `
       pin
       type
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          nextToken
+        }
+        employees {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          nextToken
+        }
+        transports {
+          nextToken
+        }
+        bookings {
+          nextToken
+        }
+        owner
+        createdAt
+        updatedAt
+      }
       permissions
       owner
       lastConnection
@@ -506,7 +549,32 @@ export const listEmployees = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         permissions
         owner
         lastConnection
@@ -540,7 +608,32 @@ export const employeesByAgencyID = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         permissions
         owner
         lastConnection
@@ -574,7 +667,32 @@ export const employeesByOfficeID = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
         permissions
         owner
         lastConnection
@@ -795,6 +913,7 @@ export const listBookings = /* GraphQL */ `
         stock
         price
         createdBy
+        owner
         createdAt
         updatedAt
       }
@@ -1468,6 +1587,7 @@ export const getOrderDetail = /* GraphQL */ `
       paymentMethod
       customerName
       customerEmail
+      customerDocument
       isGuest
       paymentID
       payment {
@@ -1513,6 +1633,7 @@ export const listOrderDetails = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1559,6 +1680,7 @@ export const orderDetailsByUserID = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1630,6 +1752,7 @@ export const getOrderDetailHistory = /* GraphQL */ `
         paymentMethod
         customerName
         customerEmail
+        customerDocument
         isGuest
         paymentID
         payment {
@@ -1679,6 +1802,7 @@ export const listOrderDetailHistories = /* GraphQL */ `
           paymentMethod
           customerName
           customerEmail
+          customerDocument
           isGuest
           paymentID
           userID
@@ -1713,6 +1837,7 @@ export const getUser = /* GraphQL */ `
           paymentMethod
           customerName
           customerEmail
+          customerDocument
           isGuest
           paymentID
           userID

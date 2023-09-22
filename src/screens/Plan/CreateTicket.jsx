@@ -45,7 +45,7 @@ const CreateTicket = ({ navigation, route }) => {
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
-        <Image
+        {/* <Image
           style={{
             width: "100%",
             height: "100%",
@@ -57,17 +57,17 @@ const CreateTicket = ({ navigation, route }) => {
         />
         <View style={styles.text}>
           <Text style={[styles.title, global.black]}>Gestiona tu viaje</Text>
-        </View>
+        </View> */}
       </View>
       <View style={styles.content}>
         <View style={styles.selectPlan}>
           <Text
-            style={{
-              fontFamily: "thinItalic",
+            style={[{
+              fontFamily: "light",
               fontSize: 24,
               marginTop: 10,
               marginBottom: 15,
-            }}
+            }, global.mainColor]}
           >
             Tu viaje seleccionado
           </Text>
@@ -229,7 +229,7 @@ const CreateTicket = ({ navigation, route }) => {
           </View>
         </View>
         <View style={styles.tariff}>
-          <Text style={[styles.titleTariff, global.black]}>Tarifas</Text>
+          <Text style={[styles.titleTariff, global.mainColor]}>Tarifas</Text>
           <View style={styles.panelTariff}>
             <View style={styles.optionTariff}>
               <Text style={[styles.subtitleTariff, global.black]}>
@@ -251,7 +251,7 @@ const CreateTicket = ({ navigation, route }) => {
                 </TouchableOpacity>
                 <Text style={[styles.number, global.black]}>{quantity}</Text>
                 <TouchableOpacity
-                  style={[styles.moreButton, global.bgBlack]}
+                  style={[styles.moreButton, global.mainBgColor]}
                   onPress={() => {
                     setQuantity(quantity + 1);
                     console.log("suma", quantity);
@@ -270,7 +270,7 @@ const CreateTicket = ({ navigation, route }) => {
             placeholder={"00000000"}
             styled={{
               text: styles.textInput,
-              label: [styles.labelInput, global.topGray],
+              label: [styles.labelInput, global.mainColor],
               error: styles.errorInput,
               input: [styles.inputContainer, global.bgWhiteSoft],
               placeholder: styles.placeholder,
@@ -356,7 +356,7 @@ const CreateTicket = ({ navigation, route }) => {
           text={`Continuar`}
           handlePress={handleSubmit(onHandleOrder)}
           textStyles={[styles.textContinue, global.white]}
-          buttonStyles={[styles.continue, global.bgBlack]}
+          buttonStyles={[styles.continue, global.mainBgColor]}
         />
       </View>
     </ScrollView>

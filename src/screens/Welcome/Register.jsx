@@ -7,7 +7,7 @@ const Register = () => {
   const global = require('@/utils/styles/global.js');
   return (
     <View style={[styles.container, global.bgWhite]}>
-      <Image
+      {/* <Image
         style={{
           width: "100%",
           height: "100%",
@@ -16,7 +16,7 @@ const Register = () => {
           resizeMode: "contain",
         }}
         source={require("@/utils/images/texture.png")}
-      />
+      /> */}
       <StepOne />
     </View>
   );

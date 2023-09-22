@@ -111,7 +111,7 @@ const EnterCode = ({ title, subtitle, styled, control, onResendCode }) => {
         </View>
         <TouchableOpacity onPress={onResendCode}>
           <CustomText title={title} subtitle={subtitle} styled={{
-            title: [styles.title, global.black],
+            title: [styles.title, global.mainColorSecond],
             subtitle: [styles.subtitle, global.black]
           }} />
         </TouchableOpacity>

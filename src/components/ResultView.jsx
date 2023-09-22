@@ -61,7 +61,7 @@ const ResultView = ({ data }) => {
               marginTop: 30,
             }}
           >
-            <ActivityIndicator size="large" color="#ffce48" />
+            <ActivityIndicator size="large" color="#00B4D8" />
           </View>
         ) : search.length !== 0 ? (
           search.map((item, index) => <RouteCard data={item} key={index} />)
