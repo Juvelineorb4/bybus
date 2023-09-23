@@ -9,17 +9,17 @@ const ViewTicket = ({ navigation, route }) => {
   const { order, payment, data, customer, quantity } = route.params;
   const total = quantity * data.price;
   return (
-    <ScrollView>
-      <ImageBackground
+    <ScrollView style={[global.bgWhite]}>
+      {/* <ImageBackground
         style={{
           width: "100%",
           height: "100%",
           resizeMode: "cover",
         }}
         source={require("@/utils/images/background-profile.png")}
-      >
+      > */}
         <View style={styles.textContent}>
-          <Text style={[styles.titleTop, global.black]}>Tu(s) boleto(s)</Text>
+          <Text style={[styles.titleTop, global.mainColor]}>Tu(s) boleto(s)</Text>
           <View style={[styles.ticketsContainer]}>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
@@ -76,11 +76,11 @@ const ViewTicket = ({ navigation, route }) => {
           />
           <CustomButton
             text={`Terminos y condiciones`}
-            textStyles={[styles.textGuaranted, global.black]}
+            textStyles={[styles.textGuaranted, global.white]}
             buttonStyles={[styles.guaranted, global.mainBgColor]}
           />
         </View>
-      </ImageBackground>
+      {/* </ImageBackground> */}
     </ScrollView>
   );
 };

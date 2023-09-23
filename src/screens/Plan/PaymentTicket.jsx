@@ -134,7 +134,7 @@ const PaymentTicket = ({ navigation, route }) => {
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
-        <Image
+        {/* <Image
           style={{
             width: "100%",
             height: "100%",
@@ -143,9 +143,9 @@ const PaymentTicket = ({ navigation, route }) => {
             resizeMode: "cover",
           }}
           source={require("@/utils/images/background-profile.png")}
-        />
+        /> */}
         <View style={styles.text}>
-          <Text style={[styles.titleTop, global.black]}>
+          <Text style={[styles.titleTop, global.mainColor]}>
             Hora de pagar tu viaje
           </Text>
           <View style={[styles.ticketsContainer]}>
@@ -185,7 +185,7 @@ const PaymentTicket = ({ navigation, route }) => {
           text={`Obtener ticket`}
           handlePress={onHandleOrder}
           textStyles={[styles.textContinue, global.white]}
-          buttonStyles={[styles.continue, global.bgBlack]}
+          buttonStyles={[styles.continue, global.mainBgColor]}
         />
       </View>
     </ScrollView>

@@ -2139,7 +2139,6 @@ export const getOrderDetail = /* GraphQL */ `
       customerDocument
       customerName
       customerEmail
-      total
       isGuest
       paymentID
       payment {
@@ -2207,7 +2206,6 @@ export const listOrderDetails = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2270,7 +2268,6 @@ export const orderDetailsByUserID = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2361,7 +2358,6 @@ export const getOrderDetailHistory = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2427,7 +2423,6 @@ export const listOrderDetailHistories = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
-          total
           isGuest
           paymentID
           payment {
@@ -2482,7 +2477,6 @@ export const getUser = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
-          total
           isGuest
           paymentID
           payment {
@@ -2541,7 +2535,6 @@ export const listUsers = /* GraphQL */ `
             customerDocument
             customerName
             customerEmail
-            total
             isGuest
             paymentID
             userID

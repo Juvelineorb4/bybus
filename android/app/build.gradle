@@ -113,9 +113,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.bybus'
+    namespace 'com.bybus.viajes'
     defaultConfig {
-        applicationId 'com.bybus'
+        applicationId 'com.bybus.viajes'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

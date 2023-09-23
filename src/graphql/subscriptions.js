@@ -1862,7 +1862,6 @@ export const onCreateOrderDetail = /* GraphQL */ `
       customerDocument
       customerName
       customerEmail
-      total
       isGuest
       paymentID
       payment {
@@ -1928,7 +1927,6 @@ export const onUpdateOrderDetail = /* GraphQL */ `
       customerDocument
       customerName
       customerEmail
-      total
       isGuest
       paymentID
       payment {
@@ -1994,7 +1992,6 @@ export const onDeleteOrderDetail = /* GraphQL */ `
       customerDocument
       customerName
       customerEmail
-      total
       isGuest
       paymentID
       payment {
@@ -2122,7 +2119,6 @@ export const onCreateOrderDetailHistory = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2187,7 +2183,6 @@ export const onUpdateOrderDetailHistory = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2252,7 +2247,6 @@ export const onDeleteOrderDetailHistory = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
-        total
         isGuest
         paymentID
         payment {
@@ -2318,7 +2312,6 @@ export const onCreateUser = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
-          total
           isGuest
           paymentID
           payment {
@@ -2376,7 +2369,6 @@ export const onUpdateUser = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
-          total
           isGuest
           paymentID
           payment {
@@ -2434,7 +2426,6 @@ export const onDeleteUser = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
-          total
           isGuest
           paymentID
           payment {

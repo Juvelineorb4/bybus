@@ -82,7 +82,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 handlePress()
               }}
               textStyles={[styles.btnText, global.white]}
-              buttonStyles={[styles.btnBg, global.bgBlack]}
+              buttonStyles={[styles.btnBg, global.mainBgColor]}
             />
           </View>
         )}

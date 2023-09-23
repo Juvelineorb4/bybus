@@ -8,7 +8,7 @@
   padding: 40px 20px 40px;
 }
 .titleTop {
-  font-family: "thinItalic";
+  font-family: "light";
   font-size: 24px;
 }
 .ticketsContainer {
@@ -42,7 +42,7 @@
 .travelButton {
   text-align: center;
   padding: 15px;
-  background-color: #1a1528;
+  background-color: #0077B6;
   border-radius: 16px;
 }
 .textTravelButton {
@@ -71,7 +71,7 @@
   text-align: center;
   width: 100%;
   padding: 20px 10px;
-  background-color: #1a1528;
+  background-color: #0077B6;
   border-radius: 16px;
   margin: 20px 0px 10px;
 }

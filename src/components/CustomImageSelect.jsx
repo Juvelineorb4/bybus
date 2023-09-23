@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, View } from "react-native";
+import { Image, View, TouchableOpacity } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import CustomButton from "./CustomButton";
 
@@ -52,17 +52,7 @@ const CustomImageSelect = ({ styled = {}, button, uriSelect }) => {
           />
         </View>
       ) : (
-        <View style={styled.image}>
-          <Image
-            style={{
-              width: 250,
-              height: 250,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/image-default.png")}
-            onPress={pickImage}
-          />
-        </View>
+        <TouchableOpacity onPress={pickImage} style={styled.defaultImage} />
       )}
       <View style={styled.buttons}>
         <CustomButton

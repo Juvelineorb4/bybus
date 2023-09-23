@@ -6,7 +6,7 @@ import CustomCountDown from "./CustomCountDown";
 
 const CustomTicket = ({ data }) => {
   const global = require("@/utils/styles/global.js");
-  const logo = require("@/utils/images/logo-qr.png");
+  // const logo = require("@/utils/images/logo-qr.png");
   return (
     <View style={[styles.container, global.bgWhiteSoftTwo]}>
       <View style={styles.ticketContent}>
@@ -21,7 +21,7 @@ const CustomTicket = ({ data }) => {
               }}
               source={require("@/utils/images/car.png")}
             />
-            <Text style={styles.codeTransporte}>XYZ-000</Text>
+            <Text style={[styles.codeTransporte, global.white]}>XYZ-000</Text>
           </View>
         </View>
         <View style={styles.topTwoContent}>
@@ -49,7 +49,7 @@ const CustomTicket = ({ data }) => {
           </View>
         </View>
       </View>
-      <Image
+      {/* <Image
         style={{
           width: "128%",
           height: 38,
@@ -57,11 +57,11 @@ const CustomTicket = ({ data }) => {
           resizeMode: "contain",
         }}
         source={require("@/utils/images/line-ticket.png")}
-      />
+      /> */}
       <View style={styles.qrContent}>
         <QRCode
           value={data.order}
-          logo={logo}
+          // logo={logo}
           color={"#1f1f1f"}
           backgroundColor={"#F1F1F1"}
           size={250}

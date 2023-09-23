@@ -96,7 +96,7 @@
   padding: 20px;
 }
 .titleTariff {
-  font-family: "thinItalic";
+  font-family: "light";
   font-size: 24px;
   /* text-align: center; */
   margin-bottom: 20px;
@@ -162,7 +162,7 @@
 }
 
 .labelInput{
-  font-family: "thinItalic";
+  font-family: "light";
   font-size: 24px;
   /* text-align: center; */
   margin-bottom: 20px;

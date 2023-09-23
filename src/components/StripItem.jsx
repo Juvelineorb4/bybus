@@ -13,7 +13,7 @@ const StripItem = ({ item, button = true }) => {
       <View style={[styles.imageContainer, global.mainBgColor]}>
         <Image
           source={item.image}
-          style={[styles.image, { width, resizeMode: "contain" }]}
+          style={[styles.image, { resizeMode: "cover" }]}
         />
       </View>
       <View style={[styles.textContainer, { width }]}>
