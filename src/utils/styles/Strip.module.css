@@ -8,9 +8,13 @@
   justify-content: flex-end;
   border-radius: 0px 0px 35px 35px;
   overflow: hidden;
+  /* border: 1px solid black; */
 }
 .image {
-  margin-bottom: -110%;
+  align-self: center;
+  margin-bottom: -55%;
+  height: 500px;
+  width: 500px;
 }
 .textContainer {
   padding: 20px;

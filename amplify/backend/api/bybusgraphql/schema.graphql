@@ -331,6 +331,7 @@ type OrderDetail
   customerEmail: String
   customerDocument: String
   isGuest: Boolean
+  total: Float
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")

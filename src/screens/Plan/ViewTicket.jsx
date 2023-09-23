@@ -9,7 +9,7 @@ const ViewTicket = ({ navigation, route }) => {
   const { order, payment, data, customer, quantity } = route.params;
   const total = quantity * data.price;
   return (
-    <ScrollView>
+    <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
         style={{
           width: "100%",
@@ -76,7 +76,7 @@ const ViewTicket = ({ navigation, route }) => {
           />
           <CustomButton
             text={`Terminos y condiciones`}
-            textStyles={[styles.textGuaranted, global.black]}
+            textStyles={[styles.textGuaranted, global.white]}
             buttonStyles={[styles.guaranted, global.mainBgColor]}
           />
         </View>
