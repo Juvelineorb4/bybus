@@ -1486,11 +1486,12 @@ export const onCreateOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
-      customerDocument
-      isGuest
       total
+      isGuest
       paymentID
       payment {
         id
@@ -1502,6 +1503,7 @@ export const onCreateOrderDetail = /* GraphQL */ `
         updatedAt
         owner
       }
+      bookingID
       orderTickets {
         items {
           id
@@ -1531,11 +1533,12 @@ export const onUpdateOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
-      customerDocument
-      isGuest
       total
+      isGuest
       paymentID
       payment {
         id
@@ -1547,6 +1550,7 @@ export const onUpdateOrderDetail = /* GraphQL */ `
         updatedAt
         owner
       }
+      bookingID
       orderTickets {
         items {
           id
@@ -1576,11 +1580,12 @@ export const onDeleteOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
-      customerDocument
-      isGuest
       total
+      isGuest
       paymentID
       payment {
         id
@@ -1592,6 +1597,7 @@ export const onDeleteOrderDetail = /* GraphQL */ `
         updatedAt
         owner
       }
+      bookingID
       orderTickets {
         items {
           id
@@ -1680,11 +1686,12 @@ export const onCreateOrderDetailHistory = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1696,6 +1703,7 @@ export const onCreateOrderDetailHistory = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1730,11 +1738,12 @@ export const onUpdateOrderDetailHistory = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1746,6 +1755,7 @@ export const onUpdateOrderDetailHistory = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1780,11 +1790,12 @@ export const onDeleteOrderDetailHistory = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1796,6 +1807,7 @@ export const onDeleteOrderDetailHistory = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1831,12 +1843,14 @@ export const onCreateUser = /* GraphQL */ `
           id
           amount
           paymentMethod
+          documentType
+          customerDocument
           customerName
           customerEmail
-          customerDocument
-          isGuest
           total
+          isGuest
           paymentID
+          bookingID
           userID
           createdAt
           updatedAt
@@ -1870,12 +1884,14 @@ export const onUpdateUser = /* GraphQL */ `
           id
           amount
           paymentMethod
+          documentType
+          customerDocument
           customerName
           customerEmail
-          customerDocument
-          isGuest
           total
+          isGuest
           paymentID
+          bookingID
           userID
           createdAt
           updatedAt
@@ -1909,12 +1925,14 @@ export const onDeleteUser = /* GraphQL */ `
           id
           amount
           paymentMethod
+          documentType
+          customerDocument
           customerName
           customerEmail
-          customerDocument
-          isGuest
           total
+          isGuest
           paymentID
+          bookingID
           userID
           createdAt
           updatedAt

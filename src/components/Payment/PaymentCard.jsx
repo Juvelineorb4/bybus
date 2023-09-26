@@ -75,7 +75,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 if (aproved) return;
                 Alert.alert(
                   "Orden de pago",
-                  `Has pagado $${order.mount}.00 por ${order.quantity} boleto(s), para ${order.arrival}, bajo la cedula(s) ${order.id}`,
+                  `Has pagado $${order.mount}.00 por ${order.quantity} boleto(s), para ${order.arrival}, a nombre(s) de ${order.id}`,
                   [{ text: "Aceptar", onPress: () => console.log("Aceptado") }]
                 );
                 setAproved(true)

@@ -1,6 +1,7 @@
 .container {
   padding: 20px;
   border-radius: 17px;
+  margin-bottom: 20px;
 }
 .top {
   flex-direction: row;
@@ -30,7 +31,8 @@
   /* width: 40px; */
   height: 40px;
   border-radius: 12px;
-  padding: 5px 10px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 .codeTransporte {
   margin-left: 5px;
@@ -60,7 +62,7 @@
 }
 .tags {
   flex-direction: row;
-  padding: 20px 0px 0px;
+  /* padding: 20px 0px 0px; */
 }
 .wifi,
 .guarantees {
@@ -98,4 +100,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.nameTicket {
+  flex: 1;
+  align-items: flex-end;
+}
+.name {
+  font-family: 'regular';
+  font-size: 18px;
+}
+.nameTitle {
+  font-family: 'light';
+  font-size: 14px;
 }
