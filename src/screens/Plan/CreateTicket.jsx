@@ -1,5 +1,5 @@
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/CreateTicket.module.css";
 import { CustomButton, CustomInput, RouteSearch } from "@/components";
 import { useForm } from "react-hook-form";
@@ -9,39 +9,53 @@ import { userSelectedPlan } from "@/atoms/Modals";
 import ResultView from "@/components/ResultView";
 import SelectedPlan from "@/components/SelectedPlan";
 import { ScrollView } from "react-native-gesture-handler";
+import { Auth } from "aws-amplify";
 
 const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const userSelected = useRecoilValue(userSelectedPlan);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
+  const [user, setUser] = useState([]);
   const [full, setFull] = useState(false);
+  const [fullName, setFullName] = useState('');
+  const [active, setActive] = useState(false);
   const [quantityId, setQuantityId] = useState([]);
   const { booking } = route.params;
   const handleMoreId = async (data) => {
     if (quantityId.length + 1 === quantity) {
-      setFull(true)
+      setFull(true);
       return;
     }
     const { cedula } = data;
-      console.log(cedula)
+    console.log(cedula);
     setQuantityId([...quantityId, 1]);
-    setFull(false)
+    setFull(false);
   };
 
   const onHandleOrder = async (data) => {
-    const { cedula } = data;
     navigation.navigate("PaymentTicket", {
       booking: booking,
       tickets: quantity,
-      customer: cedula
-    })
+      customer: fullName ? fullName : user[0].name,
+    });
     console.log({
       booking: booking,
       tickets: quantity,
-      customer: cedula
-    })
-  }
+      customer: fullName ? fullName : user[0].name,
+    });
+  };
+
+
+  useEffect(() => {
+    const User = async () => {
+      const { attributes } = await Auth.currentAuthenticatedUser();
+      setUser([attributes]);
+    };
+    User();
+    console.log(fullName)
+  }, [fullName]);
+
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
@@ -62,12 +76,15 @@ const CreateTicket = ({ navigation, route }) => {
       <View style={styles.content}>
         <View style={styles.selectPlan}>
           <Text
-            style={[{
-              fontFamily: "light",
-              fontSize: 24,
-              marginTop: 10,
-              marginBottom: 15,
-            }, global.mainColor]}
+            style={[
+              {
+                fontFamily: "light",
+                fontSize: 24,
+                marginTop: 10,
+                marginBottom: 15,
+              },
+              global.mainColor,
+            ]}
           >
             Tu viaje seleccionado
           </Text>
@@ -264,23 +281,29 @@ const CreateTicket = ({ navigation, route }) => {
           </View>
         </View>
         <View style={styles.customers}>
-          <CustomInput
-            control={control}
-            name={`cedula`}
-            placeholder={"00000000"}
-            styled={{
-              text: styles.textInput,
-              label: [styles.labelInput, global.mainColor],
-              error: styles.errorInput,
-              input: [styles.inputContainer, global.bgWhiteSoft],
-              placeholder: styles.placeholder,
+          <Text style={[styles.titleTariff, global.mainColor]}>
+            Ticket a nombre de:
+          </Text>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={user[0] ? user[0].name : "Esperando..."}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setFullName(e)}
+            />
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              setActive(!active);
             }}
-            text={`Cedula(s)`}
-            icon={require("@/utils/images/profile_default.png")}
-            rules={{
-              required: "Requerido",
-            }}
-          />
+            style={[
+              {paddingHorizontal: 15, borderRadius: 8, alignSelf: 'flex-end', paddingVertical: 10},
+              global.mainBgColor
+            ]}
+          >
+            <Text style={[{fontFamily: 'light', fontSize: 12}, global.white]}>{!active ? "Editar" : "Guardar"}</Text>
+          </TouchableOpacity>
           {/* {quantityId.map((_, index) => (
             <CustomInput
               key={index}

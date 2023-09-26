@@ -37,7 +37,7 @@ const Forgot = () => {
 
 
   return (
-    <View style={[styles.container. global.white]}>
+    <View style={[styles.container, global.white]}>
       <Image
         style={{
           width: "100%",

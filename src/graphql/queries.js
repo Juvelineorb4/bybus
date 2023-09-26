@@ -1585,11 +1585,12 @@ export const getOrderDetail = /* GraphQL */ `
       id
       amount
       paymentMethod
+      documentType
+      customerDocument
       customerName
       customerEmail
-      customerDocument
-      isGuest
       total
+      isGuest
       paymentID
       payment {
         id
@@ -1601,6 +1602,7 @@ export const getOrderDetail = /* GraphQL */ `
         updatedAt
         owner
       }
+      bookingID
       orderTickets {
         items {
           id
@@ -1632,11 +1634,12 @@ export const listOrderDetails = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1648,6 +1651,7 @@ export const listOrderDetails = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1680,11 +1684,12 @@ export const orderDetailsByUserID = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1696,6 +1701,7 @@ export const orderDetailsByUserID = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1753,11 +1759,12 @@ export const getOrderDetailHistory = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
-        customerDocument
-        isGuest
         total
+        isGuest
         paymentID
         payment {
           id
@@ -1769,6 +1776,7 @@ export const getOrderDetailHistory = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
         orderTickets {
           nextToken
         }
@@ -1804,12 +1812,14 @@ export const listOrderDetailHistories = /* GraphQL */ `
           id
           amount
           paymentMethod
+          documentType
+          customerDocument
           customerName
           customerEmail
-          customerDocument
-          isGuest
           total
+          isGuest
           paymentID
+          bookingID
           userID
           createdAt
           updatedAt
@@ -1840,12 +1850,14 @@ export const getUser = /* GraphQL */ `
           id
           amount
           paymentMethod
+          documentType
+          customerDocument
           customerName
           customerEmail
-          customerDocument
-          isGuest
           total
+          isGuest
           paymentID
+          bookingID
           userID
           createdAt
           updatedAt
