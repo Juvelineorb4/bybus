@@ -56,6 +56,7 @@ const PaymentTicket = ({ navigation, route }) => {
             total: total,
             customerEmail: attributes.email,
             userID: attributes.sub,
+            bookingID: booking.id, 
           },
         },
       });

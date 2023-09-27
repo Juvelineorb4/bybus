@@ -15,26 +15,14 @@ const CustomTicket = ({ data }) => {
      mimeType: 'image/jpeg',
      dialogTitle: messageText,
   };
-  // const onCapture = useCallback(() => {
-  //   captureRef(viewRef, {
-  //     format: "jpg",
-  //     quality: 0.8,
-  //   }).then(
-  //     (uri) => setFile(uri),
-  //     (error) => console.error("Oops, snapshot failed", error)
-  //   );
 
-  // }, []);
   useEffect(() => {
-    // on mount
     ref.current.capture().then((uri) => {
-      console.log("do something with ", uri);
       setFile(uri);
     });
   }, []);
   const onShare = async () => {
     try {
-      // Sharing.isAvailableAsync()
       Sharing.shareAsync(file, options);
     } catch (error) {
       Alert.alert(error.message);
