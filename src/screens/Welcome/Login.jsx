@@ -1,26 +1,31 @@
-import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import styles from "@/utils/styles/Login.module.css";
 import { CustomButton, CustomInput } from "@/components";
 import { useForm } from "react-hook-form";
 import CustomText from "@/components/CustomText";
-import { Auth } from 'aws-amplify';
+import { Auth } from "aws-amplify";
 
-
-const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Login = ({ navigation, route }) => {
-
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
 
   const { control, handleSubmit } = useForm();
 
   const onHandleLogin = async (data) => {
     try {
-      const result = await Auth.signIn(data.email, data.password)
+      const result = await Auth.signIn(data.email, data.password);
     } catch (error) {
-      Alert.alert("Ooopss ", error.message)
+      Alert.alert("Ooopss ", error.message);
     }
-  }
+  };
 
   return (
     <View style={[styles.container, global.bgWhite]}>
@@ -48,12 +53,15 @@ const Login = ({ navigation, route }) => {
                   height: 40,
                   resizeMode: "cover",
                   alignSelf: "center",
-                  marginVertical: 15
+                  marginVertical: 15,
                 }}
                 source={require("@/utils/images/icon.png")}
               />
               <CustomText
-                styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
+                styled={{
+                  title: [styles.title, global.black],
+                  subtitle: [styles.subtitle, global.topGray],
+                }}
                 title="Bienvenido de nuevo"
                 subtitle="Accede a tu cuenta"
               />
@@ -70,10 +78,10 @@ const Login = ({ navigation, route }) => {
                   input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
                 text={`Correo electronico`}
-                icon={require('@/utils/images/email.png')}
+                icon={require("@/utils/images/email.png")}
                 rules={{
                   required: "Requerido",
-                  pattern: { value: EMAIL_REGEX, message: "Invalido" }
+                  pattern: { value: EMAIL_REGEX, message: "Invalido" },
                 }}
               />
               <CustomInput
@@ -87,18 +95,17 @@ const Login = ({ navigation, route }) => {
                   input: [styles.inputContainerP, global.bgWhiteSoft],
                 }}
                 text={`Contrasena`}
-                icon={require('@/utils/images/password.png')}
+                icon={require("@/utils/images/password.png")}
                 security={true}
                 rules={{
                   required: "Requerido",
                   minLength: {
                     value: 8,
-                    message: "Minimo 8 caracteres"
+                    message: "Minimo 8 caracteres",
                   },
                 }}
               />
             </View>
-
           </View>
           <View style={styles.buttons}>
             <CustomButton
@@ -116,7 +123,7 @@ const Login = ({ navigation, route }) => {
                 textStyles={[styles.forgot, global.topGray]}
               />
             </View>
-            <View style={styles.hairline}>
+            {/* <View style={styles.hairline}>
               <View style={[styles.line, global.bgWhiteSmoke]} />
               <Text style={[styles.textLine, global.bgWhite, global.midGray]}>O inicia sesion con</Text>
             </View>
@@ -131,7 +138,7 @@ const Login = ({ navigation, route }) => {
                 }}
                 source={require("@/utils/images/google.png")}
               />
-            </View>
+            </View> */}
           </View>
         </ScrollView>
       </View>

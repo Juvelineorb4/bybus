@@ -8,36 +8,32 @@ import CustomText from "@/components/CustomText";
 import EnterCode from "@/components/EnterCode";
 import CustomTimer from "@/components/CustomTimer";
 import { Auth } from "aws-amplify";
-const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Forgot = () => {
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
 
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
-      code: ["", "", "", "", "", ""]
-    }
+      code: ["", "", "", "", "", ""],
+    },
   });
   const navigation = useNavigation();
   const emailValue = watch("email");
 
-
-
-
   // funcion para solicitar un codigo para setear contraseña nueva
   const onHandleForgotPassword = async (data) => {
-    const { email } = data
+    const { email } = data;
     try {
-      await Auth.forgotPassword(email)
-      navigation.navigate("ChangePassword", { email: emailValue })
+      await Auth.forgotPassword(email);
+      navigation.navigate("ChangePassword", { email: emailValue });
     } catch (error) {
-      Alert.alert("Ooopss ", error.message)
+      Alert.alert("Ooopss ", error.message);
     }
-  }
-
+  };
 
   return (
-    <View style={[styles.container. global.white]}>
+    <View style={[styles.container, global.white]}>
       <Image
         style={{
           width: "100%",
@@ -89,7 +85,7 @@ const Forgot = () => {
             }}
             rules={{
               required: "Requerido",
-              pattern: { value: EMAIL_REGEX, message: "Invalido" }
+              pattern: { value: EMAIL_REGEX, message: "Invalido" },
             }}
           />
           <Text style={[styles.code, global.topGray]}>
