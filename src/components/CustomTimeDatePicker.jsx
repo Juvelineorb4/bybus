@@ -92,6 +92,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
           mode={mode}
           is24Hour={true}
           onChange={(e, date) => onChange({ e, mode, date })}
+          minuteInterval={15}
         />
       )}
     </View>
