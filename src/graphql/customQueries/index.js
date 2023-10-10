@@ -11,13 +11,6 @@ export const listBookings = /* GraphQL */ `
         agencyID
         officeID
         transport
-        tickets {
-          items {
-            id
-            status
-          }
-          nextToken
-        }
         departureCity
         arrivalCity
         departure {
@@ -77,6 +70,7 @@ export const listOrderDetails = /* GraphQL */ `
           }
           nextToken
         }
+        bookingID
         userID
         createdAt
         updatedAt
@@ -84,6 +78,68 @@ export const listOrderDetails = /* GraphQL */ `
         owner
       }
       nextToken
+    }
+  }
+`;
+
+export const getTicket = /* GraphQL */ `
+  query GetTicket($id: ID!) {
+    getTicket(id: $id) {
+      id
+      code
+      bookingID
+      stop
+      customerID
+      seating
+      status
+      description
+      url
+      owner
+      createdAt
+      updatedAt
+      stopBookingTicketsId
+    }
+  }
+`;
+export const getBooking = /* GraphQL */ `
+  query GetBooking($id: ID!) {
+    getBooking(id: $id) {
+      id
+      code
+      agencyID
+      officeID
+      transport
+      stops {
+        items {
+          id
+          bookingID
+          price
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      departureCity
+      arrivalCity
+      departure {
+        time
+        date
+        city
+        state
+        address
+      }
+      arrival {
+        time
+        date
+        city
+        state
+        address
+      }
+      stock
+      price
+      createdAt
+      updatedAt
     }
   }
 `;

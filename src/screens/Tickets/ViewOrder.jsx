@@ -4,7 +4,7 @@ import styles from "@/utils/styles/ViewTicket.module.css";
 import CustomTicket from "@/components/CustomTicket";
 import { CustomButton } from "@/components";
 
-const ViewTicket = ({ navigation, route }) => {
+const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity, tickets } = route.params;
   const total = quantity * data.price;
@@ -78,7 +78,7 @@ const ViewTicket = ({ navigation, route }) => {
               payment: payment,
               order: order,
               customer: customer,
-              ticket: item,
+              ticket: item.ticketID,
             }}
             key={index}
           />
@@ -102,4 +102,4 @@ const ViewTicket = ({ navigation, route }) => {
   );
 };
 
-export default ViewTicket;
+export default ViewOrder;

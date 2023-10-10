@@ -22,6 +22,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "bookingUpdateCron": {
+      "Arn": "string",
+      "CloudWatchEventRule": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "bybus508ffe57": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

@@ -169,8 +169,8 @@
 }
 
 .textInput, .placeholder {
-  width: 90%;
-  margin-left: 15px;
+  width: 100%;
+  margin-left: 18px;
   font-family: "light";
 }
 

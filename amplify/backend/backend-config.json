@@ -75,6 +75,28 @@
     }
   },
   "function": {
+    "bookingUpdateCron": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "bybus508ffe57": {
       "build": true,
       "dependsOn": [],
@@ -105,6 +127,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_bookingUpdateCron_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bookingUpdateCron"
+        }
+      ]
+    },
+    "AMPLIFY_function_bookingUpdateCron_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bookingUpdateCron"
+        }
+      ]
+    },
     "AMPLIFY_function_bybus508ffe57_deploymentBucketName": {
       "usedBy": [
         {

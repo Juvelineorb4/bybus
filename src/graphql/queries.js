@@ -223,7 +223,34 @@ export const getAgency = /* GraphQL */ `
           pin
           type
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           permissions
           owner
           lastConnection
@@ -237,6 +264,7 @@ export const getAgency = /* GraphQL */ `
       bookings {
         items {
           id
+          status
           code
           agencyID
           officeID
@@ -345,6 +373,7 @@ export const listAgencies = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -436,6 +465,7 @@ export const getAgencyByEmail = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -483,7 +513,34 @@ export const getOffice = /* GraphQL */ `
           pin
           type
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           permissions
           owner
           lastConnection
@@ -517,6 +574,7 @@ export const getOffice = /* GraphQL */ `
       bookings {
         items {
           id
+          status
           code
           agencyID
           officeID
@@ -624,6 +682,7 @@ export const listOffices = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -714,6 +773,7 @@ export const officesByAgencyID = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -783,7 +843,150 @@ export const getEmployee = /* GraphQL */ `
       pin
       type
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          items {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            permissions
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            transport
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            permissions
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        transports {
+          items {
+            id
+            model
+            serial
+            type
+            officeID
+            createdBy
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            transport
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       permissions
       owner
       lastConnection
@@ -808,7 +1011,58 @@ export const listEmployees = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         permissions
         owner
         lastConnection
@@ -844,7 +1098,58 @@ export const employeesByAgencyID = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         permissions
         owner
         lastConnection
@@ -880,7 +1185,58 @@ export const employeesByOfficeID = /* GraphQL */ `
         pin
         type
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         permissions
         owner
         lastConnection
@@ -904,6 +1260,7 @@ export const getTransport = /* GraphQL */ `
       bookings {
         items {
           id
+          status
           code
           agencyID
           officeID
@@ -973,6 +1330,7 @@ export const listTransports = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -1025,6 +1383,7 @@ export const transportsByOfficeID = /* GraphQL */ `
         bookings {
           items {
             id
+            status
             code
             agencyID
             officeID
@@ -1057,6 +1416,7 @@ export const getBooking = /* GraphQL */ `
   query GetBooking($id: ID!) {
     getBooking(id: $id) {
       id
+      status
       code
       agencyID
       officeID
@@ -1177,6 +1537,7 @@ export const listBookings = /* GraphQL */ `
     listBookings(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -1280,6 +1641,7 @@ export const bookingsByAgencyID = /* GraphQL */ `
     ) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -1383,6 +1745,7 @@ export const bookingsByOfficeID = /* GraphQL */ `
     ) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -1486,6 +1849,7 @@ export const bookingsByTransport = /* GraphQL */ `
     ) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -2139,6 +2503,7 @@ export const getOrderDetail = /* GraphQL */ `
       customerDocument
       customerName
       customerEmail
+      total
       isGuest
       paymentID
       payment {
@@ -2152,6 +2517,7 @@ export const getOrderDetail = /* GraphQL */ `
         owner
         __typename
       }
+      bookingID
       orderTickets {
         items {
           id
@@ -2206,6 +2572,7 @@ export const listOrderDetails = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
+        total
         isGuest
         paymentID
         payment {
@@ -2219,6 +2586,7 @@ export const listOrderDetails = /* GraphQL */ `
           owner
           __typename
         }
+        bookingID
         orderTickets {
           items {
             id
@@ -2268,6 +2636,7 @@ export const orderDetailsByUserID = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
+        total
         isGuest
         paymentID
         payment {
@@ -2281,6 +2650,7 @@ export const orderDetailsByUserID = /* GraphQL */ `
           owner
           __typename
         }
+        bookingID
         orderTickets {
           items {
             id
@@ -2358,6 +2728,7 @@ export const getOrderDetailHistory = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
+        total
         isGuest
         paymentID
         payment {
@@ -2371,6 +2742,7 @@ export const getOrderDetailHistory = /* GraphQL */ `
           owner
           __typename
         }
+        bookingID
         orderTickets {
           items {
             id
@@ -2423,6 +2795,7 @@ export const listOrderDetailHistories = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
+          total
           isGuest
           paymentID
           payment {
@@ -2436,6 +2809,7 @@ export const listOrderDetailHistories = /* GraphQL */ `
             owner
             __typename
           }
+          bookingID
           orderTickets {
             nextToken
             __typename
@@ -2477,6 +2851,7 @@ export const getUser = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
+          total
           isGuest
           paymentID
           payment {
@@ -2490,6 +2865,7 @@ export const getUser = /* GraphQL */ `
             owner
             __typename
           }
+          bookingID
           orderTickets {
             nextToken
             __typename
@@ -2535,8 +2911,10 @@ export const listUsers = /* GraphQL */ `
             customerDocument
             customerName
             customerEmail
+            total
             isGuest
             paymentID
+            bookingID
             userID
             createdAt
             updatedAt

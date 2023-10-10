@@ -14,6 +14,7 @@ const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { booking, tickets, customer } = route.params;
   const [paymentOrder, setPaymentOrder] = useState("");
+  const [refresh, setRefresh] = useState(false);
   const total = tickets * booking.price;
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
@@ -55,12 +56,14 @@ const PaymentTicket = ({ navigation, route }) => {
             total: total,
             customerEmail: attributes.email,
             userID: attributes.sub,
+            bookingID: booking.id, 
           },
         },
       });
       console.log(orderDetail);
       // Crear Orders Tickets
       let orderTicketsTemporal = [];
+      let ticketsPaid = [];
 
       while (orderTicketsTemporal.length < tickets) {
         const orderTicket =
@@ -100,7 +103,8 @@ const PaymentTicket = ({ navigation, route }) => {
             },
           },
         });
-        console.log(updateTicketStatus);
+        console.log(updateTicketStatus.data.updateTicket.id);
+        ticketsPaid.push(updateTicketStatus.data.updateTicket.id);
       });
 
       /* Actualizamos el stock */
@@ -116,17 +120,22 @@ const PaymentTicket = ({ navigation, route }) => {
       });
       console.log(updateBookingStock, 'toy aqui manito');
       // console.log('aqui llego manito')
-      navigation.navigate("ViewTicket", {
-        data: booking,
-        order: orderDetail.data.createOrderDetail.id,
-        payment: paymentOrder,
-        customer: {
-          name: attributes.name,
-          email: attributes.email,
-          id: customer,
-        },
-        quantity: tickets,
-      });
+      setRefresh(true)
+      setTimeout(() => {
+        navigation.navigate("ViewTicket", {
+          data: booking,
+          order: orderDetail.data.createOrderDetail.id,
+          payment: paymentOrder,
+          customer: {
+            name: attributes.name,
+            email: attributes.email,
+            id: customer,
+          },
+          quantity: tickets,
+          tickets: ticketsPaid
+        });
+        setRefresh(false)
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -182,10 +191,11 @@ const PaymentTicket = ({ navigation, route }) => {
           </Text>
         </View>
         <CustomButton
-          text={`Obtener ticket`}
+          text={`Obtener boleto(s)`}
           handlePress={onHandleOrder}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.mainBgColor]}
+          loading={refresh}
         />
       </View>
     </ScrollView>
