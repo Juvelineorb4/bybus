@@ -6,9 +6,12 @@
         "Mutation"
       ]
     },
-    "auth": {
-      "bybus": [
-        "read"
+    "storage": {
+      "Booking:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   },

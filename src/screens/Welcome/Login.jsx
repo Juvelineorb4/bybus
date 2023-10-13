@@ -23,7 +23,45 @@ const Login = ({ navigation, route }) => {
     try {
       const result = await Auth.signIn(data.email, data.password);
     } catch (error) {
-      Alert.alert("Ooopss ", error.message);
+      const response = new Error(error);
+      const { message } = response;
+      console.log(error);
+      switch (error.message) {
+        case "User is not confirmed.":
+          Alert.alert(
+            `Usuario: ${data.email} no confirmado`,
+            "por favor confirmar"
+          );
+          navigation.navigate("Register_App", {
+            screen: "Register_StepFour",
+            params: {
+              registerForm: {
+                userSub: "",
+                email: data.email,
+                back: true,
+              },
+            },
+          });
+          break;
+
+        case "User does not exist.":
+          Alert.alert(
+            `Usuario: ${email} no registrado`,
+            "por favor resgitrase"
+          );
+          break;
+        case "Incorrect username or password.":
+          Alert.alert("Usuario o Contraseña Incorrecta");
+          break;
+        case "Password attempts exceeded":
+          Alert.alert(
+            "Se superaron los intentos de contraseña",
+            "Cambia la contraseña o intenta mas tarde!"
+          );
+          break;
+        default:
+          break;
+      }
     }
   };
 

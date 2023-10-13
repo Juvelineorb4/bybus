@@ -5,38 +5,43 @@ import CustomButton from "../CustomButton";
 import EnterCode from "../EnterCode";
 import CustomText from "../CustomText";
 import { useForm } from "react-hook-form";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { Auth } from 'aws-amplify';
+import { Auth } from "aws-amplify";
 
-
-const StepFour = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const { params } = route
-  const { registerForm } = params
-  const { control, handleSubmit } = useForm({
+const StepFour = ({ navigation, route }) => {
+  const { params } = route;
+  const { registerForm } = params;
+  const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       userSub: registerForm.userSub,
       email: registerForm.email,
-      code: ["", "", "", "", "", ""]
-    }
+      code: ["", "", "", "", "", ""],
+    },
   });
 
+  useEffect(() => {
+    console.log(navigation.getParent().getState());
+  }, []);
+
   const omHandleConfirm = async (data) => {
-    const { email, code } = data
-    let newCode = ""
-    code.forEach(item => {
-      newCode = newCode + item
+    const { email, code } = data;
+    let newCode = "";
+    code.forEach((item) => {
+      newCode = newCode + item;
     });
 
     try {
       if (!code.lenght === 6) return console.log("no tiene 6");
-      await Auth.confirmSignUp(email, newCode)
+      await Auth.confirmSignUp(email, newCode);
+      if (registerForm?.back) return navigation.goBack();
+      navigation.replace("Login");
     } catch (error) {
-      if (error.message == "User cannot be confirmed. Current status is CONFIRMED") return navigation.navigate("Home")
-      Alert.alert(error.message)
+      console.log(error);
+      if (
+        error.message == "User cannot be confirmed. Current status is CONFIRMED"
+      )
+        Alert.alert(error.message);
     }
-  }
+  };
 
   return (
     <View style={styles.content}>
@@ -48,7 +53,7 @@ const StepFour = () => {
         }}
         title={`Ingresar codigo`}
         // subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
-        subtitle={`Te enviamos un correo electronico`}
+        subtitle={`Te enviamos un correo electronico ${registerForm.email}`}
       />
       <EnterCode
         title={`No recibiste ningun correo?`}

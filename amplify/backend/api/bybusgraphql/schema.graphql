@@ -216,6 +216,7 @@ type Booking
 
 enum BookingStatus {
   AVAILABLE
+  SOLDOUT
   BOARDING
   DEPARTED
   ARRIVED
@@ -268,8 +269,7 @@ type Customer
   name: String
   lastName: String
   ci: String
-  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
-  phone: String
+  email: String
   bookingID: ID @index(name: "byBookingToCustomer")
   ticketID: ID
   ticket: Ticket @hasOne(fields: ["ticketID"])
@@ -415,7 +415,7 @@ type User
   ) {
   id: ID!
   name: String!
-  email: String
+  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
   status: StatusUser
   notificationToken: String
   previousBalance: Float
@@ -442,7 +442,7 @@ enum StatusUser {
 
 type Mutation {
   registerAgencyAdmin(input: RegisterUserInput!): String
-    @function(name: "createAgencyAdmin-${env}")
+    @function(name: "createAdminAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
 }
 

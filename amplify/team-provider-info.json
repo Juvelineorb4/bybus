@@ -1,14 +1,14 @@
 {
-  "dev": {
+  "stage": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-bybus-dev-171204-authRole",
-      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-171204-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-dev-171204-authRole",
+      "AuthRoleName": "amplify-bybus-stage-193751-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-stage-193751-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-stage-193751-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-bybus-dev-171204-deployment",
-      "UnauthRoleName": "amplify-bybus-dev-171204-unauthRole",
-      "StackName": "amplify-bybus-dev-171204",
-      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-dev-171204/578a9c60-4758-11ee-afae-0ac4265df69d",
+      "DeploymentBucketName": "amplify-bybus-stage-193751-deployment",
+      "UnauthRoleName": "amplify-bybus-stage-193751-unauthRole",
+      "StackName": "amplify-bybus-stage-193751",
+      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-stage-193751/aa7348b0-686d-11ee-9b32-0a0d469e4a87",
       "AmplifyAppId": "d2rxqiq1km3s0s"
     },
     "categories": {
@@ -17,23 +17,32 @@
         "userPoolGroups": {}
       },
       "function": {
-        "bybus508ffe57": {
-          "deploymentBucketName": "amplify-bybus-dev-171204-deployment",
-          "s3Key": "amplify-builds/bybus508ffe57-792b7159656937526230-build.zip"
+        "AdminQueries43e2835c": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/AdminQueries43e2835c-49743930774776726448-build.zip"
         },
-        "createAgencyAdmin": {
-          "deploymentBucketName": "amplify-bybus-dev-171204-deployment",
-          "s3Key": "amplify-builds/createAgencyAdmin-5a58424d746e75655646-build.zip"
+        "createAdminAgency": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/createAdminAgency-6c347853586d7436482f-build.zip"
         },
-        "bookingUpdateCron": {
-          "deploymentBucketName": "amplify-bybus-dev-171204-deployment",
-          "s3Key": "amplify-builds/bookingUpdateCron-5266716a4b4f4f39465a-build.zip"
+        "createUserCognito": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/createUserCognito-6c68526a586b5a5a326e-build.zip"
+        },
+        "sheduleBookingUpdate": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/sheduleBookingUpdate-68377a64614c6a777168-build.zip"
+        },
+        "calculeBookingStock": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/calculeBookingStock-5a45336b655251734646-build.zip"
         }
       },
       "storage": {
-        "s3bybus": {}
+        "s3storagebybus": {}
       },
       "api": {
+        "AdminQueries": {},
         "bybusgraphql": {}
       }
     }

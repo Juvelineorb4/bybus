@@ -6,50 +6,46 @@ import EnterCode from "@/components/EnterCode";
 import CustomTimer from "@/components/CustomTimer";
 import { CustomButton, CustomInput } from "@/components";
 import { useForm } from "react-hook-form";
-import { Auth } from 'aws-amplify';
+import { Auth } from "aws-amplify";
 
 const ChangePassword = ({ navigation, route }) => {
-  const { params } = route
+  const { params } = route;
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: params?.email,
-      code: ["", "", "", "", "", ""]
-    }
+      code: ["", "", "", "", "", ""],
+    },
   });
-  const pwd = watch("password")
-
+  const pwd = watch("password");
 
   // por si alguna razon el email no viene
   useLayoutEffect(() => {
-    if (!route.params?.email) return navigation.goBack()
-  }, [])
-
-
-
+    if (!route.params?.email) return navigation.goBack();
+  }, []);
 
   const onHandleNewPassword = async (data) => {
-    const { email, password, code } = data
-    let newCode = ""
-    code.forEach(item => {
-      newCode = newCode + item
+    const { email, password, code } = data;
+    let newCode = "";
+    code.forEach((item) => {
+      newCode = newCode + item;
     });
     try {
-      if (!newCode.length === 6) return console.log("invalid code")
+      if (!newCode.length === 6) return console.log("invalid code");
       const result = await Auth.forgotPasswordSubmit(email, newCode, password);
-      console.log(result)
+      navigation.navigate("Login");
     } catch (error) {
-      Alert.alert("Ooopss ", error.message)
+      Alert.alert("Ooopss ", error.message);
     }
-  }
+  };
 
   const onResendCode = async () => {
     try {
-      const result = await Auth.forgotPassword(route.params?.email)
-      console.log(result)
+      const result = await Auth.forgotPassword(route.params?.email);
+      console.log(result);
     } catch (error) {
-      Alert.alert("Ooopss ", error.message)
+      Alert.alert("Ooopss ", error.message);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -64,10 +60,7 @@ const ChangePassword = ({ navigation, route }) => {
         source={require("@/utils/images/texture.png")}
       />
       <View style={styles.content}>
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
           <View style={styles.textContainer}>
             <Image
               style={{
@@ -110,7 +103,7 @@ const ChangePassword = ({ navigation, route }) => {
                 required: "Requerido",
                 minLength: {
                   value: 8,
-                  message: "Minimo 8 caracteres"
+                  message: "Minimo 8 caracteres",
                 },
               }}
             />
@@ -137,14 +130,15 @@ const ChangePassword = ({ navigation, route }) => {
               security={true}
               rules={{
                 required: "Requerido",
-                validate: value =>
-                  value == pwd || 'No coinciden las contrasenas'
+                validate: (value) =>
+                  value == pwd || "No coinciden las contrasenas",
               }}
             />
           </View>
           <Text style={styles.code}>
-          Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
-            <Text style={styles.emailText}>{route.params?.email}</Text> .El codigo expirara en:{" "}
+            Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
+            <Text style={styles.emailText}>{route.params?.email}</Text> .El
+            codigo expirara en:{" "}
             {route.params?.email && (
               <CustomTimer
                 styled={{

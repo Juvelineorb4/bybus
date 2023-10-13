@@ -6,23 +6,22 @@ import styles from "./styles/StepOne.module.css";
 import CustomText from "../CustomText";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { Auth } from 'aws-amplify';
+import { Auth } from "aws-amplify";
 // recoil
-import { useRecoilValue } from 'recoil'
-import { tokenNotification } from '@/atoms/Modals'
+import { useRecoilValue } from "recoil";
+import { tokenNotification } from "@/atoms/Modals";
 
-const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
 const StepOne = () => {
-  const token = useRecoilValue(tokenNotification)
+  const token = useRecoilValue(tokenNotification);
   const { control, handleSubmit, watch } = useForm();
-  const pwd = watch("password")
+  const pwd = watch("password");
   const navigation = useNavigation();
 
-
   const onHandleRegister = async (data) => {
-    const { name, email, password } = data
-    console.log(token)
+    const { name, email, password } = data;
+    console.log(token);
     try {
       const { userSub, user } = await Auth.signUp({
         username: email.trim(),
@@ -31,21 +30,17 @@ const StepOne = () => {
           name: name.trim(),
           // 'custom:notificationToken': token,
         },
-        autoSignIn: { // optional - enables auto sign in after user is confirmed
-          enabled: true,
-        }
-      })
-      navigation.navigate('Register_StepTwo', {
+      });
+      navigation.navigate("Register_StepTwo", {
         registerForm: {
           userSub,
-          email: user.username
-        }
-      })
+          email: user.username,
+        },
+      });
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-  }
-
+  };
 
   return (
     <View style={styles.content}>
@@ -58,7 +53,6 @@ const StepOne = () => {
           }}
           title={`Detalles de tu cuenta`}
           subtitle={`Llena la informacion para que creemos tu cuenta nueva.`}
-
         />
         <CustomInput
           control={control}
@@ -71,17 +65,17 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Nombre completo`}
-          icon={require('@/utils/images/profile_default.png')}
+          icon={require("@/utils/images/profile_default.png")}
           rules={{
             required: "Requerido",
             minLength: {
               value: 3,
-              message: "Minimo 3 caracteres"
+              message: "Minimo 3 caracteres",
             },
             maxLength: {
               value: 24,
-              message: "Maximo 24 caracteres"
-            }
+              message: "Maximo 24 caracteres",
+            },
           }}
         />
         <CustomInput
@@ -95,10 +89,10 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Correo electronico`}
-          icon={require('@/utils/images/email.png')}
+          icon={require("@/utils/images/email.png")}
           rules={{
             required: "Requerido",
-            pattern: { value: EMAIL_REGEX, message: "Invalido" }
+            pattern: { value: EMAIL_REGEX, message: "Invalido" },
           }}
         />
         <CustomInput
@@ -112,16 +106,15 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Contrasena`}
-          icon={require('@/utils/images/password.png')}
+          icon={require("@/utils/images/password.png")}
           security={true}
           rules={{
             required: "Requerido",
             minLength: {
               value: 8,
-              message: "Minimo 8 caracteres"
+              message: "Minimo 8 caracteres",
             },
           }}
-
         />
         <CustomInput
           control={control}
@@ -134,12 +127,11 @@ const StepOne = () => {
             input: styles.inputContainer,
           }}
           text={`Repetir contrasena`}
-          icon={require('@/utils/images/password.png')}
+          icon={require("@/utils/images/password.png")}
           security={true}
           rules={{
             required: "Requerido",
-            validate: value =>
-              value == pwd || 'No coinciden'
+            validate: (value) => value == pwd || "No coinciden",
           }}
         />
         <Text style={styles.terms}>Acepto los Terminos y Condiciones</Text>
