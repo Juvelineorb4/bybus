@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "api": {
+      "bybusgraphql": [
+        "Query",
+        "Mutation"
+      ]
+    },
+    "storage": {
+      "Booking:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

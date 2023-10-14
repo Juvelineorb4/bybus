@@ -16,6 +16,7 @@ const PaymentTicket = ({ navigation, route }) => {
   const [paymentOrder, setPaymentOrder] = useState("");
   const [refresh, setRefresh] = useState(false);
   const total = tickets * booking.price;
+  console.log(booking)
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
     try {
@@ -64,7 +65,7 @@ const PaymentTicket = ({ navigation, route }) => {
       // Crear Orders Tickets
       let orderTicketsTemporal = [];
       let ticketsPaid = [];
-
+      console.log('aqui toy', booking)
       while (orderTicketsTemporal.length < tickets) {
         const orderTicket =
           booking.tickets.items[

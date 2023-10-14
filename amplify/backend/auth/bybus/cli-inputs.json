@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "bybus93bc2b29",
+    "resourceNameTruncated": "bybus29c7bb54",
     "userPoolName": "bybus",
     "autoVerifiedAttributes": [
       "email"
@@ -14,8 +14,8 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Verification code: {####}",
-    "emailVerificationMessage": "Verification code: {####}",
+    "emailVerificationSubject": "Verification code: {####} Bybus App",
+    "emailVerificationMessage": "Verification code: {####} Bybus App",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
@@ -25,12 +25,12 @@
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientRefreshTokenValidity": "15",
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "bybus93bc2b29_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "bybus29c7bb54_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "93bc2b29",
+    "sharedId": "29c7bb54",
     "resourceName": "bybus",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -44,7 +44,7 @@
       "admin",
       "agency"
     ],
-    "adminQueries": false,
+    "adminQueries": true,
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
@@ -65,6 +65,7 @@
     "dependsOn": [],
     "triggers": {},
     "hostedUI": false,
+    "adminQueryGroup": "sp",
     "parentStack": {
       "Ref": "AWS::StackId"
     },

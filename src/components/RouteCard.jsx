@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
+  console.log(data)
   return (
     <TouchableOpacity
       activeOpacity={0.7}
