@@ -15,6 +15,10 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "apibybusgraphqlGraphQLAPIIdOutput": {
+      "Type": "String",
+      "Default": "apibybusgraphqlGraphQLAPIIdOutput"
     }
   },
   "Conditions": {
@@ -47,12 +51,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bybus508ffe57",
+            "createUserCognito",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bybus508ffe57",
+                  "createUserCognito",
                   "-",
                   {
                     "Ref": "env"
@@ -69,6 +73,35 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "API_BYBUSGRAPHQL_USERTABLE_NAME": {
+              "Fn::ImportValue": {
+                "Fn::Sub": "${apibybusgraphqlGraphQLAPIIdOutput}:GetAtt:UserTable:Name"
+              }
+            },
+            "API_BYBUSGRAPHQL_USERTABLE_ARN": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:aws:dynamodb:",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ":",
+                  {
+                    "Ref": "AWS::AccountId"
+                  },
+                  ":table/",
+                  {
+                    "Fn::ImportValue": {
+                      "Fn::Sub": "${apibybusgraphqlGraphQLAPIIdOutput}:GetAtt:UserTable:Name"
+                    }
+                  }
+                ]
+              ]
+            },
+            "API_BYBUSGRAPHQL_GRAPHQLAPIIDOUTPUT": {
+              "Ref": "apibybusgraphqlGraphQLAPIIdOutput"
             }
           }
         },
@@ -89,12 +122,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bybusLambdaRolefc2516b1",
+            "bybusLambdaRolec70b10bf",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bybusLambdaRolefc2516b1",
+                  "bybusLambdaRolec70b10bf",
                   "-",
                   {
                     "Ref": "env"
@@ -160,6 +193,91 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PartiQLInsert",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:PartiQLSelect",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:PartiQLUpdate",
+                "dynamodb:Delete*",
+                "dynamodb:PartiQLDelete"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      {
+                        "Fn::ImportValue": {
+                          "Fn::Sub": "${apibybusgraphqlGraphQLAPIIdOutput}:GetAtt:UserTable:Name"
+                        }
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:dynamodb:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":table/",
+                      {
+                        "Fn::ImportValue": {
+                          "Fn::Sub": "${apibybusgraphqlGraphQLAPIIdOutput}:GetAtt:UserTable:Name"
+                        }
+                      },
+                      "/index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

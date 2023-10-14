@@ -29,9 +29,15 @@ export const listBookings = /* GraphQL */ `
         }
         stock
         price
+        tickets {
+          items {
+            id
+          }
+        }
         createdBy
         createdAt
         updatedAt
+        
       }
       nextToken
     }

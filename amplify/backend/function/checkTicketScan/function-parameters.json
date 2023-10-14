@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "api": {
+      "bybusgraphql": [
+        "Query"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

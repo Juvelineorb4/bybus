@@ -140,12 +140,12 @@ type Employee
   email: String
   phone: String
   pin: String
-  type: EmployeeType @default(value: "OWNER")
+  type: EmployeeType!
   agencyID: ID @index(name: "byAgencyToEmployee")
   agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID @index(name: "byOfficeToEmployee")
   office: Office @belongsTo(fields: ["officeID"])
-  permissions: [PermissionsEmployees]
+  # permissions: [PermissionsEmployees]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
   lastConnection: String
 }
@@ -160,7 +160,6 @@ enum PermissionsEmployees {
 }
 
 enum EmployeeType {
-  OWNER
   OFFICE
   COLLECTOR
 }
@@ -178,8 +177,6 @@ type Transport
   serial: String
   type: String
   officeID: ID @index(name: "byOfficeToTransport")
-  bookings: [Booking]
-    @hasMany(indexName: "byTransportToBooking", fields: ["id"])
   createdBy: ID
 }
 
@@ -194,10 +191,10 @@ type Booking
     ]
   ) {
   id: ID!
+  status: BookingStatus @default(value: "AVAILABLE")
   code: String
   agencyID: ID! @index(name: "byAgencyToBooking")
   officeID: ID! @index(name: "byOfficeToBooking")
-  transport: ID! @index(name: "byTransportToBooking")
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
   tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
@@ -210,9 +207,24 @@ type Booking
   stock: Int
   price: Float
   createdBy: ID
+  driver: String
+  transport: transporType
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
+enum transporType {
+  EXPRESO
+  ENCAVA
+  BUSCAMA
+}
+
+enum BookingStatus {
+  AVAILABLE
+  SOLDOUT
+  BOARDING
+  DEPARTED
+  ARRIVED
+}
 type DepartureArrivalStopFields {
   time: AWSTime
   date: AWSDate
@@ -261,8 +273,7 @@ type Customer
   name: String
   lastName: String
   ci: String
-  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
-  phone: String
+  email: String
   bookingID: ID @index(name: "byBookingToCustomer")
   ticketID: ID
   ticket: Ticket @hasOne(fields: ["ticketID"])
@@ -285,6 +296,7 @@ type Ticket
   bookingID: ID @index(name: "byBookingToTicket")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
+  customer: Customer @belongsTo
   seating: String
   status: String
   description: String
@@ -408,7 +420,7 @@ type User
   ) {
   id: ID!
   name: String!
-  email: String
+  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
   status: StatusUser
   notificationToken: String
   previousBalance: Float
@@ -435,8 +447,12 @@ enum StatusUser {
 
 type Mutation {
   registerAgencyAdmin(input: RegisterUserInput!): String
-    @function(name: "createAgencyAdmin-${env}")
+    @function(name: "createAdminAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
+
+  checkScan(input: ID): String
+    @function(name: "checkTicketScan-${env}")
+    @auth(rules: [{ allow: owner }])
 }
 
 input RegisterUserInput {

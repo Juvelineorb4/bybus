@@ -10,6 +10,7 @@ import {
   CognitoIdentityProvider,
   AdminCreateUserCommand,
   AdminAddUserToGroupCommand,
+  AdminUpdateUserAttributesCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import crypto from "@aws-crypto/sha256-js";
@@ -103,7 +104,7 @@ export const handler = async (event) => {
   // envaimos un mensaje al correo
   await SEND_EMAIL(username, responseAgency.claveTemporal);
   // // creamos el usuario en dynamodb
-  await CUSTOM_API_GRAPHQL(createAgency, {
+  const responseCreateAgency = await CUSTOM_API_GRAPHQL(createAgency, {
     input: {
       cognitoID: responseAgency.response.User.Username,
       name: name,
@@ -113,6 +114,12 @@ export const handler = async (event) => {
       owner: responseAgency.response.User.Username,
     },
   });
+  // le asignamos al usuario en cognito el agencyID
+  await UPDATE_ATTRIBUTES_USER(
+    responseAgency.response.User.Username,
+    "custom:agencyID",
+    responseCreateAgency.data.createAgency.id
+  );
   // // cambiamos el stado de PENDING A ACCEPTED
   await CUSTOM_API_GRAPHQL(updateAgencySubscription, {
     input: {
@@ -180,6 +187,29 @@ const createAgencyCognito = async (attr) => {
     console.log("Error al crear Agency: ", error);
     return { response: null };
   }
+};
+
+const UPDATE_ATTRIBUTES_USER = async (
+  username,
+  attributeName,
+  attributeValue
+) => {
+  const params = {
+    // AdminUpdateUserAttributesRequest
+    UserPoolId: COGNITO_USERPOOL, // required
+    Username: username, // required
+    UserAttributes: [
+      // AttributeListType // required
+      {
+        // AttributeType
+        Name: attributeName, // required
+        Value: attributeValue,
+      },
+    ],
+  };
+  const command = new AdminUpdateUserAttributesCommand(params);
+  const response = await cognito.send(command);
+  return response;
 };
 
 const fetchExample = async () => {

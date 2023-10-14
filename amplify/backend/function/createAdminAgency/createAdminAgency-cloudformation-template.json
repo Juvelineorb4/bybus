@@ -59,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "createAgencyAdmin",
+            "createAdminAgency",
             {
               "Fn::Join": [
                 "",
                 [
-                  "createAgencyAdmin",
+                  "createAdminAgency",
                   "-",
                   {
                     "Ref": "env"
@@ -110,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bybusLambdaRole78d2cbac",
+            "bybusLambdaRole7e06c0f8",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bybusLambdaRole78d2cbac",
+                  "bybusLambdaRole7e06c0f8",
                   "-",
                   {
                     "Ref": "env"

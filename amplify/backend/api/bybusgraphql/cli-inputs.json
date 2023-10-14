@@ -11,6 +11,7 @@
         "mode": "AMAZON_COGNITO_USER_POOLS",
         "cognitoUserPoolId": "authbybus"
       }
-    ]
+    ],
+    "conflictResolution": {}
   }
 }

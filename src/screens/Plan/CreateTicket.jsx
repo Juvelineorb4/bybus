@@ -22,6 +22,7 @@ const CreateTicket = ({ navigation, route }) => {
   const [active, setActive] = useState(false);
   const [quantityId, setQuantityId] = useState([]);
   const { booking } = route.params;
+  console.log(booking)
   const handleMoreId = async (data) => {
     if (quantityId.length + 1 === quantity) {
       setFull(true);
@@ -50,6 +51,7 @@ const CreateTicket = ({ navigation, route }) => {
   useEffect(() => {
     const User = async () => {
       const { attributes } = await Auth.currentAuthenticatedUser();
+      console.log(attributes)
       setUser([attributes]);
     };
     User();
