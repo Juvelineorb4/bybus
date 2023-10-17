@@ -8,7 +8,7 @@ const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity, tickets } = route.params;
   const total = quantity * data.price;
-  
+  console.log(tickets)
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground

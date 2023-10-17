@@ -18,6 +18,9 @@ import { useRecoilState } from "recoil";
 const ResultView = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const [search, setSearch] = useState([]);
+  const [qDeparted, setQDeparted] = useState(0);
+  const [timeline, setTimeline] = useState(false);
+  const [qAvailable, setQAvailable] = useState(0);
   const [loading, setLoading] = useRecoilState(loadingSearch);
   const Bookings = async () => {
     try {
@@ -34,14 +37,45 @@ const ResultView = ({ data }) => {
         },
       });
       setSearch(list.data.listBookings.items);
-        setLoading(false);
-      console.log(list.data.listBookings);
+      setLoading(false);
+      console.log(list.data.listBookings.items);
+      const viajesDisponibles = list.data.listBookings.items.filter(
+        (viaje) => viaje.status === "AVAILABLE"
+      );
+      const viajesPartidos = list.data.listBookings.items.filter(
+        (viaje) => viaje.status === "DEPARTED"
+      );
+
+      const cantidadDisponibles = viajesDisponibles.length;
+      const cantidadPartidos = viajesPartidos.length;
+      setQAvailable(cantidadDisponibles);
+      setQDeparted(cantidadPartidos);
     } catch (error) {
       console.log(error);
     }
   };
+  let fecha = new Date();
+  let dia = fecha.getDate();
+  let mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
+  let año = fecha.getFullYear();
+
+  let dateToday = año + "-" + mes + "-" + dia;
   useEffect(() => {
     if (data) Bookings();
+    // console.log(dateToday);
+    let fecha1 = new Date(dateToday);
+    let fecha2 = new Date(data?.date);
+    console.log(fecha1, fecha2)
+    if (fecha2.getTime() > fecha1.getTime()) {
+      console.log("La fecha2 es mayor que la fecha1");
+      setTimeline(false);
+    } else if (fecha2.getTime() < fecha1.getTime()) {
+      setTimeline(true);
+      console.log("La fecha2 es menor que la fecha1");
+    } else if (fecha2.getTime() === fecha1.getTime()) {
+      setTimeline(false);
+      console.log("Las fechas son iguales");
+    }
   }, [data]);
 
   return (
@@ -63,8 +97,13 @@ const ResultView = ({ data }) => {
           >
             <ActivityIndicator size="large" color="#00B4D8" />
           </View>
-        ) : search.length !== 0 ? (
-          search.map((item, index) => <RouteCard data={item} key={index} />)
+        ) : search.length !== 0 && qAvailable !== 0 && timeline === false ? (
+          search.map(
+            (item, index) =>
+              item.status === "AVAILABLE" && (
+                <RouteCard data={item} key={index} />
+              )
+          )
         ) : (
           <View
             style={{

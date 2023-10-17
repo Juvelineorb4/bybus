@@ -21,8 +21,27 @@ const RouteSearch = () => {
   const global = require("@/utils/styles/global.js");
   const { control } = useForm();
   const route = useRecoilValue(routeSearch);
+  console.log(route.date)
   const [result, setResult] = useRecoilState(planSearch);
   const [loading, setLoading] = useRecoilState(loadingSearch);
+  let fecha = new Date();
+  let minutos = fecha.getMinutes();
+  let minutosRedondeados = Math.round(minutos / 15) * 15;
+  if (minutosRedondeados === 60) {
+    minutosRedondeados = 0;
+  }
+  let hora = fecha.getHours();
+  if (minutosRedondeados === 0 && minutos > 45) {
+    hora += 1;
+  }
+  let dateToday =
+    fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate();
+  let timeToday =
+    hora +
+    ":" +
+    (minutosRedondeados < 10 ? "0" : "") +
+    minutosRedondeados +
+    ":00.000";
 
   return (
     <View style={[styles.container, global.bgBlack]}>
@@ -56,15 +75,15 @@ const RouteSearch = () => {
           style={[styles.search, global.mainBgColorSecond]}
           onPress={() => {
             setResult({
-              time: route?.time,
-              date: route?.date,
+              time: route?.time ? route?.time : timeToday,
+              date: route?.date ? route?.date : dateToday,
               departureState: route?.departureState?.estado,
               departureCity: route?.departureCity,
               arrivalState: route?.arrivalState?.estado,
               arrivalCity: route?.arrivalCity,
               active: true,
             });
-            setLoading(true)
+            setLoading(true);
           }}
         >
           <Image

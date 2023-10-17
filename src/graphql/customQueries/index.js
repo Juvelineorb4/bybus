@@ -7,6 +7,7 @@ export const listBookings = /* GraphQL */ `
     listBookings(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -34,6 +35,8 @@ export const listBookings = /* GraphQL */ `
             id
           }
         }
+        driver
+        transport
         createdBy
         createdAt
         updatedAt

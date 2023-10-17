@@ -17,22 +17,34 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
     String(newDate.getMonth() + 1).padStart(2, "0");
 
   /* time */
-  const selectedTime = newDate.getHours().toString()
-  .padStart(2, "0") + ":" + newDate.getMinutes().toString().padStart(2, '0');
+  const selectedTime =
+    newDate.getHours().toString().padStart(2, "0") +
+    ":" +
+    newDate.getMinutes().toString().padStart(2, "0");
 
   const onChange = ({ e, mode, date }) => {
     const currentDate = date;
     setNewDate(currentDate);
     setShow(!show);
+    console.log(String(currentDate.getFullYear()));
     if (mode === "date")
-    setSelectRoute({...selectRoute, date: 
-        String(currentDate.getDate()).padStart(2, "0") +
+      setSelectRoute({
+        ...selectRoute,
+        date:
+          String(currentDate.getFullYear()) +
           "-" +
-          String(currentDate.getMonth() + 1).padStart(2, "0")
+          String(currentDate.getMonth() + 1).padStart(2, "0") +
+          "-" +
+          String(currentDate.getDate()).padStart(2, "0"),
       });
     if (mode === "time")
-    setSelectRoute({...selectRoute, time: currentDate.getHours().toString()
-      .padStart(2, "0") + ":" + currentDate.getMinutes().toString().padStart(2, '0')});
+      setSelectRoute({
+        ...selectRoute,
+        time:
+          currentDate.getHours().toString().padStart(2, "0") +
+          ":" +
+          currentDate.getMinutes().toString().padStart(2, "0"),
+      });
   };
 
   const showDatepicker = () => {
