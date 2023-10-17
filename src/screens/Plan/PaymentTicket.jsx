@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/PaymentTicket.module.css";
 import { CustomButton } from "@/components";
 import PaymentCard from "@/components/Payment/PaymentCard";
@@ -29,7 +29,7 @@ const PaymentTicket = ({ navigation, route }) => {
           input: {
             reference: customer,
             amount: total,
-            userID: attributes.sub,
+            userID: attributes["custom:userTableID"],
           },
         },
       });
@@ -56,7 +56,7 @@ const PaymentTicket = ({ navigation, route }) => {
             isGuest: false,
             total: total,
             customerEmail: attributes.email,
-            userID: attributes.sub,
+            userID: attributes["custom:userTableID"],
             bookingID: booking.id, 
           },
         },
@@ -141,6 +141,14 @@ const PaymentTicket = ({ navigation, route }) => {
       console.log(error);
     }
   };
+  const test = async () => {
+    const user = await Auth.currentAuthenticatedUser();
+    console.log(user)
+  }
+  useEffect(() => {
+    test()
+  }, [])
+  
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
