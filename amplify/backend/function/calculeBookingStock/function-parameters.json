@@ -1,11 +1,5 @@
 {
   "permissions": {
-    "api": {
-      "bybusgraphql": [
-        "Query",
-        "Mutation"
-      ]
-    },
     "storage": {
       "Booking:@model(appsync)": [
         "create",

@@ -23,6 +23,7 @@
   font-family: "regular";
   font-size: 48px;
   align-items: center;
+  margin-bottom: -10px;
 }
 .tagTransport {
   flex-direction: row;

@@ -270,8 +270,7 @@ type Customer
     ]
   ) {
   id: ID!
-  name: String
-  lastName: String
+  fullName: String
   ci: String
   email: String
   bookingID: ID @index(name: "byBookingToCustomer")
@@ -292,11 +291,10 @@ type Ticket
   ) {
   id: ID!
   code: String
-  # J000000000BARCAR0707202300-00
   bookingID: ID @index(name: "byBookingToTicket")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
-  customer: Customer @belongsTo
+  customer: Customer @belongsTo(fields: ["customerID"])
   seating: String
   status: String
   description: String
@@ -351,6 +349,7 @@ type OrderDetail
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
   bookingID: ID
+  booking: Booking @hasOne(fields: ["bookingID"])
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
   userID: ID @index(name: "byUserToOrderDetail")
 }
@@ -450,9 +449,14 @@ type Mutation {
     @function(name: "createAdminAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
 
-  checkScan(input: ID): String
+  checkScan(input: CheckScanInput): String
     @function(name: "checkTicketScan-${env}")
-    @auth(rules: [{ allow: owner }])
+    @auth(rules: [{ allow: groups, groups: ["agency"] }])
+}
+
+input CheckScanInput {
+  ticketID: ID
+  bookingID: ID
 }
 
 input RegisterUserInput {

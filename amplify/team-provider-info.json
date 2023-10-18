@@ -23,7 +23,7 @@
         },
         "calculeBookingStock": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/calculeBookingStock-5a45336b655251734646-build.zip"
+          "s3Key": "amplify-builds/calculeBookingStock-3435686a4b5554615469-build.zip"
         },
         "createAdminAgency": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
@@ -31,7 +31,7 @@
         },
         "createUserCognito": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/createUserCognito-6c68526a586b5a5a326e-build.zip"
+          "s3Key": "amplify-builds/createUserCognito-506c45612f7958754566-build.zip"
         },
         "sheduleBookingUpdate": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
@@ -39,7 +39,7 @@
         },
         "checkTicketScan": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/checkTicketScan-7471797a48514b51582f-build.zip"
+          "s3Key": "amplify-builds/checkTicketScan-4e766130784b46543370-build.zip"
         }
       },
       "storage": {

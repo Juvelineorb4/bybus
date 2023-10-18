@@ -121,6 +121,13 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
         }
       ],
       "providerPlugin": "awscloudformation",

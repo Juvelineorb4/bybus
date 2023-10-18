@@ -12,16 +12,15 @@ import LeftHeader from "@/routes/Header/LeftHeader";
 
 const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { booking, tickets, customer } = route.params;
+  const { booking, tickets, customer, customerTicket } = route.params;
   const [paymentOrder, setPaymentOrder] = useState("");
   const [refresh, setRefresh] = useState(false);
   const total = tickets * booking.price;
-  console.log(booking)
+  console.log(customerTicket)
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
-      console.log(customer, booking.price, attributes.sub);
       const payment = await API.graphql({
         query: mutation.createPayment,
         authMode: "AMAZON_COGNITO_USER_POOLS",
@@ -62,6 +61,19 @@ const PaymentTicket = ({ navigation, route }) => {
         },
       });
       console.log(orderDetail);
+
+      const customer = await API.graphql({
+        query: mutation.createCustomer,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+        variables: {
+          input: {
+            fullName: customerTicket.fullName,
+            ci: customerTicket.ci,
+            email: customerTicket.email,
+          },
+        },
+      });
+      console.log(customer.data.createCustomer)
       // Crear Orders Tickets
       let orderTicketsTemporal = [];
       let ticketsPaid = [];
@@ -84,7 +96,7 @@ const PaymentTicket = ({ navigation, route }) => {
         /* Creamos los orders tickets */
         const orderTicketDetail = await API.graphql({
           query: mutation.createOrderTicket,
-          authMode: "AMAZON_COGNITO_USER_POOLS",
+          authMode: "AWS_IAM",
           variables: {
             input: {
               orderID: orderDetail.data.createOrderDetail.id,
@@ -101,11 +113,26 @@ const PaymentTicket = ({ navigation, route }) => {
             input: {
               id: item.id,
               status: "PAID",
+              customerID: customer.data.createCustomer.id
             },
           },
         });
         console.log(updateTicketStatus.data.updateTicket.id);
         ticketsPaid.push(updateTicketStatus.data.updateTicket.id);
+
+        /* Actualizamos customer */
+
+      const customerUpdate = await API.graphql({
+        query: mutation.updateCustomer,
+        authMode: "AWS_IAM",
+        variables: {
+          input: {
+            id: customer.data.createCustomer.id,
+            ticketID: item.id,
+          },
+        },
+      });
+      console.log(customerUpdate.data.updateCustomer)
       });
 
       /* Actualizamos el stock */
@@ -120,6 +147,8 @@ const PaymentTicket = ({ navigation, route }) => {
         },
       });
       console.log(updateBookingStock, 'toy aqui manito');
+
+      
       // console.log('aqui llego manito')
       setRefresh(true)
       setTimeout(() => {
@@ -128,9 +157,9 @@ const PaymentTicket = ({ navigation, route }) => {
           order: orderDetail.data.createOrderDetail.id,
           payment: paymentOrder,
           customer: {
-            name: attributes.name,
-            email: attributes.email,
-            id: customer,
+            name: customerTicket.fullName,
+            email: customerTicket.email,
+            id: customerTicket.ci,
           },
           quantity: tickets,
           tickets: ticketsPaid
@@ -146,7 +175,7 @@ const PaymentTicket = ({ navigation, route }) => {
     console.log(user)
   }
   useEffect(() => {
-    test()
+    // test()
   }, [])
   
   return (

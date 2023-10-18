@@ -67,6 +67,27 @@ export const createOrderTicket = /* GraphQL */ `
   ) {
     createOrderTicket(input: $input, condition: $condition) {
       id
+      orderID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+        }
+        seating
+        status
+        description
+        url
+      }
     }
   }
 `;
@@ -78,6 +99,7 @@ export const updateTicket = /* GraphQL */ `
     updateTicket(input: $input, condition: $condition) {
       id
       status
+      customerID
     }
   }
 `;
@@ -90,6 +112,74 @@ export const updateBooking = /* GraphQL */ `
       id
       code
       stock
+    }
+  }
+`;
+
+export const createCustomer = /* GraphQL */ `
+  mutation CreateCustomer(
+    $input: CreateCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    createCustomer(input: $input, condition: $condition) {
+      id
+      fullName
+      ci
+      email
+      bookingID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+        }
+        seating
+        status
+        description
+        url
+      }
+    }
+  }
+`;
+
+export const updateCustomer = /* GraphQL */ `
+  mutation UpdateCustomer(
+    $input: UpdateCustomerInput!
+    $condition: ModelCustomerConditionInput
+  ) {
+    updateCustomer(input: $input, condition: $condition) {
+      id
+      fullName
+      ci
+      email
+      bookingID
+      ticketID
+      ticket {
+        id
+        code
+        bookingID
+        stop
+        customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+        }
+        status
+        description
+      }
     }
   }
 `;
