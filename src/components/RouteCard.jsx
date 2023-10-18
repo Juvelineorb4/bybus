@@ -1,13 +1,37 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/RouteCard.module.css";
 import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
+import { Auth, API } from "aws-amplify";
+import * as queries from "@/graphql/queries";
+import * as customQueries from "@/graphql/customQueries";
+import * as mutations from "@/graphql/mutations";
 
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
-  console.log(data)
+  const [agency, setAgency] = useState([])
+  const Agency = async () => {
+    try {
+      const query = await API.graphql({
+        query: customQueries.getAgency,
+        authMode: "AWS_IAM",
+        variables: {
+          // input: {
+            id: data?.agencyID
+          // }
+        },
+      });
+      setAgency(query.data.getAgency.name)
+    } catch (error) {
+      setAgency(error.data.getAgency.name);
+    }
+  };
+  useEffect(() => {
+    Agency()
+  }, [])
+  
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -78,6 +102,23 @@ const RouteCard = ({ data }) => {
             </Text>
           </View>
         </View>
+      </View>
+      <View style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingHorizontal: 10,
+        }}>
+          <View style={{flexDirection: 'row'}}>
+          <Text style={{fontFamily: 'light'}}>Transporte:</Text>
+          <Text style={{fontFamily: 'regular', marginLeft: 2, textTransform: 'capitalize'}}>{data.transport}</Text>
+
+          </View>
+          <View style={{flexDirection: 'row'}}>
+          <Text style={{fontFamily: 'light'}}>Empresa:</Text>
+          <Text style={{fontFamily: 'regular', marginLeft: 5}}>{agency}</Text>
+
+          </View>
       </View>
       <View
         style={{
