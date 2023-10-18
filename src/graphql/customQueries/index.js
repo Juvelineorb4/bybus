@@ -152,3 +152,73 @@ export const getBooking = /* GraphQL */ `
     }
   }
 `;
+
+export const getAgency = /* GraphQL */ `
+  query GetAgency($id: ID!) {
+    getAgency(id: $id) {
+      id
+      cognitoID
+      pin
+      name
+      rif
+      email
+      phone
+      officies {
+        items {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      employees {
+        items {
+          id
+          name
+          email
+          phone
+          pin
+          type
+          agencyID
+          officeID
+          owner
+          lastConnection
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      bookings {
+        items {
+          id
+          status
+          code
+          agencyID
+          officeID
+          departureCity
+          arrivalCity
+          stock
+          price
+          createdBy
+          driver
+          transport
+          owner
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      owner
+      createdAt
+      updatedAt
+    }
+  }
+`;

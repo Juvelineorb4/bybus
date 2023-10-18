@@ -295,6 +295,33 @@ const CreateTicket = ({ navigation, route }) => {
               onChangeText={(e) => setFullName(e)}
             />
           </View>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={user[0] ? user[0].name : "Esperando..."}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setFullName(e)}
+            />
+          </View>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={"Cedula: 123456789"}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setFullName(e)}
+            />
+          </View>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={"ejemplo@email.com"}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setFullName(e)}
+            />
+          </View>
           <TouchableOpacity
             onPress={() => {
               setActive(!active);
