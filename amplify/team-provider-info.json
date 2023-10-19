@@ -25,6 +25,10 @@
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
           "s3Key": "amplify-builds/calculeBookingStock-3435686a4b5554615469-build.zip"
         },
+        "checkTicketScan": {
+          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "s3Key": "amplify-builds/checkTicketScan-4e766130784b46543370-build.zip"
+        },
         "createAdminAgency": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
           "s3Key": "amplify-builds/createAdminAgency-6c347853586d7436482f-build.zip"
@@ -36,18 +40,10 @@
         "sheduleBookingUpdate": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
           "s3Key": "amplify-builds/sheduleBookingUpdate-68377a64614c6a777168-build.zip"
-        },
-        "checkTicketScan": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/checkTicketScan-4e766130784b46543370-build.zip"
         }
       },
       "storage": {
         "s3storagebybus": {}
-      },
-      "api": {
-        "AdminQueries": {},
-        "bybusgraphql": {}
       }
     }
   }
