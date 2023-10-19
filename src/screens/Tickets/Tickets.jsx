@@ -34,7 +34,7 @@ const Tickets = ({ navigation }) => {
           borderBottomLeftRadius: 16,
           // resizeMode: "cover",
         }, global.mainBgColorSecond]}>
-          <Text style={styles.title}>Mis tickets</Text>
+          <Text style={styles.title}>Mis ordenes</Text>
         </View>
       </View>
 

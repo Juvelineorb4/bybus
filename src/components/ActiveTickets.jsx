@@ -16,7 +16,7 @@ const ActiveTickets = () => {
       const { attributes } = await Auth.currentAuthenticatedUser();
       const list = await API.graphql({
         query: queries.listOrderDetails,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
+        authMode: "AWS_IAM",
         variables: {
           input: {
             userID: attributes.sub,
@@ -44,7 +44,7 @@ const ActiveTickets = () => {
           source={require("@/utils/images/ticket.png")}
         />
         <Text style={[styles.textContentActive, global.black]}>
-          Tickets activos
+          Ordenes activos
         </Text>
       </View>
       {listOrders.length !== 0 ? listOrders.map((item, index) => (

@@ -53,8 +53,8 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
   };
 
   const showTimepicker = () => {
-    setMode("time");
-    setShow(!show);
+    // setMode("time");
+    // setShow(!show);
   };
 
   return (
@@ -64,7 +64,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
         onPress={showDatepicker}
         style={[styled.border]}
       >
-        <Text style={styled.text}>{selectedDate}</Text>
+        <Text style={[styled.text]}>{selectedDate}</Text>
         <Image
           style={{
             width: 25,
@@ -78,7 +78,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
           }
         />
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         activeOpacity={1}
         onPress={showTimepicker}
         style={[styled.border, { marginLeft: "5%" }]}
@@ -96,7 +96,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
               : require("@/utils/images/clock-white.png")
           }
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {show && (
         <DateTimePicker
           testID="dateTimePicker"

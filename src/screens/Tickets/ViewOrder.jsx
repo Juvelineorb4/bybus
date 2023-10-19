@@ -6,9 +6,9 @@ import { CustomButton } from "@/components";
 
 const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { order, payment, data, customer, quantity, tickets } = route.params;
+  const { order, payment, data, quantity, tickets } = route.params;
   const total = quantity * data.price;
-  
+  console.log(tickets[0].ticket.customer.fullName)
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
@@ -29,23 +29,23 @@ const ViewOrder = ({ navigation, route }) => {
           >
             <Text style={[styles.titleTickets2, global.black]}>Nombre</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {customer.name}
+              {tickets[0].ticket.customer.fullName}
             </Text>
           </View>
-          {/* <View
+          <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
               <Text style={[styles.titlePrice2, global.black]}>
-                {customer.id}
+                {tickets[0].ticket.customer.ci}
               </Text>
-            </View> */}
+            </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <Text style={[styles.titleTickets2, global.black]}>Correo</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {customer.email}
+              {tickets[0].ticket.customer.email}
             </Text>
           </View>
           <View
@@ -77,7 +77,11 @@ const ViewOrder = ({ navigation, route }) => {
               data: data,
               payment: payment,
               order: order,
-              customer: customer,
+              customer: {
+                name: tickets[0].ticket.customer.fullName,
+                email: tickets[0].ticket.customer.email,
+                id: tickets[0].ticket.customer.ci,
+              },
               ticket: item.ticketID,
             }}
             key={index}

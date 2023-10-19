@@ -109,14 +109,17 @@ const RouteCard = ({ data }) => {
           justifyContent: "space-between",
           paddingHorizontal: 10,
         }}>
-          <View style={{flexDirection: 'row'}}>
-          <Text style={{fontFamily: 'light'}}>Transporte:</Text>
-          <Text style={{fontFamily: 'regular', marginLeft: 2, textTransform: 'capitalize'}}>{data.transport}</Text>
-
-          </View>
-          <View style={{flexDirection: 'row'}}>
-          <Text style={{fontFamily: 'light'}}>Empresa:</Text>
-          <Text style={{fontFamily: 'regular', marginLeft: 5}}>{agency}</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image
+            style={{
+              width: 25,
+              height: 25,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/profile_default.png")}
+          />
+          {/* <Text style={{fontFamily: 'light'}}>Empresa:</Text> */}
+          <Text style={{fontFamily: 'light', marginLeft: 5}}>{agency}</Text>
 
           </View>
       </View>
@@ -138,8 +141,9 @@ const RouteCard = ({ data }) => {
             source={require("@/utils/images/walk.png")}
           />
         </View>
-        <View style={[styles.lineDashed, { width: 30 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack]}>
+        <View style={[styles.lineDashed, { width: 20 }]} />
+        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
+        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.transport}</Text>
           <Image
             style={{
               width: 24,
@@ -148,9 +152,10 @@ const RouteCard = ({ data }) => {
             }}
             source={require("@/utils/images/bus-white.png")}
           />
+          
         </View>
-        <View style={[styles.lineSolid, { width: 40 }]} />
-        <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
+        {/* <View style={[styles.lineDashed, { width: 15 }]} /> */}
+        {/* <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
           <Image
             style={{
               width: 24,
@@ -159,7 +164,7 @@ const RouteCard = ({ data }) => {
             }}
             source={require("@/utils/images/walk.png")}
           />
-        </View>
+        </View> */}
         <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
           <Image
             style={{

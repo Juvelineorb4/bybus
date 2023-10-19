@@ -15,12 +15,6 @@ const CustomTicket = ({ data }) => {
      mimeType: 'image/jpeg',
      dialogTitle: messageText,
   };
-
-  useEffect(() => {
-    ref.current.capture().then((uri) => {
-      setFile(uri);
-    });
-  }, []);
   const onShare = async () => {
     try {
       Sharing.shareAsync(file, options);
@@ -28,6 +22,13 @@ const CustomTicket = ({ data }) => {
       Alert.alert(error.message);
     }
   };
+  useEffect(() => {
+    ref.current.capture().then((uri) => {
+      setFile(uri);
+    });
+    console.log(data.data.departure.date)
+  }, []);
+  
   return (
     <ViewShot
       ref={ref}
@@ -36,9 +37,16 @@ const CustomTicket = ({ data }) => {
       <View style={[styles.container, global.bgWhiteSoftTwo]}>
         <View style={styles.ticketContent}>
           <View style={styles.topContent}>
+            <View style={{ justifyContent: 'center' }}>
             <Text style={[styles.textHour, global.black]}>
               {data.data.departure.time.slice(0, 5)}
             </Text>
+            <Text style={[{fontFamily: 'light', fontSize: 21, marginBottom: 5}, global.black]}>
+              {data.data.departure.date}
+            </Text>
+
+            </View>
+            
             <View style={styles.nameTicket}>
               <Text style={[styles.nameTitle, global.black]}>A nombre de:</Text>
 
