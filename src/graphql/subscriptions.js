@@ -177,7 +177,6 @@ export const onCreateAgency = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -194,7 +193,6 @@ export const onCreateAgency = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -228,6 +226,8 @@ export const onCreateAgency = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -323,7 +323,6 @@ export const onUpdateAgency = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -340,7 +339,6 @@ export const onUpdateAgency = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -374,6 +372,8 @@ export const onUpdateAgency = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -469,7 +469,6 @@ export const onDeleteAgency = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -486,7 +485,6 @@ export const onDeleteAgency = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -520,6 +518,8 @@ export const onDeleteAgency = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -586,7 +586,6 @@ export const onCreateOffice = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -603,10 +602,6 @@ export const onCreateOffice = /* GraphQL */ `
           serial
           type
           officeID
-          bookings {
-            nextToken
-            __typename
-          }
           createdBy
           createdAt
           updatedAt
@@ -623,7 +618,6 @@ export const onCreateOffice = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -657,6 +651,8 @@ export const onCreateOffice = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -723,7 +719,6 @@ export const onUpdateOffice = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -740,10 +735,6 @@ export const onUpdateOffice = /* GraphQL */ `
           serial
           type
           officeID
-          bookings {
-            nextToken
-            __typename
-          }
           createdBy
           createdAt
           updatedAt
@@ -760,7 +751,6 @@ export const onUpdateOffice = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -794,6 +784,8 @@ export const onUpdateOffice = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -860,7 +852,6 @@ export const onDeleteOffice = /* GraphQL */ `
             updatedAt
             __typename
           }
-          permissions
           owner
           lastConnection
           createdAt
@@ -877,10 +868,6 @@ export const onDeleteOffice = /* GraphQL */ `
           serial
           type
           officeID
-          bookings {
-            nextToken
-            __typename
-          }
           createdBy
           createdAt
           updatedAt
@@ -897,7 +884,6 @@ export const onDeleteOffice = /* GraphQL */ `
           code
           agencyID
           officeID
-          transport
           customers {
             nextToken
             __typename
@@ -931,6 +917,8 @@ export const onDeleteOffice = /* GraphQL */ `
           stock
           price
           createdBy
+          driver
+          transport
           owner
           createdAt
           updatedAt
@@ -1031,7 +1019,6 @@ export const onCreateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1048,12 +1035,13 @@ export const onCreateEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1087,7 +1075,6 @@ export const onCreateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1120,12 +1107,13 @@ export const onCreateEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1139,7 +1127,6 @@ export const onCreateEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
-      permissions
       owner
       lastConnection
       createdAt
@@ -1197,7 +1184,6 @@ export const onUpdateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1214,12 +1200,13 @@ export const onUpdateEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1253,7 +1240,6 @@ export const onUpdateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1286,12 +1272,13 @@ export const onUpdateEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1305,7 +1292,6 @@ export const onUpdateEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
-      permissions
       owner
       lastConnection
       createdAt
@@ -1363,7 +1349,6 @@ export const onDeleteEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1380,12 +1365,13 @@ export const onDeleteEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1419,7 +1405,6 @@ export const onDeleteEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
-            permissions
             owner
             lastConnection
             createdAt
@@ -1452,12 +1437,13 @@ export const onDeleteEmployee = /* GraphQL */ `
             code
             agencyID
             officeID
-            transport
             departureCity
             arrivalCity
             stock
             price
             createdBy
+            driver
+            transport
             owner
             createdAt
             updatedAt
@@ -1471,7 +1457,6 @@ export const onDeleteEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
-      permissions
       owner
       lastConnection
       createdAt
@@ -1491,55 +1476,6 @@ export const onCreateTransport = /* GraphQL */ `
       serial
       type
       officeID
-      bookings {
-        items {
-          id
-          status
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departureCity
-          arrivalCity
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdBy
       createdAt
       updatedAt
@@ -1559,55 +1495,6 @@ export const onUpdateTransport = /* GraphQL */ `
       serial
       type
       officeID
-      bookings {
-        items {
-          id
-          status
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departureCity
-          arrivalCity
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdBy
       createdAt
       updatedAt
@@ -1627,55 +1514,6 @@ export const onDeleteTransport = /* GraphQL */ `
       serial
       type
       officeID
-      bookings {
-        items {
-          id
-          status
-          code
-          agencyID
-          officeID
-          transport
-          customers {
-            nextToken
-            __typename
-          }
-          tickets {
-            nextToken
-            __typename
-          }
-          stops {
-            nextToken
-            __typename
-          }
-          departureCity
-          arrivalCity
-          departure {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          arrival {
-            time
-            date
-            city
-            state
-            address
-            __typename
-          }
-          stock
-          price
-          createdBy
-          owner
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdBy
       createdAt
       updatedAt
@@ -1695,15 +1533,12 @@ export const onCreateBooking = /* GraphQL */ `
       code
       agencyID
       officeID
-      transport
       customers {
         items {
           id
-          name
-          lastName
+          fullName
           ci
           email
-          phone
           bookingID
           ticketID
           ticket {
@@ -1737,6 +1572,18 @@ export const onCreateBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -1796,6 +1643,8 @@ export const onCreateBooking = /* GraphQL */ `
       stock
       price
       createdBy
+      driver
+      transport
       owner
       createdAt
       updatedAt
@@ -1814,15 +1663,12 @@ export const onUpdateBooking = /* GraphQL */ `
       code
       agencyID
       officeID
-      transport
       customers {
         items {
           id
-          name
-          lastName
+          fullName
           ci
           email
-          phone
           bookingID
           ticketID
           ticket {
@@ -1856,6 +1702,18 @@ export const onUpdateBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -1915,6 +1773,8 @@ export const onUpdateBooking = /* GraphQL */ `
       stock
       price
       createdBy
+      driver
+      transport
       owner
       createdAt
       updatedAt
@@ -1933,15 +1793,12 @@ export const onDeleteBooking = /* GraphQL */ `
       code
       agencyID
       officeID
-      transport
       customers {
         items {
           id
-          name
-          lastName
+          fullName
           ci
           email
-          phone
           bookingID
           ticketID
           ticket {
@@ -1975,6 +1832,18 @@ export const onDeleteBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -2034,6 +1903,8 @@ export const onDeleteBooking = /* GraphQL */ `
       stock
       price
       createdBy
+      driver
+      transport
       owner
       createdAt
       updatedAt
@@ -2056,6 +1927,18 @@ export const onCreateStopBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -2100,6 +1983,18 @@ export const onUpdateStopBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -2144,6 +2039,18 @@ export const onDeleteStopBooking = /* GraphQL */ `
           bookingID
           stop
           customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           seating
           status
           description
@@ -2180,11 +2087,9 @@ export const onCreateCustomer = /* GraphQL */ `
   ) {
     onCreateCustomer(filter: $filter, owner: $owner) {
       id
-      name
-      lastName
+      fullName
       ci
       email
-      phone
       bookingID
       ticketID
       ticket {
@@ -2193,6 +2098,34 @@ export const onCreateCustomer = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2217,11 +2150,9 @@ export const onUpdateCustomer = /* GraphQL */ `
   ) {
     onUpdateCustomer(filter: $filter, owner: $owner) {
       id
-      name
-      lastName
+      fullName
       ci
       email
-      phone
       bookingID
       ticketID
       ticket {
@@ -2230,6 +2161,34 @@ export const onUpdateCustomer = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2254,11 +2213,9 @@ export const onDeleteCustomer = /* GraphQL */ `
   ) {
     onDeleteCustomer(filter: $filter, owner: $owner) {
       id
-      name
-      lastName
+      fullName
       ci
       email
-      phone
       bookingID
       ticketID
       ticket {
@@ -2267,6 +2224,34 @@ export const onDeleteCustomer = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2295,6 +2280,46 @@ export const onCreateTicket = /* GraphQL */ `
       bookingID
       stop
       customerID
+      customer {
+        id
+        fullName
+        ci
+        email
+        bookingID
+        ticketID
+        ticket {
+          id
+          code
+          bookingID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          seating
+          status
+          description
+          url
+          owner
+          createdAt
+          updatedAt
+          stopBookingTicketsId
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       seating
       status
       description
@@ -2318,6 +2343,46 @@ export const onUpdateTicket = /* GraphQL */ `
       bookingID
       stop
       customerID
+      customer {
+        id
+        fullName
+        ci
+        email
+        bookingID
+        ticketID
+        ticket {
+          id
+          code
+          bookingID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          seating
+          status
+          description
+          url
+          owner
+          createdAt
+          updatedAt
+          stopBookingTicketsId
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       seating
       status
       description
@@ -2341,6 +2406,46 @@ export const onDeleteTicket = /* GraphQL */ `
       bookingID
       stop
       customerID
+      customer {
+        id
+        fullName
+        ci
+        email
+        bookingID
+        ticketID
+        ticket {
+          id
+          code
+          bookingID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          seating
+          status
+          description
+          url
+          owner
+          createdAt
+          updatedAt
+          stopBookingTicketsId
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       seating
       status
       description
@@ -2368,6 +2473,34 @@ export const onCreateOrderTicket = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2401,6 +2534,34 @@ export const onUpdateOrderTicket = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2434,6 +2595,34 @@ export const onDeleteOrderTicket = /* GraphQL */ `
         bookingID
         stop
         customerID
+        customer {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         seating
         status
         description
@@ -2480,6 +2669,89 @@ export const onCreateOrderDetail = /* GraphQL */ `
         __typename
       }
       bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        officeID
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       orderTickets {
         items {
           id
@@ -2547,6 +2819,89 @@ export const onUpdateOrderDetail = /* GraphQL */ `
         __typename
       }
       bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        officeID
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       orderTickets {
         items {
           id
@@ -2614,6 +2969,89 @@ export const onDeleteOrderDetail = /* GraphQL */ `
         __typename
       }
       bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        officeID
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       orderTickets {
         items {
           id
@@ -2743,6 +3181,52 @@ export const onCreateOrderDetailHistory = /* GraphQL */ `
           __typename
         }
         bookingID
+        booking {
+          id
+          status
+          code
+          agencyID
+          officeID
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          driver
+          transport
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         orderTickets {
           items {
             id
@@ -2809,6 +3293,52 @@ export const onUpdateOrderDetailHistory = /* GraphQL */ `
           __typename
         }
         bookingID
+        booking {
+          id
+          status
+          code
+          agencyID
+          officeID
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          driver
+          transport
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         orderTickets {
           items {
             id
@@ -2875,6 +3405,52 @@ export const onDeleteOrderDetailHistory = /* GraphQL */ `
           __typename
         }
         bookingID
+        booking {
+          id
+          status
+          code
+          agencyID
+          officeID
+          customers {
+            nextToken
+            __typename
+          }
+          tickets {
+            nextToken
+            __typename
+          }
+          stops {
+            nextToken
+            __typename
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+            __typename
+          }
+          stock
+          price
+          createdBy
+          driver
+          transport
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         orderTickets {
           items {
             id
@@ -2942,6 +3518,24 @@ export const onCreateUser = /* GraphQL */ `
             __typename
           }
           bookingID
+          booking {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           orderTickets {
             nextToken
             __typename
@@ -3001,6 +3595,24 @@ export const onUpdateUser = /* GraphQL */ `
             __typename
           }
           bookingID
+          booking {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           orderTickets {
             nextToken
             __typename
@@ -3060,6 +3672,24 @@ export const onDeleteUser = /* GraphQL */ `
             __typename
           }
           bookingID
+          booking {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           orderTickets {
             nextToken
             __typename

@@ -140,12 +140,12 @@ type Employee
   email: String
   phone: String
   pin: String
-  type: EmployeeType @default(value: "OWNER")
+  type: EmployeeType!
   agencyID: ID @index(name: "byAgencyToEmployee")
   agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID @index(name: "byOfficeToEmployee")
   office: Office @belongsTo(fields: ["officeID"])
-  permissions: [PermissionsEmployees]
+  # permissions: [PermissionsEmployees]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
   lastConnection: String
 }
@@ -160,7 +160,6 @@ enum PermissionsEmployees {
 }
 
 enum EmployeeType {
-  OWNER
   OFFICE
   COLLECTOR
 }
@@ -178,8 +177,6 @@ type Transport
   serial: String
   type: String
   officeID: ID @index(name: "byOfficeToTransport")
-  bookings: [Booking]
-    @hasMany(indexName: "byTransportToBooking", fields: ["id"])
   createdBy: ID
 }
 
@@ -198,7 +195,6 @@ type Booking
   code: String
   agencyID: ID! @index(name: "byAgencyToBooking")
   officeID: ID! @index(name: "byOfficeToBooking")
-  transport: ID! @index(name: "byTransportToBooking")
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
   tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
@@ -211,7 +207,15 @@ type Booking
   stock: Int
   price: Float
   createdBy: ID
+  driver: String
+  transport: transporType
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum transporType {
+  EXPRESO
+  ENCAVA
+  BUSCAMA
 }
 
 enum BookingStatus {
@@ -266,8 +270,7 @@ type Customer
     ]
   ) {
   id: ID!
-  name: String
-  lastName: String
+  fullName: String
   ci: String
   email: String
   bookingID: ID @index(name: "byBookingToCustomer")
@@ -288,10 +291,10 @@ type Ticket
   ) {
   id: ID!
   code: String
-  # J000000000BARCAR0707202300-00
   bookingID: ID @index(name: "byBookingToTicket")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
+  customer: Customer @belongsTo(fields: ["customerID"])
   seating: String
   status: String
   description: String
@@ -346,6 +349,7 @@ type OrderDetail
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
   bookingID: ID
+  booking: Booking @hasOne(fields: ["bookingID"])
   orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
   userID: ID @index(name: "byUserToOrderDetail")
 }
@@ -444,6 +448,15 @@ type Mutation {
   registerAgencyAdmin(input: RegisterUserInput!): String
     @function(name: "createAdminAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
+
+  checkScan(input: CheckScanInput): String
+    @function(name: "checkTicketScan-${env}")
+    @auth(rules: [{ allow: groups, groups: ["agency"] }])
+}
+
+input CheckScanInput {
+  ticketID: ID
+  bookingID: ID
 }
 
 input RegisterUserInput {

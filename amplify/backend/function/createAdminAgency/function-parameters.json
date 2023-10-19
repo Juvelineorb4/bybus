@@ -1,17 +1,17 @@
 {
   "permissions": {
+    "api": {
+      "bybusgraphql": [
+        "Query",
+        "Mutation"
+      ]
+    },
     "auth": {
       "bybus": [
         "create",
         "read",
         "update",
         "delete"
-      ]
-    },
-    "api": {
-      "bybusgraphql": [
-        "Query",
-        "Mutation"
       ]
     }
   },

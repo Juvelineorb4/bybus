@@ -1,12 +1,37 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/RouteCard.module.css";
 import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
+import { Auth, API } from "aws-amplify";
+import * as queries from "@/graphql/queries";
+import * as customQueries from "@/graphql/customQueries";
+import * as mutations from "@/graphql/mutations";
 
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
+  const [agency, setAgency] = useState([])
+  const Agency = async () => {
+    try {
+      const query = await API.graphql({
+        query: customQueries.getAgency,
+        authMode: "AWS_IAM",
+        variables: {
+          // input: {
+            id: data?.agencyID
+          // }
+        },
+      });
+      setAgency(query.data.getAgency.name)
+    } catch (error) {
+      setAgency(error.data.getAgency.name);
+    }
+  };
+  useEffect(() => {
+    Agency()
+  }, [])
+  
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -78,6 +103,26 @@ const RouteCard = ({ data }) => {
           </View>
         </View>
       </View>
+      <View style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingHorizontal: 10,
+        }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image
+            style={{
+              width: 25,
+              height: 25,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/profile_default.png")}
+          />
+          {/* <Text style={{fontFamily: 'light'}}>Empresa:</Text> */}
+          <Text style={{fontFamily: 'light', marginLeft: 5}}>{agency}</Text>
+
+          </View>
+      </View>
       <View
         style={{
           flexDirection: "row",
@@ -96,8 +141,9 @@ const RouteCard = ({ data }) => {
             source={require("@/utils/images/walk.png")}
           />
         </View>
-        <View style={[styles.lineDashed, { width: 30 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack]}>
+        <View style={[styles.lineDashed, { width: 20 }]} />
+        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
+        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.transport}</Text>
           <Image
             style={{
               width: 24,
@@ -106,9 +152,10 @@ const RouteCard = ({ data }) => {
             }}
             source={require("@/utils/images/bus-white.png")}
           />
+          
         </View>
-        <View style={[styles.lineSolid, { width: 40 }]} />
-        <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
+        {/* <View style={[styles.lineDashed, { width: 15 }]} /> */}
+        {/* <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
           <Image
             style={{
               width: 24,
@@ -117,7 +164,7 @@ const RouteCard = ({ data }) => {
             }}
             source={require("@/utils/images/walk.png")}
           />
-        </View>
+        </View> */}
         <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
           <Image
             style={{

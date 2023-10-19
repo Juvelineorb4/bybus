@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/PaymentTicket.module.css";
 import { CustomButton } from "@/components";
 import PaymentCard from "@/components/Payment/PaymentCard";
@@ -12,15 +12,15 @@ import LeftHeader from "@/routes/Header/LeftHeader";
 
 const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { booking, tickets, customer } = route.params;
+  const { booking, tickets, customer, customerTicket } = route.params;
   const [paymentOrder, setPaymentOrder] = useState("");
   const [refresh, setRefresh] = useState(false);
   const total = tickets * booking.price;
+  console.log(customerTicket)
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
-      console.log(customer, booking.price, attributes.sub);
       const payment = await API.graphql({
         query: mutation.createPayment,
         authMode: "AMAZON_COGNITO_USER_POOLS",
@@ -28,7 +28,7 @@ const PaymentTicket = ({ navigation, route }) => {
           input: {
             reference: customer,
             amount: total,
-            userID: attributes.sub,
+            userID: attributes["custom:userTableID"],
           },
         },
       });
@@ -55,16 +55,29 @@ const PaymentTicket = ({ navigation, route }) => {
             isGuest: false,
             total: total,
             customerEmail: attributes.email,
-            userID: attributes.sub,
+            userID: attributes["custom:userTableID"],
             bookingID: booking.id, 
           },
         },
       });
       console.log(orderDetail);
+
+      const customer = await API.graphql({
+        query: mutation.createCustomer,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+        variables: {
+          input: {
+            fullName: customerTicket.fullName,
+            ci: customerTicket.ci,
+            email: customerTicket.email,
+          },
+        },
+      });
+      console.log(customer.data.createCustomer)
       // Crear Orders Tickets
       let orderTicketsTemporal = [];
       let ticketsPaid = [];
-
+      console.log('aqui toy', booking)
       while (orderTicketsTemporal.length < tickets) {
         const orderTicket =
           booking.tickets.items[
@@ -83,7 +96,7 @@ const PaymentTicket = ({ navigation, route }) => {
         /* Creamos los orders tickets */
         const orderTicketDetail = await API.graphql({
           query: mutation.createOrderTicket,
-          authMode: "AMAZON_COGNITO_USER_POOLS",
+          authMode: "AWS_IAM",
           variables: {
             input: {
               orderID: orderDetail.data.createOrderDetail.id,
@@ -100,11 +113,26 @@ const PaymentTicket = ({ navigation, route }) => {
             input: {
               id: item.id,
               status: "PAID",
+              customerID: customer.data.createCustomer.id
             },
           },
         });
         console.log(updateTicketStatus.data.updateTicket.id);
         ticketsPaid.push(updateTicketStatus.data.updateTicket.id);
+
+        /* Actualizamos customer */
+
+      const customerUpdate = await API.graphql({
+        query: mutation.updateCustomer,
+        authMode: "AWS_IAM",
+        variables: {
+          input: {
+            id: customer.data.createCustomer.id,
+            ticketID: item.id,
+          },
+        },
+      });
+      console.log(customerUpdate.data.updateCustomer)
       });
 
       /* Actualizamos el stock */
@@ -119,6 +147,8 @@ const PaymentTicket = ({ navigation, route }) => {
         },
       });
       console.log(updateBookingStock, 'toy aqui manito');
+
+      
       // console.log('aqui llego manito')
       setRefresh(true)
       setTimeout(() => {
@@ -127,9 +157,9 @@ const PaymentTicket = ({ navigation, route }) => {
           order: orderDetail.data.createOrderDetail.id,
           payment: paymentOrder,
           customer: {
-            name: attributes.name,
-            email: attributes.email,
-            id: customer,
+            name: customerTicket.fullName,
+            email: customerTicket.email,
+            id: customerTicket.ci,
           },
           quantity: tickets,
           tickets: ticketsPaid
@@ -140,6 +170,14 @@ const PaymentTicket = ({ navigation, route }) => {
       console.log(error);
     }
   };
+  const test = async () => {
+    const user = await Auth.currentAuthenticatedUser();
+    console.log(user)
+  }
+  useEffect(() => {
+    // test()
+  }, [])
+  
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>

@@ -9,7 +9,9 @@ import { userSelectedPlan } from "@/atoms/Modals";
 import ResultView from "@/components/ResultView";
 import SelectedPlan from "@/components/SelectedPlan";
 import { ScrollView } from "react-native-gesture-handler";
-import { Auth } from "aws-amplify";
+import { API, Storage, Auth } from "aws-amplify";
+import * as queries from "@/graphql/queries";
+import * as mutation from "@/graphql/customMutations";
 
 const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
@@ -18,10 +20,13 @@ const CreateTicket = ({ navigation, route }) => {
   const [quantity, setQuantity] = useState(1);
   const [user, setUser] = useState([]);
   const [full, setFull] = useState(false);
-  const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [idCountry, setIdCountry] = useState("");
+  const [emailCustomer, setEmailCustomer] = useState("");
   const [active, setActive] = useState(false);
   const [quantityId, setQuantityId] = useState([]);
   const { booking } = route.params;
+  console.log(booking);
   const handleMoreId = async (data) => {
     if (quantityId.length + 1 === quantity) {
       setFull(true);
@@ -37,23 +42,33 @@ const CreateTicket = ({ navigation, route }) => {
     navigation.navigate("PaymentTicket", {
       booking: booking,
       tickets: quantity,
-      customer: fullName ? fullName : user[0].name,
+      customer: user[0].name,
+      customerTicket: {
+        fullName: fullName ? fullName : user[0].name,
+        ci: idCountry ? idCountry : '00000000',
+        email: emailCustomer ? emailCustomer : 'ninguno',
+      },
     });
     console.log({
       booking: booking,
       tickets: quantity,
-      customer: fullName ? fullName : user[0].name,
+      customer: user[0].name,
+      customerTicket: {
+        fullName: fullName ? fullName : user[0].name,
+        ci: idCountry ? idCountry : '00000000',
+        email: emailCustomer ? emailCustomer : 'ninguno',
+      },
     });
   };
-
 
   useEffect(() => {
     const User = async () => {
       const { attributes } = await Auth.currentAuthenticatedUser();
+      console.log(attributes);
       setUser([attributes]);
     };
     User();
-    console.log(fullName)
+    console.log(fullName);
   }, [fullName]);
 
   return (
@@ -256,7 +271,7 @@ const CreateTicket = ({ navigation, route }) => {
                 ${booking.price}.00
               </Text>
               <View style={styles.buttonsTariff}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   style={[styles.lessButton, global.bgWhiteSoft]}
                   onPress={() => {
                     if (quantity === 1) return;
@@ -265,9 +280,9 @@ const CreateTicket = ({ navigation, route }) => {
                   }}
                 >
                   <Text style={[styles.sign, global.black]}>-</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <Text style={[styles.number, global.black]}>{quantity}</Text>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   style={[styles.moreButton, global.mainBgColor]}
                   onPress={() => {
                     setQuantity(quantity + 1);
@@ -275,7 +290,7 @@ const CreateTicket = ({ navigation, route }) => {
                   }}
                 >
                   <Text style={[styles.sign, global.white]}>+</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
@@ -293,16 +308,41 @@ const CreateTicket = ({ navigation, route }) => {
               onChangeText={(e) => setFullName(e)}
             />
           </View>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={"Cedula: 123456789"}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setIdCountry(e)}
+            />
+          </View>
+          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+            <TextInput
+              defaultValue={"ejemplo@email.com"}
+              {...styles.placeholder}
+              style={styles.textInput}
+              editable={active}
+              onChangeText={(e) => setEmailCustomer(e)}
+            />
+          </View>
           <TouchableOpacity
             onPress={() => {
               setActive(!active);
             }}
             style={[
-              {paddingHorizontal: 15, borderRadius: 8, alignSelf: 'flex-end', paddingVertical: 10},
-              global.mainBgColor
+              {
+                paddingHorizontal: 15,
+                borderRadius: 8,
+                alignSelf: "flex-end",
+                paddingVertical: 10,
+              },
+              global.mainBgColor,
             ]}
           >
-            <Text style={[{fontFamily: 'light', fontSize: 12}, global.white]}>{!active ? "Editar" : "Guardar"}</Text>
+            <Text style={[{ fontFamily: "light", fontSize: 12 }, global.white]}>
+              {!active ? "Editar" : "Guardar"}
+            </Text>
           </TouchableOpacity>
           {/* {quantityId.map((_, index) => (
             <CustomInput

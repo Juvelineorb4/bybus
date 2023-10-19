@@ -7,42 +7,42 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 
 const ActiveTicketsCard = ({ data }) => {
-  console.log(data.orderTickets.items);
+  console.log("toy aqui", data);
+  // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
-  const [travel, setTravel] = useState(null);
+  const [agency, setAgency] = useState(null);
   const onHandleTicket = async () => {
     try {
-      const booking = await API.graphql({
-        query: queries.listBookings,
+      const dataAgency = await API.graphql({
+        query: queries.getAgency,
         authMode: "AWS_IAM",
         variables: {
-          input: {
-            id: data.bookingID,
-          },
+          id: data.booking.agencyID,
         },
       });
-      setTravel(booking.data.listBookings.items[0]);
+      console.log(dataAgency.data.getAgency)
+      setAgency(dataAgency.data.getAgency);
       // setTicket(list.data.listOrderDetails.items);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
+    console.log(agency)
     onHandleTicket();
   }, []);
-  if (travel !== null)
+  if (data?.booking !== null)
     return (
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() =>
           navigation.navigate("ViewOrder", {
-            order: data.id,
-            payment: data.paymentID,
-            data: travel,
-            customer: { name: data.customerName, email: data.customerEmail },
-            quantity: data.amount,
-            tickets: data.orderTickets.items,
+            order: data?.id,
+            payment: data?.paymentID,
+            data: data?.booking,
+            quantity: data?.amount,
+            tickets: data?.orderTickets?.items,
           })
         }
         style={styles.container}
@@ -58,10 +58,10 @@ const ActiveTicketsCard = ({ data }) => {
             <View>
               <Text style={[styles.textFrom, global.black]}>Salida:</Text>
               <Text style={[styles.textDestination, global.black]}>
-                {travel.departure.state}, {travel.departure.city}
+                {data.booking.departure.state}, {data.booking.departure.city}
               </Text>
               <Text style={[styles.textFormat, global.black]}>
-                {travel.departure.date}
+                {data.booking.departure.date}
                 <Image
                   style={{
                     width: 15,
@@ -70,7 +70,7 @@ const ActiveTicketsCard = ({ data }) => {
                   }}
                   source={require("@/utils/images/calendar-black.png")}
                 />{" "}
-                {travel.departure.time.slice(0, 5)}
+                {data.booking.departure.time.slice(0, 5)}
                 <Image
                   style={{
                     width: 20,
@@ -84,10 +84,10 @@ const ActiveTicketsCard = ({ data }) => {
             <View>
               <Text style={[styles.textFrom, global.black]}>Llegada:</Text>
               <Text style={[styles.textDestination, global.black]}>
-                {travel.arrival.state}, {travel.arrival.city}
+                {data.booking.arrival.state}, {data.booking.arrival.city}
               </Text>
               <Text style={[styles.textFormat, global.black]}>
-                {travel.arrival.date}
+                {data.booking.arrival.date}
                 <Image
                   style={{
                     width: 15,
@@ -96,7 +96,7 @@ const ActiveTicketsCard = ({ data }) => {
                   }}
                   source={require("@/utils/images/calendar-black.png")}
                 />{" "}
-                {travel.arrival.time.slice(0, 5)}
+                {data.booking.arrival.time.slice(0, 5)}
                 <Image
                   style={{
                     width: 20,
@@ -109,6 +109,25 @@ const ActiveTicketsCard = ({ data }) => {
             </View>
           </View>
         </View>
+        <View style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingHorizontal: 10,
+        }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image
+            style={{
+              width: 25,
+              height: 25,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/profile_default.png")}
+          />
+          <Text style={{fontFamily: 'light', marginLeft: 5, fontSize: 16}}>{agency?.name}</Text>
+
+          </View>
+      </View>
         <View
           style={{
             flexDirection: "row",
@@ -118,37 +137,28 @@ const ActiveTicketsCard = ({ data }) => {
           }}
         >
           <View style={styles.borderIconWalk}>
-            <Image
-              style={{
-                width: 24,
-                height: 24,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/walk.png")}
-            />
-          </View>
-          <View style={[styles.lineDashed, { width: 30 }]} />
-          <View style={[styles.borderIconBus, global.bgBlack]}>
-            <Image
-              style={{
-                width: 24,
-                height: 24,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/bus-white.png")}
-            />
-          </View>
-          <View style={[styles.lineSolid, { width: 40 }]} />
-          <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
-            <Image
-              style={{
-                width: 24,
-                height: 24,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/walk.png")}
-            />
-          </View>
+          <Image
+            style={{
+              width: 24,
+              height: 24,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/walk.png")}
+          />
+        </View>
+        <View style={[styles.lineDashed, { width: 20 }]} />
+        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
+        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
+          <Image
+            style={{
+              width: 24,
+              height: 24,
+              resizeMode: "cover",
+            }}
+            source={require("@/utils/images/bus-white.png")}
+          />
+          
+        </View>
           <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
             <Image
               style={{
@@ -159,7 +169,7 @@ const ActiveTicketsCard = ({ data }) => {
               source={require("@/utils/images/ticket.png")}
             />
             <Text style={[styles.ticketText, global.black]}>
-              {travel.price}.00$
+              {data.booking.price}.00$
             </Text>
           </View>
         </View>

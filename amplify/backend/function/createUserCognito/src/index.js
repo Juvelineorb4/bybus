@@ -2,37 +2,29 @@
 	API_BYBUSGRAPHQL_GRAPHQLAPIIDOUTPUT
 	API_BYBUSGRAPHQL_USERTABLE_ARN
 	API_BYBUSGRAPHQL_USERTABLE_NAME
+	AUTH_BYBUS_USERPOOLID
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
 
-// import crypto from "@aws-crypto/sha256-js";
-// import { defaultProvider } from "@aws-sdk/credential-provider-node";
-// import { SignatureV4 } from "@aws-sdk/signature-v4";
-// import { HttpRequest } from "@aws-sdk/protocol-http";
-// import { default as fetch, Request } from "node-fetch";
-
-// const GRAPHQL_ENDPOINT = process.env.API_BYBUS_GRAPHQLAPIENDPOINTOUTPUT;
-// const AWS_REGION = process.env.AWS_REGION || "us-east-1";
-// const { Sha256 } = crypto;
-
-// const query = /* GraphQL */ `
-//   query LIST_TODOS {
-//     listTodos {
-//       items {
-//         id
-//         name
-//         description
-//       }
-//     }
-//   }
-// `;
-
+import {
+  CognitoIdentityProvider,
+  AdminAddUserToGroupCommand,
+  AdminUpdateUserAttributesCommand,
+} from "@aws-sdk/client-cognito-identity-provider";
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { v4 as uuidv4 } from "uuid";
+
+// configutacion de cliente de dynamodb
 const dynamodb = new DynamoDBClient({ region: "us-east-1" });
 const TABLE_USER_NAME = process.env.API_BYBUSGRAPHQL_USERTABLE_NAME;
-
+// configuracion de cliente de cognito
+// configuracion de cognito
+const cognito = new CognitoIdentityProvider({
+  region: process.env.REGION || "us-east-1",
+});
+const COGNITO_USERPOOL = process.env.AUTH_BYBUS_USERPOOLID;
+// estatus de USer Table
 const STATUS = {
   ALLOWED: "ALLOWED",
   DENIED: "DENIED",
@@ -45,10 +37,10 @@ const STATUS = {
 export const handler = async (event) => {
   /*
     Logica: 
-    1. Verificar que tipo de registro es si es por cognito o por google
-    2. Verificar por correo si ya existe un usuario con ese correo 
-    3. SI el usuario ya existe actualizar el campo correspondiente de owner ya sea para registro de google o cognito 
-    4. si no existe crear la tabla respectiva con su owner ya sea para google o cognito 
+    1. si no es el trigger PostConfirmation_ConfirmSignUp retornar event
+    2. crear el registro en userTable
+    2. Agregar id de la tabla creada a userTableID
+    3. Pasar A customer grupo a el usuario confirmado
   */
   console.log(`EVENT: ${JSON.stringify(event)}`);
   const { sub, email, name } = event.request.userAttributes;
@@ -59,14 +51,37 @@ export const handler = async (event) => {
   if (!(triggerSource === "PostConfirmation_ConfirmSignUp"))
     throw new Error("Trigger No aceptado en esta funcion");
 
-  // if (!(event.request.userAttributes["custom:userType"] === "customer")) {
-  //   throw new Error(
-  //     `Usuario ${event.request.userAttributes["custom:userType"]} no aceptado.`
-  //   );
-  // }
+  try {
+    // Crear usuario
+    const result = await CREATE_USERTABLE(event.request.userAttributes);
+    console.log("CREATE TABLE USER: ", result);
+    //  si se creo correctamente el usuario agregamos el id al atributo del usuario en userTableID
+    paramsUpdateAttr = {
+      username: sub,
+      attrName: "custom:userTableID",
+      attrValue: result?.id,
+    };
+    const updateAttr = await COGNITO_UPDATE_ATTR_USER(paramsUpdateAttr);
+    console.log("UPDATE ATTR USER COGNITO: ", updateAttr);
+
+    // ahora que ya se creo la tabla y se agrego el userTableID pasamos el usuario al grupo customer
+    const addGroupd = COGNITO_ADD_GROUP({
+      username: sub,
+      groupName: "customer",
+    });
+    console.log("ADD GROUPD USER COGNITP: ", addGroupd);
+    return event;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const CREATE_USERTABLE = async (data) => {
+  const { sub, email, name } = data;
+  const ID = uuidv4();
   // parametros de items table
   const info = {
-    id: { S: uuidv4() },
+    id: { S: ID },
     name: { S: name },
     email: { S: email },
     status: { S: STATUS.ALLOWED },
@@ -79,13 +94,46 @@ export const handler = async (event) => {
     TableName: TABLE_USER_NAME,
     Item: info,
   };
+  const result = await dynamodb.send(new PutItemCommand(params));
+  return {
+    id: ID,
+    result: result,
+  };
+};
 
-  try {
-    // Put al dynamodb tabla especifica
-    const result = await dynamodb.send(new PutItemCommand(params));
-    console.log(result);
-    return event;
-  } catch (error) {
-    throw new Error(error);
-  }
+const COGNITO_UPDATE_ATTR_USER = async (data) => {
+  const { username, attrName, attrValue } = data;
+  const params = {
+    // AdminUpdateUserAttributesRequest
+    UserPoolId: COGNITO_USERPOOL, // required
+    Username: username, // required
+    UserAttributes: [
+      // AttributeListType // required
+      {
+        // AttributeType
+        Name: attrName, // required
+        Value: attrValue,
+      },
+      {
+        Name: "custom:userType",
+        Value: "customer",
+      },
+    ],
+  };
+  const command = new AdminUpdateUserAttributesCommand(params);
+  const response = await cognito.send(command);
+  return response;
+};
+
+const COGNITO_ADD_GROUP = async (data) => {
+  const { groupName, username } = data;
+  const paramsGroup = {
+    GroupName: groupName,
+    UserPoolId: COGNITO_USERPOOL,
+    Username: username,
+  };
+  const command2 = new AdminAddUserToGroupCommand(paramsGroup);
+  const result = await cognito.send(command2);
+  console.log("ADD GROUD USER:  ", result);
+  return result;
 };

@@ -8,7 +8,7 @@ const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity, tickets } = route.params;
   const total = quantity * data.price;
-  
+  console.log(tickets)
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
@@ -32,14 +32,14 @@ const ViewTicket = ({ navigation, route }) => {
               {customer.name}
             </Text>
           </View>
-          {/* <View
+          <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
               <Text style={[styles.titlePrice2, global.black]}>
                 {customer.id}
               </Text>
-            </View> */}
+            </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >

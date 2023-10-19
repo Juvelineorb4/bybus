@@ -17,22 +17,34 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
     String(newDate.getMonth() + 1).padStart(2, "0");
 
   /* time */
-  const selectedTime = newDate.getHours().toString()
-  .padStart(2, "0") + ":" + newDate.getMinutes().toString().padStart(2, '0');
+  const selectedTime =
+    newDate.getHours().toString().padStart(2, "0") +
+    ":" +
+    newDate.getMinutes().toString().padStart(2, "0");
 
   const onChange = ({ e, mode, date }) => {
     const currentDate = date;
     setNewDate(currentDate);
     setShow(!show);
+    console.log(String(currentDate.getFullYear()));
     if (mode === "date")
-    setSelectRoute({...selectRoute, date: 
-        String(currentDate.getDate()).padStart(2, "0") +
+      setSelectRoute({
+        ...selectRoute,
+        date:
+          String(currentDate.getFullYear()) +
           "-" +
-          String(currentDate.getMonth() + 1).padStart(2, "0")
+          String(currentDate.getMonth() + 1).padStart(2, "0") +
+          "-" +
+          String(currentDate.getDate()).padStart(2, "0"),
       });
     if (mode === "time")
-    setSelectRoute({...selectRoute, time: currentDate.getHours().toString()
-      .padStart(2, "0") + ":" + currentDate.getMinutes().toString().padStart(2, '0')});
+      setSelectRoute({
+        ...selectRoute,
+        time:
+          currentDate.getHours().toString().padStart(2, "0") +
+          ":" +
+          currentDate.getMinutes().toString().padStart(2, "0"),
+      });
   };
 
   const showDatepicker = () => {
@@ -41,8 +53,8 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
   };
 
   const showTimepicker = () => {
-    setMode("time");
-    setShow(!show);
+    // setMode("time");
+    // setShow(!show);
   };
 
   return (
@@ -52,7 +64,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
         onPress={showDatepicker}
         style={[styled.border]}
       >
-        <Text style={styled.text}>{selectedDate}</Text>
+        <Text style={[styled.text]}>{selectedDate}</Text>
         <Image
           style={{
             width: 25,
@@ -66,7 +78,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
           }
         />
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         activeOpacity={1}
         onPress={showTimepicker}
         style={[styled.border, { marginLeft: "5%" }]}
@@ -84,7 +96,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
               : require("@/utils/images/clock-white.png")
           }
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {show && (
         <DateTimePicker
           testID="dateTimePicker"

@@ -7,6 +7,7 @@ export const listBookings = /* GraphQL */ `
     listBookings(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        status
         code
         agencyID
         officeID
@@ -29,6 +30,13 @@ export const listBookings = /* GraphQL */ `
         }
         stock
         price
+        tickets {
+          items {
+            id
+          }
+        }
+        driver
+        transport
         createdBy
         createdAt
         updatedAt
@@ -49,8 +57,11 @@ export const listOrderDetails = /* GraphQL */ `
         id
         amount
         paymentMethod
+        documentType
+        customerDocument
         customerName
         customerEmail
+        total
         isGuest
         paymentID
         payment {
@@ -63,14 +74,58 @@ export const listOrderDetails = /* GraphQL */ `
           updatedAt
           owner
         }
+        bookingID
+        booking {
+          id
+          code
+          agencyID
+          officeID
+          transport
+          stops {
+            items {
+              id
+              bookingID
+              price
+              owner
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          departureCity
+          arrivalCity
+          departure {
+            time
+            date
+            city
+            state
+            address
+          }
+          arrival {
+            time
+            date
+            city
+            state
+            address
+          }
+          stock
+          price
+        }
         orderTickets {
           items {
-            id
             ticketID
+            ticket {
+              customerID
+              customer {
+                id
+                fullName
+                ci
+                email
+              }
+            }
           }
           nextToken
         }
-        bookingID
         userID
         createdAt
         updatedAt
@@ -140,6 +195,14 @@ export const getBooking = /* GraphQL */ `
       price
       createdAt
       updatedAt
+    }
+  }
+`;
+
+export const getAgency = /* GraphQL */ `
+  query GetAgency($id: ID!) {
+    getAgency(id: $id) {
+      name
     }
   }
 `;

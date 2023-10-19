@@ -121,21 +121,21 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "createAdminAgency": {
+    "checkTicketScan": {
       "build": true,
       "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybus"
-        },
         {
           "attributes": [
             "GraphQLAPIIdOutput",
@@ -148,15 +148,66 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "createAdminAgency": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "createUserCognito": {
       "build": true,
       "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        },
         {
           "attributes": [
             "GraphQLAPIIdOutput"
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "preSignInCognito": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -211,6 +262,22 @@
         }
       ]
     },
+    "AMPLIFY_function_checkTicketScan_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "checkTicketScan"
+        }
+      ]
+    },
+    "AMPLIFY_function_checkTicketScan_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "checkTicketScan"
+        }
+      ]
+    },
     "AMPLIFY_function_createAdminAgency_deploymentBucketName": {
       "usedBy": [
         {
@@ -240,6 +307,22 @@
         {
           "category": "function",
           "resourceName": "createUserCognito"
+        }
+      ]
+    },
+    "AMPLIFY_function_preSignInCognito_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "preSignInCognito"
+        }
+      ]
+    },
+    "AMPLIFY_function_preSignInCognito_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "preSignInCognito"
         }
       ]
     },

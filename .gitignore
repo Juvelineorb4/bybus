@@ -13,6 +13,12 @@ web-build/
 # macOS
 .DS_Store
 
+
+#extras
+/amplify
+/.vscode
+/.expo
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -24,6 +30,7 @@ amplify/backend/.temp
 build/
 dist/
 node_modules/
+aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
 amplifyconfiguration.dart

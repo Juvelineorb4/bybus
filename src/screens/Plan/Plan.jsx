@@ -15,6 +15,11 @@ const Plan = () => {
   const search = useRecoilValue(planSearch);
 
   useEffect(() => {
+    const User = async () => {
+      const { attributes } = await Auth.currentAuthenticatedUser();
+      console.log(attributes)
+    };
+    User();
   }, []);
 
   return (

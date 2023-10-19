@@ -48,7 +48,7 @@ const Profile = ({ navigation }) => {
           source={require("@/utils/images/background-profile.png")}
         />
         <View style={styles.profileContent}>
-          <View style={styles.containerImage}>
+          {/* <View style={styles.containerImage}>
             <View style={styles.image}>
               <Image
                 style={{
@@ -70,14 +70,14 @@ const Profile = ({ navigation }) => {
                 color: "#ffffff",
               }}
             />
-          </View>
+          </View> */}
           <Text style={[styles.user, global.black]}>{userAuth && userAuth.attributes?.name}</Text>
-          <TouchableOpacity style={[styles.idUser, global.bgBlack]} onPress={copyToClipboard}>
+          {/* <TouchableOpacity style={[styles.idUser, global.bgBlack]} onPress={copyToClipboard}>
             <View style={[styles.icon, global.mainBgColor]}>
               <Icon name={"clipboard-outline"} size={15} color={`#1F1F1F`} />
             </View>
             <Text style={[styles.id, global.white]}>#0000001</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <View style={styles.content}>

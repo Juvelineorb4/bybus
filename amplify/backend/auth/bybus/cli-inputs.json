@@ -42,7 +42,8 @@
     "userPoolGroupList": [
       "sp",
       "admin",
-      "agency"
+      "agency",
+      "customer"
     ],
     "adminQueries": true,
     "thirdPartyAuth": false,
