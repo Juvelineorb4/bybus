@@ -110,6 +110,7 @@ export const listOrderDetails = /* GraphQL */ `
           }
           stock
           price
+          status
         }
         orderTickets {
           items {
