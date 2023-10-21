@@ -55,4 +55,7 @@ module.exports = StyleSheet.create({
   mainBgColorSecond: {
     backgroundColor: '#00B4D8'
   },
+  green: {
+    color: "#229A00"
+  }
 });

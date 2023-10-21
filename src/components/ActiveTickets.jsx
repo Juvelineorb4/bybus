@@ -23,6 +23,7 @@ const ActiveTickets = () => {
           },
         },
       });
+      console.log("aqui", list.data.listOrderDetails.items[0].booking.status);
       setListOrders(list.data.listOrderDetails.items);
     } catch (error) {
       console.log(error);
@@ -33,7 +34,10 @@ const ActiveTickets = () => {
   }, []);
 
   return (
-    <ScrollView style={styles.contentActive} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={styles.contentActive}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.leftContentActive}>
         <Image
           style={{
@@ -47,9 +51,20 @@ const ActiveTickets = () => {
           Ordenes activos
         </Text>
       </View>
-      {listOrders.length !== 0 ? listOrders.map((item, index) => (
-        <ActiveTicketsCard key={index} data={item} />
-      )) : <ActivityIndicator size="large" color="#0077B6" style={{marginTop: 50}}/> }
+      {listOrders.length !== 0 ? (
+        listOrders.map(
+          (item, index) =>
+            item.booking.status !== "DEPARTED" && (
+              <ActiveTicketsCard key={index} data={item} />
+            )
+        )
+      ) : (
+        <ActivityIndicator
+          size="large"
+          color="#0077B6"
+          style={{ marginTop: 50 }}
+        />
+      )}
     </ScrollView>
   );
 };

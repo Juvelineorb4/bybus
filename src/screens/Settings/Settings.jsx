@@ -63,7 +63,7 @@ const Settings = ({ navigation }) => {
         }, global.mainBgColorSecond]}/>
         <View style={styles.profileContent}>
           <View style={styles.containerImage}>
-            <View style={styles.image}>
+            {/* <View style={styles.image}>
               <Image
                 style={{
                   width: "100%",
@@ -73,8 +73,8 @@ const Settings = ({ navigation }) => {
                 }}
                 source={{ uri: imgProfile && imgProfile }}
               />
-            </View>
-            <CustomButton
+            </View> */}
+            {/* <CustomButton
               handlePress={() => navigation.navigate("EditProfile")}
               buttonStyles={[styles.edit, global.bgBlack]}
               icon={{
@@ -83,12 +83,12 @@ const Settings = ({ navigation }) => {
                 size: 20,
                 color: "#ffffff",
               }}
-            />
+            /> */}
           </View>
-          <Text style={[styles.user, global.black]}>
+          <Text style={[styles.user, global.white]}>
             {userAuth && userAuth.attributes?.name}
           </Text>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={[styles.idUser, global.bgBlack]}
             onPress={copyToClipboard}
           >
@@ -103,7 +103,7 @@ const Settings = ({ navigation }) => {
               />
             </View>
             <Text style={[styles.id, global.white]}>#0000001</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <Text style={[styles.title, global.black]}>Configuracion</Text>
