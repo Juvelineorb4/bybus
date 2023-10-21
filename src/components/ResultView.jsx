@@ -100,7 +100,7 @@ const ResultView = ({ data }) => {
         ) : search.length !== 0 && qAvailable !== 0 && timeline === false ? (
           search.map(
             (item, index) =>
-              item.status === "AVAILABLE" && (
+              item.status === "AVAILABLE" && item.status !== "SOLDOUT" && (
                 <RouteCard data={item} key={index} />
               )
           )

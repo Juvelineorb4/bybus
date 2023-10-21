@@ -53,7 +53,7 @@ const RouteCard = ({ data }) => {
             <Text style={[styles.textDestination, global.black]}>
               {data.departure.state}, {data.departure.city}
             </Text>
-            <Text style={[styles.textFormat, global.black]}>
+            <Text style={[styles.textFormat, global.green]}>
               {data.departure.date}
               <Image
                 style={{
@@ -79,7 +79,7 @@ const RouteCard = ({ data }) => {
             <Text style={[styles.textDestination, global.black]}>
               {data.arrival.state}, {data.arrival.city}
             </Text>
-            <Text style={[styles.textFormat, global.black]}>
+            <Text style={[styles.textFormat, global.green]}>
               {data.arrival.date} 
               <Image
                 style={{

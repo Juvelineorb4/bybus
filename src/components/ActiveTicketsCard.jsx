@@ -7,7 +7,6 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 
 const ActiveTicketsCard = ({ data }) => {
-  console.log("toy aqui", data);
   // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
@@ -21,7 +20,6 @@ const ActiveTicketsCard = ({ data }) => {
           id: data.booking.agencyID,
         },
       });
-      console.log(dataAgency.data.getAgency)
       setAgency(dataAgency.data.getAgency);
       // setTicket(list.data.listOrderDetails.items);
     } catch (error) {
@@ -29,7 +27,6 @@ const ActiveTicketsCard = ({ data }) => {
     }
   };
   useEffect(() => {
-    console.log(agency)
     onHandleTicket();
   }, []);
   if (data?.booking !== null)
@@ -60,7 +57,7 @@ const ActiveTicketsCard = ({ data }) => {
               <Text style={[styles.textDestination, global.black]}>
                 {data.booking.departure.state}, {data.booking.departure.city}
               </Text>
-              <Text style={[styles.textFormat, global.black]}>
+              <Text style={[styles.textFormat, global.green]}>
                 {data.booking.departure.date}
                 <Image
                   style={{
@@ -86,7 +83,7 @@ const ActiveTicketsCard = ({ data }) => {
               <Text style={[styles.textDestination, global.black]}>
                 {data.booking.arrival.state}, {data.booking.arrival.city}
               </Text>
-              <Text style={[styles.textFormat, global.black]}>
+              <Text style={[styles.textFormat, global.green]}>
                 {data.booking.arrival.date}
                 <Image
                   style={{
