@@ -54,7 +54,7 @@ const ActiveTickets = () => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            item.booking.status !== "DEPARTED" && (
+            item.booking.status === "AVAILABLE" && (
               <ActiveTicketsCard key={index} data={item} />
             )
         )

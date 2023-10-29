@@ -23,7 +23,6 @@
     "android": {
       "runtimeVersion": "exposdk:48.0.0",
       "package": "com.bybus.viajes",
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/utils/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

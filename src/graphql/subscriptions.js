@@ -120,6 +120,7 @@ export const onCreateAgency = /* GraphQL */ `
           address
           email
           phone
+          status
           employees {
             nextToken
             __typename
@@ -172,11 +173,13 @@ export const onCreateAgency = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -192,7 +195,35 @@ export const onCreateAgency = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -266,6 +297,7 @@ export const onUpdateAgency = /* GraphQL */ `
           address
           email
           phone
+          status
           employees {
             nextToken
             __typename
@@ -318,11 +350,13 @@ export const onUpdateAgency = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -338,7 +372,35 @@ export const onUpdateAgency = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -412,6 +474,7 @@ export const onDeleteAgency = /* GraphQL */ `
           address
           email
           phone
+          status
           employees {
             nextToken
             __typename
@@ -464,11 +527,13 @@ export const onDeleteAgency = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -484,7 +549,35 @@ export const onDeleteAgency = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -549,6 +642,7 @@ export const onCreateOffice = /* GraphQL */ `
       address
       email
       phone
+      status
       employees {
         items {
           id
@@ -581,11 +675,13 @@ export const onCreateOffice = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -617,7 +713,35 @@ export const onCreateOffice = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -682,6 +806,7 @@ export const onUpdateOffice = /* GraphQL */ `
       address
       email
       phone
+      status
       employees {
         items {
           id
@@ -714,11 +839,13 @@ export const onUpdateOffice = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -750,7 +877,35 @@ export const onUpdateOffice = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -815,6 +970,7 @@ export const onDeleteOffice = /* GraphQL */ `
       address
       email
       phone
+      status
       employees {
         items {
           id
@@ -847,11 +1003,13 @@ export const onDeleteOffice = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
             __typename
           }
+          status
           owner
           lastConnection
           createdAt
@@ -883,7 +1041,35 @@ export const onDeleteOffice = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -1001,6 +1187,7 @@ export const onCreateEmployee = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
@@ -1019,6 +1206,7 @@ export const onCreateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1065,6 +1253,7 @@ export const onCreateEmployee = /* GraphQL */ `
         address
         email
         phone
+        status
         employees {
           items {
             id
@@ -1075,6 +1264,7 @@ export const onCreateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1127,6 +1317,7 @@ export const onCreateEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
+      status
       owner
       lastConnection
       createdAt
@@ -1166,6 +1357,7 @@ export const onUpdateEmployee = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
@@ -1184,6 +1376,7 @@ export const onUpdateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1230,6 +1423,7 @@ export const onUpdateEmployee = /* GraphQL */ `
         address
         email
         phone
+        status
         employees {
           items {
             id
@@ -1240,6 +1434,7 @@ export const onUpdateEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1292,6 +1487,7 @@ export const onUpdateEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
+      status
       owner
       lastConnection
       createdAt
@@ -1331,6 +1527,7 @@ export const onDeleteEmployee = /* GraphQL */ `
             address
             email
             phone
+            status
             owner
             createdAt
             updatedAt
@@ -1349,6 +1546,7 @@ export const onDeleteEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1395,6 +1593,7 @@ export const onDeleteEmployee = /* GraphQL */ `
         address
         email
         phone
+        status
         employees {
           items {
             id
@@ -1405,6 +1604,7 @@ export const onDeleteEmployee = /* GraphQL */ `
             type
             agencyID
             officeID
+            status
             owner
             lastConnection
             createdAt
@@ -1457,6 +1657,7 @@ export const onDeleteEmployee = /* GraphQL */ `
         updatedAt
         __typename
       }
+      status
       owner
       lastConnection
       createdAt
@@ -1522,6 +1723,459 @@ export const onDeleteTransport = /* GraphQL */ `
     }
   }
 `;
+export const onCreateScheduleBooking = /* GraphQL */ `
+  subscription OnCreateScheduleBooking(
+    $filter: ModelSubscriptionScheduleBookingFilterInput
+    $owner: String
+  ) {
+    onCreateScheduleBooking(filter: $filter, owner: $owner) {
+      id
+      bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
+      freq
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateScheduleBooking = /* GraphQL */ `
+  subscription OnUpdateScheduleBooking(
+    $filter: ModelSubscriptionScheduleBookingFilterInput
+    $owner: String
+  ) {
+    onUpdateScheduleBooking(filter: $filter, owner: $owner) {
+      id
+      bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
+      freq
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteScheduleBooking = /* GraphQL */ `
+  subscription OnDeleteScheduleBooking(
+    $filter: ModelSubscriptionScheduleBookingFilterInput
+    $owner: String
+  ) {
+    onDeleteScheduleBooking(filter: $filter, owner: $owner) {
+      id
+      bookingID
+      booking {
+        id
+        status
+        code
+        agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        createdBy
+        driver
+        transport
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
+      freq
+      owner
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const onCreateBooking = /* GraphQL */ `
   subscription OnCreateBooking(
     $filter: ModelSubscriptionBookingFilterInput
@@ -1532,7 +2186,154 @@ export const onCreateBooking = /* GraphQL */ `
       status
       code
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          items {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        status
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        transports {
+          items {
+            id
+            model
+            serial
+            type
+            officeID
+            createdBy
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       customers {
         items {
           id
@@ -1662,7 +2463,154 @@ export const onUpdateBooking = /* GraphQL */ `
       status
       code
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          items {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        status
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        transports {
+          items {
+            id
+            model
+            serial
+            type
+            officeID
+            createdBy
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       customers {
         items {
           id
@@ -1792,7 +2740,154 @@ export const onDeleteBooking = /* GraphQL */ `
       status
       code
       agencyID
+      agency {
+        id
+        cognitoID
+        pin
+        name
+        rif
+        email
+        phone
+        officies {
+          items {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       officeID
+      office {
+        id
+        agencyID
+        name
+        state
+        city
+        address
+        email
+        phone
+        status
+        employees {
+          items {
+            id
+            name
+            email
+            phone
+            pin
+            type
+            agencyID
+            officeID
+            status
+            owner
+            lastConnection
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        transports {
+          items {
+            id
+            model
+            serial
+            type
+            officeID
+            createdBy
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        bookings {
+          items {
+            id
+            status
+            code
+            agencyID
+            officeID
+            departureCity
+            arrivalCity
+            stock
+            price
+            createdBy
+            driver
+            transport
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
       customers {
         items {
           id
@@ -2674,7 +3769,59 @@ export const onCreateOrderDetail = /* GraphQL */ `
         status
         code
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         customers {
           items {
             id
@@ -2824,7 +3971,59 @@ export const onUpdateOrderDetail = /* GraphQL */ `
         status
         code
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         customers {
           items {
             id
@@ -2974,7 +4173,59 @@ export const onDeleteOrderDetail = /* GraphQL */ `
         status
         code
         agencyID
+        agency {
+          id
+          cognitoID
+          pin
+          name
+          rif
+          email
+          phone
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
         customers {
           items {
             id
@@ -3186,7 +4437,35 @@ export const onCreateOrderDetailHistory = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -3298,7 +4577,35 @@ export const onUpdateOrderDetailHistory = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename
@@ -3410,7 +4717,35 @@ export const onDeleteOrderDetailHistory = /* GraphQL */ `
           status
           code
           agencyID
+          agency {
+            id
+            cognitoID
+            pin
+            name
+            rif
+            email
+            phone
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           officeID
+          office {
+            id
+            agencyID
+            name
+            state
+            city
+            address
+            email
+            phone
+            status
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
           customers {
             nextToken
             __typename

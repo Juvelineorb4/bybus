@@ -7,7 +7,7 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 
 const ActiveTicketsCard = ({ data }) => {
-  // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
+console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);

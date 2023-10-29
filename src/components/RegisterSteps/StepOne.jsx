@@ -18,20 +18,19 @@ const StepOne = () => {
   const { control, handleSubmit, watch } = useForm();
   const pwd = watch("password");
   const navigation = useNavigation();
-
+  console.log("EL TOQUEN A GUARDAR", token);
   const onHandleRegister = async (data) => {
     const { name, email, password } = data;
-    console.log(token);
     try {
       const { userSub, user } = await Auth.signUp({
         username: email.trim(),
         password: password.trim(),
         attributes: {
           name: name.trim(),
-          // 'custom:notificationToken': token,
+          "custom:notificationToken": token,
         },
       });
-      navigation.navigate("Register_StepTwo", {
+      navigation.navigate("Register_StepFour", {
         registerForm: {
           userSub,
           email: user.username,

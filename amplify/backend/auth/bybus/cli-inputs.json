@@ -25,7 +25,7 @@
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": "15",
+    "userpoolClientRefreshTokenValidity": "30",
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
     "userpoolClientLambdaRole": "bybus29c7bb54_userpoolclient_lambda_role",
@@ -38,14 +38,14 @@
       "email"
     ],
     "useDefault": "manual",
-    "userPoolGroups": true,
+    "userPoolGroups": false,
     "userPoolGroupList": [
       "sp",
       "admin",
       "agency",
       "customer"
     ],
-    "adminQueries": true,
+    "adminQueries": false,
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,

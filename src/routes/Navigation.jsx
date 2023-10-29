@@ -70,41 +70,30 @@ const Navigation = () => {
     try {
       const result = await Auth.currentAuthenticatedUser();
       setUserAuth(result);
+      checkAttributes(result);
     } catch (error) {
       console.log("Not signed in");
       setUserAuth(null);
     }
-  }
+  };
 
-  // const createWallet = async (data) => {
-  //   const { attributes } = data
-  //   try {
-  //     const result = await API.graphql({
-  //       query: mutations.createWalletUser,
-  //       authMode: "AMAZON_COGNITO_USER_POOLS",
-  //       variables: {
-  //         input: {
-  //           userID: attributes.sub,
-  //           email: attributes.email,
-  //           notificationToken: {
-  //             type: Platform.OS === "android" ? "ANDROID" : "IOS",
-  //             token: attributes["custom:notificationToken"]
-  //           },
-  //         },
-  //       },
-  //     })
-  //     console.log("Wallet: ", result)
-  //     const result2 = await Auth.updateUserAttributes(data, {
-  //       'custom:walletStatus': result.data.createWalletUser.userID
-  //     });
-
-  //     console.log("Wallet2: ", result2)
-  //   } catch (error) {
-  //     console.error("Wallet Error: ", error)
-  //   }
-
-  // }
-
+  const checkAttributes = async (data) => {
+    const { attributes } = data;
+    if (
+      !attributes["custom:notificationToken"] ||
+      attributes["custom:notificationToken"] === ""
+    )
+      updateUserData(data);
+  };
+  const updateUserData = async (data) => {
+    try {
+      await Auth.updateUserAttributes(data, {
+        "custom:notificationToken": token,
+      });
+    } catch (error) {
+      console.log("ERROR AL ACTUALIZAR ATRIBUTO IDENTITY ID: ", error.message);
+    }
+  };
 
   return (
     <NavigationContainer>

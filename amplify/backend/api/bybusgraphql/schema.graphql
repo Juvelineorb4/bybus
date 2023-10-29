@@ -113,12 +113,18 @@ type Office
   address: String
   email: String
   phone: String
+  status: OfficeStatus @default(value: "ENABLED")
   employees: [Employee]
     @hasMany(indexName: "byOfficeToEmployee", fields: ["id"])
   transports: [Transport]
     @hasMany(indexName: "byOfficeToTransport", fields: ["id"])
   bookings: [Booking] @hasMany(indexName: "byOfficeToBooking", fields: ["id"])
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum OfficeStatus {
+  ENABLED
+  DISABLED
 }
 
 type State @model @auth(rules: [{ allow: groups, groups: ["sp", "admin"] }]) {
@@ -145,9 +151,14 @@ type Employee
   agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID @index(name: "byOfficeToEmployee")
   office: Office @belongsTo(fields: ["officeID"])
+  status: EmployeeStatus @default(value: "ENABLED")
   # permissions: [PermissionsEmployees]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
   lastConnection: String
+}
+enum EmployeeStatus {
+  ENABLED
+  DISABLED
 }
 
 enum PermissionsEmployees {
@@ -180,7 +191,7 @@ type Transport
   createdBy: ID
 }
 
-type Booking
+type ScheduleBooking
   @model
   @auth(
     rules: [
@@ -191,10 +202,39 @@ type Booking
     ]
   ) {
   id: ID!
+  bookingID: ID
+  booking: Booking @hasOne(fields: ["bookingID"])
+  freq: [WeekDays]
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum WeekDays {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+type Booking
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["sp", "customer"] }
+    ]
+  ) {
+  id: ID!
   status: BookingStatus @default(value: "AVAILABLE")
-  code: String
+  code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
   agencyID: ID! @index(name: "byAgencyToBooking")
+  agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID! @index(name: "byOfficeToBooking")
+  office: Office @belongsTo(fields: ["officeID"])
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
   tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
@@ -224,6 +264,7 @@ enum BookingStatus {
   BOARDING
   DEPARTED
   ARRIVED
+  CANCELLED
 }
 type DepartureArrivalStopFields {
   time: AWSTime

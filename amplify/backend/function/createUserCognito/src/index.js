@@ -56,7 +56,7 @@ export const handler = async (event) => {
     const result = await CREATE_USERTABLE(event.request.userAttributes);
     console.log("CREATE TABLE USER: ", result);
     //  si se creo correctamente el usuario agregamos el id al atributo del usuario en userTableID
-    paramsUpdateAttr = {
+    const paramsUpdateAttr = {
       username: sub,
       attrName: "custom:userTableID",
       attrValue: result?.id,
@@ -65,10 +65,10 @@ export const handler = async (event) => {
     console.log("UPDATE ATTR USER COGNITO: ", updateAttr);
 
     // ahora que ya se creo la tabla y se agrego el userTableID pasamos el usuario al grupo customer
-    const addGroupd = COGNITO_ADD_GROUP({
-      username: sub,
-      groupName: "customer",
-    });
+    // const addGroupd = COGNITO_ADD_GROUP({
+    //   username: sub,
+    //   groupName: "customer",
+    // });
     console.log("ADD GROUPD USER COGNITP: ", addGroupd);
     return event;
   } catch (error) {
@@ -86,6 +86,7 @@ const CREATE_USERTABLE = async (data) => {
     email: { S: email },
     status: { S: STATUS.ALLOWED },
     previousBalance: { N: "0" },
+    notificationToken: data["custom:notificationToken"],
     owner: { S: sub },
   };
 

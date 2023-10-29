@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView, Alert } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import { CustomButton, CustomInput, RouteCard } from "@/components";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ import { Auth } from "aws-amplify";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Forgot = () => {
   const global = require("@/utils/styles/global.js");
-
+  const [errorMsg, setErrorMsg] = useState("");
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
@@ -28,31 +28,35 @@ const Forgot = () => {
       await Auth.forgotPassword(email);
       navigation.navigate("ChangePassword", { email: emailValue });
     } catch (error) {
-      Alert.alert("Ooopss ", error.message);
+      console.log(error.message);
+      switch (error.message) {
+        case "Username/client id combination not found.":
+          setErrorMsg("Usuario/Correo Electronico no encontrado");
+          break;
+        case "Attempt limit exceeded, please try after some time.":
+          setErrorMsg(
+            "Se superó el límite de intentos. Inténtelo después de un tiempo."
+          );
+          break;
+        default:
+          setErrorMsg("Ocurrio un Error intentelo mas tarde.");
+          break;
+      }
     }
   };
 
   return (
     <View style={[styles.container, global.white]}>
-      <Image
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: "-35%",
-          resizeMode: "contain",
-        }}
-        source={require("@/utils/images/texture.png")}
-      />
       <View style={styles.content}>
         <ScrollView>
           <View style={styles.textContainer}>
             <Image
               style={{
-                width: 60,
-                height: 60,
-                resizeMode: "contain",
+                width: 200,
+                height: 40,
+                resizeMode: "cover",
                 alignSelf: "center",
+                marginVertical: 15,
               }}
               source={require("@/utils/images/icon.png")}
             />
@@ -66,7 +70,7 @@ const Forgot = () => {
               subtitle={`Escribe el correo asosciado a tu cuenta`}
             />
           </View>
-
+          <Text style={{ color: "red", marginBottom: 5 }}>{errorMsg}</Text>
           <CustomInput
             control={control}
             name={`email`}

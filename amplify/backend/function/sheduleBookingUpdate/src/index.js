@@ -5,7 +5,7 @@
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-
+import moment from "moment-timezone";
 import crypto from "@aws-crypto/sha256-js";
 import { defaultProvider } from "@aws-sdk/credential-provider-node";
 import { SignatureV4 } from "@aws-sdk/signature-v4";
@@ -15,7 +15,7 @@ import { default as fetch, Request } from "node-fetch";
 const GRAPHQL_ENDPOINT = process.env.API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT;
 const AWS_REGION = process.env.AWS_REGION || "us-east-1";
 const { Sha256 } = crypto;
-
+moment.tz.setDefault("America/Caracas");
 const listBookings = /* GraphQL */ `
   query LIST_BOOKINGS(
     $filter: ModelBookingFilterInput
@@ -78,42 +78,48 @@ const updateBooking = /* GraphQL */ `
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
   let bodyresponse = "";
-  const currentTime = new Date();
-  console.log(`¡Hola mundo! La hora actual es: ${currentTime}`);
-
   const response = await CUSTOM_API_GRAPHQL(listBookings, {
     filter: { status: { eq: "AVAILABLE" } },
   });
   // Obtiene la fecha y hora actual en formato ISO 8601
   console.log("RESPONSE: ", response.data.listBookings.items);
-  const now = new Date().toISOString();
-  const bookingsPasados = response.data.listBookings.items
-    .filter((item) => {
-      const departure = item.departure;
-      // Convierte 'time' y 'date' de 'departure' a una fecha y hora completa en formato ISO 8601
-      const departureDatetime = new Date(
-        `${departure.date}T${departure.time}`
-      ).toISOString();
-      // Compara con la fecha y hora actual
-      return departureDatetime < now;
-    })
-    .map((item) => item.id);
-  console.log("BOOKINGS PASADOS: ", bookingsPasados);
 
-  const updateListBokkings = bookingsPasados.map(async (id) => {
-    console.log("ID UTILIZADO: ", id);
-    const response = await CUSTOM_API_GRAPHQL(updateBooking, {
-      input: {
-        id: id,
-        status: "DEPARTED",
-      },
-    });
-    console.log("LOG DE MUTATIONS: ", response);
-    return response;
-  });
-  if (bookingsPasados.length > 0) {
-    await Promise.all(updateListBokkings);
-    bodyresponse = `Elemento actualizados total ${bookingsPasados.length}`;
+  for (const item of response?.data?.listBookings?.items) {
+    // formamos la hora de la base de dtaos con date and time como objecto moment
+    const departure = item.departure;
+    const departureDatetime = moment(
+      `${departure.date} ${departure.time}`,
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    // Compara con la fecha y hora actual
+    const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
+
+    console.log("Hora Servidor: ", now);
+    console.log("Hora DB: ", departureDatetime);
+    // Calcula la diferencia en minutos entre la hora del servidor y la hora de la tarea
+    const diffInMinutes = departureDatetime.diff(now, "minutes");
+    console.log("Diferencia de minutos: ", diffInMinutes);
+    if (diffInMinutes <= 17 && diffInMinutes >= 0) {
+      await CUSTOM_API_GRAPHQL(updateBooking, {
+        input: {
+          id: item.id,
+          status: "BOARDING",
+        },
+      });
+      // departureDatetime <= now
+    }
+    // else if (diffInMinutes <= 0) {
+    //   await CUSTOM_API_GRAPHQL(updateBooking, {
+    //     input: {
+    //       id: item.id,
+    //       status: "DEPARTED",
+    //     },
+    //   });
+    // }
+  }
+
+  if (response.data.listBookings.items > 0) {
+    bodyresponse = `Elemento actualizados`;
   } else {
     bodyresponse = `No hay elementos para actualizar`;
   }

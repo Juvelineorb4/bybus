@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView, Alert } from "react-native";
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import CustomText from "@/components/CustomText";
 import EnterCode from "@/components/EnterCode";
@@ -16,6 +16,8 @@ const ChangePassword = ({ navigation, route }) => {
       code: ["", "", "", "", "", ""],
     },
   });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [resendMsg, setResendMsg] = useState("");
   const pwd = watch("password");
 
   // por si alguna razon el email no viene
@@ -34,7 +36,20 @@ const ChangePassword = ({ navigation, route }) => {
       const result = await Auth.forgotPasswordSubmit(email, newCode, password);
       navigation.navigate("Login");
     } catch (error) {
-      Alert.alert("Ooopss ", error.message);
+      console.log(error.message);
+      switch (error.message) {
+        case "Invalid verification code provided, please try again.":
+          setErrorMsg(
+            "Codigo de Verificacion ingresado no es valido, Intente de nuevo."
+          );
+          break;
+        case "Attempt limit exceeded, please try after some time.":
+          setErrorMsg("Limite de intentos excedido intenta mas tarde.");
+          break;
+        default:
+          setErrorMsg("Ocurrio un error, Verique datos y codigo ingresado");
+          break;
+      }
     }
   };
 
@@ -43,31 +58,31 @@ const ChangePassword = ({ navigation, route }) => {
       const result = await Auth.forgotPassword(route.params?.email);
       console.log(result);
     } catch (error) {
-      Alert.alert("Ooopss ", error.message);
+      switch (error.message) {
+        case "Attempt limit exceeded, please try after some time.":
+          Alert.alert("Ooopss ", "Limite excedido intente mas tarde.");
+          break;
+
+        default:
+          Alert.alert("Ooopss ", "Ocurrio un error intente mas tarde.");
+          break;
+      }
+      console.log(error.message);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Image
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: "-35%",
-          resizeMode: "contain",
-        }}
-        source={require("@/utils/images/texture.png")}
-      />
       <View style={styles.content}>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
           <View style={styles.textContainer}>
             <Image
               style={{
-                width: 60,
-                height: 60,
-                resizeMode: "contain",
+                width: 200,
+                height: 40,
+                resizeMode: "cover",
                 alignSelf: "center",
+                marginVertical: 15,
               }}
               source={require("@/utils/images/icon.png")}
             />
@@ -77,10 +92,11 @@ const ChangePassword = ({ navigation, route }) => {
                 subtitle: styles.subtitle,
                 container: styles.textContainer,
               }}
-              title={`Crear contrasena`}
-              subtitle={`Crear una nueva contrasena para tu cuenta`}
+              title={`Crear contraseña`}
+              subtitle={`Crear una nueva contraseña para tu cuenta`}
             />
           </View>
+          <Text style={{ color: "red", marginBottom: 5 }}>{errorMsg}</Text>
           <View>
             <CustomInput
               control={control}
@@ -92,7 +108,7 @@ const ChangePassword = ({ navigation, route }) => {
                 error: styles.errorInput,
                 input: styles.inputContainer,
               }}
-              text={`Nueva contrasena`}
+              text={`Nueva contraseña`}
               icon={{
                 name: "lock-outline",
                 color: "#404040",
@@ -121,7 +137,7 @@ const ChangePassword = ({ navigation, route }) => {
                 error: styles.errorInput,
                 input: styles.inputContainer,
               }}
-              text={`Confirmar contrasena`}
+              text={`Confirmar contraseña`}
               icon={{
                 name: "lock-outline",
                 color: "#404040",

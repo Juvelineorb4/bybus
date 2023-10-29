@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/utils/styles/Login.module.css";
 import { CustomButton, CustomInput } from "@/components";
 import { useForm } from "react-hook-form";
@@ -16,16 +16,20 @@ import { Auth } from "aws-amplify";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Login = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-
-  const { control, handleSubmit } = useForm();
+  const [errorMsg, setErrorMsg] = useState("");
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onHandleLogin = async (data) => {
+    setErrorMsg("");
     try {
-      const result = await Auth.signIn(data.email, data.password);
+      await Auth.signIn(data?.email, data?.password);
     } catch (error) {
-      const response = new Error(error);
-      const { message } = response;
-      console.log(error);
+      console.log(error.message);
       switch (error.message) {
         case "User is not confirmed.":
           Alert.alert(
@@ -45,21 +49,20 @@ const Login = ({ navigation, route }) => {
           break;
 
         case "User does not exist.":
-          Alert.alert(
-            `Usuario: ${email} no registrado`,
-            "por favor resgitrase"
+          setErrorMsg(
+            `Usuario: ${data?.email} no registrado, por favor resgitrase`
           );
           break;
         case "Incorrect username or password.":
-          Alert.alert("Usuario o Contraseña Incorrecta");
+          setErrorMsg("Usuario o Contraseña Incorrecta");
           break;
         case "Password attempts exceeded":
-          Alert.alert(
-            "Se superaron los intentos de contraseña",
-            "Cambia la contraseña o intenta mas tarde!"
+          setErrorMsg(
+            `Se superaron los intentos de contraseña, Actualiza la contraseña!`
           );
           break;
         default:
+          setErrorMsg("Ocurrio un Error Intente de nuevo");
           break;
       }
     }
@@ -104,6 +107,7 @@ const Login = ({ navigation, route }) => {
                 subtitle="Accede a tu cuenta"
               />
             </View>
+            <Text style={{ color: "red", marginBottom: 5 }}>{errorMsg}</Text>
             <View style={styles.signin}>
               <CustomInput
                 control={control}
@@ -154,13 +158,13 @@ const Login = ({ navigation, route }) => {
               textStyles={[styles.textLogin, global.white]}
               buttonStyles={[styles.login, global.mainBgColor]}
             />
-            <View style={styles.selects}>
+            
               <CustomButton
                 text={`Olvidaste tu contrasena?`}
                 handlePress={() => navigation.navigate("Forgot_App")}
                 textStyles={[styles.forgot, global.topGray]}
               />
-            </View>
+          
             {/* <View style={styles.hairline}>
               <View style={[styles.line, global.bgWhiteSmoke]} />
               <Text style={[styles.textLine, global.bgWhite, global.midGray]}>O inicia sesion con</Text>

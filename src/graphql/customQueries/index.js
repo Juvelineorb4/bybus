@@ -116,6 +116,7 @@ export const listOrderDetails = /* GraphQL */ `
           items {
             ticketID
             ticket {
+              status
               customerID
               customer {
                 id
