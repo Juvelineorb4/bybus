@@ -22,6 +22,20 @@
     },
     "android": {
       "runtimeVersion": "exposdk:48.0.0",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "www.bybusvenezuela.com",
+              "pathPrefix": "/"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
       "package": "com.bybus.viajes",
       "adaptiveIcon": {
         "foregroundImage": "./src/utils/images/adaptive-icon.png",
@@ -41,6 +55,19 @@
         "expo-image-picker",
         {
           "photosPermission": "Espero no tengas nudes"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33,
+            "targetSdkVersion": 33,
+            "buildToolsVersion": "33.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
         }
       ]
     ],
