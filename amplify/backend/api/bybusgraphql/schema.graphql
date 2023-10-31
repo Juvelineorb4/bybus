@@ -326,6 +326,7 @@ type Ticket
   @auth(
     rules: [
       { allow: owner }
+      { allow: private }
       { allow: public, provider: iam }
       { allow: private, provider: iam }
       { allow: groups, groups: ["sp"], operations: [read] }
@@ -349,6 +350,7 @@ type OrderTicket
   @auth(
     rules: [
       { allow: owner }
+      { allow: private }
       { allow: private, provider: iam }
       { allow: public, provider: iam }
       {
@@ -370,6 +372,7 @@ type OrderDetail
   @auth(
     rules: [
       { allow: owner }
+      { allow: private }
       { allow: public, provider: iam }
       { allow: private, provider: iam }
       {
@@ -406,6 +409,7 @@ type Payment
   @auth(
     rules: [
       { allow: owner }
+      { allow: private }
       { allow: private, provider: iam }
       { allow: public, provider: iam }
       {
@@ -426,6 +430,7 @@ type orderDetailHistory
   @auth(
     rules: [
       { allow: owner }
+      { allow: private }
       { allow: owner, ownerField: "googleOwner" }
       { allow: groups, groups: ["sp"], operations: [read] }
     ]

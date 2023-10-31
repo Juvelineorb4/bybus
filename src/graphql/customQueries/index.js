@@ -293,6 +293,7 @@ export const getUserOrderDetails = /* GraphQL */ `
           createdAt
           updatedAt
           userOrdersId
+          owner
         }
         nextToken
         __typename

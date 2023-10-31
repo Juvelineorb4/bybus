@@ -7,10 +7,11 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 
 const ActiveTicketsCard = ({ data }) => {
-console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
+  console.log("toy aqui", data?.orderTickets);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
+  console.log("XXXXXXXXXXXXXXXXX: ", data);
   const onHandleTicket = async () => {
     try {
       const dataAgency = await API.graphql({
@@ -106,25 +107,28 @@ console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
             </View>
           </View>
         </View>
-        <View style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingHorizontal: 10,
-        }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            style={{
-              width: 25,
-              height: 25,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/profile_default.png")}
-          />
-          <Text style={{fontFamily: 'light', marginLeft: 5, fontSize: 16}}>{agency?.name}</Text>
-
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingHorizontal: 10,
+          }}
+        >
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Image
+              style={{
+                width: 25,
+                height: 25,
+                resizeMode: "cover",
+              }}
+              source={require("@/utils/images/profile_default.png")}
+            />
+            <Text style={{ fontFamily: "light", marginLeft: 5, fontSize: 16 }}>
+              {agency?.name}
+            </Text>
           </View>
-      </View>
+        </View>
         <View
           style={{
             flexDirection: "row",
@@ -134,28 +138,44 @@ console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
           }}
         >
           <View style={styles.borderIconWalk}>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/walk.png")}
-          />
-        </View>
-        <View style={[styles.lineDashed, { width: 20 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
-        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/bus-white.png")}
-          />
-          
-        </View>
+            <Image
+              style={{
+                width: 24,
+                height: 24,
+                resizeMode: "cover",
+              }}
+              source={require("@/utils/images/walk.png")}
+            />
+          </View>
+          <View style={[styles.lineDashed, { width: 20 }]} />
+          <View
+            style={[
+              styles.borderIconBus,
+              global.bgBlack,
+              { flexDirection: "row", alignItems: "center" },
+            ]}
+          >
+            <Text
+              style={[
+                {
+                  fontFamily: "light",
+                  marginLeft: 2,
+                  textTransform: "capitalize",
+                },
+                global.white,
+              ]}
+            >
+              {data.booking.transport}
+            </Text>
+            <Image
+              style={{
+                width: 24,
+                height: 24,
+                resizeMode: "cover",
+              }}
+              source={require("@/utils/images/bus-white.png")}
+            />
+          </View>
           <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
             <Image
               style={{

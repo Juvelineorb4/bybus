@@ -9,14 +9,17 @@ import * as queries from "@/graphql/queries";
 import * as mutation from "@/graphql/customMutations";
 import { useRecoilState, useRecoilValue } from "recoil";
 import LeftHeader from "@/routes/Header/LeftHeader";
+import { CommonActions } from "@react-navigation/native";
 
 const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { booking, tickets, customer, customerTicket } = route.params;
   const [paymentOrder, setPaymentOrder] = useState("");
   const [refresh, setRefresh] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
   const total = tickets * booking.price;
-  console.log(customerTicket)
+
+  console.log(customerTicket);
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
     try {
@@ -33,12 +36,14 @@ const PaymentTicket = ({ navigation, route }) => {
         },
       });
       setPaymentOrder(payment.data.createPayment.id);
+      setIsPaid(true);
       console.log(payment);
     } catch (error) {
       console.log(error);
     }
   };
   const onHandleOrder = async (data) => {
+    setRefresh(true);
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
@@ -56,7 +61,7 @@ const PaymentTicket = ({ navigation, route }) => {
             total: total,
             customerEmail: attributes.email,
             userID: attributes["custom:userTableID"],
-            bookingID: booking.id, 
+            bookingID: booking.id,
           },
         },
       });
@@ -73,11 +78,11 @@ const PaymentTicket = ({ navigation, route }) => {
           },
         },
       });
-      console.log(customer.data.createCustomer)
+      console.log(customer.data.createCustomer);
       // Crear Orders Tickets
       let orderTicketsTemporal = [];
       let ticketsPaid = [];
-      console.log('aqui toy', booking)
+      console.log("aqui toy", booking);
       while (orderTicketsTemporal.length < tickets) {
         const orderTicket =
           booking.tickets.items[
@@ -113,7 +118,7 @@ const PaymentTicket = ({ navigation, route }) => {
             input: {
               id: item.id,
               status: "PAID",
-              customerID: customer.data.createCustomer.id
+              customerID: customer.data.createCustomer.id,
             },
           },
         });
@@ -122,17 +127,17 @@ const PaymentTicket = ({ navigation, route }) => {
 
         /* Actualizamos customer */
 
-      const customerUpdate = await API.graphql({
-        query: mutation.updateCustomer,
-        authMode: "AWS_IAM",
-        variables: {
-          input: {
-            id: customer.data.createCustomer.id,
-            ticketID: item.id,
+        const customerUpdate = await API.graphql({
+          query: mutation.updateCustomer,
+          authMode: "AWS_IAM",
+          variables: {
+            input: {
+              id: customer.data.createCustomer.id,
+              ticketID: item.id,
+            },
           },
-        },
-      });
-      console.log(customerUpdate.data.updateCustomer)
+        });
+        console.log(customerUpdate.data.updateCustomer);
       });
 
       /* Actualizamos el stock */
@@ -146,13 +151,12 @@ const PaymentTicket = ({ navigation, route }) => {
           },
         },
       });
-      console.log(updateBookingStock, 'toy aqui manito');
+      console.log(updateBookingStock, "toy aqui manito");
 
-      
       // console.log('aqui llego manito')
-      setRefresh(true)
+
       setTimeout(() => {
-        navigation.navigate("ViewTicket", {
+        navigation.replace("ViewTicket", {
           data: booking,
           order: orderDetail.data.createOrderDetail.id,
           payment: paymentOrder,
@@ -162,22 +166,24 @@ const PaymentTicket = ({ navigation, route }) => {
             id: customerTicket.ci,
           },
           quantity: tickets,
-          tickets: ticketsPaid
+          tickets: ticketsPaid,
         });
-        setRefresh(false)
+        setRefresh(false);
       }, 3000);
     } catch (error) {
       console.log(error);
+      setRefresh(false);
     }
+   
   };
   const test = async () => {
     const user = await Auth.currentAuthenticatedUser();
-    console.log(user)
-  }
+    console.log(user);
+  };
   useEffect(() => {
     // test()
-  }, [])
-  
+  }, []);
+
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={[styles.topContent, global.bgWhite]}>
@@ -230,11 +236,21 @@ const PaymentTicket = ({ navigation, route }) => {
         </View>
         <CustomButton
           text={`Obtener boleto(s)`}
+          disabled={!isPaid}
           handlePress={onHandleOrder}
           textStyles={[styles.textContinue, global.white]}
-          buttonStyles={[styles.continue, global.mainBgColor]}
+          buttonStyles={[
+            styles.continue,
+            isPaid ? global.mainBgColor : { backgroundColor: "lightgray" },
+          ]}
           loading={refresh}
+          // backgroundColor
         />
+        {!isPaid && (
+          <Text style={{ color: "red" }}>
+            *El pago debe estar confirmado para obtener tu boleto
+          </Text>
+        )}
       </View>
     </ScrollView>
   );
