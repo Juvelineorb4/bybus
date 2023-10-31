@@ -14,17 +14,17 @@ const PreviousTickets = () => {
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
+      console.log("QUIERO ESTOS: ", attributes);
       const list = await API.graphql({
-        query: queries.listOrderDetails,
-        authMode: "AWS_IAM",
+        query: queries.getUserOrderDetails,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: {
-          input: {
-            userID: attributes.sub,
-          },
+          id: attributes["custom:userTableID"],
         },
       });
-      console.log("aqui", list.data.listOrderDetails.items[0].booking.status);
-      setListOrders(list.data.listOrderDetails.items);
+
+      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items);
+      setListOrders(list.data.getUser.orders.items);
     } catch (error) {
       console.log(error);
     }
@@ -34,11 +34,11 @@ const PreviousTickets = () => {
   }, []);
   return (
     <ScrollView
-    style={styles.contentActive}
-    showsVerticalScrollIndicator={false}
-  >
-    <View style={styles.leftContentActive}>
-    <Image
+      style={styles.contentActive}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.leftContentActive}>
+        <Image
           style={{
             width: 35,
             height: 35,
@@ -46,25 +46,25 @@ const PreviousTickets = () => {
           }}
           source={require("@/utils/images/previous.png")}
         />
-      <Text style={[styles.textContentActive, global.black]}>
-        Ordenes antiguas
-      </Text>
-    </View>
-    {listOrders.length !== 0 ? (
-      listOrders.map(
-        (item, index) =>
-          item.booking.status !== "AVAILABLE" && (
-            <ActiveTicketsCard key={index} data={item} />
-          )
-      )
-    ) : (
-      <ActivityIndicator
-        size="large"
-        color="#0077B6"
-        style={{ marginTop: 50 }}
-      />
-    )}
-  </ScrollView>
+        <Text style={[styles.textContentActive, global.black]}>
+          Ordenes antiguas
+        </Text>
+      </View>
+      {listOrders.length !== 0 ? (
+        listOrders.map(
+          (item, index) =>
+            item.booking.status !== "AVAILABLE" && (
+              <ActiveTicketsCard key={index} data={item} />
+            )
+        )
+      ) : (
+        <ActivityIndicator
+          size="large"
+          color="#0077B6"
+          style={{ marginTop: 50 }}
+        />
+      )}
+    </ScrollView>
   );
 };
 

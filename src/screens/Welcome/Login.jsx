@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "@/utils/styles/Login.module.css";
@@ -17,6 +18,7 @@ const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Login = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -26,6 +28,7 @@ const Login = ({ navigation, route }) => {
 
   const onHandleLogin = async (data) => {
     setErrorMsg("");
+    setIsLoading(true);
     try {
       await Auth.signIn(data?.email, data?.password);
     } catch (error) {
@@ -50,7 +53,7 @@ const Login = ({ navigation, route }) => {
 
         case "User does not exist.":
           setErrorMsg(
-            `Usuario: ${data?.email} no registrado, por favor resgitrase`
+            `Usuario: ${data?.email} no registrado, por favor resgistrase!`
           );
           break;
         case "Incorrect username or password.":
@@ -66,6 +69,7 @@ const Login = ({ navigation, route }) => {
           break;
       }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -151,20 +155,21 @@ const Login = ({ navigation, route }) => {
           </View>
           <View style={styles.buttons}>
             <CustomButton
-              text={`Iniciar sesion`}
+              text={isLoading ? <ActivityIndicator /> : `Iniciar Sesion`}
+              disabled={isLoading}
               handlePress={handleSubmit(onHandleLogin)}
               // handlePress={() => navigation.navigate("Welcome_Start")}
 
               textStyles={[styles.textLogin, global.white]}
               buttonStyles={[styles.login, global.mainBgColor]}
             />
-            
-              <CustomButton
-                text={`Olvidaste tu contrasena?`}
-                handlePress={() => navigation.navigate("Forgot_App")}
-                textStyles={[styles.forgot, global.topGray]}
-              />
-          
+
+            <CustomButton
+              text={`Olvidaste tu contrasena?`}
+              handlePress={() => navigation.navigate("Forgot_App")}
+              textStyles={[styles.forgot, global.topGray]}
+            />
+
             {/* <View style={styles.hairline}>
               <View style={[styles.line, global.bgWhiteSmoke]} />
               <Text style={[styles.textLine, global.bgWhite, global.midGray]}>O inicia sesion con</Text>

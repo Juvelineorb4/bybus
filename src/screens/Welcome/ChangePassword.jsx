@@ -1,4 +1,11 @@
-import { View, Text, Image, ScrollView, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import CustomText from "@/components/CustomText";
@@ -17,6 +24,7 @@ const ChangePassword = ({ navigation, route }) => {
     },
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [resendMsg, setResendMsg] = useState("");
   const pwd = watch("password");
 
@@ -26,6 +34,7 @@ const ChangePassword = ({ navigation, route }) => {
   }, []);
 
   const onHandleNewPassword = async (data) => {
+    setIsLoading(true);
     const { email, password, code } = data;
     let newCode = "";
     code.forEach((item) => {
@@ -51,6 +60,7 @@ const ChangePassword = ({ navigation, route }) => {
           break;
       }
     }
+    setIsLoading(false);
   };
 
   const onResendCode = async () => {
@@ -178,7 +188,10 @@ const ChangePassword = ({ navigation, route }) => {
           />
         </ScrollView>
         <CustomButton
-          text={`Confirmar nueva contrasena`}
+          text={
+            isLoading ? <ActivityIndicator /> : `Confirmar nueva contrasena`
+          }
+          disabled={isLoading}
           handlePress={handleSubmit(onHandleNewPassword)}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}

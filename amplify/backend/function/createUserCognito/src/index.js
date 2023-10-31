@@ -69,7 +69,7 @@ export const handler = async (event) => {
     //   username: sub,
     //   groupName: "customer",
     // });
-    console.log("ADD GROUPD USER COGNITP: ", addGroupd);
+    // console.log("ADD GROUPD USER COGNITP: ", addGroupd);
     return event;
   } catch (error) {
     throw new Error(error);
@@ -86,7 +86,7 @@ const CREATE_USERTABLE = async (data) => {
     email: { S: email },
     status: { S: STATUS.ALLOWED },
     previousBalance: { N: "0" },
-    notificationToken: data["custom:notificationToken"],
+    notificationToken: { S: data["custom:notificationToken"] },
     owner: { S: sub },
   };
 

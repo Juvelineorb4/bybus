@@ -1,5 +1,5 @@
-import { Text, View } from "react-native";
-import React from "react";
+import { Text, View, ActivityIndicator } from "react-native";
+import React, { useState } from "react";
 import { CustomInput, CustomButton } from "@/components";
 import { useForm } from "react-hook-form";
 import styles from "./styles/StepOne.module.css";
@@ -10,16 +10,21 @@ import { Auth } from "aws-amplify";
 // recoil
 import { useRecoilValue } from "recoil";
 import { tokenNotification } from "@/atoms/Modals";
-
+// check box
+import CustomCheckBox from "@/components/CustomCheckBox";
+import * as WebBrowser from "expo-web-browser";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
 const StepOne = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [msgError, setMsgError] = useState("");
   const token = useRecoilValue(tokenNotification);
-  const { control, handleSubmit, watch } = useForm();
+  const { control, handleSubmit, watch, register } = useForm();
   const pwd = watch("password");
   const navigation = useNavigation();
   console.log("EL TOQUEN A GUARDAR", token);
   const onHandleRegister = async (data) => {
+    setIsLoading(true);
     const { name, email, password } = data;
     try {
       const { userSub, user } = await Auth.signUp({
@@ -37,10 +42,27 @@ const StepOne = () => {
         },
       });
     } catch (error) {
-      console.error(error.message);
+      console.log(error.message);
+      switch (error.message) {
+        case "An account with the given email already exists.":
+          setMsgError(
+            `Ya existe un registro con el correo electronico ${email}`
+          );
+          break;
+
+        default:
+          setMsgError("Ocurrio un Error Intente de Nuevo");
+          break;
+      }
     }
+    setIsLoading(false);
   };
 
+  const _handlePressButtonAsync = async () => {
+    let result = await WebBrowser.openBrowserAsync(
+      "https://www.bybusvenezuela.com/politics"
+    );
+  };
   return (
     <View style={styles.content}>
       <ScrollView style={styles.form}>
@@ -53,6 +75,7 @@ const StepOne = () => {
           title={`Detalles de tu cuenta`}
           subtitle={`Llena la informacion para que creemos tu cuenta nueva.`}
         />
+        <Text style={{ marginBottom: 5, color: "red" }}>{msgError}</Text>
         <CustomInput
           control={control}
           name={`name`}
@@ -133,11 +156,18 @@ const StepOne = () => {
             validate: (value) => value == pwd || "No coinciden",
           }}
         />
-        <Text style={styles.terms}>Acepto los Terminos y Condiciones</Text>
+        <CustomCheckBox
+          control={control}
+          name={"terms"}
+          text={"Acepto los Terminos y Condiciones"}
+          onPressed={_handlePressButtonAsync}
+          rules={{ required: "Requerido" }}
+        />
       </ScrollView>
       <View style={styles.controls}>
         <CustomButton
-          text={`Continuar`}
+          text={isLoading ? <ActivityIndicator /> : `Continuar`}
+          disabled={isLoading}
           handlePress={handleSubmit(onHandleRegister)}
           textStyles={styles.textContinue}
           buttonStyles={styles.continue}

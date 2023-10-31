@@ -225,6 +225,7 @@ type Booking
       { allow: owner }
       { allow: public, provider: iam }
       { allow: private, provider: iam }
+      { allow: private }
       { allow: groups, groups: ["sp", "customer"] }
     ]
   ) {

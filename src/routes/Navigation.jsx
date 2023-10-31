@@ -15,6 +15,7 @@ import {
   userAuthenticated,
   tokenNotification,
   imageProfile,
+  planSearch,
 } from "@/atoms/Modals";
 import { useRecoilState } from "recoil";
 
@@ -30,6 +31,7 @@ const Navigation = () => {
   const { downloadImage } = useImageSelect();
   const [userAuth, setUserAuth] = useRecoilState(userAuthenticated);
   const [token, setToken] = useRecoilState(tokenNotification);
+  const [search, setSearch] = useRecoilState(planSearch);
   const [imgProfile, setImgPorfile] = useRecoilState(imageProfile);
   const { main } = routing;
   const Stack = createNativeStackNavigator();
@@ -49,6 +51,15 @@ const Navigation = () => {
           break;
         case "signOut":
           setUserAuth(undefined);
+          setSearch({
+            time: "",
+            date: "",
+            departureState: "",
+            departureCity: "",
+            arrivalState: "",
+            arrivalCity: "",
+            active: false,
+          });
           break;
         case "confirmSignUp":
           console.log(data);
@@ -99,7 +110,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName={!userAuth ? main.WELCOME : main.HOME}>
         {/* si el usuario existe no se le crean las rutas de acceso al Welcome */}
-        {!userAuth && (
+        {!userAuth ? (
           <Stack.Screen
             name={main.WELCOME}
             component={WelcomeNavigator}
@@ -107,14 +118,15 @@ const Navigation = () => {
               headerShown: false,
             }}
           />
+        ) : (
+          <Stack.Screen
+            name={main.HOME}
+            component={Tabs}
+            options={{
+              headerShown: false,
+            }}
+          />
         )}
-        <Stack.Screen
-          name={main.HOME}
-          component={Tabs}
-          options={{
-            headerShown: false,
-          }}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

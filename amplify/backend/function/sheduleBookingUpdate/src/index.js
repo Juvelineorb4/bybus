@@ -99,7 +99,7 @@ export const handler = async (event) => {
     // Calcula la diferencia en minutos entre la hora del servidor y la hora de la tarea
     const diffInMinutes = departureDatetime.diff(now, "minutes");
     console.log("Diferencia de minutos: ", diffInMinutes);
-    if (diffInMinutes <= 17 && diffInMinutes >= 0) {
+    if (diffInMinutes <= 17) {
       await CUSTOM_API_GRAPHQL(updateBooking, {
         input: {
           id: item.id,

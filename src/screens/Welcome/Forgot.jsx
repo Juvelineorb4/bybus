@@ -1,4 +1,11 @@
-import { View, Text, Image, ScrollView, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import { CustomButton, CustomInput, RouteCard } from "@/components";
@@ -12,6 +19,7 @@ const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Forgot = () => {
   const global = require("@/utils/styles/global.js");
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
@@ -23,6 +31,7 @@ const Forgot = () => {
 
   // funcion para solicitar un codigo para setear contraseña nueva
   const onHandleForgotPassword = async (data) => {
+    setIsLoading(true);
     const { email } = data;
     try {
       await Auth.forgotPassword(email);
@@ -43,6 +52,7 @@ const Forgot = () => {
           break;
       }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -93,12 +103,13 @@ const Forgot = () => {
             }}
           />
           <Text style={[styles.code, global.topGray]}>
-            Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
+            Te enviaremos un correo con un codigo de 6 digitos para confirmar:{" "}
             <Text style={styles.emailText}>{emailValue}</Text>
           </Text>
         </ScrollView>
         <CustomButton
-          text={`Confirm Code`}
+          text={isLoading ? <ActivityIndicator /> : `Confirm Code`}
+          disabled={isLoading}
           handlePress={handleSubmit(onHandleForgotPassword)}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.bgBlack]}
