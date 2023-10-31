@@ -7,11 +7,13 @@ import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as customQueries from "@/graphql/customQueries";
 import * as mutations from "@/graphql/mutations";
-
+import { useSetRecoilState } from "recoil";
+import { planSearch } from "@/atoms/Modals";
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
+  const setSearch = useSetRecoilState(planSearch);
   const navigation = useNavigation();
-  const [agency, setAgency] = useState([])
+  const [agency, setAgency] = useState([]);
   const Agency = async () => {
     try {
       const query = await API.graphql({
@@ -19,25 +21,36 @@ const RouteCard = ({ data }) => {
         authMode: "AWS_IAM",
         variables: {
           // input: {
-            id: data?.agencyID
+          id: data?.agencyID,
           // }
         },
       });
-      setAgency(query.data.getAgency.name)
+      setAgency(query.data.getAgency.name);
     } catch (error) {
       setAgency(error.data.getAgency.name);
     }
   };
   useEffect(() => {
-    Agency()
-  }, [])
-  
+    Agency();
+  }, []);
+
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("CreateTicket", {
-        booking: data
-      })}
+      onPress={() => {
+        navigation.navigate("CreateTicket", {
+          booking: data,
+        });
+        setSearch({
+          time: "",
+          date: "",
+          departureState: "",
+          departureCity: "",
+          arrivalState: "",
+          arrivalCity: "",
+          active: false,
+        });
+      }}
       style={styles.container}
     >
       <View style={styles.containerText}>
@@ -62,8 +75,8 @@ const RouteCard = ({ data }) => {
                   resizeMode: "cover",
                 }}
                 source={require("@/utils/images/calendar-black.png")}
-              />
-              {' '} {data.departure.time.slice(0, 5)}
+              />{" "}
+              {data.departure.time.slice(0, 5)}
               <Image
                 style={{
                   width: 20,
@@ -80,7 +93,7 @@ const RouteCard = ({ data }) => {
               {data.arrival.state}, {data.arrival.city}
             </Text>
             <Text style={[styles.textFormat, global.green]}>
-              {data.arrival.date} 
+              {data.arrival.date}
               <Image
                 style={{
                   width: 15,
@@ -88,8 +101,7 @@ const RouteCard = ({ data }) => {
                   resizeMode: "cover",
                 }}
                 source={require("@/utils/images/calendar-black.png")}
-              />
-              {' '}
+              />{" "}
               {data.arrival.time.slice(0, 5)}
               <Image
                 style={{
@@ -103,13 +115,15 @@ const RouteCard = ({ data }) => {
           </View>
         </View>
       </View>
-      <View style={{
+      <View
+        style={{
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
           paddingHorizontal: 10,
-        }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Image
             style={{
               width: 25,
@@ -119,9 +133,8 @@ const RouteCard = ({ data }) => {
             source={require("@/utils/images/profile_default.png")}
           />
           {/* <Text style={{fontFamily: 'light'}}>Empresa:</Text> */}
-          <Text style={{fontFamily: 'light', marginLeft: 5}}>{agency}</Text>
-
-          </View>
+          <Text style={{ fontFamily: "light", marginLeft: 5 }}>{agency}</Text>
+        </View>
       </View>
       <View
         style={{
@@ -142,8 +155,25 @@ const RouteCard = ({ data }) => {
           />
         </View>
         <View style={[styles.lineDashed, { width: 20 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
-        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.transport}</Text>
+        <View
+          style={[
+            styles.borderIconBus,
+            global.bgBlack,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text
+            style={[
+              {
+                fontFamily: "light",
+                marginLeft: 2,
+                textTransform: "capitalize",
+              },
+              global.white,
+            ]}
+          >
+            {data.transport}
+          </Text>
           <Image
             style={{
               width: 24,
@@ -152,7 +182,6 @@ const RouteCard = ({ data }) => {
             }}
             source={require("@/utils/images/bus-white.png")}
           />
-          
         </View>
         {/* <View style={[styles.lineDashed, { width: 15 }]} /> */}
         {/* <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
