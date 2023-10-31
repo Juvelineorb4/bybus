@@ -2,7 +2,7 @@
   "expo": {
     "name": "viajes",
     "slug": "viajes",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -43,13 +43,13 @@
       ],
       "package": "com.bybus.viajes",
       "adaptiveIcon": {
-        "foregroundImage": "./src/utils/images/adaptive-icon.png",
+        "foregroundImage": "./src/utils/images/icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ],
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./src/utils/images/favicon.png"
