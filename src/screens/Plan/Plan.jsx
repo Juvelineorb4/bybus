@@ -48,11 +48,43 @@ const Plan = () => {
             />
             <Text
               style={{
-                fontFamily: "light",
+                fontFamily: "bold",
                 textAlign: "center",
+                fontSize: 24,
+                paddingHorizontal: 20
               }}
             >
-              Empieza a buscar tu proximo viaje
+              Montserrat Bold
+            </Text>
+            <Text
+              style={{
+                fontFamily: "regular",
+                textAlign: "center",
+                fontSize: 24,
+                paddingHorizontal: 20
+              }}
+            >
+              Montserrat Normal
+            </Text>
+            <Text
+              style={{
+                fontFamily: "notoRegular",
+                textAlign: "center",
+                fontSize: 24,
+                paddingHorizontal: 20
+              }}
+            >
+              NotoSerif Normal
+            </Text>
+            <Text
+              style={{
+                fontFamily: "notoBold",
+                textAlign: "center",
+                fontSize: 24,
+                paddingHorizontal: 20
+              }}
+            >
+              NotoSerif Bold
             </Text>
           </View>
         )}

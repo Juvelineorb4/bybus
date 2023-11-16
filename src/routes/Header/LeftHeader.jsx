@@ -24,7 +24,7 @@ const LeftHeader = ({ text = "", icon = true, route}) => {
         <View style={styles.home}>
           <Image
             style={{
-              width: 100,
+              width: 140,
               height: 40,
               resizeMode: "cover",
             }}

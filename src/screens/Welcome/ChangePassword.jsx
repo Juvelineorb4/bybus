@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { Auth } from 'aws-amplify';
 
 const ChangePassword = ({ navigation, route }) => {
+  const global = require("@/utils/styles/global.js");
   const { params } = route
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
@@ -52,29 +53,21 @@ const ChangePassword = ({ navigation, route }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Image
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: "-35%",
-          resizeMode: "contain",
-        }}
-        source={require("@/utils/images/texture.png")}
-      />
+    <View style={[styles.container, global.bgWhite]}>
       <View style={styles.content}>
         <ScrollView
           horizontal={false}
           showsVerticalScrollIndicator={false}
+          style={[global.bgWhite]}
         >
           <View style={styles.textContainer}>
-            <Image
+          <Image
               style={{
-                width: 60,
-                height: 60,
-                resizeMode: "contain",
+                width: 200,
+                height: 40,
+                resizeMode: "cover",
                 alignSelf: "center",
+                marginVertical: 15,
               }}
               source={require("@/utils/images/icon.png")}
             />
@@ -95,16 +88,13 @@ const ChangePassword = ({ navigation, route }) => {
               placeholder={"*********"}
               styled={{
                 text: styles.textInput,
-                label: styles.labelInput,
+                label: [styles.labelInput, global.topGray],
                 error: styles.errorInput,
-                input: styles.inputContainer,
+                placeholder: styles.placeholder,
+                input: [styles.inputContainer, global.bgWhiteSoft],
+                security: styles.security,
               }}
               text={`Nueva contrasena`}
-              icon={{
-                name: "lock-outline",
-                color: "#404040",
-                size: 25,
-              }}
               security={true}
               rules={{
                 required: "Requerido",
@@ -114,26 +104,20 @@ const ChangePassword = ({ navigation, route }) => {
                 },
               }}
             />
-            {/* <Text style={styles.textRules}>
-              Minimum 8 characters, with a combination of upper and lower case
-              letters, characters and numbers.
-            </Text> */}
+
             <CustomInput
               control={control}
               name={`password-confirm`}
               placeholder={"********"}
               styled={{
                 text: styles.textInput,
-                label: styles.labelInput,
+                label: [styles.labelInput, global.topGray],
                 error: styles.errorInput,
-                input: styles.inputContainer,
+                placeholder: styles.placeholder,
+                input: [styles.inputContainer, global.bgWhiteSoft],
+                security: styles.security,
               }}
               text={`Confirmar contrasena`}
-              icon={{
-                name: "lock-outline",
-                color: "#404040",
-                size: 25,
-              }}
               security={true}
               rules={{
                 required: "Requerido",
@@ -170,8 +154,8 @@ const ChangePassword = ({ navigation, route }) => {
         <CustomButton
           text={`Confirmar nueva contrasena`}
           handlePress={handleSubmit(onHandleNewPassword)}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          textStyles={[styles.textContinue, global.white]}
+          buttonStyles={[styles.continue, global.mainBgColor]}
         />
       </View>
     </View>

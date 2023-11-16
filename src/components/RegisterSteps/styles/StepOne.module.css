@@ -10,30 +10,44 @@
   flex: 1;
   margin: 10px 0px;
 }
-
 .inputContainer {
+  flex: 1;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fafafa;
-  padding: 15px 20px;
-  border-radius: 16px;
-  margin-bottom: 20px;
+  padding: 11px 10px 11px 0px;
+  border-radius: 8px;
+  margin: 3px 0px 10px;
 }
-
 .labelInput {
+  font-family: "regular";
   font-size: 14px;
   color: #404040;
-  margin-bottom: 3px;
-  font-family: 'regular';
 }
-
 .textInput {
   flex: 1;
-  margin-left: 15px;
-  font-family: 'light';
+  font-family: "light";
+  margin-left: 10px;
+  color: #0077B6;
 }
-
 .errorInput {
-  color: red
+  font-family: "light";
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -10px;
+}
+.placeholder {
+  flex: 1;
+  margin-left: 10px;
+  color: #8c9199cb;
+  font-size: 12px;
+  font-family: "light";
+}
+.security {
+  position: relative;
+  right: 27px;
 }
 
 .continue {
