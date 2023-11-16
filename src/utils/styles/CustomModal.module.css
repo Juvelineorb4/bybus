@@ -38,13 +38,13 @@
   padding: 15px;
   border-radius: 16px;
   margin: 3px 0px 10px;
-  border: 1px solid #efeded5d;
+  border: 1px solid #fff;
 }
 .inputContainerText {
   margin: 0px 5px;
   width: 70%;
   margin-left: -7px;
-  font-family: "light";
+  font-family: "regular";
   font-size: 14px;
 }
 .labelInput {

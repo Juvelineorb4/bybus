@@ -8,55 +8,42 @@ import CustomText from "@/components/CustomText";
 import EnterCode from "@/components/EnterCode";
 import CustomTimer from "@/components/CustomTimer";
 import { Auth } from "aws-amplify";
-const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Forgot = () => {
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
 
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
-      code: ["", "", "", "", "", ""]
-    }
+      code: ["", "", "", "", "", ""],
+    },
   });
   const navigation = useNavigation();
   const emailValue = watch("email");
 
-
-
-
   // funcion para solicitar un codigo para setear contraseña nueva
   const onHandleForgotPassword = async (data) => {
-    const { email } = data
+    const { email } = data;
     try {
-      await Auth.forgotPassword(email)
-      navigation.navigate("ChangePassword", { email: emailValue })
+      await Auth.forgotPassword(email);
+      navigation.navigate("ChangePassword", { email: emailValue });
     } catch (error) {
-      Alert.alert("Ooopss ", error.message)
+      Alert.alert("Ooopss ", error.message);
     }
-  }
-
+  };
 
   return (
-    <View style={[styles.container, global.white]}>
-      <Image
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: "-35%",
-          resizeMode: "contain",
-        }}
-        source={require("@/utils/images/texture.png")}
-      />
+    <View style={[styles.container, global.bgWhite]}>
       <View style={styles.content}>
         <ScrollView>
           <View style={styles.textContainer}>
             <Image
               style={{
-                width: 60,
-                height: 60,
-                resizeMode: "contain",
+                width: 200,
+                height: 40,
+                resizeMode: "cover",
                 alignSelf: "center",
+                marginVertical: 15,
               }}
               source={require("@/utils/images/icon.png")}
             />
@@ -77,19 +64,15 @@ const Forgot = () => {
             placeholder={"ejemplo@email.com"}
             styled={{
               text: styles.textInput,
-              label: [styles.labelInput, global.topGray],
+              label: styles.labelInput,
               error: styles.errorInput,
+              placeholder: styles.placeholder,
               input: [styles.inputContainer, global.bgWhiteSoft],
             }}
             text={`Correo electronico`}
-            icon={{
-              name: "email-outline",
-              color: "#404040",
-              size: 25,
-            }}
             rules={{
               required: "Requerido",
-              pattern: { value: EMAIL_REGEX, message: "Invalido" }
+              pattern: { value: EMAIL_REGEX, message: "Invalido" },
             }}
           />
           <Text style={[styles.code, global.topGray]}>
@@ -98,10 +81,10 @@ const Forgot = () => {
           </Text>
         </ScrollView>
         <CustomButton
-          text={`Confirm Code`}
+          text={`Confirmar`}
           handlePress={handleSubmit(onHandleForgotPassword)}
           textStyles={[styles.textContinue, global.white]}
-          buttonStyles={[styles.continue, global.bgBlack]}
+          buttonStyles={[styles.continue, global.mainBgColor]}
         />
       </View>
     </View>

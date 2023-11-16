@@ -86,14 +86,19 @@ const RouteSearch = () => {
             setLoading(true);
           }}
         >
-          <Image
+          <Text style={{
+            fontSize: 16,
+            fontFamily: 'medium',
+            color: '#fff'
+          }}>Buscar</Text>
+          {/* <Image
             style={{
               width: 32,
               height: 32,
               resizeMode: "cover",
             }}
             source={require("@/utils/images/search-black.png")}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
     </View>

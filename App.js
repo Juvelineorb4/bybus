@@ -31,6 +31,8 @@ export default function App() {
     mediumItalic: require("@/utils/fonts/Montserrat-MediumItalic.ttf"),
     lightItalic: require("@/utils/fonts/Montserrat-LightItalic.ttf"),
     boldItalic: require("@/utils/fonts/Montserrat-BoldItalic.ttf"),
+    notoRegular: require("@/utils/fonts/NotoSerif-Regular.ttf"),
+    notoBold: require("@/utils/fonts/NotoSerif-Bold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
