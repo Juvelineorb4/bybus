@@ -72,14 +72,16 @@ const ActiveTicketsCard = ({ data }) => {
                 <Octicons name="calendar" size={12} color="black" />
                 {" "}
                 {data.booking.departure.time.slice(0, 5)}
-                <Image
+                {/* {" "} */}
+                {/* <Image
                   style={{
                     width: 20,
                     height: 20,
                     resizeMode: "cover",
                   }}
                   source={require("@/utils/images/clock-black.png")}
-                />
+                /> */}
+                <MaterialCommunityIcons name="clock-time-ten-outline" size={13} color="black" />
               </Text>
             </View>
             <View>
@@ -93,14 +95,15 @@ const ActiveTicketsCard = ({ data }) => {
                 <Octicons name="calendar" size={12} color="black" />
                 {" "}
                 {data.booking.arrival.time.slice(0, 5)}
-                <Image
+                {/* <Image
                   style={{
                     width: 20,
                     height: 20,
                     resizeMode: "cover",
                   }}
                   source={require("@/utils/images/clock-black.png")}
-                />
+                /> */}
+                <MaterialCommunityIcons name="clock-time-ten-outline" size={13} color="black" />
               </Text>
             </View>
           </View>
@@ -126,16 +129,17 @@ const ActiveTicketsCard = ({ data }) => {
           }}
         >
           <View style={styles.borderIconWalk}>
-          <Image
+          {/* <Image
             style={{
               width: 24,
               height: 24,
               resizeMode: "cover",
             }}
             source={require("@/utils/images/walk.png")}
-          />
+          /> */}
+          <Ionicons name="ios-walk-outline" size={24} color="black" />
         </View>
-        <View style={[styles.lineDashed, { width: 20 }]} />
+        <View style={[styles.lineDashed, { width: 35 }]} />
         <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
         <Text style={[{fontFamily: 'light', marginHorizontal: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
           {/* <Image
