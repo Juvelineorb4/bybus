@@ -125,7 +125,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                  iconLeft: [styles.iconLeft, global.mainBgColor],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -145,7 +145,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                  iconLeft: [styles.iconLeft, global.mainBgColor],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -166,7 +166,7 @@ const Settings = ({ navigation }) => {
                       subtitle: [styles.textSubtitleSelect, global.topGray],
                     },
                     container: styles.containerSelect,
-                    iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                    iconLeft: [styles.iconLeft, global.mainBgColor],
                     iconRight: styles.iconRight,
                   }}
                   icon={button.icon}

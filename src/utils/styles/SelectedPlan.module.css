@@ -13,7 +13,7 @@
   margin-bottom: 15px;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 25px;
   /* color: #1f1f1f; */
   text-align: center;
@@ -24,7 +24,7 @@
   justify-content: space-between;
 }
 .textHour {
-  font-family: "light";
+  font-family: "regular";
   font-size: 48px;
   align-items: center;
   /* color: #1f1f1f; */
@@ -43,17 +43,17 @@
   align-items: center;
 }
 .states {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #9d9d9d; */
 }
 .city {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 16px;
   /* color: #404040; */
 }
 .to {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #404040; */
   opacity: 0.8;
@@ -74,7 +74,7 @@
   width: 160px;
 }
 .tagText {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #1f1f1f; */
   margin-left: 5px;
@@ -92,7 +92,7 @@
   border-radius: 16px;
 }
 .pickerItem {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 13px;
   /* color: #1f1f1f; */
 }
@@ -107,7 +107,7 @@
   flex: 1;
 }
 .textBuy {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #FFFFFF; */
 }

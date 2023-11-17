@@ -7,12 +7,12 @@
   /* flex: 1; */
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   /* color: #1f1f1f; */
 }
 .subtitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #404040; */
   margin: 5px 0px 15px;
@@ -43,7 +43,7 @@
   align-items: center;
 }
 .cardTitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #1a1528; */
   margin-left: 5px;
@@ -58,20 +58,20 @@
   text-align: center;
   /* color: white; */
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 .titleBalance {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #9d9d9d; */
 }
 .subtitleBalance {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 20px;
   /* color: #1f1f1f; */
 }
 .activePredetermined {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #1f1f1f; */
   margin-left: 3px;
@@ -87,5 +87,5 @@
   text-align: center;
   /* color: #1f1f1f; */
   font-size: 14px;
-  font-family: "thinItalic";
+  font-family: "regular";
 }

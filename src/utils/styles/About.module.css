@@ -3,12 +3,12 @@
 }
 .title {
   text-align: center;
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   /* color: var(--black); */
 }
 .subtitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   text-align: center;
   /* color: #404040; */
@@ -25,18 +25,18 @@
   align-items: center;
 }
 .textSelect {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 16px;
   /* color: #9d9d9d; */
 }
 .appVersion {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 16px;
   text-align: right;
   /* color: #1f1f1f; */
 }
 .textSelectRight {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 14px;
   text-align: right;
   /* color: #1F1F1F; */

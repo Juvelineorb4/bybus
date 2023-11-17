@@ -123,7 +123,7 @@ const ResultView = ({ data }) => {
             <Text
               style={[
                 {
-                  fontFamily: "thin",
+                  fontFamily: "regular",
                   textAlign: "center",
                 },
                 global.black,

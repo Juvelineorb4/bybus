@@ -12,6 +12,7 @@ import {
   import styles from "@/utils/styles/CustomModal.module.css";
   import { useRecoilState } from "recoil";
   import { routeSearch } from "@/atoms/Modals";
+  import { MaterialCommunityIcons } from '@expo/vector-icons';
   
   const CustomModalArrival = ({
     label,
@@ -42,14 +43,15 @@ import {
         <>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <View style={styles.inputContainer}>
-              <Image
+              {/* <Image
                 style={{
                   width: 28,
                   height: 28,
                   resizeMode: "contain",
                 }}
                 source={require("@/utils/images/target-white.png")}
-              />
+              /> */}
+              <MaterialCommunityIcons name="target" size={24} color="white" />
                 <Text
                   style={[selectRoute?.arrivalState?.estado ? global.white : global.midGray
                     ,

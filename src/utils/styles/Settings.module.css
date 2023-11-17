@@ -10,7 +10,7 @@
   justify-content: space-between;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "bold";
   padding: 20px;
   font-size: 24px;
   /* color: #1f1f1f; */
@@ -28,12 +28,12 @@
   width: 68%;
 }
 .textTitleSelect {
-  font-family: "lightItalic";
-  font-size: 18px;
+  font-family: "bold";
+  font-size: 17px;
   /* color: #1f1f1f; */
 }
 .textSubtitleSelect {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 14px;
   /* color: #404040; */
 }
@@ -109,7 +109,7 @@
 
 .id {
   margin-left: 10px;
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 16px;
   text-align: center;
   /* color: #ffffff; */

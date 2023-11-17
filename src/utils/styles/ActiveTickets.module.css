@@ -8,7 +8,7 @@
   align-items: center;
 }
 .textContentActive {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 16px;
   /* color: #1f1f1f; */
   margin-left: 5px;
@@ -22,7 +22,7 @@
   border-radius: 16px;
 }
 .pickerItem {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 13px;
   /* color: #1f1f1f; */
 }

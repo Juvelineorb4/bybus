@@ -14,9 +14,10 @@ import PlanNavigator from "./PlanNavigator";
 import TicketsNavigator from "./TicketsNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 import styles from "@/utils/styles/Tabs.module.css";
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
-const global = require('@/utils/styles/global.js');
+const global = require("@/utils/styles/global.js");
 const { width } = Dimensions.get("window");
 const MARGIN = 0;
 const TAB_BAR_WIDTH = width - 2 * MARGIN;
@@ -37,7 +38,11 @@ function MyTabBar({ state, descriptors, navigation }) {
   }, [state.index]);
   return (
     <View
-      style={[styles.tabBarContainer, global.bgWhite, { width: TAB_BAR_WIDTH, bottom: MARGIN }]}
+      style={[
+        styles.tabBarContainer,
+        global.bgWhite,
+        { width: TAB_BAR_WIDTH, bottom: MARGIN },
+      ]}
     >
       <View
         style={{
@@ -47,7 +52,11 @@ function MyTabBar({ state, descriptors, navigation }) {
         }}
       >
         <Animated.View
-          style={[styles.slidingTab, global.mainBgColorSecond, { transform: [{ translateX }] }]}
+          style={[
+            styles.slidingTab,
+            global.mainBgColor,
+            { transform: [{ translateX }] },
+          ]}
         />
       </View>
       {state.routes.map((route, index) => {
@@ -106,7 +115,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
 const TabIcon = ({ isFocused, tabIcon, label, index }) => {
   const [translateY] = useState(new Animated.Value(0));
-
+  console.log(tabIcon.activeIcon?.type)
   const translateIcon = (val) => {
     Animated.spring(translateY, {
       toValue: val,
@@ -124,22 +133,42 @@ const TabIcon = ({ isFocused, tabIcon, label, index }) => {
   return (
     <>
       <Animated.View style={{ transform: [{ translateY }] }}>
-        <Image
-          style={{
-            width: 33,
-            height: 33,
-            resizeMode: "contain",
-          }}
-          source={isFocused ? tabIcon.activeIcon : tabIcon.activeIcon}
-        />
+        {isFocused ? (
+          tabIcon.activeIcon.type === "ios" ? (
+            <Ionicons
+              name={tabIcon.activeIcon.name}
+              size={tabIcon.activeIcon.size}
+              color={tabIcon.activeIcon.color}
+            />
+          ) : (
+            <MaterialCommunityIcons
+              name={tabIcon.activeIcon.name}
+              size={tabIcon.activeIcon.size}
+              color={tabIcon.activeIcon.color}
+            />
+          )
+        ) : tabIcon.inActiveIcon.type === "ios" ? (
+          <Ionicons
+            name={tabIcon.inActiveIcon.name}
+            size={tabIcon.inActiveIcon.size}
+            color={tabIcon.inActiveIcon.color}
+            style={{marginBottom: 5}}
+          />
+        ) : (
+          <MaterialCommunityIcons
+            name={tabIcon.inActiveIcon.name}
+            size={tabIcon.inActiveIcon.size}
+            color={tabIcon.inActiveIcon.color}
+            style={{marginBottom: 5}}
+          />
+        )}
       </Animated.View>
       <Text
         style={{
-          color: isFocused ? "#261F3C" : "#404040",
+          color: isFocused ? "#000000" : "#000000",
           fontSize: 12,
-          fontFamily: "light",
-          fontWeight: "thin",
-          marginTop: -2
+          fontFamily: "regular",
+          marginTop: -2,
         }}
       >
         {label}
@@ -154,7 +183,7 @@ const Tabs = () => {
       initialRouteName={`Plan_Tab`}
       screenOptions={{
         headerShown: false,
-        unmountOnBlur: true
+        unmountOnBlur: true,
       }}
     >
       <Tab.Screen
@@ -163,8 +192,18 @@ const Tabs = () => {
         key={`Plan_Tab`}
         options={{
           tabBarIcon: {
-            activeIcon: require("@/utils/images/plan.png"),
-            inActiveIcon: require("@/utils/images/plan.png"),
+            activeIcon: {
+              type: "ios",
+              name: "ios-map",
+              color: "white",
+              size: 24,
+            },
+            inActiveIcon: {
+              type: "ios",
+              name: "ios-map",
+              color: "black",
+              size: 24,
+            },
           },
           headerShown: false,
           tabBarLabel: "Busca tu viaje",
@@ -176,8 +215,18 @@ const Tabs = () => {
         component={TicketsNavigator}
         options={{
           tabBarIcon: {
-            activeIcon: require("@/utils/images/ticket.png"),
-            inActiveIcon: require("@/utils/images/ticket.png"),
+            activeIcon: {
+              type: "material",
+              name: "ticket-confirmation",
+              color: "white",
+              size: 24,
+            },
+            inActiveIcon: {
+              type: "material",
+              name: "ticket-confirmation",
+              color: "black",
+              size: 24,
+            },
           },
           headerShown: false,
           tabBarLabel: "Mis tickets",
@@ -202,8 +251,18 @@ const Tabs = () => {
         component={SettingsNavigator}
         options={{
           tabBarIcon: {
-            activeIcon: require("@/utils/images/profile.png"),
-            inActiveIcon: require("@/utils/images/profile.png"),
+              activeIcon: {
+                type: "ios",
+                name: "ios-person",
+                color: "white",
+                size: 24,
+              },
+              inActiveIcon: {
+                type: "ios",
+                name: "ios-person",
+                color: "black",
+                size: 24,
+              },
           },
           headerShown: false,
           tabBarLabel: "Configuración",

@@ -5,7 +5,7 @@
 }
 
 .input {
-  font-family: "thinItalic";
+  font-family: "regular";
   /* background-color: #fafafa; */
   padding: 10px 13px;
   border-radius: 8px;
@@ -16,14 +16,14 @@
 }
 .title {
   text-align: center;
-  font-family: "light";
+  font-family: "regular";
   font-size: 16px;
   color: #0077B6;
   margin-bottom: 5px;
 }
 .subtitle {
   text-align: center;
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 16px;
   /* color: #1f1f1f; */
 }

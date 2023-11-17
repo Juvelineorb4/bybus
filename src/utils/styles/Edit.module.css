@@ -9,7 +9,7 @@
   justify-content: center;
 }
 .editTitle {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   text-align: center;
   /* color: #1f1f1f; */
@@ -49,12 +49,12 @@
   font-size: 14px;
   /* color: #404040; */
   margin-bottom: 5px;
-  font-family: "regular";
+  font-family: "bold";
 }
 .textInput {
   width: 90%;
   margin-left: 15px;
-  font-family: "regular";
+  font-family: "bold";
 }
 .errorInput {
 }
@@ -70,5 +70,5 @@
   text-align: center;
   color: white;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }

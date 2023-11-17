@@ -12,6 +12,7 @@ import { Controller } from "react-hook-form";
 import styles from "@/utils/styles/CustomModal.module.css";
 import { useRecoilState } from "recoil";
 import { routeSearch } from "@/atoms/Modals";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const CustomModalDeparture = ({
   label,
@@ -42,14 +43,15 @@ const CustomModalDeparture = ({
         <>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <View style={styles.inputContainer}>
-              <Image
+              {/* <Image
                 style={{
                   width: 28,
                   height: 28,
                   resizeMode: "contain",
                 }}
                 source={require("@/utils/images/target-white.png")}
-              />
+              /> */}
+              <MaterialCommunityIcons name="target" size={24} color="white" />
                 <Text
                   style={[selectRoute?.departureState?.estado ? global.white : global.midGray
                     ,

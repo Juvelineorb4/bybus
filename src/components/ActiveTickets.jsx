@@ -6,6 +6,7 @@ import ActiveTicketsCard from "./ActiveTicketsCard";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import * as mutation from "@/graphql/customMutations";
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 const ActiveTickets = () => {
   const global = require("@/utils/styles/global.js");
@@ -39,16 +40,17 @@ const ActiveTickets = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.leftContentActive}>
-        <Image
+        {/* <Image
           style={{
             width: 35,
             height: 35,
             resizeMode: "cover",
           }}
           source={require("@/utils/images/ticket.png")}
-        />
+        /> */}
+        <MaterialCommunityIcons name="ticket-confirmation-outline" size={28} color="black" />
         <Text style={[styles.textContentActive, global.black]}>
-          Ordenes activos
+          Ordenes activas
         </Text>
       </View>
       {listOrders.length !== 0 ? (
