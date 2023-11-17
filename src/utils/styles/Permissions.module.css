@@ -8,14 +8,14 @@
     margin-bottom: 10px;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   /* color: #1f1f1f; */
   margin-bottom: 10px;
 
 }
 .subtitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #404040; */
 }
@@ -29,12 +29,12 @@
   width: 75%;
 }
 .textTitleSelect {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 18px;
   /* color: #1f1f1f; */
 }
 .textSubtitleSelect {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 12px;
   /* color: #404040; */
 }

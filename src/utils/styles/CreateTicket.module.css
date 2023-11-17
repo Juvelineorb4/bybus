@@ -11,7 +11,7 @@
   padding: 45px 20px 20px;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 28px;
 }
 .search {
@@ -31,7 +31,7 @@
 .inputText {
   margin: 0px 5px;
   width: 70%;
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
 }
 .button {
@@ -48,7 +48,7 @@
 .textContinue {
   text-align: center;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 
 /* DATE TIME PICKERS */
@@ -67,7 +67,7 @@
   justify-content: space-between;
 }
 .textDatetime {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 17px;
 }
 .options {
@@ -96,7 +96,7 @@
   padding: 20px;
 }
 .titleTariff {
-  font-family: "light";
+  font-family: "regular";
   font-size: 24px;
   /* text-align: center; */
   margin-bottom: 20px;
@@ -113,7 +113,7 @@
   border-radius: 20px;
 }
 .subtitleTariff, .priceTariff, .number {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 16px;
 }
 
@@ -126,7 +126,7 @@
   border-radius: 8px;
 }
 .sign {
-  font-family: "lightItalic";
+  font-family: "regular";
   font-size: 20px;
 }
 
@@ -162,7 +162,7 @@
 }
 
 .labelInput{
-  font-family: "light";
+  font-family: "regular";
   font-size: 24px;
   /* text-align: center; */
   margin-bottom: 20px;
@@ -171,7 +171,7 @@
 .textInput, .placeholder {
   width: 100%;
   margin-left: 18px;
-  font-family: "light";
+  font-family: "regular";
 }
 
 .errorInput {}

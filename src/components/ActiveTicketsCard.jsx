@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
+import { MaterialCommunityIcons, Ionicons, Octicons } from '@expo/vector-icons';
 
 const ActiveTicketsCard = ({ data }) => {
   // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
@@ -59,14 +60,17 @@ const ActiveTicketsCard = ({ data }) => {
               </Text>
               <Text style={[styles.textFormat, global.green]}>
                 {data.booking.departure.date}
-                <Image
+                {/* <Image
                   style={{
                     width: 15,
                     height: 15,
                     resizeMode: "cover",
                   }}
                   source={require("@/utils/images/calendar-black.png")}
-                />{" "}
+                />{" "} */}
+                {" "}
+                <Octicons name="calendar" size={12} color="black" />
+                {" "}
                 {data.booking.departure.time.slice(0, 5)}
                 <Image
                   style={{
@@ -85,14 +89,9 @@ const ActiveTicketsCard = ({ data }) => {
               </Text>
               <Text style={[styles.textFormat, global.green]}>
                 {data.booking.arrival.date}
-                <Image
-                  style={{
-                    width: 15,
-                    height: 15,
-                    resizeMode: "cover",
-                  }}
-                  source={require("@/utils/images/calendar-black.png")}
-                />{" "}
+                {" "}
+                <Octicons name="calendar" size={12} color="black" />
+                {" "}
                 {data.booking.arrival.time.slice(0, 5)}
                 <Image
                   style={{
@@ -113,15 +112,8 @@ const ActiveTicketsCard = ({ data }) => {
           paddingHorizontal: 10,
         }}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            style={{
-              width: 25,
-              height: 25,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/profile_default.png")}
-          />
-          <Text style={{fontFamily: 'light', marginLeft: 5, fontSize: 16}}>{agency?.name}</Text>
+          <Ionicons name="ios-person-circle-outline" size={24} color="black" />
+          <Text style={{fontFamily: 'regular', marginLeft: 5, fontSize: 16}}>{agency?.name}</Text>
 
           </View>
       </View>
@@ -145,27 +137,28 @@ const ActiveTicketsCard = ({ data }) => {
         </View>
         <View style={[styles.lineDashed, { width: 20 }]} />
         <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
-        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
-          <Image
+        <Text style={[{fontFamily: 'light', marginHorizontal: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
+          {/* <Image
             style={{
               width: 24,
               height: 24,
               resizeMode: "cover",
             }}
             source={require("@/utils/images/bus-white.png")}
-          />
-          
+          /> */}
+          <Ionicons name="ios-bus-outline" size={20} color="white" />
         </View>
-          <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
-            <Image
+          <View style={[styles.ticketPrice, global.mainBgColor]}>
+            {/* <Image
               style={{
                 width: 26,
                 height: 26,
                 resizeMode: "cover",
               }}
               source={require("@/utils/images/ticket.png")}
-            />
-            <Text style={[styles.ticketText, global.black]}>
+            /> */}
+            <MaterialCommunityIcons name="ticket-confirmation-outline" size={24} color="white" />
+            <Text style={[styles.ticketText, global.white]}>
               {data.booking.price}.00$
             </Text>
           </View>

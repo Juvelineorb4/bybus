@@ -3,13 +3,13 @@
 }
 
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 20px;
   /* color: #1f1f1f; */
   text-align: center;
 }
 .titleSearch {
-  font-family: "thin";
+  font-family: "regular";
   font-size: 16px;
   /* color: #1f1f1f; */
   margin-top: 10px;
@@ -33,7 +33,7 @@
   border-radius: 12px;
 }
 .textDateModal {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   color: #1f1f1f;
 }

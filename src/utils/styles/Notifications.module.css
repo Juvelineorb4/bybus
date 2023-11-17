@@ -7,12 +7,12 @@
   border-radius: 50px;
 }
 .textCountNotifications {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 28px;
   /* color: #ffffff; */
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 28px;
   text-align: center;
   /* color: #1f1f1f; */
@@ -24,7 +24,7 @@
   border-radius: 12px;
 }
 .pickerItem {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 12px;
   /* color: #1f1f1f; */
 }

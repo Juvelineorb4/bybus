@@ -40,7 +40,7 @@
   font-size: 15px;
   /* color: #1a1528; */
   margin-top: 16px;
-  font-family: "regular";
+  font-family: "bold";
 }
 /* Buttons */
 .buttons {
@@ -67,7 +67,7 @@
 .textRegister {
   text-align: center;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 .textSignIn {
   /* color: white; */
@@ -78,5 +78,5 @@
 .textContinue {
   font-size: 14px;
   color: #795100d2;
-  font-family: "thinItalic";
+  font-family: "regular";
 }

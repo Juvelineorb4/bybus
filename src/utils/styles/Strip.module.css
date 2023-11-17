@@ -22,13 +22,13 @@
   flex: 1;
 }
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   text-align: center;
   margin-top: 35px;
 }
 .subtitle {
-  font-family: "thin";
+  font-family: "regular";
   font-size: 16px;
   text-align: center;
   margin-top: 15px;
@@ -42,7 +42,7 @@
 .textNext {
   text-align: center;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 
 .paginator {

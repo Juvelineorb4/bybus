@@ -5,7 +5,7 @@
   padding: 20px;
 }
 .titleTop {
-  font-family: "light";
+  font-family: "regular";
   font-size: 24px;
 }
 .ticketsContainer {
@@ -19,14 +19,14 @@
 }
 .titleTickets,
 .titlePrice {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 18px;
 }
 .titlePrice {
   margin-left: 5px;
 }
 .titlePrice2, .titleTickets2 {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 14px;
 }
 

@@ -46,7 +46,7 @@ const CustomDropDown = ({ list, styled = {}, global }) => {
               value={item.value}
               key={index}
               style={styled.item}
-              fontFamily={"regular"}
+              fontFamily={"bold"}
             />
           ))}
         </Picker>
@@ -64,7 +64,7 @@ const CustomDropDown = ({ list, styled = {}, global }) => {
               value={item.value}
               key={index}
               style={styled.item}
-              fontFamily={"regular"}
+              fontFamily={"bold"}
             />
           ))}
         </Picker>
@@ -82,7 +82,7 @@ const CustomDropDown = ({ list, styled = {}, global }) => {
               value={item.value}
               key={index}
               style={styled.item}
-              fontFamily={"regular"}
+              fontFamily={"bold"}
             />
           ))}
         </Picker>

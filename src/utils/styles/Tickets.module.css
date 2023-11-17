@@ -12,7 +12,7 @@
   height: 100px;
 }
 .title {
-  font-family: "lightItalic";
+  font-family: "regular";
   font-size: 24px;
   color: #ffffff;
   position: relative;
@@ -20,7 +20,7 @@
   margin-bottom: 10px;
 }
 .subtitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 16px;
   color: #1f1f1f;
   opacity: 0.9;
@@ -43,7 +43,7 @@
   text-align: center;
   color: white;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 .buttons {
   padding: 20px 20px 0px;
@@ -67,7 +67,7 @@
 }
 .textActive,
 .textPrevious {
-  font-family: "lightItalic";
+  font-family: "regular";
   font-size: 16px;
 }
 .leftContentActive,
@@ -80,7 +80,7 @@
   margin-top: 20px;
 }
 .textContentActive {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 20px;
   color: #1f1f1f;
   margin-left: 10px;
@@ -94,7 +94,7 @@
   border-radius: 16px;
 }
 .pickerItem {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 13px;
   color: #1f1f1f;
 }
