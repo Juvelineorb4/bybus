@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { planSearch, routeSearch, loadingSearch } from "@/atoms/Modals";
 // import { dateRoute, timeRoute } from "@/atoms/Modals";
+import { EvilIcons } from '@expo/vector-icons';
 
 const RouteSearch = () => {
   const global = require("@/utils/styles/global.js");
@@ -72,7 +73,7 @@ const RouteSearch = () => {
         />
         <TouchableOpacity
           activeOpacity={1}
-          style={[styles.search, global.mainBgColorSecond]}
+          style={[styles.search, global.mainBgColor]}
           onPress={() => {
             setResult({
               time: route?.time ? route?.time : timeToday,
@@ -86,14 +87,20 @@ const RouteSearch = () => {
             setLoading(true);
           }}
         >
-          <Image
+          <Text style={{
+            fontSize: 16,
+            fontFamily: 'medium',
+            color: '#fff'
+          }}>Buscar</Text>
+          {/* <Image
             style={{
               width: 32,
               height: 32,
               resizeMode: "cover",
             }}
             source={require("@/utils/images/search-black.png")}
-          />
+          /> */}
+          <EvilIcons name="search" size={30} color="white" style={{marginHorizontal: 5}} />
         </TouchableOpacity>
       </View>
     </View>

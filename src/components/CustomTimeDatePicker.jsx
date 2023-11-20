@@ -3,6 +3,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { routeSearch } from "@/atoms/Modals";
 import { useRecoilState } from "recoil";
+import { Octicons } from '@expo/vector-icons';
 
 const CustomTimeDatePicker = ({ styled = {}, state }) => {
   const [newDate, setNewDate] = useState(new Date());
@@ -65,7 +66,7 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
         style={[styled.border]}
       >
         <Text style={[styled.text]}>{selectedDate}</Text>
-        <Image
+        {/* <Image
           style={{
             width: 25,
             height: 25,
@@ -76,7 +77,8 @@ const CustomTimeDatePicker = ({ styled = {}, state }) => {
               ? require("@/utils/images/calendar-black.png")
               : require("@/utils/images/calendar.png")
           }
-        />
+        /> */}
+        <Octicons name="calendar" size={20} color="white" />
       </TouchableOpacity>
       {/* <TouchableOpacity
         activeOpacity={1}

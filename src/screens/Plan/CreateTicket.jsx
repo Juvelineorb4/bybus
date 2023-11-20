@@ -93,7 +93,7 @@ const CreateTicket = ({ navigation, route }) => {
           <Text
             style={[
               {
-                fontFamily: "light",
+                fontFamily: "regular",
                 fontSize: 24,
                 marginTop: 10,
                 marginBottom: 15,
@@ -107,7 +107,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.departure}>
               <Text
                 style={{
-                  fontFamily: "thin",
+                  fontFamily: "regular",
                   fontSize: 20,
                   marginBottom: 5,
                 }}
@@ -122,7 +122,7 @@ const CreateTicket = ({ navigation, route }) => {
               >
                 <Text
                   style={{
-                    fontFamily: "thinItalic",
+                    fontFamily: "regular",
                     fontSize: 16,
                     marginBottom: 10,
                   }}
@@ -140,7 +140,7 @@ const CreateTicket = ({ navigation, route }) => {
                   <View style={{ flexDirection: "row" }}>
                     <Text
                       style={{
-                        fontFamily: "light",
+                        fontFamily: "regular",
                         fontSize: 24,
                       }}
                     >
@@ -160,7 +160,7 @@ const CreateTicket = ({ navigation, route }) => {
                   <View style={{ flexDirection: "row" }}>
                     <Text
                       style={{
-                        fontFamily: "thin",
+                        fontFamily: "regular",
                         fontSize: 24,
                       }}
                     >
@@ -184,7 +184,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.arrival}>
               <Text
                 style={{
-                  fontFamily: "thin",
+                  fontFamily: "regular",
                   fontSize: 20,
                   marginBottom: 5,
                 }}
@@ -199,7 +199,7 @@ const CreateTicket = ({ navigation, route }) => {
               >
                 <Text
                   style={{
-                    fontFamily: "thinItalic",
+                    fontFamily: "regular",
                     fontSize: 16,
                     marginBottom: 10,
                   }}
@@ -217,7 +217,7 @@ const CreateTicket = ({ navigation, route }) => {
                   <View style={{ flexDirection: "row" }}>
                     <Text
                       style={{
-                        fontFamily: "light",
+                        fontFamily: "regular",
                         fontSize: 24,
                       }}
                     >
@@ -237,7 +237,7 @@ const CreateTicket = ({ navigation, route }) => {
                   <View style={{ flexDirection: "row" }}>
                     <Text
                       style={{
-                        fontFamily: "thin",
+                        fontFamily: "regular",
                         fontSize: 24,
                       }}
                     >
@@ -340,7 +340,7 @@ const CreateTicket = ({ navigation, route }) => {
               global.mainBgColor,
             ]}
           >
-            <Text style={[{ fontFamily: "light", fontSize: 12 }, global.white]}>
+            <Text style={[{ fontFamily: "regular", fontSize: 12 }, global.white]}>
               {!active ? "Editar" : "Guardar"}
             </Text>
           </TouchableOpacity>
@@ -366,7 +366,7 @@ const CreateTicket = ({ navigation, route }) => {
           {/* {quantityId.length < 1 && (
             <Text
               style={{
-                fontFamily: "thinItalic",
+                fontFamily: "regular",
                 fontSize: 14,
               }}
             >
@@ -393,7 +393,7 @@ const CreateTicket = ({ navigation, route }) => {
             <Text
               style={[
                 {
-                  fontFamily: "light",
+                  fontFamily: "regular",
                   fontSize: 16,
                 },
                 global.white,
@@ -404,7 +404,7 @@ const CreateTicket = ({ navigation, route }) => {
           </TouchableOpacity>
           {full && <Text
               style={{
-                fontFamily: "light",
+                fontFamily: "regular",
                 fontSize: 14,
                 color: 'red',
                 paddingTop: 10

@@ -11,7 +11,7 @@
 }
 .modalText {
   /* font-weight: 600; */
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   margin-left: 5px;
 }
@@ -24,7 +24,7 @@
 }
 .modalTextSelect {
   padding-top: 15px;
-  font-family: "light";
+  font-family: "regular";
   /* font-weight: 500; */
   font-size: 14px;
   color: #8c9199;
@@ -38,24 +38,24 @@
   padding: 15px;
   border-radius: 16px;
   margin: 3px 0px 10px;
-  border: 1px solid #efeded5d;
+  border: 1px solid #fff;
 }
 .inputContainerText {
   margin: 0px 5px;
   width: 70%;
   margin-left: -7px;
-  font-family: "light";
+  font-family: "bold";
   font-size: 14px;
 }
 .labelInput {
   /* font-style: normal; */
   /* font-weight: 700; */
-  font-family: "light";
+  font-family: "regular";
   font-size: 14px;
   color: #404040;
 }
 .textListModal {
-  font-family: "light";
+  font-family: "regular";
   text-align: center;
   font-size: 16px;
   color: #404040;

@@ -121,12 +121,17 @@ export const handler = async (event) => {
     responseCreateAgency.data.createAgency.id
   );
   // // cambiamos el stado de PENDING A ACCEPTED
-  await CUSTOM_API_GRAPHQL(updateAgencySubscription, {
-    input: {
-      id: agencySubsTableID,
-      status: "ACCEPTED",
-    },
-  });
+  // vemos si llego el id de d la tabla de ganecia subscricion para ver si lo actualizamos o no
+  if (agencySubsTableID) {
+    await CUSTOM_API_GRAPHQL(updateAgencySubscription, {
+      input: {
+        id: agencySubsTableID,
+        status: "ACCEPTED",
+        agencyID: responseCreateAgency.data.createAgency.id,
+      },
+    });
+  }
+
   return JSON.stringify({ message: "Usuario Registrado Exitosamente" });
 };
 

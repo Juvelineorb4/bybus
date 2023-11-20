@@ -1,14 +1,11 @@
 .container {
   flex: 1;
-  /* background-color: white; */
   padding: 20px;
 }
 
 .content {
   margin-top: 50px;
   flex: 1;
-  flex-direction: column;
-  width: 100%;
 }
 
 .form {
@@ -16,40 +13,55 @@
 }
 
 .buttons {
-  margin-top: 20px;
+  flex: 1;
+  margin-top: 45%;
+
 }
 
 .text {
   font-size: 20px;
-  font-family: "regular";
+  font-family: "bold";
 }
 
-.inputContainer, .inputContainerP {
+.inputContainer {
+  flex: 1;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  /* background-color: #fafafa; */
-  padding: 15px 20px;
-  border-radius: 16px;
-  margin-bottom: 25px;
+  background-color: #fafafa;
+  padding: 11px 10px 11px 0px;
+  border-radius: 8px;
+  margin: 3px 0px 10px;
 }
-
-.labelInput, .labelInputP {
+.labelInput {
+  font-family: "bold";
   font-size: 14px;
   color: #404040;
-  margin-bottom: 3px;
-  font-family: 'regular';
 }
-
-.textInput, .textInputP {
-  width: 90%;
-  margin-left: 15px;
+.textInput {
+  flex: 1;
+  font-family: "regular";
+  margin-left: 10px;
+  color: #0077B6;
+}
+.errorInput {
+  font-family: "regular";
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -10px;
+}
+.placeholder {
+  flex: 1;
+  margin-left: 10px;
+  color: #8c9199cb;
+  font-size: 12px;
   font-family: "regular";
 }
-.textInputP {
-  width: 78%;
+.security {
+  position: relative;
+  right: 27px;
 }
-.errorInput {}
 
 /* Line */
 .hairline {
@@ -72,7 +84,7 @@
   padding: 0px 10px;
   align-self: center;
   /* color: #9d9d9d; */
-  font-family: "thin";
+  font-family: "regular";
 }
 
 /* Selects */
@@ -93,7 +105,7 @@
   text-align: center;
   /* color: white; */
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 
 .extras {
@@ -110,7 +122,7 @@
   font-size: 30px;
   /* color: #1f1f1f; */
   text-align: center;
-  font-family: "thinItalic";
+  font-family: "regular";
 }
 
 .subtitle {
@@ -119,7 +131,7 @@
   text-align: center;
   margin-bottom: 30px;
   /* color: #404040; */
-  font-family: "thin";
+  font-family: "regular";
 }
 
 .forgot {
@@ -127,5 +139,5 @@
   align-self: flex-end;
   font-weight: 400;
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }

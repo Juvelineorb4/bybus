@@ -1,5 +1,6 @@
 .container {
-  border: 0.5px solid #1f1f1f;
+  /* border: 0.5px solid #1f1f1f; */
+  background-color: #F1F1F1;
   margin-bottom: 20px;
   padding: 10px 0px;
   border-radius: 10px;
@@ -11,30 +12,30 @@
   padding: 10px;
 }
 .textFrom {
-  font-family: "light";
+  font-family: "regular";
   font-size: 16px;
   margin-bottom: 5px;
 }
 .textHour {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 28px;
 }
 .textDate {
-  font-family: "light";
+  font-family: "regular";
   font-size: 16px;
 }
 .textDestination {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 14px;
 }
 .textFormat {
   margin-top: 5px;
-  font-family: "regular";
+  font-family: "bold";
   font-size: 13px;
   /* color: #1f1f1f; */
 }
 .ticketText {
-  font-family: "light";
+  font-family: "regular";
   font-size: 15px;
   /* color: #1a1528; */
 }
@@ -56,8 +57,8 @@
 
 .lineDashed {
   border-style: dashed;
-  border-bottom-width: 1px;
-  border-color: #c7c7c7;
+  border-bottom-width: 2px;
+  border-color: #000;
 }
 .ticketPrice {
   flex-direction: row;

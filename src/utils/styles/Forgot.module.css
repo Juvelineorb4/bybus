@@ -10,24 +10,43 @@
   flex: 1;
 }
 .inputContainer {
+  flex: 1;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  /* background-color: #fafafa; */
-  padding: 15px 20px;
-  border-radius: 16px;
-  /* margin-bottom: 40px; */
+  background-color: #fafafa;
+  padding: 11px 10px 11px 0px;
+  border-radius: 8px;
+  margin: 3px 0px 10px;
 }
 .labelInput {
+  font-family: "bold";
   font-size: 14px;
-  /* color: #404040; */
-  margin-bottom: 5px;
+  color: #404040;
 }
 .textInput {
-  width: 90%;
-  margin-left: 15px;
+  flex: 1;
+  font-family: "regular";
+  margin-left: 10px;
+  color: #0077B6;
 }
 .errorInput {
+  font-family: "regular";
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -10px;
+}
+.placeholder {
+  flex: 1;
+  margin-left: 10px;
+  color: #8c9199cb;
+  font-size: 12px;
+  font-family: "regular";
+}
+.security {
+  position: relative;
+  right: 27px;
 }
 
 /* Buttons */
@@ -42,7 +61,7 @@
   text-align: center;
   /* color: white; */
   font-size: 14px;
-  font-family: "regular";
+  font-family: "bold";
 }
 
 .extras {
@@ -52,39 +71,45 @@
   border: 1px solid #efeded;
   border-radius: 16px;
 }
-
 .title {
+  font-weight: 100;
   font-size: 30px;
   /* color: #1f1f1f; */
   text-align: center;
-  font-family: "thinItalic";
+  font-family: "regular";
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+  /* color: #404040; */
+  font-family: "regular";
 }
 .enterCode {
   margin-bottom: 15px;
 }
-.subtitle,
+
 .timer,
 .code {
   font-size: 16px;
   text-align: center;
   color: #404040;
-  font-family: "regular";
+  font-family: "bold";
 }
-.subtitle {
-  margin-bottom: 30px;
-}
-.code, .textRules {
-  margin: 20px 0px;
 
+.code,
+.textRules {
+  margin: 20px 0px;
 }
 .textRules {
-  font-family: 'regular';
-font-size: 14px;
-color: #9D9D9D;
+  font-family: "bold";
+  font-size: 14px;
+  color: #9d9d9d;
 }
 .emailText,
 .timer {
   color: #1f1f1f;
   font-family: "medium";
-
 }

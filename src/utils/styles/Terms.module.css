@@ -1,11 +1,11 @@
 .title {
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 24px;
   /* color: #1f1f1f; */
   margin-bottom: 10px;
 }
 .subtitle {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   /* color: #404040; */
 }
@@ -14,7 +14,7 @@
   padding: 0px 20px 20px;
 }
 .text {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 16px;
   /* color: #1a1528; */
   margin-bottom: 15px;

@@ -84,10 +84,10 @@ const StepOne = () => {
             text: styles.textInput,
             label: styles.labelInput,
             error: styles.errorInput,
-            input: styles.inputContainer,
+            placeholder: styles.placeholder,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Nombre completo`}
-          icon={require("@/utils/images/profile_default.png")}
           rules={{
             required: "Requerido",
             minLength: {
@@ -108,10 +108,10 @@ const StepOne = () => {
             text: styles.textInput,
             label: styles.labelInput,
             error: styles.errorInput,
-            input: styles.inputContainer,
+            placeholder: styles.placeholder,
+            input: [styles.inputContainer, global.bgWhiteSoft],
           }}
           text={`Correo electronico`}
-          icon={require("@/utils/images/email.png")}
           rules={{
             required: "Requerido",
             pattern: { value: EMAIL_REGEX, message: "Invalido" },
@@ -123,12 +123,13 @@ const StepOne = () => {
           placeholder={"********"}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            placeholder: styles.placeholder,
+            input: [styles.inputContainer, global.bgWhiteSoft],
+            security: styles.security,
           }}
           text={`Contrasena`}
-          icon={require("@/utils/images/password.png")}
           security={true}
           rules={{
             required: "Requerido",
@@ -144,12 +145,13 @@ const StepOne = () => {
           placeholder={"********"}
           styled={{
             text: styles.textInput,
-            label: styles.labelInput,
+            label: [styles.labelInput, global.topGray],
             error: styles.errorInput,
-            input: styles.inputContainer,
+            placeholder: styles.placeholder,
+            input: [styles.inputContainer, global.bgWhiteSoft],
+            security: styles.security,
           }}
           text={`Repetir contrasena`}
-          icon={require("@/utils/images/password.png")}
           security={true}
           rules={{
             required: "Requerido",

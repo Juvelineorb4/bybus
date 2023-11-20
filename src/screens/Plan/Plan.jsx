@@ -9,6 +9,7 @@ import { planSearch } from "@/atoms/Modals";
 import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as mutations from "@/graphql/mutations";
+import { Ionicons, EvilIcons  } from '@expo/vector-icons';
 
 const Plan = () => {
   const global = require("@/utils/styles/global.js");
@@ -38,21 +39,25 @@ const Plan = () => {
               marginTop: 20,
             }}
           >
-            <Image
+            {/* <Image
               style={{
                 width: 150,
                 height: 150,
                 resizeMode: "cover",
               }}
               source={require("@/utils/images/search-big.png")}
-            />
+            /> */}
+            {/* <EvilIcons name="search" size={24} color="black" /> */}
+            <EvilIcons name="search" size={100} color="black" style={{marginVertical: 20}} />
             <Text
               style={{
-                fontFamily: "light",
+                fontFamily: "regular",
                 textAlign: "center",
+                fontSize: 24,
+                paddingHorizontal: 20
               }}
             >
-              Empieza a buscar tu proximo viaje
+              Busca tu proximo viaje
             </Text>
           </View>
         )}

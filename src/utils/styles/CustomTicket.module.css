@@ -10,7 +10,7 @@
 }
 .title {
   margin-right: 8%;
-  font-family: "thinItalic";
+  font-family: "regular";
   font-size: 25px;
   text-align: center;
 }
@@ -20,7 +20,7 @@
   justify-content: space-between;
 }
 .textHour {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 48px;
   align-items: center;
   margin-bottom: -10px;
@@ -37,7 +37,7 @@
 }
 .codeTransporte {
   margin-left: 5px;
-  font-family: "regular";
+  font-family: "bold";
   font-size: 12px;
 }
 .topTwoContent {
@@ -46,15 +46,15 @@
   align-items: center;
 }
 .states {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
 }
 .city {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 16px;
 }
 .to {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 14px;
   opacity: 0.8;
 }
@@ -81,7 +81,7 @@
   /* margin-left: 10px; */
 }
 .tagText {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 12px;
   margin-left: 5px;
 }
@@ -91,7 +91,7 @@
   justify-content: center;
 }
 .expires {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 12px;
   color: #404040;
   opacity: 0.9;

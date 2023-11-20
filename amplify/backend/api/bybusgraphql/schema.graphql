@@ -40,6 +40,7 @@ type AgencySubscription
   subscriptionDate: String
   status: SusbcriptionAgencyStatus @default(value: "PENDING")
   scheduledDate: String
+  agencyID: ID
 }
 
 enum SusbcriptionAgencyStatus {
@@ -51,7 +52,14 @@ enum SusbcriptionAgencyStatus {
 
 type Agency
   @model
-  @auth(rules: [{ allow: owner, operations: [read, update] }]) {
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
   id: ID
   cognitoID: ID
   pin: String
@@ -59,6 +67,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   name: String
@@ -66,6 +75,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   rif: String
@@ -73,6 +83,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   email: String
@@ -81,6 +92,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   phone: String
@@ -88,6 +100,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
+        { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   officies: [Office] @hasMany(indexName: "byAgencyToOffice", fields: ["id"])
@@ -97,7 +110,7 @@ type Agency
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
-type Office
+type Office 
   @model
   @auth(
     rules: [
@@ -343,6 +356,15 @@ type Ticket
   description: String
   url: String
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+
+enum ticketStatus {
+  ACTIVE
+  PAID
+  BOARDED
+  CANCELLED
+  RETURNED
 }
 
 type OrderTicket

@@ -5,9 +5,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ActivityIndicator,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import styles from "@/utils/styles/Login.module.css";
 import { CustomButton, CustomInput } from "@/components";
 import { useForm } from "react-hook-form";
@@ -17,81 +16,30 @@ import { Auth } from "aws-amplify";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Login = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+
+  const { control, handleSubmit } = useForm();
 
   const onHandleLogin = async (data) => {
     setErrorMsg("");
     setIsLoading(true);
     try {
-      await Auth.signIn(data?.email, data?.password);
+      const result = await Auth.signIn(data.email, data.password);
     } catch (error) {
-      console.log(error.message);
-      switch (error.message) {
-        case "User is not confirmed.":
-          Alert.alert(
-            `Usuario: ${data.email} no confirmado`,
-            "por favor confirmar"
-          );
-          navigation.navigate("Register_App", {
-            screen: "Register_StepFour",
-            params: {
-              registerForm: {
-                userSub: "",
-                email: data.email,
-                back: true,
-              },
-            },
-          });
-          break;
-
-        case "User does not exist.":
-          setErrorMsg(
-            `Usuario: ${data?.email} no registrado, por favor resgistrase!`
-          );
-          break;
-        case "Incorrect username or password.":
-          setErrorMsg("Usuario o Contraseña Incorrecta");
-          break;
-        case "Password attempts exceeded":
-          setErrorMsg(
-            `Se superaron los intentos de contraseña, Actualiza la contraseña!`
-          );
-          break;
-        default:
-          setErrorMsg("Ocurrio un Error Intente de nuevo");
-          break;
-      }
+      Alert.alert("Ooopss ", error.message);
     }
-    setIsLoading(false);
   };
 
   return (
     <View style={[styles.container, global.bgWhite]}>
-      {/* <Image
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: "-35%",
-          resizeMode: "contain",
-        }}
-        source={require("@/utils/images/texture.png")}
-      /> */}
-      <View style={styles.content}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.form}>
-            <View styles={styles.textContent}>
+        <ScrollView horizontal={false} style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "space-between",
+              marginTop: 50,
+            }}
+          >
+            <View style={styles.form}>
               <Image
                 style={{
                   width: 200,
@@ -110,21 +58,18 @@ const Login = ({ navigation, route }) => {
                 title="Bienvenido de nuevo"
                 subtitle="Accede a tu cuenta"
               />
-            </View>
-            <Text style={{ color: "red", marginBottom: 5 }}>{errorMsg}</Text>
-            <View style={styles.signin}>
               <CustomInput
                 control={control}
                 name={`email`}
                 placeholder={"ejemplo@email.com"}
                 styled={{
                   text: styles.textInput,
-                  label: [styles.labelInput, global.topGray],
+                  label: styles.labelInput,
                   error: styles.errorInput,
+                  placeholder: styles.placeholder,
                   input: [styles.inputContainer, global.bgWhiteSoft],
                 }}
                 text={`Correo electronico`}
-                icon={require("@/utils/images/email.png")}
                 rules={{
                   required: "Requerido",
                   pattern: { value: EMAIL_REGEX, message: "Invalido" },
@@ -135,60 +80,62 @@ const Login = ({ navigation, route }) => {
                 name={`password`}
                 placeholder={"**********"}
                 styled={{
-                  text: styles.textInputP,
-                  label: [styles.labelInputP, global.topGray],
-                  error: styles.errorInputP,
-                  input: [styles.inputContainerP, global.bgWhiteSoft],
+                  text: styles.textInput,
+                  label: [styles.labelInput, global.topGray],
+                  error: styles.errorInput,
+                  placeholder: styles.placeholder,
+                  input: [styles.inputContainer, global.bgWhiteSoft],
+                  security: styles.security,
                 }}
-                text={`Contrasena`}
-                icon={require("@/utils/images/password.png")}
+                text={`Contraseña`}
                 security={true}
                 rules={{
-                  required: "Requerido",
+                  required: "Contraseña requerida",
                   minLength: {
                     value: 8,
-                    message: "Minimo 8 caracteres",
+                    message: "8 caracteres minimo",
                   },
                 }}
               />
+              {/* </View> */}
             </View>
-          </View>
-          <View style={styles.buttons}>
-            <CustomButton
-              text={isLoading ? <ActivityIndicator /> : `Iniciar Sesion`}
-              disabled={isLoading}
-              handlePress={handleSubmit(onHandleLogin)}
-              // handlePress={() => navigation.navigate("Welcome_Start")}
+            <View style={styles.buttons}>
+              <CustomButton
+                text={`Iniciar sesion`}
+                handlePress={handleSubmit(onHandleLogin)}
+                // handlePress={() => navigation.navigate("Welcome_Start")}
 
-              textStyles={[styles.textLogin, global.white]}
-              buttonStyles={[styles.login, global.mainBgColor]}
-            />
-
-            <CustomButton
-              text={`Olvidaste tu contrasena?`}
-              handlePress={() => navigation.navigate("Forgot_App")}
-              textStyles={[styles.forgot, global.topGray]}
-            />
-
-            {/* <View style={styles.hairline}>
-              <View style={[styles.line, global.bgWhiteSmoke]} />
-              <Text style={[styles.textLine, global.bgWhite, global.midGray]}>O inicia sesion con</Text>
-            </View>
-
-            <View style={styles.extras}>
-              <Image
-                style={{
-                  width: 30,
-                  height: 30,
-                  marginRight: 20,
-                  resizeMode: "contain",
-                }}
-                source={require("@/utils/images/google.png")}
+                textStyles={[styles.textLogin, global.white]}
+                buttonStyles={[styles.login, global.mainBgColor]}
               />
-            </View> */}
+              <View style={styles.selects}>
+                <CustomButton
+                  text={`Olvidaste tu contrasena?`}
+                  handlePress={() => navigation.navigate("Forgot_App")}
+                  textStyles={[styles.forgot, global.topGray]}
+                />
+              </View>
+              <View style={styles.hairline}>
+                <View style={[styles.line, global.bgWhiteSmoke]} />
+                <Text style={[styles.textLine, global.bgWhite, global.midGray]}>
+                  O inicia sesion con
+                </Text>
+              </View>
+
+              <View style={styles.extras}>
+                <Image
+                  style={{
+                    width: 30,
+                    height: 30,
+                    marginRight: 20,
+                    resizeMode: "contain",
+                  }}
+                  source={require("@/utils/images/google.png")}
+                />
+              </View>
+            </View>
           </View>
         </ScrollView>
-      </View>
     </View>
   );
 };

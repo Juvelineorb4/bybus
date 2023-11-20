@@ -16,7 +16,8 @@ import { useForm } from "react-hook-form";
 import { Auth } from "aws-amplify";
 
 const ChangePassword = ({ navigation, route }) => {
-  const { params } = route;
+  const global = require("@/utils/styles/global.js");
+  const { params } = route
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: params?.email,
@@ -82,11 +83,15 @@ const ChangePassword = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, global.bgWhite]}>
       <View style={styles.content}>
-        <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          style={[global.bgWhite]}
+        >
           <View style={styles.textContainer}>
-            <Image
+          <Image
               style={{
                 width: 200,
                 height: 40,
@@ -114,16 +119,13 @@ const ChangePassword = ({ navigation, route }) => {
               placeholder={"*********"}
               styled={{
                 text: styles.textInput,
-                label: styles.labelInput,
+                label: [styles.labelInput, global.topGray],
                 error: styles.errorInput,
-                input: styles.inputContainer,
+                placeholder: styles.placeholder,
+                input: [styles.inputContainer, global.bgWhiteSoft],
+                security: styles.security,
               }}
-              text={`Nueva contraseña`}
-              icon={{
-                name: "lock-outline",
-                color: "#404040",
-                size: 25,
-              }}
+              text={`Nueva contrasena`}
               security={true}
               rules={{
                 required: "Requerido",
@@ -133,26 +135,20 @@ const ChangePassword = ({ navigation, route }) => {
                 },
               }}
             />
-            {/* <Text style={styles.textRules}>
-              Minimum 8 characters, with a combination of upper and lower case
-              letters, characters and numbers.
-            </Text> */}
+
             <CustomInput
               control={control}
               name={`password-confirm`}
               placeholder={"********"}
               styled={{
                 text: styles.textInput,
-                label: styles.labelInput,
+                label: [styles.labelInput, global.topGray],
                 error: styles.errorInput,
-                input: styles.inputContainer,
+                placeholder: styles.placeholder,
+                input: [styles.inputContainer, global.bgWhiteSoft],
+                security: styles.security,
               }}
-              text={`Confirmar contraseña`}
-              icon={{
-                name: "lock-outline",
-                color: "#404040",
-                size: 25,
-              }}
+              text={`Confirmar contrasena`}
               security={true}
               rules={{
                 required: "Requerido",
@@ -193,8 +189,8 @@ const ChangePassword = ({ navigation, route }) => {
           }
           disabled={isLoading}
           handlePress={handleSubmit(onHandleNewPassword)}
-          textStyles={styles.textContinue}
-          buttonStyles={styles.continue}
+          textStyles={[styles.textContinue, global.white]}
+          buttonStyles={[styles.continue, global.mainBgColor]}
         />
       </View>
     </View>

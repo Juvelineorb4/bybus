@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 export const settings = {
   buttons: [
     // {
@@ -43,7 +44,12 @@ export const settings = {
       title: "Politicas y Privacidad",
       subtitle: "Mira las politicas de nuestra aplicacion",
       icon: {
-        left: require('@/utils/images/question_black.png'),
+        left: {
+          type: 'ant',
+          name: 'questioncircleo',
+          color: 'white',
+          size: 24
+        },
         right: require('@/utils/images/arrow_right.png'),
       },
       route: "Terms",
@@ -53,7 +59,12 @@ export const settings = {
       title: "Especificaciones de la App",
       subtitle: "Mira los detalles de nuestra aplicacion",
       icon: {
-        left: require('@/utils/images/info.png'),
+        left: {
+          type: 'ios',
+          name: 'ios-alert-circle-outline',
+          color: 'white',
+          size: 24
+        },
         right: require('@/utils/images/arrow_right.png'),
       },
       route: "About",
@@ -62,18 +73,23 @@ export const settings = {
     {
       title: "Cierra Sesion",
       icon: {
-        left: require('@/utils/images/exit.png')
+        left: {
+          type: 'ios',
+          name: 'ios-exit-outline',
+          color: 'white',
+          size: 24
+        },
       },
       logout: "Logout"
       // routePush: true,
     },
-    {
-      title: "Inicia Sesion",
-      icon: {
-        left: require('@/utils/images/exit.png')
-      },
-      login: "Welcome_App"
-      // routePush: true,
-    },
+    // {
+    //   title: "Inicia Sesion",
+    //   icon: {
+    //     left: require('@/utils/images/exit.png')
+    //   },
+    //   login: "Welcome_App"
+    //   // routePush: true,
+    // },
   ],
 };

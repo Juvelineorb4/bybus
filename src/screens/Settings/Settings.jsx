@@ -151,7 +151,7 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                  iconLeft: [styles.iconLeft, global.mainBgColor],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
@@ -171,37 +171,57 @@ const Settings = ({ navigation }) => {
                     subtitle: [styles.textSubtitleSelect, global.topGray],
                   },
                   container: styles.containerSelect,
-                  iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                  iconLeft: [styles.iconLeft, global.mainBgColor],
                   iconRight: styles.iconRight,
                 }}
                 icon={button.icon}
                 toogle={button.toogle}
               />
             </View>
+          ) : userAuth && button.logout ? (
+            <>
+              <TouchableOpacity onPress={signOut}>
+                <View style={[styles.line, global.bgWhiteSmoke]} />
+                <CustomSelect
+                  title={button.title}
+                  subtitle={button.subtitle}
+                  styled={{
+                    text: {
+                      container: styles.textContainerSelect,
+                      title: [styles.textTitleSelect, global.black],
+                      subtitle: [styles.textSubtitleSelect, global.topGray],
+                    },
+                    container: styles.containerSelect,
+                    iconLeft: [styles.iconLeft, global.mainBgColor],
+                    iconRight: styles.iconRight,
+                  }}
+                  icon={button.icon}
+                  toogle={button.toogle}
+                />
+              </TouchableOpacity>
+            </>
           ) : (
-            userAuth &&
-            button.logout && (
-              <>
-                <TouchableOpacity onPress={signOut}>
-                  <View style={[styles.line, global.bgWhiteSmoke]} />
-                  <CustomSelect
-                    title={button.title}
-                    subtitle={button.subtitle}
-                    styled={{
-                      text: {
-                        container: styles.textContainerSelect,
-                        title: [styles.textTitleSelect, global.black],
-                        subtitle: [styles.textSubtitleSelect, global.topGray],
-                      },
-                      container: styles.containerSelect,
-                      iconLeft: [styles.iconLeft, global.mainBgColorSecond],
-                      iconRight: styles.iconRight,
-                    }}
-                    icon={button.icon}
-                    toogle={button.toogle}
-                  />
-                </TouchableOpacity>
-              </>
+            !userAuth &&
+            button.login && (
+              <TouchableOpacity onPress={signOut}>
+                <View style={[styles.line, global.bgWhiteSmoke]} />
+                <CustomSelect
+                  title={button.title}
+                  subtitle={button.subtitle}
+                  styled={{
+                    text: {
+                      container: styles.textContainerSelect,
+                      title: [styles.textTitleSelect, global.black],
+                      subtitle: [styles.textSubtitleSelect, global.topGray],
+                    },
+                    container: styles.containerSelect,
+                    iconLeft: [styles.iconLeft, global.mainBgColorSecond],
+                    iconRight: styles.iconRight,
+                  }}
+                  icon={button.icon}
+                  toogle={button.toogle}
+                />
+              </TouchableOpacity>
             )
           )}
         </View>
