@@ -7,11 +7,12 @@ import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as customQueries from "@/graphql/customQueries";
 import * as mutations from "@/graphql/mutations";
+import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
-  const [agency, setAgency] = useState([])
+  const [agency, setAgency] = useState([]);
   const Agency = async () => {
     try {
       const query = await API.graphql({
@@ -19,25 +20,27 @@ const RouteCard = ({ data }) => {
         authMode: "AWS_IAM",
         variables: {
           // input: {
-            id: data?.agencyID
+          id: data?.agencyID,
           // }
         },
       });
-      setAgency(query.data.getAgency.name)
+      setAgency(query.data.getAgency.name);
     } catch (error) {
       setAgency(error.data.getAgency.name);
     }
   };
   useEffect(() => {
-    Agency()
-  }, [])
-  
+    Agency();
+  }, []);
+
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("CreateTicket", {
-        booking: data
-      })}
+      onPress={() =>
+        navigation.navigate("CreateTicket", {
+          booking: data,
+        })
+      }
       style={styles.container}
     >
       <View style={styles.containerText}>
@@ -54,23 +57,13 @@ const RouteCard = ({ data }) => {
               {data.departure.state}, {data.departure.city}
             </Text>
             <Text style={[styles.textFormat, global.green]}>
-              {data.departure.date}
-              <Image
-                style={{
-                  width: 15,
-                  height: 15,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/calendar-black.png")}
-              />
-              {' '} {data.departure.time.slice(0, 5)}
-              <Image
-                style={{
-                  width: 20,
-                  height: 20,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/clock-black.png")}
+              {data.departure.date}{" "}
+              <Octicons name="calendar" size={12} color="black" />{" "}
+              {data.departure.time.slice(0, 5)}
+              <MaterialCommunityIcons
+                name="clock-time-ten-outline"
+                size={13}
+                color="black"
               />
             </Text>
           </View>
@@ -80,48 +73,30 @@ const RouteCard = ({ data }) => {
               {data.arrival.state}, {data.arrival.city}
             </Text>
             <Text style={[styles.textFormat, global.green]}>
-              {data.arrival.date} 
-              <Image
-                style={{
-                  width: 15,
-                  height: 15,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/calendar-black.png")}
-              />
-              {' '}
+              {data.arrival.date}{" "}
+              <Octicons name="calendar" size={12} color="black" />{" "}
               {data.arrival.time.slice(0, 5)}
-              <Image
-                style={{
-                  width: 20,
-                  height: 20,
-                  resizeMode: "cover",
-                }}
-                source={require("@/utils/images/clock-black.png")}
+              <MaterialCommunityIcons
+                name="clock-time-ten-outline"
+                size={13}
+                color="black"
               />
             </Text>
           </View>
         </View>
       </View>
-      <View style={{
+      <View
+        style={{
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
           paddingHorizontal: 10,
-        }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            style={{
-              width: 25,
-              height: 25,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/profile_default.png")}
-          />
-          {/* <Text style={{fontFamily: 'light'}}>Empresa:</Text> */}
-          <Text style={{fontFamily: 'light', marginLeft: 5}}>{agency}</Text>
-
-          </View>
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Ionicons name="ios-person-circle-outline" size={24} color="black" />
+          <Text style={{ fontFamily: "light", marginLeft: 5 }}>{agency}</Text>
+        </View>
       </View>
       <View
         style={{
@@ -132,48 +107,36 @@ const RouteCard = ({ data }) => {
         }}
       >
         <View style={styles.borderIconWalk}>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/walk.png")}
-          />
+          <Ionicons name="ios-walk-outline" size={24} color="black" />
         </View>
-        <View style={[styles.lineDashed, { width: 20 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
-        <Text style={[{fontFamily: 'light', marginLeft: 2, textTransform: 'capitalize'}, global.white]}>{data.transport}</Text>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/bus-white.png")}
-          />
-          
+        <View style={[styles.lineDashed, { width: 35 }]} />
+        <View
+          style={[
+            styles.borderIconBus,
+            global.bgBlack,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text
+            style={[
+              {
+                fontFamily: "light",
+                marginLeft: 2,
+                textTransform: "capitalize",
+              },
+              global.white,
+            ]}
+          >
+            {data.transport}
+          </Text>
+          <Ionicons name="ios-bus-outline" size={20} color="white" />
         </View>
-        {/* <View style={[styles.lineDashed, { width: 15 }]} /> */}
-        {/* <View style={[styles.borderIconWalk, global.bgWhiteSoft]}>
-          <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/walk.png")}
-          />
-        </View> */}
         <View style={[styles.ticketPrice, global.mainBgColorSecond]}>
-          <Image
-            style={{
-              width: 26,
-              height: 26,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/ticket.png")}
-          />
+          <MaterialCommunityIcons
+              name="ticket-confirmation-outline"
+              size={24}
+              color="white"
+            />
           <Text style={[styles.ticketText, global.black]}>
             {data.price}.00$
           </Text>

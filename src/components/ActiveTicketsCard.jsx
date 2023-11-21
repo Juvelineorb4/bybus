@@ -5,7 +5,7 @@ import Icon from "./Icon";
 import { useNavigation } from "@react-navigation/native";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
-import { MaterialCommunityIcons, Ionicons, Octicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const ActiveTicketsCard = ({ data }) => {
   // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
@@ -59,29 +59,14 @@ const ActiveTicketsCard = ({ data }) => {
                 {data.booking.departure.state}, {data.booking.departure.city}
               </Text>
               <Text style={[styles.textFormat, global.green]}>
-                {data.booking.departure.date}
-                {/* <Image
-                  style={{
-                    width: 15,
-                    height: 15,
-                    resizeMode: "cover",
-                  }}
-                  source={require("@/utils/images/calendar-black.png")}
-                />{" "} */}
-                {" "}
-                <Octicons name="calendar" size={12} color="black" />
-                {" "}
+                {data.booking.departure.date}{" "}
+                <Octicons name="calendar" size={12} color="black" />{" "}
                 {data.booking.departure.time.slice(0, 5)}
-                {/* {" "} */}
-                {/* <Image
-                  style={{
-                    width: 20,
-                    height: 20,
-                    resizeMode: "cover",
-                  }}
-                  source={require("@/utils/images/clock-black.png")}
-                /> */}
-                <MaterialCommunityIcons name="clock-time-ten-outline" size={13} color="black" />
+                <MaterialCommunityIcons
+                  name="clock-time-ten-outline"
+                  size={13}
+                  color="black"
+                />
               </Text>
             </View>
             <View>
@@ -90,36 +75,39 @@ const ActiveTicketsCard = ({ data }) => {
                 {data.booking.arrival.state}, {data.booking.arrival.city}
               </Text>
               <Text style={[styles.textFormat, global.green]}>
-                {data.booking.arrival.date}
-                {" "}
-                <Octicons name="calendar" size={12} color="black" />
-                {" "}
+                {data.booking.arrival.date}{" "}
+                <Octicons name="calendar" size={12} color="black" />{" "}
                 {data.booking.arrival.time.slice(0, 5)}
-                {/* <Image
-                  style={{
-                    width: 20,
-                    height: 20,
-                    resizeMode: "cover",
-                  }}
-                  source={require("@/utils/images/clock-black.png")}
-                /> */}
-                <MaterialCommunityIcons name="clock-time-ten-outline" size={13} color="black" />
+                <MaterialCommunityIcons
+                  name="clock-time-ten-outline"
+                  size={13}
+                  color="black"
+                />
               </Text>
             </View>
           </View>
         </View>
-        <View style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingHorizontal: 10,
-        }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Ionicons name="ios-person-circle-outline" size={24} color="black" />
-          <Text style={{fontFamily: 'regular', marginLeft: 5, fontSize: 16}}>{agency?.name}</Text>
-
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingHorizontal: 10,
+          }}
+        >
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Ionicons
+              name="ios-person-circle-outline"
+              size={24}
+              color="black"
+            />
+            <Text
+              style={{ fontFamily: "regular", marginLeft: 5, fontSize: 16 }}
+            >
+              {agency?.name}
+            </Text>
           </View>
-      </View>
+        </View>
         <View
           style={{
             flexDirection: "row",
@@ -129,39 +117,36 @@ const ActiveTicketsCard = ({ data }) => {
           }}
         >
           <View style={styles.borderIconWalk}>
-          {/* <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/walk.png")}
-          /> */}
-          <Ionicons name="ios-walk-outline" size={24} color="black" />
-        </View>
-        <View style={[styles.lineDashed, { width: 35 }]} />
-        <View style={[styles.borderIconBus, global.bgBlack, {flexDirection: 'row', alignItems: 'center'}]}>
-        <Text style={[{fontFamily: 'light', marginHorizontal: 2, textTransform: 'capitalize'}, global.white]}>{data.booking.transport}</Text>
-          {/* <Image
-            style={{
-              width: 24,
-              height: 24,
-              resizeMode: "cover",
-            }}
-            source={require("@/utils/images/bus-white.png")}
-          /> */}
-          <Ionicons name="ios-bus-outline" size={20} color="white" />
-        </View>
+            <Ionicons name="ios-walk-outline" size={24} color="black" />
+          </View>
+          <View style={[styles.lineDashed, { width: 35 }]} />
+          <View
+            style={[
+              styles.borderIconBus,
+              global.bgBlack,
+              { flexDirection: "row", alignItems: "center" },
+            ]}
+          >
+            <Text
+              style={[
+                {
+                  fontFamily: "light",
+                  marginHorizontal: 2,
+                  textTransform: "capitalize",
+                },
+                global.white,
+              ]}
+            >
+              {data.booking.transport}
+            </Text>
+            <Ionicons name="ios-bus-outline" size={20} color="white" />
+          </View>
           <View style={[styles.ticketPrice, global.mainBgColor]}>
-            {/* <Image
-              style={{
-                width: 26,
-                height: 26,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/ticket.png")}
-            /> */}
-            <MaterialCommunityIcons name="ticket-confirmation-outline" size={24} color="white" />
+            <MaterialCommunityIcons
+              name="ticket-confirmation-outline"
+              size={24}
+              color="white"
+            />
             <Text style={[styles.ticketText, global.white]}>
               {data.booking.price}.00$
             </Text>

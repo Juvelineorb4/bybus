@@ -96,7 +96,7 @@
   padding: 20px;
 }
 .titleTariff {
-  font-family: "regular";
+  font-family: "bold";
   font-size: 24px;
   /* text-align: center; */
   margin-bottom: 20px;
@@ -108,7 +108,7 @@
   justify-content: space-between;
 }
 .panelTariff{
-  border: 1px solid #efeded;
+  background-color: #F1F1F1;
   padding: 20px;
   border-radius: 20px;
 }
@@ -142,7 +142,7 @@
 
 .contentSelectPlan {
   padding: 20px;
-  border: 1px solid #eee;
+  background-color: #F1F1F1;
   border-radius: 8px;
 }
 .arrival {
