@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 const PlanNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={`Plan`}>
+    <Stack.Navigator initialRouteName={`Plan`} backBehavior="Plan">
       <Stack.Screen
         name="Plan"
         component={Plan}
@@ -40,7 +40,6 @@ const PlanNavigator = () => {
           animation: "slide_from_right",
         }}
       />
-      
     </Stack.Navigator>
   );
 };

@@ -15,17 +15,17 @@ const ActiveTickets = () => {
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
+      console.log("QUIERO ESTOS: ", attributes);
       const list = await API.graphql({
-        query: queries.listOrderDetails,
-        authMode: "AWS_IAM",
+        query: queries.getUserOrderDetails,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: {
-          input: {
-            userID: attributes.sub,
-          },
+          id: attributes["custom:userTableID"],
         },
       });
-      console.log("aqui", list.data.listOrderDetails.items[0].booking.status);
-      setListOrders(list.data.listOrderDetails.items);
+
+      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items);
+      setListOrders(list.data.getUser.orders.items);
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +56,7 @@ const ActiveTickets = () => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            item.booking.status !== "DEPARTED" && (
+            item.booking.status === "AVAILABLE" && (
               <ActiveTicketsCard key={index} data={item} />
             )
         )

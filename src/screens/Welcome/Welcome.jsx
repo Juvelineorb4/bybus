@@ -49,12 +49,12 @@ const Welcome = ({ navigation, route }) => {
             textStyles={[styles.textRegister, global.white]}
             buttonStyles={[styles.register, global.mainBgColor]}
           />
-          <CustomButton
+          {/* <CustomButton
             text={intro.button}
             handlePress={() => navigation.navigate("Welcome_Start")}
             textStyles={[styles.textContinue, global.midgray]}
             buttonStyles={styles.continueBtnn}
-          />
+          /> */}
         </View>
       </View>
     </View>

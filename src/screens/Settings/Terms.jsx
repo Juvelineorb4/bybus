@@ -1,18 +1,19 @@
 import { ScrollView, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/utils/styles/Terms.module.css";
 import CustomText from "@/components/CustomText";
 
 const Terms = () => {
-  const global = require('@/utils/styles/global.js');
+  const global = require("@/utils/styles/global.js");
+
   return (
-    <ScrollView style={{ flex: 1, padding: 20, backgroundColor: 'white' }}>
+    <ScrollView style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
       <CustomText
         title={`Politicas y Privacidad`}
         subtitle={`Como procesamos tu informacion personal en ByBus C.A.`}
         styled={{
           title: [styles.title, global.black],
-          subtitle: [styles.subtitle. global.topGray],
+          subtitle: [styles.subtitle, global.topGray],
           container: styles.textContainer,
         }}
       />
@@ -28,8 +29,12 @@ const Terms = () => {
         the Service, You agree to the collection and use of information in
         accordance with this Privacy Policy.
       </Text>
-      <Text style={[styles.text, global.black]}>Interpretation and Definitions</Text>
-      <Text style={[styles.text, global.black]}>==============================</Text>
+      <Text style={[styles.text, global.black]}>
+        Interpretation and Definitions
+      </Text>
+      <Text style={[styles.text, global.black]}>
+        ==============================
+      </Text>
       <Text style={[styles.text, global.black]}>
         While using Our Service, We may ask You to provide Us with certain
         personally identifiable information that can be used to contact or
@@ -38,9 +43,13 @@ const Terms = () => {
       </Text>
       <View style={styles.listInfo}>
         <Text style={[styles.text, global.black]}>* Email address</Text>
-        <Text style={[styles.text, global.black]}>* First name and last name</Text>
+        <Text style={[styles.text, global.black]}>
+          * First name and last name
+        </Text>
         <Text style={[styles.text, global.black]}>* Phone number</Text>
-        <Text style={[styles.text, global.black]}>* Address, State, Province, ZIP/Postal code, City</Text>
+        <Text style={[styles.text, global.black]}>
+          * Address, State, Province, ZIP/Postal code, City
+        </Text>
         <Text style={[styles.text, global.black]}>* Usage Data</Text>
       </View>
     </ScrollView>

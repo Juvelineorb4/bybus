@@ -1,17 +1,25 @@
-import { Text, TouchableOpacity, View, ScrollView, Image } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  Image,
+  Button,
+} from "react-native";
 import React, { useState } from "react";
 import { settings } from "@/utils/constants/settings";
 import styles from "@/utils/styles/Settings.module.css";
 import CustomSelect from "@/components/CustomSelect";
 import { Auth } from "aws-amplify";
 import { imageProfile, userAuthenticated } from "@/atoms/Modals";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { CustomButton } from "@/components";
 import { useForm } from "react-hook-form";
-
+import * as WebBrowser from "expo-web-browser";
 const Settings = ({ navigation }) => {
   const global = require("@/utils/styles/global.js");
   const userAuth = useRecoilValue(userAuthenticated);
+
   const { buttons } = settings;
   const imgProfile = useRecoilValue(imageProfile);
 
@@ -44,6 +52,13 @@ const Settings = ({ navigation }) => {
     navigation.navigate("Welcome_App");
   };
 
+  const [result, setResult] = useState(null);
+  const _handlePressButtonAsync = async () => {
+    let result = await WebBrowser.openBrowserAsync(
+      "https://www.bybusvenezuela.com/politics"
+    );
+    setResult(result);
+  };
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
       <View style={styles.profile}>
@@ -56,11 +71,16 @@ const Settings = ({ navigation }) => {
           }}
           source={require("@/utils/images/background-profile.png")}
         /> */}
-        <View style={[{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-        }, global.mainBgColorSecond]}/>
+        <View
+          style={[
+            {
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+            },
+            global.mainBgColorSecond,
+          ]}
+        />
         <View style={styles.profileContent}>
           <View style={styles.containerImage}>
             {/* <View style={styles.image}>
@@ -112,7 +132,13 @@ const Settings = ({ navigation }) => {
           {button.route ? (
             <TouchableOpacity
               activeOpacity={1}
-              onPress={() => navigation.navigate(button.route)}
+              onPress={() => {
+                if (button.route === "Terms") {
+                  _handlePressButtonAsync();
+                } else {
+                  navigation.navigate(button.route);
+                }
+              }}
             >
               <View style={[styles.line, global.bgWhiteSmoke]} />
               <CustomSelect
