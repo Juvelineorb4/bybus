@@ -50,7 +50,7 @@ const ActiveTickets = () => {
         /> */}
         <MaterialCommunityIcons name="ticket-confirmation-outline" size={28} color="black" />
         <Text style={[styles.textContentActive, global.black]}>
-          Ordenes activas
+          Tickets activos
         </Text>
       </View>
       {listOrders.length !== 0 ? (

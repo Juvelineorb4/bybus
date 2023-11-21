@@ -6,6 +6,7 @@ import ActiveTicketsCard from "./ActiveTicketsCard";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import * as mutation from "@/graphql/customMutations";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const PreviousTickets = () => {
   const global = require("@/utils/styles/global.js");
@@ -38,22 +39,19 @@ const PreviousTickets = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.leftContentActive}>
-        <Image
-          style={{
-            width: 35,
-            height: 35,
-            resizeMode: "cover",
-          }}
-          source={require("@/utils/images/previous.png")}
+        <MaterialCommunityIcons
+          name="clock-time-ten-outline"
+          size={25}
+          color="black"
         />
         <Text style={[styles.textContentActive, global.black]}>
-          Ordenes antiguas
+          Tickets antiguos
         </Text>
       </View>
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            item.booking.status !== "AVAILABLE" && (
+            item.booking.status === "DEPARTED" && (
               <ActiveTicketsCard key={index} data={item} />
             )
         )

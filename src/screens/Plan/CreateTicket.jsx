@@ -12,6 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as mutation from "@/graphql/customMutations";
+import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
@@ -45,8 +46,8 @@ const CreateTicket = ({ navigation, route }) => {
       customer: user[0].name,
       customerTicket: {
         fullName: fullName ? fullName : user[0].name,
-        ci: idCountry ? idCountry : '00000000',
-        email: emailCustomer ? emailCustomer : 'ninguno',
+        ci: idCountry ? idCountry : "00000000",
+        email: emailCustomer ? emailCustomer : "ninguno",
       },
     });
     console.log({
@@ -55,8 +56,8 @@ const CreateTicket = ({ navigation, route }) => {
       customer: user[0].name,
       customerTicket: {
         fullName: fullName ? fullName : user[0].name,
-        ci: idCountry ? idCountry : '00000000',
-        email: emailCustomer ? emailCustomer : 'ninguno',
+        ci: idCountry ? idCountry : "00000000",
+        email: emailCustomer ? emailCustomer : "ninguno",
       },
     });
   };
@@ -93,7 +94,7 @@ const CreateTicket = ({ navigation, route }) => {
           <Text
             style={[
               {
-                fontFamily: "regular",
+                fontFamily: "bold",
                 fontSize: 24,
                 marginTop: 10,
                 marginBottom: 15,
@@ -107,7 +108,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.departure}>
               <Text
                 style={{
-                  fontFamily: "regular",
+                  fontFamily: "bold",
                   fontSize: 20,
                   marginBottom: 5,
                 }}
@@ -137,16 +138,16 @@ const CreateTicket = ({ navigation, route }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
                     <Text
                       style={{
-                        fontFamily: "regular",
+                        fontFamily: "bold",
                         fontSize: 24,
                       }}
                     >
                       {booking.departure.time.slice(0, 5)}
                     </Text>
-                    <Image
+                    {/* <Image
                       style={{
                         width: 35,
                         height: 35,
@@ -155,18 +156,23 @@ const CreateTicket = ({ navigation, route }) => {
                         top: -1,
                       }}
                       source={require("@/utils/images/clock-black.png")}
+                    /> */}
+                    <MaterialCommunityIcons
+                      name="clock-time-ten-outline"
+                      size={25}
+                      color="black"
                     />
                   </View>
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
                     <Text
                       style={{
-                        fontFamily: "regular",
+                        fontFamily: "bold",
                         fontSize: 24,
                       }}
                     >
                       {booking.departure.date}
                     </Text>
-                    <Image
+                    {/* <Image
                       style={{
                         width: 26,
                         height: 26,
@@ -176,7 +182,8 @@ const CreateTicket = ({ navigation, route }) => {
                         left: 4,
                       }}
                       source={require("@/utils/images/calendar-black.png")}
-                    />
+                    /> */}
+                    <Octicons name="calendar" size={20} color="black" />
                   </View>
                 </View>
               </View>
@@ -184,7 +191,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.arrival}>
               <Text
                 style={{
-                  fontFamily: "regular",
+                  fontFamily: "bold",
                   fontSize: 20,
                   marginBottom: 5,
                 }}
@@ -214,16 +221,16 @@ const CreateTicket = ({ navigation, route }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
                     <Text
                       style={{
-                        fontFamily: "regular",
+                        fontFamily: "bold",
                         fontSize: 24,
                       }}
                     >
                       {booking.arrival.time.slice(0, 5)}
                     </Text>
-                    <Image
+                    {/* <Image
                       style={{
                         width: 35,
                         height: 35,
@@ -232,18 +239,23 @@ const CreateTicket = ({ navigation, route }) => {
                         top: -1,
                       }}
                       source={require("@/utils/images/clock-black.png")}
+                    /> */}
+                    <MaterialCommunityIcons
+                      name="clock-time-ten-outline"
+                      size={25}
+                      color="black"
                     />
                   </View>
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
                     <Text
                       style={{
-                        fontFamily: "regular",
+                        fontFamily: "bold",
                         fontSize: 24,
                       }}
                     >
                       {booking.arrival.date}
                     </Text>
-                    <Image
+                    {/* <Image
                       style={{
                         width: 26,
                         height: 26,
@@ -253,7 +265,8 @@ const CreateTicket = ({ navigation, route }) => {
                         left: 4,
                       }}
                       source={require("@/utils/images/calendar-black.png")}
-                    />
+                    /> */}
+                    <Octicons name="calendar" size={20} color="black" />
                   </View>
                 </View>
               </View>
@@ -340,7 +353,9 @@ const CreateTicket = ({ navigation, route }) => {
               global.mainBgColor,
             ]}
           >
-            <Text style={[{ fontFamily: "regular", fontSize: 12 }, global.white]}>
+            <Text
+              style={[{ fontFamily: "regular", fontSize: 12 }, global.white]}
+            >
               {!active ? "Editar" : "Guardar"}
             </Text>
           </TouchableOpacity>
