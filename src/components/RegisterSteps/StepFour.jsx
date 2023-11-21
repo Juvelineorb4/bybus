@@ -12,8 +12,8 @@ const StepFour = ({ navigation, route }) => {
   const { registerForm } = params;
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
-      userSub: registerForm.userSub,
-      email: registerForm.email,
+      userSub: registerForm?.userSub,
+      email: registerForm?.email,
       code: ["", "", "", "", "", ""],
     },
   });
@@ -57,8 +57,7 @@ const StepFour = ({ navigation, route }) => {
 
   const onResendCode = async () => {
     try {
-      const result = await Auth.resendSignUp(params?.registerForm?.email);
-      console.log(result);
+      await Auth.resendSignUp(params?.registerForm?.email);
     } catch (error) {
       switch (error.message) {
         case "Attempt limit exceeded, please try after some time.":

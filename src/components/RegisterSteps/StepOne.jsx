@@ -35,7 +35,7 @@ const StepOne = () => {
           "custom:notificationToken": token,
         },
       });
-      navigation.navigate("Register_StepFour", {
+      navigation.replace("Register_StepFour", {
         registerForm: {
           userSub,
           email: user.username,
