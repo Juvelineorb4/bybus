@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
-    "version": "1.0.0",
+    "name": "viajes",
+    "slug": "viajes",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -12,29 +12,47 @@
       "backgroundColor": "#00B4D8"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/405c0b8f-173f-4074-9680-cad80d10c052"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "runtimeVersion": "exposdk:48.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.bybus",
-      "googleServicesFile": "./google-services.json",
+      "runtimeVersion": "exposdk:48.0.0",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "www.bybusvenezuela.com",
+              "pathPrefix": "/"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
+      "package": "com.bybus.viajes",
       "adaptiveIcon": {
-        "foregroundImage": "./src/utils/images/adaptive-icon.png",
+        "foregroundImage": "./src/utils/images/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "versionCode": 4
     },
     "web": {
       "favicon": "./src/utils/images/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "1a4c7d5d-2e72-4b44-b2d0-d00178789da8"
-      }
     },
     "packagerOpts": {
       "config": "metro.config.js",
@@ -50,7 +68,28 @@
         {
           "photosPermission": "Espero no tengas nudes"
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33,
+            "targetSdkVersion": 33,
+            "buildToolsVersion": "33.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "405c0b8f-173f-4074-9680-cad80d10c052"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }

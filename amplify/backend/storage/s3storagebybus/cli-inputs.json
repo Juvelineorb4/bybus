@@ -1,0 +1,15 @@
+{
+  "resourceName": "s3storagebybus",
+  "policyUUID": "85c9c67e",
+  "bucketName": "s3storagebybus",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE"
+}

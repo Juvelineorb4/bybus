@@ -1,0 +1,537 @@
+type EmailSusbcription
+  @model
+  @auth(
+    rules: [
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID!
+  email: String!
+    @index(
+      name: "emailSubscriptionbyEmail"
+      queryField: "getEmailSubscriptionbyEmail"
+    )
+}
+
+type AgencySubscription
+  @model
+  @auth(
+    rules: [
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  rif: String!
+    @index(
+      name: "agencySubscriptionbyRif"
+      queryField: "getAgencySubscriptionbyRif"
+    )
+  email: String!
+    @index(
+      name: "agencySubscriptionbyEmail"
+      queryField: "getAgencySubscriptionbyEmail"
+    )
+  phone: String!
+  subscriptionDate: String
+  status: SusbcriptionAgencyStatus @default(value: "PENDING")
+  scheduledDate: String
+  agencyID: ID
+}
+
+enum SusbcriptionAgencyStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  SCHEDULED
+}
+
+type Agency
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID
+  cognitoID: ID
+  pin: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  name: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  rif: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  email: String
+    @index(name: "agencyByEmail", queryField: "getAgencyByEmail")
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+         { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  phone: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+        { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  officies: [Office] @hasMany(indexName: "byAgencyToOffice", fields: ["id"])
+  employees: [Employee]
+    @hasMany(indexName: "byAgencyToEmployee", fields: ["id"])
+  bookings: [Booking] @hasMany(indexName: "byAgencyToBooking", fields: ["id"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+type Office 
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  agencyID: ID @index(name: "byAgencyToOffice")
+  name: String
+  state: String
+  city: String
+  address: String
+  email: String
+  phone: String
+  status: OfficeStatus @default(value: "ENABLED")
+  employees: [Employee]
+    @hasMany(indexName: "byOfficeToEmployee", fields: ["id"])
+  transports: [Transport]
+    @hasMany(indexName: "byOfficeToTransport", fields: ["id"])
+  bookings: [Booking] @hasMany(indexName: "byOfficeToBooking", fields: ["id"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum OfficeStatus {
+  ENABLED
+  DISABLED
+}
+
+type State @model @auth(rules: [{ allow: groups, groups: ["sp", "admin"] }]) {
+  id: ID!
+  name: String
+  cities: [String]
+}
+
+type Employee
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  name: String
+  email: String
+  phone: String
+  pin: String
+  type: EmployeeType!
+  agencyID: ID @index(name: "byAgencyToEmployee")
+  agency: Agency @belongsTo(fields: ["agencyID"])
+  officeID: ID @index(name: "byOfficeToEmployee")
+  office: Office @belongsTo(fields: ["officeID"])
+  status: EmployeeStatus @default(value: "ENABLED")
+  # permissions: [PermissionsEmployees]
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+  lastConnection: String
+}
+enum EmployeeStatus {
+  ENABLED
+  DISABLED
+}
+
+enum PermissionsEmployees {
+  QRSCAN
+  BOOOKING_READ
+  BOOOKING_UPDATED
+  BOOOKING_CREATED
+  BOOOKING_DELETED
+  BALANCE_OFFICE_READ
+}
+
+enum EmployeeType {
+  OFFICE
+  COLLECTOR
+}
+
+type Transport
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  model: String
+  serial: String
+  type: String
+  officeID: ID @index(name: "byOfficeToTransport")
+  createdBy: ID
+}
+
+type ScheduleBooking
+  @model
+  @auth(
+    rules: [
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: owner }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  bookingID: ID
+  booking: Booking @hasOne(fields: ["bookingID"])
+  freq: [WeekDays]
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum WeekDays {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+type Booking
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: private }
+      { allow: groups, groups: ["sp", "customer"] }
+    ]
+  ) {
+  id: ID!
+  status: BookingStatus @default(value: "AVAILABLE")
+  code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
+  agencyID: ID! @index(name: "byAgencyToBooking")
+  agency: Agency @belongsTo(fields: ["agencyID"])
+  officeID: ID! @index(name: "byOfficeToBooking")
+  office: Office @belongsTo(fields: ["officeID"])
+  customers: [Customer]
+    @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
+  tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
+  stops: [StopBooking]
+    @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
+  departureCity: String!
+  arrivalCity: String!
+  departure: DepartureArrivalStopFields
+  arrival: DepartureArrivalStopFields
+  stock: Int
+  price: Float
+  createdBy: ID
+  driver: String
+  transport: transporType
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum transporType {
+  EXPRESO
+  ENCAVA
+  BUSCAMA
+}
+
+enum BookingStatus {
+  AVAILABLE
+  SOLDOUT
+  BOARDING
+  DEPARTED
+  ARRIVED
+  CANCELLED
+}
+type DepartureArrivalStopFields {
+  time: AWSTime
+  date: AWSDate
+  city: String
+  state: String
+  address: String
+}
+
+type StopBooking
+  @model
+  @auth(
+    rules: [
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: owner }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  bookingID: ID! @index(name: "byBookingToStopBooking")
+  tickets: [Ticket] @hasMany(indexName: "byStopBookingToTicket")
+  arrival: DepartureArrivalStopFields
+  price: Float
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}
+
+enum ServiceType {
+  GROUD
+}
+
+type Customer
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
+      {
+        allow: groups
+        groups: ["sp", "admin", "agency", "office"]
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  fullName: String
+  ci: String
+  email: String
+  bookingID: ID @index(name: "byBookingToCustomer")
+  ticketID: ID
+  ticket: Ticket @hasOne(fields: ["ticketID"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+type Ticket
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  code: String
+  bookingID: ID @index(name: "byBookingToTicket")
+  stop: ID @index(name: "byStopBookingToTicket")
+  customerID: ID
+  customer: Customer @belongsTo(fields: ["customerID"])
+  seating: String
+  status: String
+  description: String
+  url: String
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+
+enum ticketStatus {
+  ACTIVE
+  PAID
+  BOARDED
+  CANCELLED
+  RETURNED
+}
+
+type OrderTicket
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
+      {
+        allow: groups
+        groups: ["sp", "admin", "agency", "office"]
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  orderID: ID @index(name: "byOrderDetailToTicket")
+  ticketID: ID!
+  ticket: Ticket @hasOne(fields: ["ticketID"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+}
+
+type OrderDetail
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      {
+        allow: groups
+        groups: ["sp", "admin", "agency", "office"]
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  amount: Float!
+  paymentMethod: String
+  documentType: DocumentType
+  customerDocument: String
+  customerName: String
+  customerEmail: String
+  total: Int
+  isGuest: Boolean
+  paymentID: ID
+  payment: Payment @hasOne(fields: ["paymentID"])
+  bookingID: ID
+  booking: Booking @hasOne(fields: ["bookingID"])
+  orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
+  userID: ID @index(name: "byUserToOrderDetail")
+}
+enum DocumentType {
+  V
+  E
+  P
+}
+
+type Payment
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: private, provider: iam }
+      { allow: public, provider: iam }
+      {
+        allow: groups
+        groups: ["sp", "admin", "agency", "office"]
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  reference: String
+  amount: Float
+  metadata: AWSJSON
+  userID: ID
+}
+type orderDetailHistory
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private }
+      { allow: owner, ownerField: "googleOwner" }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  orderID: ID
+  order: OrderDetail @hasOne(fields: ["orderID"])
+  userID: ID
+  owner: String
+    @auth(
+      rules: [
+        { allow: owner, operations: [read, delete] }
+        { allow: owner, ownerField: "googleOwner", operations: [read, delete] }
+      ]
+    )
+  googleOwner: String
+    @auth(
+      rules: [
+        { allow: owner, operations: [read, delete] }
+        { allow: owner, ownerField: "googleOwner", operations: [read, delete] }
+      ]
+    )
+}
+
+type User
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: owner, ownerField: "googleOwner" }
+      { allow: groups, groups: ["sp"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  email: String @index(name: "userbyEmail", queryField: "getUserbyEmail")
+  status: StatusUser
+  notificationToken: String
+  previousBalance: Float
+  orders: [OrderDetail] @hasMany(indexName: "byUserToOrderDetail")
+  owner: String
+    @auth(
+      rules: [
+        { allow: owner, operations: [read, delete] }
+        { allow: owner, ownerField: "googleOwner", operations: [read, delete] }
+      ]
+    )
+  googleOwner: String
+    @auth(
+      rules: [
+        { allow: owner, operations: [read, delete] }
+        { allow: owner, ownerField: "googleOwner", operations: [read, delete] }
+      ]
+    )
+}
+enum StatusUser {
+  ALLOWED
+  DENIED
+}
+
+type Mutation {
+  registerAgencyAdmin(input: RegisterUserInput!): String
+    @function(name: "createAdminAgency-${env}")
+    @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
+
+  checkScan(input: CheckScanInput): String
+    @function(name: "checkTicketScan-${env}")
+    @auth(rules: [{ allow: groups, groups: ["agency"] }])
+}
+
+input CheckScanInput {
+  ticketID: ID
+  bookingID: ID
+}
+
+input RegisterUserInput {
+  name: String!
+  username: String!
+  rif: String!
+  phone: String!
+  agencySubsTableID: String!
+}

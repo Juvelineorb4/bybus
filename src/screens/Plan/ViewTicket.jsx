@@ -1,15 +1,39 @@
-import { ActivityIndicator, Image, ImageBackground, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ViewTicket.module.css";
 import CustomTicket from "@/components/CustomTicket";
 import { CustomButton } from "@/components";
-
+import { BackHandler } from "react-native";
 const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity, tickets } = route.params;
   const total = quantity * data.price;
-  console.log(tickets)
- return (
+  console.log(tickets);
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+      return true; // Evita el comportamiento predeterminado de retroceso
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, [navigation]);
+  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
         style={{
@@ -33,13 +57,13 @@ const ViewTicket = ({ navigation, route }) => {
             </Text>
           </View>
           <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
-              <Text style={[styles.titlePrice2, global.black]}>
-                {customer.id}
-              </Text>
-            </View>
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
+            <Text style={[styles.titlePrice2, global.black]}>
+              {customer.id}
+            </Text>
+          </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
@@ -70,20 +94,28 @@ const ViewTicket = ({ navigation, route }) => {
       <Text style={[styles.titleTop, global.mainColor, { paddingLeft: 20 }]}>
         Tu(s) boleto(s)
       </Text>
-      {tickets.length !== 0 ? <View style={styles.ticketContent}>
-        {tickets.map((item, index) => (
-          <CustomTicket
-            data={{
-              data: data,
-              payment: payment,
-              order: order,
-              customer: customer,
-              ticket: item,
-            }}
-            key={index}
-          />
-        ))}
-      </View> : <ActivityIndicator size="large" color="#0077B6" style={{marginTop: 50}}/> }
+      {tickets.length !== 0 ? (
+        <View style={styles.ticketContent}>
+          {tickets.map((item, index) => (
+            <CustomTicket
+              data={{
+                data: data,
+                payment: payment,
+                order: order,
+                customer: customer,
+                ticket: item,
+              }}
+              key={index}
+            />
+          ))}
+        </View>
+      ) : (
+        <ActivityIndicator
+          size="large"
+          color="#0077B6"
+          style={{ marginTop: 50 }}
+        />
+      )}
       <View style={styles.buttons}>
         <CustomButton
           text={`Tus boletos`}

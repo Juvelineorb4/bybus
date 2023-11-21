@@ -1,5 +1,12 @@
-import { View, Text, Image, ScrollView, Alert } from "react-native";
-import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/Forgot.module.css";
 import { CustomButton, CustomInput, RouteCard } from "@/components";
 import { useForm } from "react-hook-form";
@@ -11,7 +18,8 @@ import { Auth } from "aws-amplify";
 const EMAIL_REGEX = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const Forgot = () => {
   const global = require("@/utils/styles/global.js");
-
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       email: "",
@@ -23,13 +31,26 @@ const Forgot = () => {
 
   // funcion para solicitar un codigo para setear contraseña nueva
   const onHandleForgotPassword = async (data) => {
+    setIsLoading(true);
+    setError("");
     const { email } = data;
     try {
       await Auth.forgotPassword(email);
       navigation.navigate("ChangePassword", { email: emailValue });
     } catch (error) {
-      Alert.alert("Ooopss ", error.message);
+      // Alert.alert("Ooopss ", error.message);
+      console.log(error.message);
+      switch (error.message) {
+        case "Username/client id combination not found.":
+          setError("Usuario/correo no esta registrado.");
+          break;
+
+        default:
+          setError("Ocurrio un error intente de nuevo o mas tarde.")
+          break;
+      }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -57,7 +78,9 @@ const Forgot = () => {
               subtitle={`Escribe el correo asosciado a tu cuenta`}
             />
           </View>
-
+          {error && (
+            <Text style={{ color: "red", marginBottom: 5 }}>{error}</Text>
+          )}
           <CustomInput
             control={control}
             name={`email`}
@@ -76,12 +99,13 @@ const Forgot = () => {
             }}
           />
           <Text style={[styles.code, global.topGray]}>
-            Te enviamos un correo con un codigo de 6 digitos para confirmar:{" "}
+            Te enviaremos un correo con un codigo de 6 digitos para confirmar:{" "}
             <Text style={styles.emailText}>{emailValue}</Text>
           </Text>
         </ScrollView>
         <CustomButton
-          text={`Confirmar`}
+          text={isLoading ? <ActivityIndicator /> : `Confirmar`}
+          disabled={isLoading}
           handlePress={handleSubmit(onHandleForgotPassword)}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.mainBgColor]}

@@ -6,9 +6,9 @@ import { CustomButton } from "@/components";
 
 const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { order, payment, data, quantity, tickets } = route.params;
+  const { order, payment, data, quantity, tickets } = route?.params;
   const total = quantity * data.price;
-  console.log(tickets[0].ticket.customer.fullName)
+  console.log(tickets[0]?.ticket?.customer?.fullName)
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
@@ -29,7 +29,7 @@ const ViewOrder = ({ navigation, route }) => {
           >
             <Text style={[styles.titleTickets2, global.black]}>Nombre</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {tickets[0].ticket.customer.fullName}
+              {tickets[0].ticket?.customer?.fullName}
             </Text>
           </View>
           <View
@@ -37,7 +37,7 @@ const ViewOrder = ({ navigation, route }) => {
             >
               <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
               <Text style={[styles.titlePrice2, global.black]}>
-                {tickets[0].ticket.customer.ci}
+                {tickets[0]?.ticket?.customer?.ci}
               </Text>
             </View>
           <View
@@ -45,7 +45,7 @@ const ViewOrder = ({ navigation, route }) => {
           >
             <Text style={[styles.titleTickets2, global.black]}>Correo</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {tickets[0].ticket.customer.email}
+              {tickets[0]?.ticket?.customer?.email}
             </Text>
           </View>
           <View
@@ -78,11 +78,11 @@ const ViewOrder = ({ navigation, route }) => {
               payment: payment,
               order: order,
               customer: {
-                name: tickets[0].ticket.customer.fullName,
-                email: tickets[0].ticket.customer.email,
-                id: tickets[0].ticket.customer.ci,
+                name: tickets[0]?.ticket?.customer?.fullName,
+                email: tickets[0]?.ticket?.customer?.email,
+                id: tickets[0]?.ticket?.customer?.ci,
               },
-              ticket: item.ticketID,
+              ticket: item?.ticketID,
             }}
             key={index}
           />

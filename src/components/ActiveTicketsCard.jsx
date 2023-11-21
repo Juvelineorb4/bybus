@@ -8,10 +8,11 @@ import * as queries from "@/graphql/customQueries";
 import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const ActiveTicketsCard = ({ data }) => {
-  // console.log('toy aqui',data?.orderTickets?.items[0]?.ticket);
+  console.log("toy aqui", data?.orderTickets);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
+  console.log("XXXXXXXXXXXXXXXXX: ", data);
   const onHandleTicket = async () => {
     try {
       const dataAgency = await API.graphql({

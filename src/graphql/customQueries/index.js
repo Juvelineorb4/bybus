@@ -116,6 +116,7 @@ export const listOrderDetails = /* GraphQL */ `
           items {
             ticketID
             ticket {
+              status
               customerID
               customer {
                 id
@@ -204,6 +205,99 @@ export const getAgency = /* GraphQL */ `
   query GetAgency($id: ID!) {
     getAgency(id: $id) {
       name
+    }
+  }
+`;
+
+export const getUserOrderDetails = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      orders {
+        items {
+          id
+          amount
+          paymentMethod
+          documentType
+          customerDocument
+          customerName
+          customerEmail
+          total
+          isGuest
+          paymentID
+          payment {
+            id
+            reference
+            amount
+            metadata
+            userID
+            createdAt
+            updatedAt
+            owner
+          }
+          bookingID
+          booking {
+            id
+            code
+            agencyID
+            officeID
+            transport
+            stops {
+              items {
+                id
+                bookingID
+                price
+                owner
+                createdAt
+                updatedAt
+              }
+              nextToken
+            }
+            departureCity
+            arrivalCity
+            departure {
+              time
+              date
+              city
+              state
+              address
+            }
+            arrival {
+              time
+              date
+              city
+              state
+              address
+            }
+            stock
+            price
+            status
+          }
+          orderTickets {
+            items {
+              ticketID
+              ticket {
+                status
+                customerID
+                customer {
+                  id
+                  fullName
+                  ci
+                  email
+                }
+              }
+            }
+            nextToken
+          }
+          userID
+          createdAt
+          updatedAt
+          userOrdersId
+          owner
+        }
+        nextToken
+        __typename
+      }
     }
   }
 `;

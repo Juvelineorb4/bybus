@@ -30,7 +30,7 @@ const SettingsNavigator = () => {
         component={PaymentMethods}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -38,7 +38,7 @@ const SettingsNavigator = () => {
         component={Permissions}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -46,7 +46,7 @@ const SettingsNavigator = () => {
         component={Notifications}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -54,7 +54,7 @@ const SettingsNavigator = () => {
         component={Introduction}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -62,7 +62,7 @@ const SettingsNavigator = () => {
         component={Terms}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -70,7 +70,7 @@ const SettingsNavigator = () => {
         component={About}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
@@ -78,7 +78,7 @@ const SettingsNavigator = () => {
         component={PaymentView}
         options={{
           header: () => <Header mode="with-back" />,
-          animation: 'slide_from_right'
+          animation: "slide_from_right",
         }}
       />
     </Stack.Navigator>
