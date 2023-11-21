@@ -11,28 +11,28 @@ const About = () => {
       <View style={styles.topContent}>
         <Image
           style={{
-            width: 60,
-            height: 60,
+            width: 200,
+            height: 220,
             resizeMode: "contain",
             alignSelf: "center",
+            marginVertical: -60
           }}
           source={require("@/utils/images/icon.png")}
         />
         <CustomText
           styled={{ title: [styles.title, global.black], subtitle: [styles.subtitle, global.topGray] }}
           title="Bienvenido de nuevo"
-          subtitle="Accede a tu cuenta"
         />
       </View>
       <View>
-        <View style={[global.bgWhiteSmoke, styles.line]} />
+        {/* <View style={[global.bgWhiteSmoke, styles.line]} /> */}
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>Version de la Aplicacion</Text>
+          <Text style={[styles.textSelect, global.black]}>Version de la Aplicacion</Text>
           <Text style={[styles.appVersion, global.black]}>1.0.0</Text>
         </View>
-        <View style={[styles.line, global.bgWhiteSmoke]} />
+        {/* <View style={[styles.line, global.bgWhiteSmoke]} /> */}
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>Licencia</Text>
+          <Text style={[styles.textSelect, global.black]}>Licencia</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}
@@ -41,9 +41,9 @@ const About = () => {
             <Icon name={`arrow-right`} size={20} color={`#1F1F1F`} />
           </TouchableOpacity>
         </View>
-        <View style={[styles.line, global.bgWhiteSmoke]} />
+        {/* <View style={[styles.line, global.bgWhiteSmoke]} /> */}
         <View style={styles.containerSelect}>
-          <Text style={[styles.textSelect, global.midGray]}>Nuestros comentarios</Text>
+          <Text style={[styles.textSelect, global.black]}>Nuestros comentarios</Text>
           <TouchableOpacity
             activeOpacity={1}
             style={{ flexDirection: "row", alignItems: "center" }}

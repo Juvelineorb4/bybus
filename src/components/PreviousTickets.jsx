@@ -6,6 +6,7 @@ import ActiveTicketsCard from "./ActiveTicketsCard";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import * as mutation from "@/graphql/customMutations";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const PreviousTickets = () => {
   const global = require("@/utils/styles/global.js");
@@ -34,37 +35,34 @@ const PreviousTickets = () => {
   }, []);
   return (
     <ScrollView
-    style={styles.contentActive}
-    showsVerticalScrollIndicator={false}
-  >
-    <View style={styles.leftContentActive}>
-    <Image
-          style={{
-            width: 35,
-            height: 35,
-            resizeMode: "cover",
-          }}
-          source={require("@/utils/images/previous.png")}
+      style={styles.contentActive}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.leftContentActive}>
+        <MaterialCommunityIcons
+          name="clock-time-ten-outline"
+          size={25}
+          color="black"
         />
-      <Text style={[styles.textContentActive, global.black]}>
-        Ordenes antiguas
-      </Text>
-    </View>
-    {listOrders.length !== 0 ? (
-      listOrders.map(
-        (item, index) =>
-          item.booking.status === "DEPARTED" && (
-            <ActiveTicketsCard key={index} data={item} />
-          )
-      )
-    ) : (
-      <ActivityIndicator
-        size="large"
-        color="#0077B6"
-        style={{ marginTop: 50 }}
-      />
-    )}
-  </ScrollView>
+        <Text style={[styles.textContentActive, global.black]}>
+          Tickets antiguos
+        </Text>
+      </View>
+      {listOrders.length !== 0 ? (
+        listOrders.map(
+          (item, index) =>
+            item.booking.status === "DEPARTED" && (
+              <ActiveTicketsCard key={index} data={item} />
+            )
+        )
+      ) : (
+        <ActivityIndicator
+          size="large"
+          color="#0077B6"
+          style={{ marginTop: 50 }}
+        />
+      )}
+    </ScrollView>
   );
 };
 
