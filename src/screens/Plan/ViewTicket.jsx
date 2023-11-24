@@ -13,10 +13,10 @@ import { CustomButton } from "@/components";
 import { BackHandler } from "react-native";
 const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { order, payment, data, customer, quantity, tickets } = route.params;
-  const total = quantity * data.price;
-  console.log(tickets);
-
+  const { order, payment, data, customer, quantity } = route.params;
+  const total = quantity * data?.price;
+  let tickets = data?.tickets?.items?.filter(item => item.orderDetailID === order);
+  console.log(customer)
   useEffect(() => {
     const backAction = () => {
       navigation.reset({
@@ -53,15 +53,7 @@ const ViewTicket = ({ navigation, route }) => {
           >
             <Text style={[styles.titleTickets2, global.black]}>Nombre</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {customer.name}
-            </Text>
-          </View>
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <Text style={[styles.titleTickets2, global.black]}>Cedula</Text>
-            <Text style={[styles.titlePrice2, global.black]}>
-              {customer.id}
+              {customer?.fullName}
             </Text>
           </View>
           <View
@@ -69,7 +61,7 @@ const ViewTicket = ({ navigation, route }) => {
           >
             <Text style={[styles.titleTickets2, global.black]}>Correo</Text>
             <Text style={[styles.titlePrice2, global.black]}>
-              {customer.email}
+              {customer?.email}
             </Text>
           </View>
           <View
@@ -102,8 +94,12 @@ const ViewTicket = ({ navigation, route }) => {
                 data: data,
                 payment: payment,
                 order: order,
-                customer: customer,
-                ticket: item,
+                customer: {
+                  name: item?.customer?.fullName,
+                  email: item?.customer?.email,
+                  id: item?.customer?.ci,
+                },
+                ticket: item?.id,
               }}
               key={index}
             />

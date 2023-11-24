@@ -11,7 +11,6 @@ import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const RouteCard = ({ data }) => {
   const global = require("@/utils/styles/global.js");
-  const setSearch = useSetRecoilState(planSearch);
   const navigation = useNavigation();
   const [agency, setAgency] = useState([]);
   const Agency = async () => {

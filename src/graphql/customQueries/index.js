@@ -112,22 +112,6 @@ export const listOrderDetails = /* GraphQL */ `
           price
           status
         }
-        orderTickets {
-          items {
-            ticketID
-            ticket {
-              status
-              customerID
-              customer {
-                id
-                fullName
-                ci
-                email
-              }
-            }
-          }
-          nextToken
-        }
         userID
         createdAt
         updatedAt
@@ -213,6 +197,11 @@ export const getUserOrderDetails = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
+      name
+      email
+      status
+      notificationToken
+      previousBalance
       orders {
         items {
           id
@@ -231,28 +220,14 @@ export const getUserOrderDetails = /* GraphQL */ `
             amount
             metadata
             userID
-            createdAt
-            updatedAt
-            owner
           }
           bookingID
           booking {
             id
+            status
             code
             agencyID
             officeID
-            transport
-            stops {
-              items {
-                id
-                bookingID
-                price
-                owner
-                createdAt
-                updatedAt
-              }
-              nextToken
-            }
             departureCity
             arrivalCity
             departure {
@@ -271,33 +246,113 @@ export const getUserOrderDetails = /* GraphQL */ `
             }
             stock
             price
-            status
+            driver
+            transport
           }
-          orderTickets {
+          tickets {
             items {
-              ticketID
-              ticket {
-                status
-                customerID
-                customer {
-                  id
-                  fullName
-                  ci
-                  email
-                }
+              id
+              code
+              bookingID
+              orderDetailID
+              customerID
+              customer {
+                id
+                fullName
+                ci
+                email
+                bookingID
               }
+              seating
+              status
+              description
+              url
             }
             nextToken
           }
           userID
-          createdAt
-          updatedAt
-          userOrdersId
-          owner
         }
         nextToken
+      }
+    }
+  }
+`;
+
+export const getBookingView = /* GraphQL */ `
+  query GetBooking($id: ID!) {
+    getBooking(id: $id) {
+      id
+      status
+      code
+      agencyID
+      officeID
+      customers {
+        items {
+          id
+          fullName
+          ci
+          email
+          bookingID
+          ticketID
+          ticket {
+            id
+            code
+            bookingID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            stopBookingTicketsId
+          }
+        }
+      }
+      tickets {
+        items {
+          id
+          code
+          bookingID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+          }
+          seating
+          status
+          description
+          url
+          stopBookingTicketsId
+        }
+      }
+      departureCity
+      arrivalCity
+      departure {
+        time
+        date
+        city
+        state
+        address
         __typename
       }
+      arrival {
+        time
+        date
+        city
+        state
+        address
+        __typename
+      }
+      stock
+      price
+      createdBy
+      driver
+      transport
     }
   }
 `;

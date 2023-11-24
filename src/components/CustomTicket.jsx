@@ -39,10 +39,10 @@ const CustomTicket = ({ data }) => {
           <View style={styles.topContent}>
             <View style={{ justifyContent: 'center' }}>
             <Text style={[styles.textHour, global.black]}>
-              {data.data.departure.time.slice(0, 5)}
+              {data?.data?.departure?.time.slice(0, 5)}
             </Text>
             <Text style={[{fontFamily: 'light', fontSize: 21, marginBottom: 5}, global.black]}>
-              {data.data.departure.date}
+              {data?.data?.departure?.date}
             </Text>
 
             </View>
@@ -51,33 +51,33 @@ const CustomTicket = ({ data }) => {
               <Text style={[styles.nameTitle, global.black]}>A nombre de:</Text>
 
               <Text style={[styles.name, global.black]}>
-                {data.customer.name}
+                {data?.customer?.name}
               </Text>
             </View>
           </View>
           <View style={styles.topTwoContent}>
             <View style={styles.departure}>
               <Text style={[styles.states, global.midGray]}>
-                {data.data.departure.state}
+                {data?.data?.departure?.state}
               </Text>
               <Text style={[styles.city, global.topGray]}>
-                {data.data.departure.city}
+                {data?.data?.departure?.city}
               </Text>
             </View>
             <Text style={[styles.to, global.topGray]}>Hasta</Text>
             <View style={styles.destination}>
               <Text style={[styles.states, global.midGray]}>
-                {data.data.arrival.state}
+                {data?.data?.arrival?.state}
               </Text>
               <Text style={[styles.city, global.topGray]}>
-                {data.data.arrival.city}
+                {data?.data?.arrival?.city}
               </Text>
             </View>
           </View>
         </View>
         <View style={styles.qrContent}>
           <QRCode
-            value={data.ticket}
+            value={data?.ticket}
             color={"#1f1f1f"}
             backgroundColor={"#F1F1F1"}
             size={250}
@@ -92,12 +92,12 @@ const CustomTicket = ({ data }) => {
         <View style={styles.tags}>
           <View style={styles.wifi}>
             <Text style={[styles.tagText, global.black]}>
-              Su orden de transaccion: {data.payment}
+              Su orden de transaccion: {data?.payment}
             </Text>
           </View>
           <View style={styles.guarantees}>
             <Text style={[styles.tagText, global.black]}>
-              Su orden de viaje: {data.order}
+              Su orden de viaje: {data?.order}
             </Text>
           </View>
         </View>
