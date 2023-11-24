@@ -348,6 +348,7 @@ type Ticket
   id: ID!
   code: String
   bookingID: ID @index(name: "byBookingToTicket")
+  orderDetailID: ID @index(name: "byOrderDetailToTickets" )
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
   customer: Customer @belongsTo(fields: ["customerID"])
@@ -367,27 +368,27 @@ enum ticketStatus {
   RETURNED
 }
 
-type OrderTicket
-  @model
-  @auth(
-    rules: [
-      { allow: owner }
-      { allow: private }
-      { allow: private, provider: iam }
-      { allow: public, provider: iam }
-      {
-        allow: groups
-        groups: ["sp", "admin", "agency", "office"]
-        operations: [read]
-      }
-    ]
-  ) {
-  id: ID!
-  orderID: ID @index(name: "byOrderDetailToTicket")
-  ticketID: ID!
-  ticket: Ticket @hasOne(fields: ["ticketID"])
-  owner: String @auth(rules: [{ allow: owner, operations: [read] }])
-}
+# type OrderTicket
+#   @model
+#   @auth(
+#     rules: [
+#       { allow: owner }
+#       { allow: private }
+#       { allow: private, provider: iam }
+#       { allow: public, provider: iam }
+#       {
+#         allow: groups
+#         groups: ["sp", "admin", "agency", "office"]
+#         operations: [read]
+#       }
+#     ]
+#   ) {
+#   id: ID!
+#   orderID: ID @index(name: "byOrderDetailToTicket")
+#   ticketID: ID!
+#   ticket: Ticket @hasOne(fields: ["ticketID"])
+#   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
+# }
 
 type OrderDetail
   @model
@@ -417,7 +418,8 @@ type OrderDetail
   payment: Payment @hasOne(fields: ["paymentID"])
   bookingID: ID
   booking: Booking @hasOne(fields: ["bookingID"])
-  orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
+  # orderTickets: [OrderTicket] @hasMany(indexName: "byOrderDetailToTicket")
+  tickets: [Ticket] @hasMany(indexName: "byOrderDetailToTickets")
   userID: ID @index(name: "byUserToOrderDetail")
 }
 enum DocumentType {

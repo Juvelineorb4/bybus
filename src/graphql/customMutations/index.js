@@ -21,18 +21,6 @@ export const createOrderDetail = /* GraphQL */ `
         updatedAt
         owner
       }
-      orderTickets {
-        items {
-          id
-          orderID
-          ticketID
-          owner
-          createdAt
-          updatedAt
-          orderDetailOrderTicketsId
-        }
-        nextToken
-      }
       userID
       createdAt
       updatedAt
@@ -103,6 +91,7 @@ export const updateTicket = /* GraphQL */ `
     }
   }
 `;
+
 export const updateBooking = /* GraphQL */ `
   mutation UpdateBooking(
     $input: UpdateBookingInput!
@@ -110,8 +99,54 @@ export const updateBooking = /* GraphQL */ `
   ) {
     updateBooking(input: $input, condition: $condition) {
       id
+      status
       code
+      agencyID
+      tickets {
+        items {
+          id
+          code
+          bookingID
+          orderDetailID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+          }
+          seating
+          status
+          description
+          url
+          stopBookingTicketsId
+          orderDetailTicketsId
+        }
+        nextToken
+      }
+      departureCity
+      arrivalCity
+      departure {
+        time
+        date
+        city
+        state
+        address
+      }
+      arrival {
+        time
+        date
+        city
+        state
+        address
+      }
       stock
+      price
+      driver
+      transport
     }
   }
 `;
@@ -180,6 +215,71 @@ export const updateCustomer = /* GraphQL */ `
         status
         description
       }
+    }
+  }
+`;
+
+export const createTicket = /* GraphQL */ `
+  mutation CreateTicket(
+    $input: CreateTicketInput!
+    $condition: ModelTicketConditionInput
+  ) {
+    createTicket(input: $input, condition: $condition) {
+      id
+      code
+      bookingID
+      orderDetailID
+      stop
+      customerID
+      customer {
+        id
+        fullName
+        ci
+        email
+        bookingID
+        ticketID
+        ticket {
+          id
+          code
+          bookingID
+          stop
+          customerID
+          customer {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          seating
+          status
+          description
+          url
+          owner
+          createdAt
+          updatedAt
+          stopBookingTicketsId
+          __typename
+        }
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
+      seating
+      status
+      description
+      url
+      owner
+      createdAt
+      updatedAt
+      stopBookingTicketsId
+      __typename
     }
   }
 `;

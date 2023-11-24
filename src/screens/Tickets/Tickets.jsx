@@ -6,7 +6,7 @@ import { CustomButton, Ticket as TicketComponent } from "@/components";
 import ActiveTickets from "@/components/ActiveTickets";
 import PreviousTickets from "@/components/PreviousTickets";
 
-const Tickets = ({ navigation }) => {
+const Tickets = ({ navigation, route }) => {
   const global = require('@/utils/styles/global.js');
   const { routes } = tickets;
   const [active, setActive] = useState(true);
@@ -65,7 +65,7 @@ const Tickets = ({ navigation }) => {
             <Text style={[styles.textPrevious, active ? global.black : global.white]}>Anteriores</Text>
           </TouchableOpacity>
         </View>
-        {active ? <ActiveTickets /> : <PreviousTickets/>  }
+        {active ? <ActiveTickets route={route} /> : <PreviousTickets/>  }
         
 
         {/* <TicketComponent /> */}

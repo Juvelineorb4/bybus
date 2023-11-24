@@ -7,8 +7,8 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
-const ActiveTicketsCard = ({ data }) => {
-  console.log("toy aqui", data?.orderTickets);
+const ActiveTicketsCard = ({ data, route }) => {
+  console.log("toy aqui", data);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
@@ -30,7 +30,7 @@ const ActiveTicketsCard = ({ data }) => {
   };
   useEffect(() => {
     onHandleTicket();
-  }, []);
+  }, [route]);
   if (data?.booking !== null)
     return (
       <TouchableOpacity
@@ -39,9 +39,9 @@ const ActiveTicketsCard = ({ data }) => {
           navigation.navigate("ViewOrder", {
             order: data?.id,
             payment: data?.paymentID,
-            data: data?.booking,
+            data: data,
             quantity: data?.amount,
-            tickets: data?.orderTickets?.items,
+            tickets: data?.tickets?.items,
           })
         }
         style={styles.container}

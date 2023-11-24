@@ -10,16 +10,19 @@ import * as mutation from "@/graphql/customMutations";
 import { useRecoilState, useRecoilValue } from "recoil";
 import LeftHeader from "@/routes/Header/LeftHeader";
 import { CommonActions } from "@react-navigation/native";
+import * as subscriptions from "@/graphql/customSubscriptions";
 
 const PaymentTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { booking, tickets, customer, customerTicket } = route.params;
   const [paymentOrder, setPaymentOrder] = useState("");
+  const [stockVerify, setStockVerify] = useState(booking?.stock);
   const [refresh, setRefresh] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
   const total = tickets * booking.price;
 
   console.log(customerTicket);
+  console.log(booking);
   const onHandlePayment = async (data) => {
     // Crear OrderDetail
     try {
@@ -29,7 +32,7 @@ const PaymentTicket = ({ navigation, route }) => {
         authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: {
           input: {
-            reference: customer,
+            reference: customer.fullName,
             amount: total,
             userID: attributes["custom:userTableID"],
           },
@@ -44,9 +47,10 @@ const PaymentTicket = ({ navigation, route }) => {
   };
   const onHandleOrder = async (data) => {
     setRefresh(true);
-    // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
+
+      /* Creamos el orderDetail */
       const orderDetail = await API.graphql({
         query: mutation.createOrderDetail,
         authMode: "AMAZON_COGNITO_USER_POOLS",
@@ -56,7 +60,7 @@ const PaymentTicket = ({ navigation, route }) => {
             paymentMethod: "Pago Movil",
             customerName: attributes.name,
             paymentID: paymentOrder,
-            customerDocument: customer,
+            customerDocument: customer.email,
             isGuest: false,
             total: total,
             customerEmail: attributes.email,
@@ -67,78 +71,69 @@ const PaymentTicket = ({ navigation, route }) => {
       });
       console.log(orderDetail);
 
-      const customer = await API.graphql({
-        query: mutation.createCustomer,
-        authMode: "AMAZON_COGNITO_USER_POOLS",
-        variables: {
-          input: {
-            fullName: customerTicket.fullName,
-            ci: customerTicket.ci,
-            email: customerTicket.email,
-          },
-        },
-      });
-      console.log(customer.data.createCustomer);
-      // Crear Orders Tickets
-      let orderTicketsTemporal = [];
-      let ticketsPaid = [];
-      console.log("aqui toy", booking);
-      while (orderTicketsTemporal.length < tickets) {
-        const orderTicket =
-          booking.tickets.items[
-            Math.floor(Math.random() * booking.tickets.items.length)
-          ];
-        console.log(orderTicket);
-        if (
-          !orderTicketsTemporal.some(
-            (obj) => obj.id === orderTicket.id && obj.status === "Active"
-          )
-        ) {
-          orderTicketsTemporal.push(orderTicket);
-        }
-      }
-      orderTicketsTemporal.map(async (item, index) => {
-        /* Creamos los orders tickets */
-        const orderTicketDetail = await API.graphql({
-          query: mutation.createOrderTicket,
-          authMode: "AWS_IAM",
+      /* Creamos los tickets */
+      await Promise.all(customerTicket.map(async (item, index) => {
+        /* Creamos el customer */
+        const customer = await API.graphql({
+          query: mutation.createCustomer,
+          authMode: "AMAZON_COGNITO_USER_POOLS",
           variables: {
             input: {
-              orderID: orderDetail.data.createOrderDetail.id,
-              ticketID: item.id,
+              fullName: item.fullName,
+              ci: item.ci,
+              email: item.email,
             },
           },
         });
-        console.log(orderTicketDetail);
-        /* Actualizamos el status de los tickets */
-        const updateTicketStatus = await API.graphql({
-          query: mutation.updateTicket,
-          authMode: "AWS_IAM",
+        console.log("createCustomer", customer.data.createCustomer);
+
+        /* Creamos el ticket */
+        let i = stockVerify + index;
+        console.log(i);
+        const ticket = await API.graphql({
+          query: mutation.createTicket,
+          authMode: "AMAZON_COGNITO_USER_POOLS",
           variables: {
             input: {
-              id: item.id,
+              code: `${booking.code}-${i.toString().padStart(2, "0")}`,
+              bookingID: booking.id,
               status: "PAID",
               customerID: customer.data.createCustomer.id,
+              orderDetailID: orderDetail.data.createOrderDetail.id
             },
           },
         });
-        console.log(updateTicketStatus.data.updateTicket.id);
-        ticketsPaid.push(updateTicketStatus.data.updateTicket.id);
+        console.log("createTicket", ticket.data.createTicket);
 
-        /* Actualizamos customer */
-
+        /* Actualizamos el customer */
         const customerUpdate = await API.graphql({
           query: mutation.updateCustomer,
           authMode: "AWS_IAM",
           variables: {
             input: {
               id: customer.data.createCustomer.id,
-              ticketID: item.id,
+              ticketID: ticket.data.createTicket.id,
             },
           },
         });
-        console.log(customerUpdate.data.updateCustomer);
-      });
+        console.log("updateCustomer", customerUpdate.data.updateCustomer);
+
+        /* Creamos el orderTicket */
+        // const orderTicketDetail = await API.graphql({
+        //   query: mutation.createOrderTicket,
+        //   authMode: "AWS_IAM",
+        //   variables: {
+        //     input: {
+        //       orderID: orderDetail.data.createOrderDetail.id,
+        //       ticketID: ticket.data.createTicket.id,
+        //     },
+        //   },
+        // });
+        // console.log(
+        //   "createOrderTicket",
+        //   orderTicketDetail.data.createOrderTicket
+        // );
+      }));
 
       /* Actualizamos el stock */
       const updateBookingStock = await API.graphql({
@@ -151,22 +146,15 @@ const PaymentTicket = ({ navigation, route }) => {
           },
         },
       });
-      console.log(updateBookingStock, "toy aqui manito");
-
-      // console.log('aqui llego manito')
+      console.log("updateBooking", updateBookingStock.data.updateBooking);
 
       setTimeout(() => {
         navigation.replace("ViewTicket", {
-          data: booking,
+          data: updateBookingStock.data.updateBooking,
           order: orderDetail.data.createOrderDetail.id,
           payment: paymentOrder,
-          customer: {
-            name: customerTicket.fullName,
-            email: customerTicket.email,
-            id: customerTicket.ci,
-          },
+          customer: customer,
           quantity: tickets,
-          tickets: ticketsPaid,
         });
         setRefresh(false);
       }, 3000);
@@ -174,14 +162,32 @@ const PaymentTicket = ({ navigation, route }) => {
       console.log(error);
       setRefresh(false);
     }
-   
   };
   const test = async () => {
     const user = await Auth.currentAuthenticatedUser();
     console.log(user);
   };
+
   useEffect(() => {
-    // test()
+    const updateSub = API.graphql({
+      query: subscriptions.onUpdateBooking,
+      authMode: "AWS_IAM",
+      variables: {
+        filter: {
+          id: { eq: booking.id },
+        },
+      },
+    }).subscribe({
+      next: ({ provider, value: { data } }) => {
+        setStockVerify(data?.onUpdateBooking?.stock);
+        console.log(data);
+      },
+      error: (error) => console.warn(error),
+    });
+    return () => {
+      updateSub.unsubscribe();
+      console.log(stockVerify);
+    };
   }, []);
 
   return (
@@ -199,7 +205,7 @@ const PaymentTicket = ({ navigation, route }) => {
         /> */}
         <View style={styles.text}>
           <Text style={[styles.titleTop, global.mainColor]}>
-            Hora de pagar tu viaje
+            Hora de pagar tu viaje {stockVerify} {booking.stock}
           </Text>
           <View style={[styles.ticketsContainer]}>
             <Text style={[styles.titleTickets, global.black]}>

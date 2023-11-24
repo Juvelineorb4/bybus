@@ -8,11 +8,11 @@ import * as queries from "@/graphql/customQueries";
 import * as mutation from "@/graphql/customMutations";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-const ActiveTickets = () => {
+const ActiveTickets = ({route}) => {
   const global = require("@/utils/styles/global.js");
   const [listOrders, setListOrders] = useState([]);
+  
   const onHandlePayment = async (data) => {
-    // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
       console.log("QUIERO ESTOS: ", attributes);
@@ -24,7 +24,7 @@ const ActiveTickets = () => {
         },
       });
 
-      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items);
+      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items.length);
       setListOrders(list.data.getUser.orders.items);
     } catch (error) {
       console.log(error);
@@ -32,7 +32,8 @@ const ActiveTickets = () => {
   };
   useEffect(() => {
     onHandlePayment();
-  }, []);
+    console.log(listOrders.length)
+  }, [route]);
 
   return (
     <ScrollView
@@ -56,8 +57,8 @@ const ActiveTickets = () => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            item.booking.status === "AVAILABLE" && (
-              <ActiveTicketsCard key={index} data={item} />
+            (item.booking.status === "SOLDOUT" || item.booking.status === "AVAILABLE")  && (
+              <ActiveTicketsCard key={index} data={item} route={route} />
             )
         )
       ) : (
