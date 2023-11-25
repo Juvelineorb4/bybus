@@ -13,82 +13,67 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as mutation from "@/graphql/customMutations";
 import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
+import * as subscriptions from "@/graphql/customSubscriptions";
 
 const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const userSelected = useRecoilValue(userSelectedPlan);
+  const { booking } = route.params;
+  console.log(userSelected);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
-  const [user, setUser] = useState([]);
-  const [full, setFull] = useState(false);
-  const [fullName, setFullName] = useState("");
-  const [idCountry, setIdCountry] = useState("");
-  const [emailCustomer, setEmailCustomer] = useState("");
-  const [active, setActive] = useState(false);
-  const [quantityId, setQuantityId] = useState([]);
-  const { booking } = route.params;
-  console.log(booking);
-  const handleMoreId = async (data) => {
-    if (quantityId.length + 1 === quantity) {
-      setFull(true);
-      return;
-    }
-    const { cedula } = data;
-    console.log(cedula);
-    setQuantityId([...quantityId, 1]);
-    setFull(false);
-  };
-
+  const [user, setUser] = useState(null);
+  const [quantityCustomer, setQuantityCustomer] = useState([]);
+  const [stockVerify, setStockVerify] = useState(booking?.stock);
   const onHandleOrder = async (data) => {
     navigation.navigate("PaymentTicket", {
       booking: booking,
       tickets: quantity,
-      customer: user[0].name,
-      customerTicket: {
-        fullName: fullName ? fullName : user[0].name,
-        ci: idCountry ? idCountry : "00000000",
-        email: emailCustomer ? emailCustomer : "ninguno",
+      customer: {
+          fullName: user.name,
+          email: user.email,
       },
+      customerTicket: quantityCustomer,
     });
-    console.log({
-      booking: booking,
-      tickets: quantity,
-      customer: user[0].name,
-      customerTicket: {
-        fullName: fullName ? fullName : user[0].name,
-        ci: idCountry ? idCountry : "00000000",
-        email: emailCustomer ? emailCustomer : "ninguno",
+  };
+  const User = async () => {
+    const { attributes } = await Auth.currentAuthenticatedUser();
+    setUser(attributes);
+    setQuantityCustomer([
+      {
+        fullName: attributes?.name,
+        ci: "00000000",
+        email: attributes?.email,
+        active: false,
       },
-    });
+    ]);
   };
 
   useEffect(() => {
-    const User = async () => {
-      const { attributes } = await Auth.currentAuthenticatedUser();
-      console.log(attributes);
-      setUser([attributes]);
-    };
     User();
-    console.log(fullName);
-  }, [fullName]);
+    const updateSub = API.graphql({
+      query: subscriptions.onUpdateBooking,
+      authMode: "AWS_IAM",
+      variables: {
+        filter: {
+          id: { eq: booking.id },
+        },
+      },
+    }).subscribe({
+      next: ({ provider, value: { data } }) => {
+        setStockVerify(data?.onUpdateBooking?.stock);
+        console.log(data);
+      },
+      error: (error) => console.warn(error),
+    });
+    return () => {
 
+      updateSub.unsubscribe();
+    };
+  }, []);
   return (
     <ScrollView style={[styles.container, global.bgWhite]}>
-      <View style={[styles.topContent, global.bgWhite]}>
-        {/* <Image
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            borderBottomLeftRadius: 20,
-            resizeMode: "cover",
-          }}
-          source={require("@/utils/images/background-profile.png")}
-        />
-        <View style={styles.text}>
-          <Text style={[styles.title, global.black]}>Gestiona tu viaje</Text>
-        </View> */}
-      </View>
+      <View style={[styles.topContent, global.bgWhite]}></View>
       <View style={styles.content}>
         <View style={styles.selectPlan}>
           <Text
@@ -138,7 +123,7 @@ const CreateTicket = ({ navigation, route }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text
                       style={{
                         fontFamily: "bold",
@@ -147,23 +132,13 @@ const CreateTicket = ({ navigation, route }) => {
                     >
                       {booking.departure.time.slice(0, 5)}
                     </Text>
-                    {/* <Image
-                      style={{
-                        width: 35,
-                        height: 35,
-                        resizeMode: "cover",
-                        position: "relative",
-                        top: -1,
-                      }}
-                      source={require("@/utils/images/clock-black.png")}
-                    /> */}
                     <MaterialCommunityIcons
                       name="clock-time-ten-outline"
                       size={25}
                       color="black"
                     />
                   </View>
-                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text
                       style={{
                         fontFamily: "bold",
@@ -172,17 +147,6 @@ const CreateTicket = ({ navigation, route }) => {
                     >
                       {booking.departure.date}
                     </Text>
-                    {/* <Image
-                      style={{
-                        width: 26,
-                        height: 26,
-                        resizeMode: "cover",
-                        position: "relative",
-                        top: 2.5,
-                        left: 4,
-                      }}
-                      source={require("@/utils/images/calendar-black.png")}
-                    /> */}
                     <Octicons name="calendar" size={20} color="black" />
                   </View>
                 </View>
@@ -221,7 +185,7 @@ const CreateTicket = ({ navigation, route }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text
                       style={{
                         fontFamily: "bold",
@@ -230,23 +194,13 @@ const CreateTicket = ({ navigation, route }) => {
                     >
                       {booking.arrival.time.slice(0, 5)}
                     </Text>
-                    {/* <Image
-                      style={{
-                        width: 35,
-                        height: 35,
-                        resizeMode: "cover",
-                        position: "relative",
-                        top: -1,
-                      }}
-                      source={require("@/utils/images/clock-black.png")}
-                    /> */}
                     <MaterialCommunityIcons
                       name="clock-time-ten-outline"
                       size={25}
                       color="black"
                     />
                   </View>
-                  <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text
                       style={{
                         fontFamily: "bold",
@@ -255,17 +209,6 @@ const CreateTicket = ({ navigation, route }) => {
                     >
                       {booking.arrival.date}
                     </Text>
-                    {/* <Image
-                      style={{
-                        width: 26,
-                        height: 26,
-                        resizeMode: "cover",
-                        position: "relative",
-                        top: 2.5,
-                        left: 4,
-                      }}
-                      source={require("@/utils/images/calendar-black.png")}
-                    /> */}
                     <Octicons name="calendar" size={20} color="black" />
                   </View>
                 </View>
@@ -277,157 +220,185 @@ const CreateTicket = ({ navigation, route }) => {
           <Text style={[styles.titleTariff, global.mainColor]}>Tarifas</Text>
           <View style={styles.panelTariff}>
             <View style={styles.optionTariff}>
-              <Text style={[styles.subtitleTariff, global.black]}>
-                Cantidad
-              </Text>
+              <Text style={[styles.subtitleTariff, global.black]}>Total:</Text>
               <Text style={[styles.priceTariff, global.black]}>
-                ${booking.price}.00
+                ${booking.price * quantity}.00
               </Text>
               <View style={styles.buttonsTariff}>
-                {/* <TouchableOpacity
-                  style={[styles.lessButton, global.bgWhiteSoft]}
+                <TouchableOpacity
+                  activeOpacity={quantity === 1 ? 1 : 0}
+                  style={[
+                    styles.lessButton,
+                    global.bgWhiteSoft,
+                    {
+                      opacity: quantity === 1 ? 0.5 : 1,
+                    },
+                  ]}
                   onPress={() => {
                     if (quantity === 1) return;
                     setQuantity(quantity - 1);
                     console.log("resta", quantity);
+                    setQuantityCustomer((e) => {
+                      let nuevoArreglo = [...e];
+                      nuevoArreglo.pop();
+                      return nuevoArreglo;
+                    });
                   }}
                 >
                   <Text style={[styles.sign, global.black]}>-</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
                 <Text style={[styles.number, global.black]}>{quantity}</Text>
-                {/* <TouchableOpacity
-                  style={[styles.moreButton, global.mainBgColor]}
+                <TouchableOpacity
+                  activeOpacity={quantity === 4 ? 1 : 0}
+                  style={[
+                    styles.moreButton,
+                    global.mainBgColor,
+                    {
+                      opacity: quantity === 4 ? 0.5 : 1,
+                    },
+                  ]}
                   onPress={() => {
+                    if (quantity === 4 || stockVerify === quantity) return;
                     setQuantity(quantity + 1);
                     console.log("suma", quantity);
+                    setQuantityCustomer([
+                      ...quantityCustomer,
+                      {
+                        fullName: user?.name,
+                        ci: "00000000",
+                        email: user?.email,
+                        active: false,
+                      },
+                    ]);
                   }}
                 >
                   <Text style={[styles.sign, global.white]}>+</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
             </View>
-          </View>
-        </View>
-        <View style={styles.customers}>
-          <Text style={[styles.titleTariff, global.mainColor]}>
-            Ticket a nombre de:
-          </Text>
-          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
-            <TextInput
-              defaultValue={user[0] ? user[0].name : "Esperando..."}
-              {...styles.placeholder}
-              style={styles.textInput}
-              editable={active}
-              onChangeText={(e) => setFullName(e)}
-            />
-          </View>
-          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
-            <TextInput
-              defaultValue={"Cedula: 123456789"}
-              {...styles.placeholder}
-              style={styles.textInput}
-              editable={active}
-              onChangeText={(e) => setIdCountry(e)}
-            />
-          </View>
-          <View style={[styles.inputContainer, global.bgWhiteSoft]}>
-            <TextInput
-              defaultValue={"ejemplo@email.com"}
-              {...styles.placeholder}
-              style={styles.textInput}
-              editable={active}
-              onChangeText={(e) => setEmailCustomer(e)}
-            />
-          </View>
-          <TouchableOpacity
-            onPress={() => {
-              setActive(!active);
-            }}
-            style={[
-              {
-                paddingHorizontal: 15,
-                borderRadius: 8,
-                alignSelf: "flex-end",
-                paddingVertical: 10,
-              },
-              global.mainBgColor,
-            ]}
-          >
-            <Text
-              style={[{ fontFamily: "regular", fontSize: 12 }, global.white]}
-            >
-              {!active ? "Editar" : "Guardar"}
-            </Text>
-          </TouchableOpacity>
-          {/* {quantityId.map((_, index) => (
-            <CustomInput
-              key={index}
-              control={control}
-              name={`cedula_${index}`}
-              placeholder={"00000000"}
-              styled={{
-                text: styles.textInput,
-                label: [styles.labelInput, global.topGray],
-                error: styles.errorInput,
-                input: [styles.inputContainer, global.bgWhiteSoft],
-                placeholder: styles.placeholder,
-              }}
-              icon={require("@/utils/images/profile_default.png")}
-              rules={{
-                required: "Requerido",
-              }}
-            />
-          ))} */}
-          {/* {quantityId.length < 1 && (
             <Text
               style={{
                 fontFamily: "regular",
-                fontSize: 14,
+                fontSize: 15,
               }}
             >
-              ¿Todos los boletos de viaje seran asociados a una unica cedula? Si
-              no es asi entonces agrega mas cedulas abajo
+              Stock disponible: {stockVerify} (tickets)
             </Text>
-          )} */}
-          {/* <TouchableOpacity
-            onPress={handleMoreId}
-            style={[
-              {
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                alignSelf: "center",
-                width: 200,
-                borderRadius: 8,
-                paddingVertical: 20,
-                marginTop: 20,
-              },
-              global.mainBgColorSecond,
-            ]}
-          >
             <Text
+              style={{
+                fontFamily: "regular",
+                fontSize: 15,
+                marginTop: 15,
+              }}
+            >
+              Solo puedes seleccionar hasta 4 tickets por compra
+            </Text>
+          </View>
+        </View>
+        {quantityCustomer.map((item, index) => (
+          <View style={styles.customers} key={index}>
+            <Text style={[styles.titleTariff, global.mainColor]}>
+              Ticket a nombre de:
+            </Text>
+            <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+              <TextInput
+                value={item.fullName}
+                {...styles.placeholder}
+                style={styles.textInput}
+                editable={item.active}
+                onChangeText={(e) => {
+                  const updateCustomerQ = quantityCustomer.map(
+                    (customer, customerIndex) => {
+                      if (index === customerIndex) {
+                        return {
+                          ...customer,
+                          fullName: e,
+                        };
+                      }
+                      return customer;
+                    }
+                  );
+                  setQuantityCustomer(updateCustomerQ);
+                }}
+              />
+            </View>
+            <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+              <TextInput
+                value={item.ci}
+                {...styles.placeholder}
+                style={styles.textInput}
+                editable={item.active}
+                onChangeText={(e) => {
+                  const updateCustomerQ = quantityCustomer.map(
+                    (customer, customerIndex) => {
+                      if (index === customerIndex) {
+                        return {
+                          ...customer,
+                          ci: e,
+                        };
+                      }
+                      return customer;
+                    }
+                  );
+                  setQuantityCustomer(updateCustomerQ);
+                }}
+              />
+            </View>
+            <View style={[styles.inputContainer, global.bgWhiteSoft]}>
+              <TextInput
+                value={item.email}
+                {...styles.placeholder}
+                style={styles.textInput}
+                editable={item.active}
+                onChangeText={(e) => {
+                  const updateCustomerQ = quantityCustomer.map(
+                    (customer, customerIndex) => {
+                      if (index === customerIndex) {
+                        return {
+                          ...customer,
+                          email: e,
+                        };
+                      }
+                      return customer;
+                    }
+                  );
+                  setQuantityCustomer(updateCustomerQ);
+                }}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                const updateCustomerQ = quantityCustomer.map(
+                  (customer, customerIndex) => {
+                    if (index === customerIndex) {
+                      return {
+                        ...customer,
+                        active: !item.active,
+                      };
+                    }
+                    return customer;
+                  }
+                );
+                setQuantityCustomer(updateCustomerQ);
+              }}
               style={[
                 {
-                  fontFamily: "regular",
-                  fontSize: 16,
+                  paddingHorizontal: 15,
+                  borderRadius: 8,
+                  alignSelf: "flex-end",
+                  paddingVertical: 10,
                 },
-                global.white,
+                global.mainBgColor,
               ]}
             >
-              Agregar mas cedulas
-            </Text>
-          </TouchableOpacity>
-          {full && <Text
-              style={{
-                fontFamily: "regular",
-                fontSize: 14,
-                color: 'red',
-                paddingTop: 10
-              }}
-            >
-              Solo puedes agregar las misma cantidad de cedulas que tienes de boletos
-            </Text>} */}
-        </View>
+              <Text
+                style={[{ fontFamily: "regular", fontSize: 12 }, global.white]}
+              >
+                {item.active ? "Guardar" : "Editar"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ))}
       </View>
       <View style={styles.button}>
         <CustomButton
