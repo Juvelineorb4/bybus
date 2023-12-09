@@ -138,7 +138,7 @@ const RouteCard = ({ data }) => {
               color="white"
             />
           <Text style={[styles.ticketText, global.black]}>
-            {data.price}.00$
+            {data.price}$
           </Text>
         </View>
       </View>

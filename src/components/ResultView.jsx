@@ -22,6 +22,7 @@ const ResultView = ({ data }) => {
   const [timeline, setTimeline] = useState(false);
   const [qAvailable, setQAvailable] = useState(0);
   const [loading, setLoading] = useRecoilState(loadingSearch);
+  const [ejemplo, setEjemplo] = useState(new Date(data?.date));
   const Bookings = async () => {
     try {
       const list = await API.graphql({
@@ -36,13 +37,15 @@ const ResultView = ({ data }) => {
           },
         },
       });
-      setSearch(list.data.listBookings.items);
+      let newArray = list.data.listBookings.items;
+      newArray.sort(compararFechas);
+      setSearch(newArray);
       setLoading(false);
-      console.log(list.data.listBookings.items);
-      const viajesDisponibles = list.data.listBookings.items.filter(
+
+      const viajesDisponibles = newArray.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
-      const viajesPartidos = list.data.listBookings.items.filter(
+      const viajesPartidos = newArray.filter(
         (viaje) => viaje.status === "DEPARTED"
       );
 
@@ -58,14 +61,29 @@ const ResultView = ({ data }) => {
   let dia = fecha.getDate();
   let mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
   let año = fecha.getFullYear();
+  function compararFechas(a, b) {
+    const fechaA = new Date(a.departure.date);
+    const fechaB = new Date(b.departure.date);
+
+    if (fechaA < fechaB) {
+      return -1;
+    } else if (fechaA > fechaB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 
   let dateToday = año + "-" + mes + "-" + dia;
+  let fecha1 = new Date(dateToday);
+  let fecha2 = new Date(data?.date);
   useEffect(() => {
     if (data) Bookings();
     // console.log(dateToday);
-    let fecha1 = new Date(dateToday);
-    let fecha2 = new Date(data?.date);
-    console.log(fecha1, fecha2)
+    fecha1 = new Date(dateToday);
+    fecha2 = new Date(data?.date);
+    console.log(fecha1, fecha2);
+    console.log();
     if (fecha2.getTime() > fecha1.getTime()) {
       console.log("La fecha2 es mayor que la fecha1");
       setTimeline(false);
@@ -100,7 +118,9 @@ const ResultView = ({ data }) => {
         ) : search.length !== 0 && qAvailable !== 0 && timeline === false ? (
           search.map(
             (item, index) =>
-              item.status === "AVAILABLE" && item.status !== "SOLDOUT" && (
+              item.status === "AVAILABLE" &&
+              item.status !== "SOLDOUT" &&
+              fecha2.getTime() < new Date(item?.departure?.date).getTime() && (
                 <RouteCard data={item} key={index} />
               )
           )
