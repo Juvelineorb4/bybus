@@ -3161,6 +3161,8 @@ export const venezuela = [
         ],
       },
     ],
-    ciudades:["Caracas"]
+    ciudades: [
+      "Caracas"
+    ]
   },
 ];
