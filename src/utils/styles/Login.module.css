@@ -24,7 +24,7 @@
 }
 
 .inputContainer {
-  flex: 1;
+  /* flex: 1; */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +32,7 @@
   padding: 11px 10px 11px 0px;
   border-radius: 8px;
   margin: 3px 0px 10px;
+  height: 55px;
 }
 .labelInput {
   font-family: "bold";
@@ -43,6 +44,7 @@
   font-family: "regular";
   margin-left: 10px;
   color: #0077B6;
+  height: 45px;
 }
 .errorInput {
   font-family: "regular";
@@ -57,6 +59,7 @@
   color: #8c9199cb;
   font-size: 12px;
   font-family: "regular";
+  height: 45px;
 }
 .security {
   position: relative;

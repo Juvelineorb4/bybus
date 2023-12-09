@@ -18,6 +18,7 @@ import { defaultProvider } from "@aws-sdk/credential-provider-node";
 import { SignatureV4 } from "@aws-sdk/signature-v4";
 import { HttpRequest } from "@aws-sdk/protocol-http";
 import { default as fetch, Request } from "node-fetch";
+import nodeMailer from "nodemailer";
 
 // configuraicons de end point
 const GRAPHQL_ENDPOINT = process.env.API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT;
@@ -93,6 +94,7 @@ const generarClaveTemporal = (longitud) => {
 
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
+
   // obtenemos las variables de los input
   const { username, rif, phone, name, agencySubsTableID } =
     event.arguments.input;
@@ -101,8 +103,7 @@ export const handler = async (event) => {
   const responseAgency = await createAgencyCognito(event.arguments.input);
   if (responseAgency.response === null)
     return JSON.stringify({ message: "Error al crear Usuario en Cognito" });
-  // envaimos un mensaje al correo
-  await SEND_EMAIL(username, responseAgency.claveTemporal);
+
   // // creamos el usuario en dynamodb
   const responseCreateAgency = await CUSTOM_API_GRAPHQL(createAgency, {
     input: {
@@ -131,7 +132,8 @@ export const handler = async (event) => {
       },
     });
   }
-
+  // envaimos un mensaje al correo
+  await SEND_EMAIL_ZOHO(username, responseAgency.claveTemporal);
   return JSON.stringify({ message: "Usuario Registrado Exitosamente" });
 };
 
@@ -320,4 +322,45 @@ const SEND_EMAIL = async (username, claveTemporal) => {
   const response = await ses.send(command);
   console.log("SEND EMAIL: ", response);
   return response;
+};
+
+const SEND_EMAIL_ZOHO = async (username, claveTemporal) => {
+  // Configurar el transporte
+
+  let transporter = nodeMailer.createTransport({
+    host: "smtp.zoho.com",
+    secure: true,
+    port: 465,
+    auth: {
+      user: "superadmin@bybusvenezuela.com",
+      pass: "0JWU9RZGrP2c",
+    },
+  });
+
+  const mailOptions = {
+    from: "superadmin@bybusvenezuela.com", // sender address
+    to: username,
+    subject: `Confirmacion de registro BYBUS C.A.`,
+    text: `
+    Gracia por registrarte como agencia de Bybus C.A.
+    Tu correo es: ${username}
+    Tu contraseña es: ${claveTemporal}
+    Ten en cuenta que esta contraseña es temporal al logearte te pedira que actualices tu contraseña.
+    `,
+  };
+
+  // Enviar el correo electrónico
+
+  // Enviar el correo electrónico usando Gmail
+  await new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error al enviar el correo electrónico:", error);
+        reject(error);
+      } else {
+        console.log("Correo electrónico enviado con éxito:", info);
+        resolve(info);
+      }
+    });
+  });
 };

@@ -1,4 +1,4 @@
-import { Alert, View, ActivityIndicator, Text } from "react-native";
+import { Alert, View, ActivityIndicator, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./styles/StepFour.module.css";
 import CustomButton from "../CustomButton";
@@ -81,7 +81,6 @@ const StepFour = ({ navigation, route }) => {
           container: styles.textContainer,
         }}
         title={`Ingresar codigo`}
-        // subtitle={`We have sent you a confirmation code on the email ${registerForm.email}`}
         subtitle={`Te enviamos un correo electronico ${registerForm.email}`}
       />
       <Text style={{ marginBottom: 8, color: "red" }}>{errorMsg}</Text>

@@ -38,7 +38,7 @@ const ResultView = ({ data }) => {
       });
       setSearch(list.data.listBookings.items);
       setLoading(false);
-      console.log(list.data.listBookings.items);
+      // console.log(list.data.listBookings.items);
       const viajesDisponibles = list.data.listBookings.items.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
@@ -60,12 +60,12 @@ const ResultView = ({ data }) => {
   let año = fecha.getFullYear();
 
   let dateToday = año + "-" + mes + "-" + dia;
+  let fecha1 = new Date(dateToday);
+  let fecha2 = new Date(data?.date);
   useEffect(() => {
     if (data) Bookings();
-    // console.log(dateToday);
-    let fecha1 = new Date(dateToday);
-    let fecha2 = new Date(data?.date);
-    console.log(fecha1, fecha2)
+    fecha1 = new Date(dateToday);
+    fecha2 = new Date(data?.date);
     if (fecha2.getTime() > fecha1.getTime()) {
       console.log("La fecha2 es mayor que la fecha1");
       setTimeline(false);
@@ -76,6 +76,8 @@ const ResultView = ({ data }) => {
       setTimeline(false);
       console.log("Las fechas son iguales");
     }
+    // console.log(new Date(search[0].departure.date).getTime());
+    // console.log(fecha2.getTime());
   }, [data]);
 
   return (
@@ -100,7 +102,10 @@ const ResultView = ({ data }) => {
         ) : search.length !== 0 && qAvailable !== 0 && timeline === false ? (
           search.map(
             (item, index) =>
-              item.status === "AVAILABLE" && item.status !== "SOLDOUT" && (
+              item.status === "AVAILABLE" &&
+              item.status !== "SOLDOUT" &&
+              fecha2.getTime() <
+                new Date(item?.departure?.date).getTime() && (
                 <RouteCard data={item} key={index} />
               )
           )
