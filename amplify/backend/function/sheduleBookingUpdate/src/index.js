@@ -79,7 +79,12 @@ export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
   let bodyresponse = "";
   const response = await CUSTOM_API_GRAPHQL(listBookings, {
-    filter: { status: { eq: "AVAILABLE" } },
+    filter: {
+      or: [{ status: { eq: "AVAILABLE" } }, { status: { eq: "SOLDOUT" } }],
+    },
+  });
+  const response2 = await CUSTOM_API_GRAPHQL(listBookings, {
+    filter: { status: { eq: "BOARDING" } },
   });
   // Obtiene la fecha y hora actual en formato ISO 8601
   console.log("RESPONSE: ", response.data.listBookings.items);
@@ -106,19 +111,37 @@ export const handler = async (event) => {
           status: "BOARDING",
         },
       });
-      // departureDatetime <= now
     }
-    // else if (diffInMinutes <= 0) {
-    //   await CUSTOM_API_GRAPHQL(updateBooking, {
-    //     input: {
-    //       id: item.id,
-    //       status: "DEPARTED",
-    //     },
-    //   });
-    // }
   }
 
-  if (response.data.listBookings.items > 0) {
+  for (const item of response2?.data?.listBookings?.items) {
+    // formamos la hora de la base de dtaos con date and time como objecto moment
+    const arrival = item.arrival;
+    const arrivalDatatime = moment(
+      `${arrival.date} ${arrival.time}`,
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    // Compara con la fecha y hora actual
+    const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
+
+    console.log("Hora DB ARRIVAL: ", arrivalDatatime);
+    // Calcula la diferencia en minutos entre la hora del servidor y la hora de la tarea
+    const diffInMinutes = arrivalDatatime.diff(now, "minutes");
+    console.log("Diferencia de minutos entre ahora y Arrival: ", diffInMinutes);
+    if ((diffInMinutes) => 0 || diffInMinutes <= 1) {
+      await CUSTOM_API_GRAPHQL(updateBooking, {
+        input: {
+          id: item.id,
+          status: "ARRIVED",
+        },
+      });
+    }
+  }
+
+  if (
+    response?.data?.listBookings?.items > 0 ||
+    response2?.data?.listBookings?.items
+  ) {
     bodyresponse = `Elemento actualizados`;
   } else {
     bodyresponse = `No hay elementos para actualizar`;

@@ -67,7 +67,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
-         { allow: groups, groups: ["admin", "sp"] }
+        { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   name: String
@@ -75,7 +75,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
-         { allow: groups, groups: ["admin", "sp"] }
+        { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   rif: String
@@ -83,7 +83,7 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
-         { allow: groups, groups: ["admin", "sp"] }
+        { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   email: String
@@ -92,10 +92,18 @@ type Agency
       rules: [
         { allow: owner }
         { allow: private, provider: iam, operations: [read] }
-         { allow: groups, groups: ["admin", "sp"] }
+        { allow: groups, groups: ["admin", "sp"] }
       ]
     )
   phone: String
+    @auth(
+      rules: [
+        { allow: owner }
+        { allow: private, provider: iam, operations: [read] }
+        { allow: groups, groups: ["admin", "sp"] }
+      ]
+    )
+  percentage: Float @default(value: "10")
     @auth(
       rules: [
         { allow: owner }
@@ -110,7 +118,7 @@ type Agency
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
-type Office 
+type Office
   @model
   @auth(
     rules: [
@@ -260,6 +268,7 @@ type Booking
   arrival: DepartureArrivalStopFields
   stock: Int
   price: Float
+  percentage: Float
   createdBy: ID
   driver: String
   transport: transporType
@@ -348,7 +357,7 @@ type Ticket
   id: ID!
   code: String
   bookingID: ID @index(name: "byBookingToTicket")
-  orderDetailID: ID @index(name: "byOrderDetailToTickets" )
+  orderDetailID: ID @index(name: "byOrderDetailToTickets")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
   customer: Customer @belongsTo(fields: ["customerID"])
@@ -358,7 +367,6 @@ type Ticket
   url: String
   owner: String @auth(rules: [{ allow: owner, operations: [read] }])
 }
-
 
 enum ticketStatus {
   ACTIVE
@@ -414,6 +422,7 @@ type OrderDetail
   customerEmail: String
   total: Int
   isGuest: Boolean
+  status: String @default(value: "APPROVED")
   paymentID: ID
   payment: Payment @hasOne(fields: ["paymentID"])
   bookingID: ID
@@ -522,6 +531,10 @@ type Mutation {
 
   checkScan(input: CheckScanInput): String
     @function(name: "checkTicketScan-${env}")
+    @auth(rules: [{ allow: groups, groups: ["agency"] }])
+
+  reprogram(input: String): String
+    @function(name: "scheduleBookingAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["agency"] }])
 }
 

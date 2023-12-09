@@ -213,7 +213,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "reprogramBooking": {
+    "scheduleBookingAgency": {
       "build": true,
       "dependsOn": [
         {
@@ -223,42 +223,6 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
-        },
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybus"
-        },
-        {
-          "attributes": [
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "reprogramBookingTicket"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "reprogramBookingTicket": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
-          ],
-          "category": "api",
-          "resourceName": "bybusgraphql"
-        },
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -377,35 +341,19 @@
         }
       ]
     },
-    "AMPLIFY_function_reprogramBookingTicket_deploymentBucketName": {
+    "AMPLIFY_function_scheduleBookingAgency_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "reprogramBookingTicket"
+          "resourceName": "scheduleBookingAgency"
         }
       ]
     },
-    "AMPLIFY_function_reprogramBookingTicket_s3Key": {
+    "AMPLIFY_function_scheduleBookingAgency_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "reprogramBookingTicket"
-        }
-      ]
-    },
-    "AMPLIFY_function_reprogramBooking_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "reprogramBooking"
-        }
-      ]
-    },
-    "AMPLIFY_function_reprogramBooking_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "reprogramBooking"
+          "resourceName": "scheduleBookingAgency"
         }
       ]
     },
