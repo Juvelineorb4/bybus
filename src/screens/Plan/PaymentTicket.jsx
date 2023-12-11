@@ -205,7 +205,7 @@ const PaymentTicket = ({ navigation, route }) => {
         /> */}
         <View style={styles.text}>
           <Text style={[styles.titleTop, global.mainColor]}>
-            Hora de pagar tu viaje {stockVerify} {booking.stock}
+            Hora de pagar tu viaje
           </Text>
           <View style={[styles.ticketsContainer]}>
             <Text style={[styles.titleTickets, global.black]}>

@@ -62,11 +62,14 @@ const ActiveTickets = ({route}) => {
             )
         )
       ) : (
-        <ActivityIndicator
-          size="large"
-          color="#0077B6"
-          style={{ marginTop: 50 }}
-        />
+        <Text style={[{
+          fontFamily: 'light',
+          fontSize: 22,
+          textAlign: 'center',
+          marginTop: '30%'
+        }, global.black]}>
+          No tienes tickets activos
+        </Text>
       )}
     </ScrollView>
   );
