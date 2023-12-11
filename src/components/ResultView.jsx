@@ -36,9 +36,9 @@ const ResultView = ({ data }) => {
           },
         },
       });
-      setSearch(list.data.listBookings.items);
+      let array = list.data.listBookings.items.sort((a, b) => new Date(a.departure.date) - new Date(b.departure.date));
+      setSearch(array);
       setLoading(false);
-      // console.log(list.data.listBookings.items);
       const viajesDisponibles = list.data.listBookings.items.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
@@ -76,8 +76,7 @@ const ResultView = ({ data }) => {
       setTimeline(false);
       console.log("Las fechas son iguales");
     }
-    // console.log(new Date(search[0].departure.date).getTime());
-    // console.log(fecha2.getTime());
+    console.log(search);
   }, [data]);
 
   return (
