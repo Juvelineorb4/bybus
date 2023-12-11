@@ -22,7 +22,6 @@ const ResultView = ({ data }) => {
   const [timeline, setTimeline] = useState(false);
   const [qAvailable, setQAvailable] = useState(0);
   const [loading, setLoading] = useRecoilState(loadingSearch);
-  const [ejemplo, setEjemplo] = useState(new Date(data?.date));
   const Bookings = async () => {
     try {
       const list = await API.graphql({
@@ -43,7 +42,7 @@ const ResultView = ({ data }) => {
       const viajesDisponibles = list.data.listBookings.items.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
-      const viajesPartidos = newArray.filter(
+      const viajesPartidos = list.data.listBookings.items.filter(
         (viaje) => viaje.status === "DEPARTED"
       );
 
@@ -59,18 +58,6 @@ const ResultView = ({ data }) => {
   let dia = fecha.getDate();
   let mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan desde 0
   let año = fecha.getFullYear();
-  function compararFechas(a, b) {
-    const fechaA = new Date(a.departure.date);
-    const fechaB = new Date(b.departure.date);
-
-    if (fechaA < fechaB) {
-      return -1;
-    } else if (fechaA > fechaB) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
 
   let dateToday = año + "-" + mes + "-" + dia;
   let fecha1 = new Date(dateToday);

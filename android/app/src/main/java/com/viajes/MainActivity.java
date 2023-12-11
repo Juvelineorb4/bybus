@@ -1,4 +1,4 @@
-package com.bybus.viajes;
+package com.viajes;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -113,13 +113,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.bybus.viajes'
+    namespace "com.viajes"
     defaultConfig {
-        applicationId 'com.bybus.viajes'
+        applicationId "com.viajes"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "0.1.2"
+        versionCode 1
+        versionName "1.0"
     }
 
     splits {
