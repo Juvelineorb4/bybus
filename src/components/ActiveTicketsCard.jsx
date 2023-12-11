@@ -8,11 +8,10 @@ import * as queries from "@/graphql/customQueries";
 import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
 const ActiveTicketsCard = ({ data, route }) => {
-  console.log("toy aqui", data);
+  console.log("toy aqui", data.total);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
-  console.log("XXXXXXXXXXXXXXXXX: ", data);
   const onHandleTicket = async () => {
     try {
       const dataAgency = await API.graphql({
@@ -149,7 +148,7 @@ const ActiveTicketsCard = ({ data, route }) => {
               color="white"
             />
             <Text style={[styles.ticketText, global.white]}>
-              {data.booking.price}.00$
+              {data.total}.00$
             </Text>
           </View>
         </View>

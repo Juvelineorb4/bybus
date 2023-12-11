@@ -17,34 +17,16 @@ const Tickets = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topContent}>
-        {/* <Image
-          style={{
-            width: "100%",
-            height: 100,
-            position: "absolute",
-            borderBottomLeftRadius: 16,
-            resizeMode: "cover",
-          }}
-          source={require("@/utils/images/background-profile.png")}
-        /> */}
         <View style={[styles.text, {
           width: "100%",
           height: 100,
-          // position: "absolute",
           borderBottomLeftRadius: 16,
-          // resizeMode: "cover",
         }, global.mainBgColorSecond]}>
           <Text style={styles.title}>Mis tickets</Text>
         </View>
       </View>
 
       <View style={styles.content}>
-        {/* <CustomButton
-          text={`Buy Ticket`}
-          handlePress={() => navigation.navigate(routes.choose)}
-          textStyles={styles.textButton}
-          buttonStyles={styles.button}
-        /> */}
         <View style={styles.buttons}>
           <TouchableOpacity
             onPress={onHandlePress}
@@ -66,9 +48,6 @@ const Tickets = ({ navigation, route }) => {
           </TouchableOpacity>
         </View>
         {active ? <ActiveTickets route={route} /> : <PreviousTickets/>  }
-        
-
-        {/* <TicketComponent /> */}
       </View>
     </View>
   );
