@@ -103,8 +103,7 @@ const ResultView = ({ data }) => {
             (item, index) =>
               item.status === "AVAILABLE" &&
               item.status !== "SOLDOUT" &&
-              fecha2.getTime() <
-                new Date(item?.departure?.date).getTime() && (
+              fecha2.getTime() <=  new Date(item?.departure?.date).getTime() && (
                 <RouteCard data={item} key={index} />
               )
           )

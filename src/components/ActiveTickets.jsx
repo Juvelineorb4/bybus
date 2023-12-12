@@ -58,7 +58,7 @@ const ActiveTickets = ({route}) => {
         listOrders.map(
           (item, index) =>
             (item.booking.status === "SOLDOUT" || item.booking.status === "AVAILABLE")  && (
-              <ActiveTicketsCard key={index} data={item} route={route} />
+              <ActiveTicketsCard key={index} data={item} route={route} available={true} />
             )
         )
       ) : (

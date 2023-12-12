@@ -7,7 +7,7 @@ import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
 
-const ActiveTicketsCard = ({ data, route }) => {
+const ActiveTicketsCard = ({ data, route, available }) => {
   console.log("toy aqui", data.total);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
@@ -41,6 +41,7 @@ const ActiveTicketsCard = ({ data, route }) => {
             data: data,
             quantity: data?.amount,
             tickets: data?.tickets?.items,
+            available: available
           })
         }
         style={styles.container}
