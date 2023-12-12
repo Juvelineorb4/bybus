@@ -52,7 +52,7 @@ const PreviousTickets = () => {
         listOrders.map(
           (item, index) =>
             item.booking.status === "DEPARTED" && (
-              <ActiveTicketsCard key={index} data={item} />
+              <ActiveTicketsCard key={index} data={item} available={false} />
             )
         )
       ) : (
