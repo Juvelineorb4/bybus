@@ -1,4 +1,4 @@
-import { ActivityIndicator, Image, ImageBackground, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, Image, ImageBackground, ScrollView, Text, View, Linking } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ViewTicket.module.css";
 import CustomTicket from "@/components/CustomTicket";
@@ -6,9 +6,16 @@ import { CustomButton } from "@/components";
 
 const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
-  const { order, payment, data, quantity, tickets } = route?.params;
+  const { order, payment, data, quantity, tickets, available } = route?.params;
   const total = quantity * data?.booking?.price;
   console.log(data.booking)
+  const openWhatsApp = () => {
+    let phoneNumber = '+58 414-5763107'; // Reemplaza esto con el número de teléfono deseado
+    let message = 'Hola, quisiera devolver un ticket que compre'; // Reemplaza esto con el mensaje deseado
+    let url = 'whatsapp://send?text=' + message + '&phone=' + phoneNumber;
+
+    Linking.openURL(url).catch(err => console.error('No se pudo abrir WhatsApp', err));
+  };
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
@@ -81,12 +88,17 @@ const ViewOrder = ({ navigation, route }) => {
         ))}
       </View> : <ActivityIndicator size="large" color="#0077B6" style={{marginTop: 50}}/> }
       <View style={styles.buttons}>
-        <CustomButton
-          text={`Tus boletos`}
-          handlePress={() => navigation.navigate("Tickets_Tab")}
+        {available ? <CustomButton
+          text={`Devolucion`}
+          handlePress={() => openWhatsApp()}
           textStyles={[styles.textTickets, global.white]}
           buttonStyles={[styles.tickets, global.bgBlack]}
-        />
+        />: <CustomButton
+        text={`Tus boletos`}
+        handlePress={() => navigation.navigate("Tickets_Tab")}
+        textStyles={[styles.textTickets, global.white]}
+        buttonStyles={[styles.tickets, global.bgBlack]}
+      /> }
         <CustomButton
           text={`Terminos y condiciones`}
           textStyles={[styles.textGuaranted, global.white]}
