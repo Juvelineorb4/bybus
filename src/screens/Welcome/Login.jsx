@@ -26,7 +26,8 @@ const Login = ({ navigation, route }) => {
     setIsLoading(true);
     setError("");
     try {
-      await Auth.signIn(data.email, data.password);
+      const result = await Auth.signIn(data.email, data.password);
+      console.log(result);
     } catch (error) {
       switch (error.message) {
         case "User is not confirmed.":
