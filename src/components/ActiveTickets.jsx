@@ -63,7 +63,12 @@ const ActiveTickets = ({ route }) => {
             (item.booking.status === "SOLDOUT" ||
               item.booking.status === "AVAILABLE" ||
               item.booking.status === "BOARDING") && (
-              <ActiveTicketsCard key={index} data={item} route={route} />
+              <ActiveTicketsCard
+                key={index}
+                data={item}
+                route={route}
+                available={true}
+              />
             )
         )
       ) : (

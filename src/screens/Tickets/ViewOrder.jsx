@@ -10,12 +10,13 @@ const ViewOrder = ({ navigation, route }) => {
   const total = quantity * data?.booking?.price;
   console.log(data.booking)
   const openWhatsApp = () => {
-    let phoneNumber = '+58 414-5763107'; // Reemplaza esto con el número de teléfono deseado
+    let phoneNumber = '+58 426-5523463'; // Reemplaza esto con el número de teléfono deseado
     let message = 'Hola, quisiera devolver un ticket que compre'; // Reemplaza esto con el mensaje deseado
     let url = 'whatsapp://send?text=' + message + '&phone=' + phoneNumber;
 
     Linking.openURL(url).catch(err => console.error('No se pudo abrir WhatsApp', err));
   };
+  console.log("EJELEÑ ", available)
  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
@@ -61,7 +62,7 @@ const ViewOrder = ({ navigation, route }) => {
               </Text>
               <Text
                 style={[styles.titlePrice, global.black]}
-              >{`${total}.00$`}</Text>
+              >{`${total}$`}</Text>
             </View>
           </View>
         </View>
