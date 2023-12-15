@@ -11,6 +11,7 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 const ActiveTickets = ({ route }) => {
   const global = require("@/utils/styles/global.js");
   const [listOrders, setListOrders] = useState([]);
+  const [checkStatus, setCheckStatus] = useState(false);
 
   const onHandlePayment = async (data) => {
     try {
@@ -25,13 +26,21 @@ const ActiveTickets = ({ route }) => {
       });
 
       setListOrders(list.data.getUser.orders.items);
+      const checkOrders = list.data.getUser.orders.items.filter(
+        (item) =>
+          item.booking.status === "SOLDOUT" ||
+          item.booking.status === "AVAILABLE" ||
+          item.booking.status === "BOARDING"
+      );
+      console.log(checkOrders.length)
+      if (checkOrders.length === 0) setCheckStatus(true);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     onHandlePayment();
-    console.log(listOrders.length);
+    console.log(checkStatus);
   }, [route]);
 
   return (
@@ -72,6 +81,21 @@ const ActiveTickets = ({ route }) => {
             )
         )
       ) : (
+        <Text
+          style={[
+            {
+              fontFamily: "light",
+              fontSize: 22,
+              textAlign: "center",
+              marginTop: "30%",
+            },
+            global.black,
+          ]}
+        >
+          No tienes tickets activos
+        </Text>
+      )}
+      {checkStatus && (
         <Text
           style={[
             {
