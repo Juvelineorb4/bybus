@@ -23,8 +23,7 @@ const PreviousTickets = () => {
           id: attributes["custom:userTableID"],
         },
       });
-
-      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items);
+      console.log(list.data.getUser.orders.items);
       setListOrders(list.data.getUser.orders.items);
     } catch (error) {
       console.log(error);
@@ -51,17 +50,24 @@ const PreviousTickets = () => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            item.booking.status === "DEPARTED" && (
-              <ActiveTicketsCard key={index} data={item} available={false} />
+            (item.booking.status === "DEPARTURED" ||
+              item.booking.status === "ARRIVED" ||
+              item.booking.status === "CANCELLED") && (
+              <ActiveTicketsCard key={index} data={item} />
             )
         )
       ) : (
-        <Text style={[{
-          fontFamily: 'light',
-          fontSize: 22,
-          textAlign: 'center',
-          marginTop: '30%'
-        }, global.black]}>
+        <Text
+          style={[
+            {
+              fontFamily: "light",
+              fontSize: 22,
+              textAlign: "center",
+              marginTop: "30%",
+            },
+            global.black,
+          ]}
+        >
           No tienes tickets antiguos
         </Text>
       )}

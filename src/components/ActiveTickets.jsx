@@ -6,12 +6,12 @@ import ActiveTicketsCard from "./ActiveTicketsCard";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/customQueries";
 import * as mutation from "@/graphql/customMutations";
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-const ActiveTickets = ({route}) => {
+const ActiveTickets = ({ route }) => {
   const global = require("@/utils/styles/global.js");
   const [listOrders, setListOrders] = useState([]);
-  
+
   const onHandlePayment = async (data) => {
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
@@ -24,7 +24,6 @@ const ActiveTickets = ({route}) => {
         },
       });
 
-      console.log("ANDALE WEYYYYYY: ", list.data.getUser.orders.items.length);
       setListOrders(list.data.getUser.orders.items);
     } catch (error) {
       console.log(error);
@@ -32,7 +31,7 @@ const ActiveTickets = ({route}) => {
   };
   useEffect(() => {
     onHandlePayment();
-    console.log(listOrders.length)
+    console.log(listOrders.length);
   }, [route]);
 
   return (
@@ -49,7 +48,11 @@ const ActiveTickets = ({route}) => {
           }}
           source={require("@/utils/images/ticket.png")}
         /> */}
-        <MaterialCommunityIcons name="ticket-confirmation-outline" size={28} color="black" />
+        <MaterialCommunityIcons
+          name="ticket-confirmation-outline"
+          size={28}
+          color="black"
+        />
         <Text style={[styles.textContentActive, global.black]}>
           Tickets activos
         </Text>
@@ -57,17 +60,29 @@ const ActiveTickets = ({route}) => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            (item.booking.status === "SOLDOUT" || item.booking.status === "AVAILABLE")  && (
-              <ActiveTicketsCard key={index} data={item} route={route} available={true} />
+            (item.booking.status === "SOLDOUT" ||
+              item.booking.status === "AVAILABLE" ||
+              item.booking.status === "BOARDING") && (
+              <ActiveTicketsCard
+                key={index}
+                data={item}
+                route={route}
+                available={true}
+              />
             )
         )
       ) : (
-        <Text style={[{
-          fontFamily: 'light',
-          fontSize: 22,
-          textAlign: 'center',
-          marginTop: '30%'
-        }, global.black]}>
+        <Text
+          style={[
+            {
+              fontFamily: "light",
+              fontSize: 22,
+              textAlign: "center",
+              marginTop: "30%",
+            },
+            global.black,
+          ]}
+        >
           No tienes tickets activos
         </Text>
       )}

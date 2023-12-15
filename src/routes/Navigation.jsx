@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useEffect, useState } from "react";
-import { Platform } from "react-native";
+import { Alert, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Tabs from "./Tabs/Tabs";
@@ -80,6 +80,12 @@ const Navigation = () => {
   const checkUser = async () => {
     try {
       const result = await Auth.currentAuthenticatedUser();
+      if (result?.signInUserSession.accessToken.payload["cognito:groups"]) {
+        await Auth.signOut();
+        Alert.alert("No Autorizado!", `Usuario: ${result?.attributes?.email}, no puede usar ese modulo`)
+        console.log("USUARIO NO AUTORIZADO");
+        return;
+      }
       setUserAuth(result);
       checkAttributes(result);
     } catch (error) {
