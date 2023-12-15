@@ -149,7 +149,7 @@ const ActiveTicketsCard = ({ data, route, available }) => {
               color="white"
             />
             <Text style={[styles.ticketText, global.white]}>
-              {data.total}.00$
+              {data.status === 'RETURNED' ? 'DEVUELTO' : data.total}.00$
             </Text>
           </View>
         </View>

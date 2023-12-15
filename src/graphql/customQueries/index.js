@@ -61,6 +61,7 @@ export const listOrderDetails = /* GraphQL */ `
         customerDocument
         customerName
         customerEmail
+        status
         total
         isGuest
         paymentID
@@ -199,7 +200,6 @@ export const getUserOrderDetails = /* GraphQL */ `
       id
       name
       email
-      status
       notificationToken
       previousBalance
       orders {
@@ -211,6 +211,7 @@ export const getUserOrderDetails = /* GraphQL */ `
           customerDocument
           customerName
           customerEmail
+          status
           total
           isGuest
           paymentID
