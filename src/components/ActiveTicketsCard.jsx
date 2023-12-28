@@ -143,13 +143,13 @@ const ActiveTicketsCard = ({ data, route, available }) => {
             <Ionicons name="ios-bus-outline" size={20} color="white" />
           </View>
           <View style={[styles.ticketPrice, global.mainBgColor]}>
-            <MaterialCommunityIcons
+            {data.status === 'APPROVED' && <MaterialCommunityIcons
               name="ticket-confirmation-outline"
               size={24}
               color="white"
-            />
+            />}
             <Text style={[styles.ticketText, global.white]}>
-              {data.status === 'RETURNED' ? 'DEVUELTO' : data.total}.00$
+              {data.status === 'RETURNED' ? 'Devuelto' : data.status === 'PENDIENTE' ? 'Pendiente' : `${data.total}.00$`}
             </Text>
           </View>
         </View>

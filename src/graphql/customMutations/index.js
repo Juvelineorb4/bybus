@@ -283,3 +283,15 @@ export const createTicket = /* GraphQL */ `
     }
   }
 `;
+
+export const updateOrderDetail = /* GraphQL */ `
+  mutation UpdateOrderDetail(
+    $input: UpdateOrderDetailInput!
+    $condition: ModelOrderDetailConditionInput
+  ) {
+    updateOrderDetail(input: $input, condition: $condition) {
+      id
+      status
+    }
+  }
+`;

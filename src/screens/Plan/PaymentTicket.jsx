@@ -23,7 +23,7 @@ const PaymentTicket = ({ navigation, route }) => {
 
   console.log(customerTicket);
   console.log(booking);
-  const onHandlePayment = async (data) => {
+  const onHandlePayment = async (reference) => {
     // Crear OrderDetail
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
@@ -32,7 +32,7 @@ const PaymentTicket = ({ navigation, route }) => {
         authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: {
           input: {
-            reference: customer.fullName,
+            reference: reference,
             amount: total,
             userID: attributes["custom:userTableID"],
           },
@@ -40,7 +40,7 @@ const PaymentTicket = ({ navigation, route }) => {
       });
       setPaymentOrder(payment.data.createPayment.id);
       setIsPaid(true);
-      console.log(payment);
+      console.log('referencia', reference);
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +66,7 @@ const PaymentTicket = ({ navigation, route }) => {
             customerEmail: attributes.email,
             userID: attributes["custom:userTableID"],
             bookingID: booking.id,
+            status: 'PENDIENTE'
           },
         },
       });
@@ -117,22 +118,6 @@ const PaymentTicket = ({ navigation, route }) => {
           },
         });
         console.log("updateCustomer", customerUpdate.data.updateCustomer);
-
-        /* Creamos el orderTicket */
-        // const orderTicketDetail = await API.graphql({
-        //   query: mutation.createOrderTicket,
-        //   authMode: "AWS_IAM",
-        //   variables: {
-        //     input: {
-        //       orderID: orderDetail.data.createOrderDetail.id,
-        //       ticketID: ticket.data.createTicket.id,
-        //     },
-        //   },
-        // });
-        // console.log(
-        //   "createOrderTicket",
-        //   orderTicketDetail.data.createOrderTicket
-        // );
       }));
 
       /* Actualizamos el stock */
@@ -253,8 +238,8 @@ const PaymentTicket = ({ navigation, route }) => {
           // backgroundColor
         />
         {!isPaid && (
-          <Text style={{ color: "red" }}>
-            *El pago debe estar confirmado para obtener tu boleto
+          <Text style={{ color: "red", fontFamily: 'regular', fontSize: 12 }}>
+            El pago debe estar confirmado para obtener tu boleto
           </Text>
         )}
       </View>

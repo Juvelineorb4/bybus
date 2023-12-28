@@ -33,6 +33,7 @@ const ActiveTickets = ({ route }) => {
           item.booking.status === "BOARDING"
       );
       console.log(checkOrders.length)
+      console.log(checkOrders)
       if (checkOrders.length === 0) setCheckStatus(true);
     } catch (error) {
       console.log(error);
