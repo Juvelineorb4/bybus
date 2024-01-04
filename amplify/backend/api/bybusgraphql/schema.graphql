@@ -1,3 +1,22 @@
+type TasaCambio
+  @model
+  @auth(
+    rules: [
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID!
+  price: Float!
+    @index(
+      name: "TasaCambiosByDate"
+      queryField: "TasaCambiosByDate"
+      sortKeyFields: ["createdAt"]
+    )
+  createdAt: String!
+}
+
 type EmailSusbcription
   @model
   @auth(
@@ -103,7 +122,8 @@ type Agency
         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
-  percentage: Float @default(value: "10")
+  percentage: Float
+    @default(value: "10")
     @auth(
       rules: [
         { allow: owner }
@@ -111,7 +131,9 @@ type Agency
         { allow: groups, groups: ["admin", "sp"] }
       ]
     )
-  status: AgencyStatus @default(value:"ACTIVO")
+  status: AgencyStatus @default(value: "ACTIVO")
+  history: [AgencyHistory]
+    @hasMany(indexName: "byAgencyToHistoryAgency", fields: ["id"])
   officies: [Office] @hasMany(indexName: "byAgencyToOffice", fields: ["id"])
   employees: [Employee]
     @hasMany(indexName: "byAgencyToEmployee", fields: ["id"])
@@ -122,6 +144,22 @@ type Agency
 enum AgencyStatus {
   ACTIVO
   BLOQUEADO
+}
+
+type AgencyHistory
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID!
+  agencyID: ID @index(name: "byAgencyToHistoryAgency")
+  reason: String
+  description: String
 }
 
 type Office
@@ -542,6 +580,21 @@ type Mutation {
   reprogram(input: String): String
     @function(name: "scheduleBookingAgency-${env}")
     @auth(rules: [{ allow: groups, groups: ["agency"] }])
+
+  updateAgencyCognito(input: updateAgencyCognitoInput): String
+    @function(name: "updateAgencyCognito-${env}")
+    @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
+}
+
+type Query {
+  getTodayTasaCambio: String
+    @function(name: "getTodayTasaCambio-${env}")
+    @auth(
+      rules: [
+        { allow: public, provider: iam }
+        { allow: private, provider: iam }
+      ]
+    )
 }
 
 input CheckScanInput {
@@ -555,4 +608,13 @@ input RegisterUserInput {
   rif: String!
   phone: String!
   agencySubsTableID: String!
+  percentage: String!
+}
+
+input updateAgencyCognitoInput {
+  username: String
+  status: String
+  agencyID: String
+  reason: String
+  description: String
 }

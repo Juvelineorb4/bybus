@@ -19,9 +19,9 @@ const PaymentTicket = ({ navigation, route }) => {
   const [stockVerify, setStockVerify] = useState(booking?.stock);
   const [refresh, setRefresh] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
-  const total = tickets * booking.price;
+  const total = tickets * (booking.price + (booking.price/booking.percentage));
 
-  console.log(customerTicket);
+  console.log(total);
   console.log(booking);
   const onHandlePayment = async (reference) => {
     // Crear OrderDetail
@@ -196,7 +196,7 @@ const PaymentTicket = ({ navigation, route }) => {
             <Text style={[styles.titleTickets, global.black]}>
               {tickets} boleto(s) de viaje
             </Text>
-            <Text style={[styles.titlePrice, global.black]}>${total}.00</Text>
+            <Text style={[styles.titlePrice, global.black]}>{total}$</Text>
           </View>
         </View>
       </View>
@@ -205,7 +205,7 @@ const PaymentTicket = ({ navigation, route }) => {
           button={true}
           text="Pagar"
           order={{
-            mount: total,
+            amount: total,
             arrival: booking.arrivalCity,
             id: customer,
             quantity: tickets,
@@ -222,7 +222,7 @@ const PaymentTicket = ({ navigation, route }) => {
             source={require("@/utils/images/guarented.png")}
           />
           <Text style={[styles.titleGuarented, global.topGray]}>
-            Esta compra esta protegida y tiene garantia
+            Esta compra esta protegida{"                         "}
           </Text>
         </View>
         <CustomButton

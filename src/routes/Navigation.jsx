@@ -8,7 +8,7 @@ import { routing } from "@/utils/constants";
 import WelcomeNavigator from "./Welcome/WelcomeNavigator";
 
 // amplify
-import { Auth, Hub } from "aws-amplify";
+import { Auth, Hub, API } from "aws-amplify";
 
 // recoil
 import {
@@ -16,12 +16,13 @@ import {
   tokenNotification,
   imageProfile,
   planSearch,
+  tasaBCV,
 } from "@/atoms/Modals";
 import { useRecoilState } from "recoil";
 
 // graphql
-import { API } from "aws-amplify";
 import * as mutations from "@/graphql/mutations";
+import * as queries from "@/graphql/customQueries";
 // Hooks Custom
 import usePushNotification from "@/hooks/usePushNotification";
 import useImageSelect from "@/hooks/useImageSelect";
@@ -32,11 +33,20 @@ const Navigation = () => {
   const [userAuth, setUserAuth] = useRecoilState(userAuthenticated);
   const [token, setToken] = useRecoilState(tokenNotification);
   const [search, setSearch] = useRecoilState(planSearch);
+  const [tasa, setTasa] = useRecoilState(tasaBCV);
   const [imgProfile, setImgPorfile] = useRecoilState(imageProfile);
   const { main } = routing;
   const Stack = createNativeStackNavigator();
 
+  const fetchTasa = async () => {
+    const result = await API.graphql({
+      query: queries.getTodayTC,
+      authMode: "AWS_IAM",
+    });
+    setTasa(JSON.parse(result.data.getTodayTasaCambio).body.price)
+  }
   useEffect(() => {
+    fetchTasa()
     setToken(expoPushToken);
   }, [expoPushToken]);
 
