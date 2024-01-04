@@ -222,7 +222,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.optionTariff}>
               <Text style={[styles.subtitleTariff, global.black]}>Total:</Text>
               <Text style={[styles.priceTariff, global.black]}>
-                ${booking.price * quantity}.00
+                ${booking.price * quantity}
               </Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
