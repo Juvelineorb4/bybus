@@ -145,6 +145,7 @@ export const updateBooking = /* GraphQL */ `
       }
       stock
       price
+      percentage
       driver
       transport
     }

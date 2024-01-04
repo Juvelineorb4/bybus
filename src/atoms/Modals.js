@@ -98,3 +98,8 @@ export const loadingSearch = atom({
   key: "loadingSearchValue",
   default: false,
 });
+
+export const tasaBCV = atom({
+  key: "tasaBCVValue",
+  default: 0,
+});

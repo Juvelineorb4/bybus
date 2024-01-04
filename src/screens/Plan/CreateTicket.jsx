@@ -19,7 +19,7 @@ const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const userSelected = useRecoilValue(userSelectedPlan);
   const { booking } = route.params;
-  console.log(userSelected);
+  console.log(booking);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
   const [user, setUser] = useState(null);
@@ -222,7 +222,7 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.optionTariff}>
               <Text style={[styles.subtitleTariff, global.black]}>Total:</Text>
               <Text style={[styles.priceTariff, global.black]}>
-                ${booking.price * quantity}
+                {(booking.price + (booking.price/booking.percentage)) * quantity}$
               </Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
@@ -300,6 +300,11 @@ const CreateTicket = ({ navigation, route }) => {
             <Text style={[styles.titleTariff, global.mainColor]}>
               Ticket a nombre de:
             </Text>
+            <Text style={{
+              fontFamily: 'bold',
+              fontSize: 14,
+              marginBottom: 5
+            }}>Nombre completo</Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.fullName}
@@ -322,6 +327,11 @@ const CreateTicket = ({ navigation, route }) => {
                 }}
               />
             </View>
+            <Text style={{
+              fontFamily: 'bold',
+              fontSize: 14,
+              marginBottom: 5
+            }}>Cedula</Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.ci}
@@ -344,6 +354,11 @@ const CreateTicket = ({ navigation, route }) => {
                 }}
               />
             </View>
+            <Text style={{
+              fontFamily: 'bold',
+              fontSize: 14,
+              marginBottom: 5
+            }}>Correo electronico</Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.email}

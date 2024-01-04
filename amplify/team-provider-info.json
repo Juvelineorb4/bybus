@@ -37,29 +37,29 @@
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/createUserCognito-37356c32397158537a49-build.zip"
         },
+        "getTodayTasaCambio": {
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/getTodayTasaCambio-34327778785969734c63-build.zip"
+        },
         "preSignInCognito": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/preSignInCognito-73754256584d4a75566e-build.zip"
         },
         "scheduleBookingAgency": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/scheduleBookingAgency-38676b4f622f4271644e-build.zip"
+          "s3Key": "amplify-builds/scheduleBookingAgency-3557396a48684e484d74-build.zip"
         },
         "sheduleBookingUpdate": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/sheduleBookingUpdate-38632b48614c45316e75-build.zip"
         },
-        "updateAgencyCognito": {
-          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/updateAgencyCognito-2b574f53795572316450-build.zip"
-        },
         "tasaCambio": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/tasaCambio-5564684a53752f41424e-build.zip"
         },
-        "getTodayTasaCambio": {
+        "updateAgencyCognito": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/getTodayTasaCambio-34327778785969734c63-build.zip"
+          "s3Key": "amplify-builds/updateAgencyCognito-2b574f53795572316450-build.zip"
         }
       },
       "storage": {
