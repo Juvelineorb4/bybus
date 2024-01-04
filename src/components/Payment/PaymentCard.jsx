@@ -5,19 +5,28 @@ import { useForm } from "react-hook-form";
 import CustomButton from "../CustomButton";
 import styles from "../../utils/styles/Payment.module.css";
 import { AntDesign } from "@expo/vector-icons";
+import { useRecoilValue } from "recoil";
+import { tasaBCV } from "@/atoms/Modals";
 
 const PaymentCard = ({ button, text, order, handlePress }) => {
   const global = require("@/utils/styles/global.js");
   const [aproved, setAproved] = useState(false);
   const [error, setError] = useState(false);
   const [reference, setReference] = useState('');
+  const tasa = useRecoilValue(tasaBCV)
   return (
     <View style={styles.container}>
       <View style={styles.layout}>
         <Text style={{
           fontFamily: 'medium',
           fontSize: 16
-        }}>Monto total en Bs: 1.00</Text>
+        }}>Monto total en Bs: {(tasa * order.amount).toFixed(2)} </Text>
+        <Text style={{
+          flex: 1,
+          fontFamily: 'regular',
+          fontSize: 14,
+          marginTop: 5,
+        }}>Tasa oficial del BCV: {tasa}</Text>
         <TextInput
           value={reference}
           onChangeText={(e) => setReference(e)}
@@ -71,7 +80,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 }
                 Alert.alert(
                   "Orden de pago",
-                  `Has pagado $${order.mount}.00 por ${order.quantity} boleto(s), para ${order.arrival}, a nombre(s) de ${reference}`,
+                  `Has pagado $${order.amount}.00 por ${order.quantity} boleto(s), para ${order.arrival}, a nombre(s) de ${reference}`,
                   [{ text: "Aceptar", onPress: () => console.log("Aceptado") }]
                 );
                 setError(false)

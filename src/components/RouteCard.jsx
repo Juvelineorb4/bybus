@@ -30,6 +30,8 @@ const RouteCard = ({ data }) => {
     }
   };
   useEffect(() => {
+    console.log(data)
+
     Agency();
   }, []);
 
@@ -138,7 +140,7 @@ const RouteCard = ({ data }) => {
               color="white"
             />
           <Text style={[styles.ticketText, global.black]}>
-            {data.price}$
+            {data.price + (data.price/data.percentage)}$
           </Text>
         </View>
       </View>

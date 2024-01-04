@@ -14,7 +14,7 @@ import { BackHandler } from "react-native";
 const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity } = route.params;
-  const total = quantity * data?.price;
+  const total = quantity * (data?.price + (data?.price / data?.percentage));
   let tickets = data?.tickets?.items?.filter(item => item.orderDetailID === order);
   console.log(customer)
   useEffect(() => {
@@ -78,7 +78,7 @@ const ViewTicket = ({ navigation, route }) => {
               </Text>
               <Text
                 style={[styles.titlePrice, global.black]}
-              >{`${total}.00$`}</Text>
+              >{`${total}$`}</Text>
             </View>
           </View>
         </View>

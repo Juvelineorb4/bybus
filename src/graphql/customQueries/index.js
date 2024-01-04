@@ -11,6 +11,7 @@ export const listBookings = /* GraphQL */ `
         code
         agencyID
         officeID
+        percentage
         transport
         departureCity
         arrivalCity
@@ -81,6 +82,8 @@ export const listOrderDetails = /* GraphQL */ `
           code
           agencyID
           officeID
+          percentage
+          status
           transport
           stops {
             items {
@@ -151,6 +154,8 @@ export const getBooking = /* GraphQL */ `
       agencyID
       officeID
       transport
+      percentage
+      status
       stops {
         items {
           id
@@ -190,6 +195,7 @@ export const getAgency = /* GraphQL */ `
   query GetAgency($id: ID!) {
     getAgency(id: $id) {
       name
+      percentage
     }
   }
 `;
@@ -229,6 +235,7 @@ export const getUserOrderDetails = /* GraphQL */ `
             code
             agencyID
             officeID
+            percentage
             departureCity
             arrivalCity
             departure {
@@ -287,6 +294,7 @@ export const getBookingView = /* GraphQL */ `
       code
       agencyID
       officeID
+      percentage
       customers {
         items {
           id
@@ -355,5 +363,11 @@ export const getBookingView = /* GraphQL */ `
       driver
       transport
     }
+  }
+`;
+
+export const getTodayTC = /* GraphQL */ `
+  query GetTodayTasaCambio {
+    getTodayTasaCambio
   }
 `;
