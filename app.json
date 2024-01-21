@@ -2,9 +2,9 @@
   "expo": {
     "name": "Bybus",
     "slug": "viajes",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "orientation": "portrait",
-    "icon": "./src/utils/images/logo_app.png",
+    "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./src/utils/images/splash.png",
@@ -51,10 +51,10 @@
         "android.gms.permission.AD_ID",
         "com.google.android.gms.permission.AD_ID"
       ],
-      "versionCode": 9
+      "versionCode": 10
     },
     "web": {
-      "favicon": "./src/utils/images/logo_app.png"
+      "favicon": "./src/utils/images/icon.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",
