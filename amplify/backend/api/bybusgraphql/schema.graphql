@@ -600,6 +600,7 @@ type Query {
 input CheckScanInput {
   ticketID: ID
   bookingID: ID
+  ordenDetailID: ID
 }
 
 input RegisterUserInput {

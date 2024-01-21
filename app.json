@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "viajes",
+    "name": "Bybus",
     "slug": "viajes",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "orientation": "portrait",
-    "icon": "./src/utils/images/icon.png",
+    "icon": "./src/utils/images/logo_app.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./src/utils/images/splash.png",
@@ -43,7 +43,7 @@
       ],
       "package": "com.bybus.viajes",
       "adaptiveIcon": {
-        "foregroundImage": "./src/utils/images/icon.png",
+        "foregroundImage": "./src/utils/images/logo_app.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
@@ -52,7 +52,7 @@
       "versionCode": 7
     },
     "web": {
-      "favicon": "./src/utils/images/favicon.png"
+      "favicon": "./src/utils/images/logo_app.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",

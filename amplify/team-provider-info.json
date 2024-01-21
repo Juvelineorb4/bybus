@@ -27,7 +27,7 @@
         },
         "checkTicketScan": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/checkTicketScan-74797434714e70765745-build.zip"
+          "s3Key": "amplify-builds/checkTicketScan-6332593244726a447964-build.zip"
         },
         "createAdminAgency": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
