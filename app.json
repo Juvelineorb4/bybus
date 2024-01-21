@@ -43,7 +43,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO",
-        "android.gms.permission.AD_ID"
+        "android.gms.permission.AD_ID",
+        "com.google.android.gms.permission.AD_ID"
       ],
       "versionCode": 8
     },
