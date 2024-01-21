@@ -2,7 +2,7 @@
   "expo": {
     "name": "Bybus",
     "slug": "viajes",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -51,7 +51,7 @@
         "android.gms.permission.AD_ID",
         "com.google.android.gms.permission.AD_ID"
       ],
-      "versionCode": 10
+      "versionCode": 11
     },
     "web": {
       "favicon": "./src/utils/images/icon.png"
