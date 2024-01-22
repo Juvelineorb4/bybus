@@ -35,7 +35,7 @@ const StepFour = ({ navigation, route }) => {
       if (!code.lenght === 6) return console.log("no tiene 6");
       await Auth.confirmSignUp(email, newCode);
       if (registerForm?.back) return navigation.goBack();
-      navigation.goBack();
+      navigation.replace("Login");
     } catch (error) {
       console.log(error.message);
       switch (error.message) {
