@@ -1,4 +1,12 @@
-import { Image, ScrollView, Text, View, Alert, TextInput } from "react-native";
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  Alert,
+  TextInput,
+  ToastAndroid,
+} from "react-native";
 import React, { useState } from "react";
 import CustomInput from "../CustomInput";
 import { useForm } from "react-hook-form";
@@ -8,6 +16,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { useRecoilValue } from "recoil";
 import { tasaBCV } from "@/atoms/Modals";
 import { Feather } from "@expo/vector-icons";
+import * as Clipboard from "expo-clipboard";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const PaymentCard = ({ button, text, order, handlePress }) => {
   const global = require("@/utils/styles/global.js");
@@ -15,6 +25,11 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
   const [error, setError] = useState(false);
   const [reference, setReference] = useState("");
   const tasa = useRecoilValue(tasaBCV);
+
+  const copyToClipboard = async (text) => {
+    await Clipboard.setStringAsync(text);
+    ToastAndroid.show(`Texto copiado: ${text}`, ToastAndroid.SHORT);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.layout}>
@@ -56,13 +71,15 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
           >
             Documento:
           </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Feather name="clipboard" size={18} color="black" />
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity onPress={() => copyToClipboard("26992319")}>
+              <Feather name="clipboard" size={18} color="black" />
+            </TouchableOpacity>
             <Text
               style={{
                 fontFamily: "regular",
                 fontSize: 16,
-                marginLeft: 5
+                marginLeft: 5,
               }}
             >
               V-26992319
@@ -79,19 +96,20 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
           >
             Telefono:
           </Text>
-          <View style={{flexDirection: 'row'}}>
-          <Feather name="clipboard" size={18} color="black" />
-          <Text
-            style={{
-              fontFamily: "regular",
-              fontSize: 16,
-              marginLeft: 5
-            }}
-          >
-            0414 - 5683 397
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity onPress={() => copyToClipboard("04145683397")}>
+              <Feather name="clipboard" size={18} color="black" />
+            </TouchableOpacity>
+            <Text
+              style={{
+                fontFamily: "regular",
+                fontSize: 16,
+                marginLeft: 5,
+              }}
+            >
+              04145683397
+            </Text>
           </View>
-          
         </View>
         <Text
           style={{
