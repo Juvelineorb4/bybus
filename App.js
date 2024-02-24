@@ -1,23 +1,24 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import Navigation from "@/routes/Navigation";
-import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { RecoilRoot } from "recoil";
 // exportaciones amplify
-import { Amplify } from 'aws-amplify';
-import awsconfig from './src/aws-exports';
+import { Amplify } from "aws-amplify";
+import awsconfig from "./src/aws-exports";
+import { Platform } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
-
-
-
-// Configuracion de Amplify 
+// Configuracion de Amplify
 Amplify.configure(awsconfig);
 SplashScreen.preventAutoHideAsync();
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     thin: require("@/utils/fonts/Montserrat-Thin.ttf"),
     regular: require("@/utils/fonts/Montserrat-Regular.ttf"),
@@ -44,15 +45,38 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return (
-    <SafeAreaProvider onLayout={onLayoutRootView} initialMetrics={initialWindowMetrics}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <RecoilRoot>
-          <BottomSheetModalProvider>
-            <Navigation />
-          </BottomSheetModalProvider>
-        </RecoilRoot>
-      </GestureHandlerRootView>
-    </SafeAreaProvider>
-  );
+  console.log(Platform.OS);
+
+  if (Platform.OS === "android") {
+    return (
+      <SafeAreaProvider
+        onLayout={onLayoutRootView}
+        initialMetrics={initialWindowMetrics}
+      >
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <RecoilRoot>
+            <BottomSheetModalProvider>
+              <Navigation />
+            </BottomSheetModalProvider>
+          </RecoilRoot>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
+    );
+  } else if (Platform.OS === "ios") {
+    return (
+      <SafeAreaProvider
+        onLayout={onLayoutRootView}
+        initialMetrics={initialWindowMetrics}
+      >
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <RecoilRoot>
+            <BottomSheetModalProvider>
+              <StatusBar style="light" />
+              <Navigation />
+            </BottomSheetModalProvider>
+          </RecoilRoot>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
+    );
+  }
 }
