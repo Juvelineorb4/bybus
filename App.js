@@ -19,6 +19,7 @@ import { StatusBar } from "expo-status-bar";
 Amplify.configure(awsconfig);
 SplashScreen.preventAutoHideAsync();
 export default function App() {
+
   const [fontsLoaded] = useFonts({
     thin: require("@/utils/fonts/Montserrat-Thin.ttf"),
     regular: require("@/utils/fonts/Montserrat-Regular.ttf"),
