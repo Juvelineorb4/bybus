@@ -1,4 +1,12 @@
-import { ActivityIndicator, Image, ImageBackground, ScrollView, Text, View, Linking } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  View,
+  Linking,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ViewTicket.module.css";
 import CustomTicket from "@/components/CustomTicket";
@@ -7,17 +15,21 @@ import { CustomButton } from "@/components";
 const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, quantity, tickets, available } = route?.params;
-  const total = quantity * data?.booking?.price;
-  console.log(data.booking)
+  const total =
+    quantity *
+    (data?.booking?.price + data?.booking?.price / data?.booking?.percentage);
+  console.log(data.booking);
   const openWhatsApp = () => {
-    let phoneNumber = '+58 426-5523463'; // Reemplaza esto con el número de teléfono deseado
-    let message = 'Hola, quisiera devolver un ticket que compre'; // Reemplaza esto con el mensaje deseado
-    let url = 'whatsapp://send?text=' + message + '&phone=' + phoneNumber;
+    let phoneNumber = "+58 426-5523463"; // Reemplaza esto con el número de teléfono deseado
+    let message = "Hola, quisiera devolver un ticket que compre"; // Reemplaza esto con el mensaje deseado
+    let url = "whatsapp://send?text=" + message + "&phone=" + phoneNumber;
 
-    Linking.openURL(url).catch(err => console.error('No se pudo abrir WhatsApp', err));
+    Linking.openURL(url).catch((err) =>
+      console.error("No se pudo abrir WhatsApp", err)
+    );
   };
-  console.log("EJELEÑ ", available)
- return (
+  console.log("EJELEÑ ", available);
+  return (
     <ScrollView style={[global.bgWhite]}>
       {/* <ImageBackground
         style={{
@@ -70,36 +82,48 @@ const ViewOrder = ({ navigation, route }) => {
       <Text style={[styles.titleTop, global.mainColor, { paddingLeft: 20 }]}>
         Tu(s) boleto(s)
       </Text>
-      {tickets.length !== 0 ? <View style={styles.ticketContent}>
-        {tickets.map((item, index) => (
-          <CustomTicket
-            data={{
-              data: data.booking,
-              payment: payment,
-              order: order,
-              customer: {
-                name: item?.customer?.fullName,
-                email: item?.customer?.email,
-                id: item?.customer?.ci,
-              },
-              ticket: item?.id,
-            }}
-            key={index}
-          />
-        ))}
-      </View> : <ActivityIndicator size="large" color="#0077B6" style={{marginTop: 50}}/> }
+      {tickets.length !== 0 ? (
+        <View style={styles.ticketContent}>
+          {tickets.map((item, index) => (
+            <CustomTicket
+              data={{
+                data: data.booking,
+                payment: payment,
+                order: order,
+                customer: {
+                  name: item?.customer?.fullName,
+                  email: item?.customer?.email,
+                  id: item?.customer?.ci,
+                },
+                ticket: item?.id,
+              }}
+              key={index}
+            />
+          ))}
+        </View>
+      ) : (
+        <ActivityIndicator
+          size="large"
+          color="#0077B6"
+          style={{ marginTop: 50 }}
+        />
+      )}
       <View style={styles.buttons}>
-        {available ? <CustomButton
-          text={`Devolucion`}
-          handlePress={() => openWhatsApp()}
-          textStyles={[styles.textTickets, global.white]}
-          buttonStyles={[styles.tickets, global.bgBlack]}
-        />: <CustomButton
-        text={`Tus boletos`}
-        handlePress={() => navigation.navigate("Tickets_Tab")}
-        textStyles={[styles.textTickets, global.white]}
-        buttonStyles={[styles.tickets, global.bgBlack]}
-      /> }
+        {available ? (
+          <CustomButton
+            text={`Devolucion`}
+            handlePress={() => openWhatsApp()}
+            textStyles={[styles.textTickets, global.white]}
+            buttonStyles={[styles.tickets, global.bgBlack]}
+          />
+        ) : (
+          <CustomButton
+            text={`Tus boletos`}
+            handlePress={() => navigation.navigate("Tickets_Tab")}
+            textStyles={[styles.textTickets, global.white]}
+            buttonStyles={[styles.tickets, global.bgBlack]}
+          />
+        )}
         <CustomButton
           text={`Terminos y condiciones`}
           textStyles={[styles.textGuaranted, global.white]}

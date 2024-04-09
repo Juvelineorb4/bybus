@@ -1,0 +1,29 @@
+{
+    "project_info": {
+      "project_number": "462609687727",
+      "project_id": "bybus-1c4a7",
+      "storage_bucket": "bybus-1c4a7.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:462609687727:android:b4b840f37d617308fbe05a",
+          "android_client_info": {
+            "package_name": "com.bybus.viajes"
+          }
+        },
+        "oauth_client": [],
+        "api_key": [
+          {
+            "current_key": "AIzaSyA8Hpfx6q0AvSGUmsnP-k0IZtHHbS5t52g"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": []
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

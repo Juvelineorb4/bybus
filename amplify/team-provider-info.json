@@ -27,7 +27,7 @@
         },
         "checkTicketScan": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/checkTicketScan-74797434714e70765745-build.zip"
+          "s3Key": "amplify-builds/checkTicketScan-6332593244726a447964-build.zip"
         },
         "createAdminAgency": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
@@ -47,7 +47,7 @@
         },
         "scheduleBookingAgency": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/scheduleBookingAgency-38676b4f622f4271644e-build.zip"
+          "s3Key": "amplify-builds/scheduleBookingAgency-3557396a48684e484d74-build.zip"
         },
         "sheduleBookingUpdate": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
@@ -64,6 +64,10 @@
       },
       "storage": {
         "s3storagebybus": {}
+      },
+      "api": {
+        "AdminQueries": {},
+        "bybusgraphql": {}
       }
     }
   }

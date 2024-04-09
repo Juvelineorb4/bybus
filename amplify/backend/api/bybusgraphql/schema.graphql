@@ -40,6 +40,7 @@ type AgencySubscription
     rules: [
       { allow: public, provider: iam }
       { allow: private, provider: iam }
+      { allow: private }
       { allow: groups, groups: ["admin", "sp"] }
     ]
   ) {
@@ -464,7 +465,7 @@ type OrderDetail
   customerDocument: String
   customerName: String
   customerEmail: String
-  total: Int
+  total: Float
   isGuest: Boolean
   status: String @default(value: "APPROVED")
   paymentID: ID
@@ -600,6 +601,7 @@ type Query {
 input CheckScanInput {
   ticketID: ID
   bookingID: ID
+  ordenDetailID: ID
 }
 
 input RegisterUserInput {

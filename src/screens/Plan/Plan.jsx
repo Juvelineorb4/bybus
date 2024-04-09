@@ -9,7 +9,7 @@ import { planSearch } from "@/atoms/Modals";
 import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as mutations from "@/graphql/mutations";
-import { Ionicons, EvilIcons  } from '@expo/vector-icons';
+import { Ionicons, EvilIcons } from "@expo/vector-icons";
 
 const Plan = () => {
   const global = require("@/utils/styles/global.js");
@@ -18,7 +18,7 @@ const Plan = () => {
   useEffect(() => {
     const User = async () => {
       const { attributes } = await Auth.currentAuthenticatedUser();
-      console.log(attributes)
+      console.log(attributes);
     };
     User();
   }, []);
@@ -48,13 +48,18 @@ const Plan = () => {
               source={require("@/utils/images/search-big.png")}
             /> */}
             {/* <EvilIcons name="search" size={24} color="black" /> */}
-            <EvilIcons name="search" size={100} color="black" style={{marginVertical: 20}} />
+            <EvilIcons
+              name="search"
+              size={100}
+              color="black"
+              style={{ marginVertical: 20 }}
+            />
             <Text
               style={{
                 fontFamily: "regular",
                 textAlign: "center",
                 fontSize: 24,
-                paddingHorizontal: 20
+                paddingHorizontal: 20,
               }}
             >
               Busca tu proximo viaje

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "viajes",
+    "name": "Bybus",
     "slug": "viajes",
-    "version": "0.1.2",
+    "version": "0.1.8",
     "orientation": "portrait",
     "icon": "./src/utils/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -43,16 +43,19 @@
       ],
       "package": "com.bybus.viajes",
       "adaptiveIcon": {
-        "foregroundImage": "./src/utils/images/icon.png",
+        "foregroundImage": "./src/utils/images/logo_app.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "android.gms.permission.AD_ID",
+        "com.google.android.gms.permission.AD_ID"
       ],
-      "versionCode": 7
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 15
     },
     "web": {
-      "favicon": "./src/utils/images/favicon.png"
+      "favicon": "./src/utils/images/icon.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",
