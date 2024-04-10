@@ -62,7 +62,7 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 6
+          "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
           "EMAIL",
@@ -191,21 +191,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "getTodayTasaCambio": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
-          ],
-          "category": "api",
-          "resourceName": "bybusgraphql"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "preSignInCognito": {
       "build": true,
       "dependsOn": [
@@ -253,43 +238,6 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "tasaCambio": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
-          ],
-          "category": "api",
-          "resourceName": "bybusgraphql"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "updateAgencyCognito": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
-          ],
-          "category": "api",
-          "resourceName": "bybusgraphql"
-        },
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "bybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -377,22 +325,6 @@
         }
       ]
     },
-    "AMPLIFY_function_getTodayTasaCambio_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "getTodayTasaCambio"
-        }
-      ]
-    },
-    "AMPLIFY_function_getTodayTasaCambio_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "getTodayTasaCambio"
-        }
-      ]
-    },
     "AMPLIFY_function_preSignInCognito_deploymentBucketName": {
       "usedBy": [
         {
@@ -438,38 +370,6 @@
         {
           "category": "function",
           "resourceName": "sheduleBookingUpdate"
-        }
-      ]
-    },
-    "AMPLIFY_function_tasaCambio_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "tasaCambio"
-        }
-      ]
-    },
-    "AMPLIFY_function_tasaCambio_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "tasaCambio"
-        }
-      ]
-    },
-    "AMPLIFY_function_updateAgencyCognito_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "updateAgencyCognito"
-        }
-      ]
-    },
-    "AMPLIFY_function_updateAgencyCognito_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "updateAgencyCognito"
         }
       ]
     }
