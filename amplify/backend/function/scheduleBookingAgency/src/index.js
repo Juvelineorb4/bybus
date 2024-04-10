@@ -99,7 +99,8 @@ export const handler = async (event) => {
   const percentage = resultAgency?.data?.getAgency?.percentage;
   let price = parseFloat(booking?.price);
   if (isNaN(price)) throw new Error("PRECIO NO VALIDO");
-  const totalPrice = price + (price * percentage) / 100;
+  // const totalPrice = price + (price * percentage) / 100;
+  const totalPrice = price;
 
   if (reprogram?.is) {
     // Viene una creacion devarios bookings
@@ -120,7 +121,7 @@ export const handler = async (event) => {
       // obtenemos el dia
       const day = moment(initDay).add(index, "days").format("YYYY-MM-DD");
       const aDay = moment(initDay)
-        .add(daysDifference, "days")
+        .add(index + daysDifference, "days")
         .format("YYYY-MM-DD");
       const dayWeek = weekDays[moment(day).isoWeekday() - 1];
       console.log("FECHA DE INCIIO: ", initDay);
@@ -178,6 +179,7 @@ export const handler = async (event) => {
         code,
         ...booking,
         price: totalPrice,
+        percentage: percentage,
         owner: owner,
       },
     });

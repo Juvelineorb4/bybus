@@ -50,6 +50,7 @@ const getBooking = /* GraphQL */ `
           id
           code
           bookingID
+          orderDetailID
           stop
           customerID
           seating
@@ -85,6 +86,15 @@ const getBooking = /* GraphQL */ `
     }
   }
 `;
+const getOrderDetail = /* GraphQL */ `
+  query GetOrderDetail($id: ID!) {
+    getOrderDetail(id: $id) {
+      id
+      status
+      __typename
+    }
+  }
+`;
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
@@ -106,16 +116,23 @@ export const handler = async (event) => {
     const result = await CUSTOM_API_GRAPHQL(getBooking, {
       id: bookingID,
     });
+
     if (result?.data?.getBooking?.status === "ARRIVED")
       throw new Error(`Viaje ya cerrado`);
     const tickets = result?.data?.getBooking?.tickets?.items;
+    console.log("TICKETS: ", tickets);
     const isExistenTIcket = tickets.find(
       (item, index) => item?.id === ticketID
     );
-
-    console.log("TICKETS: ", tickets);
     console.log("Existe el TIcket? ", isExistenTIcket);
     if (!isExistenTIcket) throw new Error("Ticket No existe en este viaje");
+    console.log("ID DE ORDEN DETAIL: ", isExistenTIcket?.orderDetailID);
+    const resultOrder = await CUSTOM_API_GRAPHQL(getOrderDetail, {
+      id: isExistenTIcket?.orderDetailID,
+    });
+    console.log("ORDEN: ", resultOrder);
+    if (resultOrder?.data?.getOrderDetail?.status === "PENDIENTE")
+      throw new Error("Orden del Ticket Pendiente por confirmar pago!.");
     switch (isExistenTIcket?.status) {
       case "BOARDED":
         throw new Error(
