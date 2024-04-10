@@ -154,7 +154,7 @@ type AgencyHistory
       { allow: owner, operations: [read, update] }
       { allow: public, provider: iam }
       { allow: private, provider: iam }
-      { allow: groups, groups: ["admin", "sp"] }
+      { allow: groups, groups: ["admin", "sp","agency"] }
     ]
   ) {
   id: ID!
@@ -402,6 +402,7 @@ type Ticket
   id: ID!
   code: String
   bookingID: ID @index(name: "byBookingToTicket")
+  booking: Booking @belongsTo(fields: ["bookingID"])
   orderDetailID: ID @index(name: "byOrderDetailToTickets")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
