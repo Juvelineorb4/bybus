@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ResultView.module.css";
-import { RouteCard } from "@/components";
+import { CustomButton, RouteCard } from "@/components";
 import { Auth, API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as customQueries from "@/graphql/customQueries";
@@ -36,7 +36,9 @@ const ResultView = ({ data }) => {
           },
         },
       });
-      let array = list.data.listBookings.items.sort((a, b) => new Date(a.departure.date) - new Date(b.departure.date));
+      let array = list.data.listBookings.items.sort(
+        (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
+      );
       setSearch(array);
       setLoading(false);
       const viajesDisponibles = list.data.listBookings.items.filter(
@@ -103,7 +105,7 @@ const ResultView = ({ data }) => {
             (item, index) =>
               item.status === "AVAILABLE" &&
               item.status !== "SOLDOUT" &&
-              fecha2.getTime() <=  new Date(item?.departure?.date).getTime() && (
+              fecha2.getTime() <= new Date(item?.departure?.date).getTime() && (
                 <RouteCard data={item} key={index} />
               )
           )
@@ -112,17 +114,9 @@ const ResultView = ({ data }) => {
             style={{
               flex: 1,
               alignItems: "center",
-              marginTop: 20,
+              marginTop: 0,
             }}
           >
-            <Image
-              style={{
-                width: 100,
-                height: 100,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/search-big.png")}
-            />
             <Text
               style={[
                 {
@@ -134,6 +128,25 @@ const ResultView = ({ data }) => {
             >
               {`No hay viajes disponibles hasta: ${data.arrivalState}, ${data.arrivalCity}`}
             </Text>
+            <Text
+              style={[
+                {
+                  fontFamily: "regular",
+                  textAlign: "center",
+                  marginBottom: 10,
+                  marginTop: 20
+                },
+                global.black,
+              ]}
+            >
+              ¿Quieres que existan viajes para estos destinos?
+            </Text>
+            <CustomButton
+              text={"Comunícanoslo"}
+              // handlePress={handleSubmit(onHandleLogin)}
+              textStyles={[styles.textResult, global.white]}
+              buttonStyles={[styles.result, global.mainBgColor]}
+            />
           </View>
         )}
       </TouchableOpacity>
