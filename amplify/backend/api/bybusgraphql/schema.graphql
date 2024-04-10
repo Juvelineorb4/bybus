@@ -118,6 +118,27 @@ type Agency
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
+enum AgencyStatus {
+  ACTIVO
+  BLOQUEADO
+}
+
+type AgencyHistory
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, update] }
+      { allow: public, provider: iam }
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp","agency"] }
+    ]
+  ) {
+  id: ID!
+  agencyID: ID @index(name: "byAgencyToHistoryAgency")
+  reason: String
+  description: String
+}
+
 type Office
   @model
   @auth(
@@ -357,6 +378,7 @@ type Ticket
   id: ID!
   code: String
   bookingID: ID @index(name: "byBookingToTicket")
+  booking: Booking @belongsTo(fields: ["bookingID"])
   orderDetailID: ID @index(name: "byOrderDetailToTickets")
   stop: ID @index(name: "byStopBookingToTicket")
   customerID: ID
