@@ -82,6 +82,8 @@ type Agency
   ) {
   id: ID
   cognitoID: ID
+  identityID: String
+  image: String
   pin: String
     @auth(
       rules: [
@@ -154,7 +156,7 @@ type AgencyHistory
       { allow: owner, operations: [read, update] }
       { allow: public, provider: iam }
       { allow: private, provider: iam }
-      { allow: groups, groups: ["admin", "sp","agency"] }
+      { allow: groups, groups: ["admin", "sp", "agency"] }
     ]
   ) {
   id: ID!
@@ -297,7 +299,7 @@ type Booking
   ) {
   id: ID!
   status: BookingStatus @default(value: "AVAILABLE")
-  code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
+  code: String! @index(name: "bookingbyCode", queryField: "getBookingbyCode")
   agencyID: ID! @index(name: "byAgencyToBooking")
   agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID! @index(name: "byOfficeToBooking")
@@ -309,14 +311,16 @@ type Booking
     @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
   departureCity: String!
   arrivalCity: String!
-  departure: DepartureArrivalStopFields
-  arrival: DepartureArrivalStopFields
-  stock: Int
-  price: Float
-  percentage: Float
+  departure: DepartureArrivalStopFields!
+  arrival: DepartureArrivalStopFields!
+  stock: Int!
+  price: Float!
+  percentage: Float!
   createdBy: ID
-  driver: String
-  transport: transporType
+  driver: String!
+  transport: transporType!
+  transportParking: String
+  transportFeatures: [String]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 
@@ -586,6 +590,9 @@ type Mutation {
   updateAgencyCognito(input: updateAgencyCognitoInput): String
     @function(name: "updateAgencyCognito-${env}")
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
+  uploadAgencyImage(input: String): String
+    @function(name: "uploadAgencyImage-${env}")
+    @auth(rules: [{ allow: groups, groups: ["agency"] }])
 }
 
 type Query {
@@ -620,4 +627,6 @@ input updateAgencyCognitoInput {
   agencyID: String
   reason: String
   description: String
+  identityID: String
+  base64Image: String
 }

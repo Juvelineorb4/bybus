@@ -98,7 +98,7 @@ export const handler = async (event) => {
   // obtenemos las variables de los input
   const { username, rif, phone, name, agencySubsTableID } =
     event.arguments.input;
-
+  console.log("PARAMS: ", event.arguments.input);
   // creamos el usuario
   const responseAgency = await createAgencyCognito(event.arguments.input);
   if (responseAgency.response === null)

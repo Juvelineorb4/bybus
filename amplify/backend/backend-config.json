@@ -242,6 +242,35 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "triggerContactNotification": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "uploadAgencyImage": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3storagebybus"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -370,6 +399,38 @@
         {
           "category": "function",
           "resourceName": "sheduleBookingUpdate"
+        }
+      ]
+    },
+    "AMPLIFY_function_triggerContactNotification_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "triggerContactNotification"
+        }
+      ]
+    },
+    "AMPLIFY_function_triggerContactNotification_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "triggerContactNotification"
+        }
+      ]
+    },
+    "AMPLIFY_function_uploadAgencyImage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadAgencyImage"
+        }
+      ]
+    },
+    "AMPLIFY_function_uploadAgencyImage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadAgencyImage"
         }
       ]
     }

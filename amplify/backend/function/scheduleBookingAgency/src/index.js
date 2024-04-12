@@ -18,7 +18,7 @@ import { v4 as uuidv4 } from "uuid";
 const GRAPHQL_ENDPOINT = process.env.API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT;
 const AWS_REGION = process.env.REGION || "us-east-1";
 const { Sha256 } = crypto;
-moment.tz.setDefault("America/Caracas");
+// moment.tz.setDefault("America/Caracas");
 
 const createBooking = /* GraphQL */ `
   mutation CreateBooking(
@@ -90,17 +90,80 @@ export const handler = async (event) => {
     2. si la creacion no es para reprogramar entonces se crea un solo viaje 
     3.si no hay que crear varios viajes dependiendo del reprogram.date
   */
-  // Obtenemos los parametros
-  const { owner, reprogram, booking } = JSON.parse(event.arguments.input);
-  const resultAgency = await CUSTOM_API_GRAPHQL(getAgency, {
-    id: booking?.agencyID,
-  });
-  console.log("PORCENTAJE: ", resultAgency);
-  const percentage = resultAgency?.data?.getAgency?.percentage;
-  let price = parseFloat(booking?.price);
-  if (isNaN(price)) throw new Error("PRECIO NO VALIDO");
-  // const totalPrice = price + (price * percentage) / 100;
-  const totalPrice = price;
+  try {
+    // Obtenemos los parametros
+    const { owner, reprogram, booking } = JSON.parse(event.arguments.input);
+    const resultAgency = await CUSTOM_API_GRAPHQL(getAgency, {
+      id: booking?.agencyID,
+    });
+    console.log("PORCENTAJE: ", resultAgency);
+    const percentage = resultAgency?.data?.getAgency?.percentage;
+    let price = parseFloat(booking?.price);
+    if (isNaN(price)) throw new Error("PRECIO NO VALIDO");
+    // const totalPrice = price + (price * percentage) / 100;
+    const totalPrice = price;
+
+    if (reprogram?.is) {
+      // Crear varios viajes
+      // Viene una creacion devarios bookings
+      console.log("Crear varios bookings");
+      // cantidad de viajes
+      const departureDate = moment(booking?.departure?.date).utc(false);
+      console.log("FECHA SALIDA: ", departureDate);
+
+      const scheduleDate = moment(reprogram?.date);
+      console.log("FECHA ULTIMA A PROGRAMA: ", scheduleDate);
+
+      // diferencia de dias entre el inicio del viaje y el ultimo programado
+      const daysSchedule = scheduleDate.diff(departureDate, "days");
+
+      // llamar a funcion crear viajes multiples
+      await MULTIPLE_CREATE_BOOKING(
+        daysSchedule,
+        departureDate,
+        reprogram,
+        weekDays,
+        GENERATE_CODE,
+        CUSTOM_API_GRAPHQL,
+        booking,
+        totalPrice,
+        percentage,
+        owner
+      );
+    } else {
+      // Crear un solo viaje
+      const ID = uuidv4();
+      // obtenemos el codigo del viaje
+      const code = await GENERATE_CODE({ id: ID, booking });
+      const resultCreate = await CUSTOM_API_GRAPHQL(createBooking, {
+        input: {
+          id: ID,
+          code,
+          ...booking,
+          price: totalPrice,
+          percentage: percentage,
+          owner: owner,
+        },
+      });
+      console.log("VIAJE CREADO: ", resultCreate);
+      if (resultCreate?.errors) {
+        throw new Error(`${resultCreate?.errors[0]?.message}`);
+      }
+    }
+
+    return JSON.stringify({
+      statusCode: 200,
+      body: { message: "CREACION DE VIAJES EXITOSO" },
+    });
+  } catch (error) {
+    console.error("Error al llamar a CUSTOM_API_GRAPHQL:", error);
+    // Aquí puedes manejar el error de manera adecuada, por ejemplo:
+    return JSON.stringify({
+      statusCode: 500,
+      message: "Error al crear el/los viajes.",
+      error: error.message, // Aquí puedes usar error.message para obtener el mensaje de error específico.
+    });
+  }
 
   if (reprogram?.is) {
     // Viene una creacion devarios bookings
@@ -168,28 +231,8 @@ export const handler = async (event) => {
   } else {
     // solo se crea uno
     // // creamos el viaje
-
     // obtenemos el id del viaje
-    const ID = uuidv4();
-    // obtenemos el codigo del viaje
-    const code = await GENERATE_CODE({ id: ID, booking });
-    const resultCreate = await CUSTOM_API_GRAPHQL(createBooking, {
-      input: {
-        id: ID,
-        code,
-        ...booking,
-        price: totalPrice,
-        percentage: percentage,
-        owner: owner,
-      },
-    });
-    console.log("RESULTADO UNO: ", resultCreate);
   }
-
-  return JSON.stringify({
-    statusCode: 200,
-    body: "CREACION DE VIAJES EXITOSO",
-  });
 };
 
 const GENERATE_CODE = async (data) => {
@@ -246,4 +289,73 @@ const CUSTOM_API_GRAPHQL = async (query, variables = {}) => {
   const response = await fetch(request);
   const result = await response.json();
   return result;
+};
+
+const MULTIPLE_CREATE_BOOKING = async (
+  daysSchedule,
+  departureDate,
+  reprogram,
+  weekDays,
+  GENERATE_CODE,
+  CUSTOM_API_GRAPHQL,
+  booking,
+  totalPrice,
+  percentage,
+  owner
+) => {
+  const arrivalDate = moment(booking?.arrival?.date).utc(false)
+  console.log("FECHA LLEGADAL ", arrivalDate);
+  // diferencias entre arrival y departuee
+  const daysDifference = arrivalDate.diff(departureDate, "days");
+  console.log("DIAS PROGRAMADOS: ", daysSchedule);
+  console.log("DIAS ARRAY: ", reprogram?.week);
+  console.log("DIFERENCIA de dias entre partida y llegada: ", daysDifference);
+  const initDay = departureDate.format("YYYY-MM-DD");
+
+  for (let index = 0; index < daysSchedule + 1; index++) {
+    console.log("NRO BUCLE: ", index);
+    const day = moment(initDay).add(index, "days").format("YYYY-MM-DD");
+    console.log("DIA Salida: ", day);
+    const aDay = moment(initDay)
+      .add(index + daysDifference, "days")
+      .format("YYYY-MM-DD");
+    console.log("diA LLEGADA: ", aDay);
+    const dayWeek = weekDays[moment(day).isoWeekday() - 1];
+    // console.log("NUMERO DE SEMANA: ", day.day());
+    console.log("DIA DE LA SEMANA: ", dayWeek);
+    if (reprogram?.week.includes(dayWeek)) {
+      console.log("DIA A PROGRAMAR: ", dayWeek);
+      const ID = uuidv4();
+
+      // conseguimso el codigo
+      const code = await GENERATE_CODE({ id: ID, booking });
+      const inputParams = {
+        id: ID,
+        agencyID: booking?.agencyID,
+        officeID: booking?.officeID,
+        transport: booking?.transport,
+        driver: booking?.driver,
+        code: code,
+        departure: {
+          ...booking?.departure,
+          date: day,
+        },
+        arrival: {
+          ...booking?.arrival,
+          date: aDay,
+        },
+        departureCity: booking?.departureCity,
+        arrivalCity: booking?.arrivalCity,
+        stock: booking?.stock,
+        price: totalPrice,
+        percentage: percentage,
+        createdBy: booking?.createdBy,
+        owner: owner,
+      };
+      const result = await CUSTOM_API_GRAPHQL(createBooking, {
+        input: inputParams,
+      });
+      console.log("CODIGO DE VIAJE: ", code);
+    }
+  }
 };
