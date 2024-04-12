@@ -4,6 +4,13 @@
 	AUTH_BYBUS_USERPOOLID
 	ENV
 	REGION
+	STORAGE_S3STORAGEBYBUS_BUCKETNAME
+Amplify Params - DO NOT EDIT */ /* Amplify Params - DO NOT EDIT
+	API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT
+	API_BYBUSGRAPHQL_GRAPHQLAPIIDOUTPUT
+	AUTH_BYBUS_USERPOOLID
+	ENV
+	REGION
 Amplify Params - DO NOT EDIT */
 
 import {
@@ -18,13 +25,16 @@ import { defaultProvider } from "@aws-sdk/credential-provider-node";
 import { SignatureV4 } from "@aws-sdk/signature-v4";
 import { HttpRequest } from "@aws-sdk/protocol-http";
 import { default as fetch, Request } from "node-fetch";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import nodeMailer from "nodemailer";
-
+import { v4 as uuidv4 } from "uuid";
 // configuraicons de end point
 const GRAPHQL_ENDPOINT = process.env.API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT;
 const COGNITO_USERPOOL = process.env.AUTH_BYBUS_USERPOOLID;
 const AWS_REGION = process.env.AWS_REGION || "us-east-1";
+const BUCKET_NAME = process.env.STORAGE_S3STORAGEBYBUS_BUCKETNAME;
 const { Sha256 } = crypto;
+const s3 = new S3Client({ region: AWS_REGION });
 /************************************ */
 // configuracion de cognito
 const cognito = new CognitoIdentityProvider({
@@ -94,25 +104,54 @@ const generarClaveTemporal = (longitud) => {
 
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
-
+  let resultS3 = "";
   // obtenemos las variables de los input
-  const { username, rif, phone, name, agencySubsTableID } =
-    event.arguments.input;
+  const {
+    username,
+    rif,
+    phone,
+    name,
+    agencySubsTableID,
+    base64Image,
+    identityID,
+  } = event.arguments.input;
   console.log("PARAMS: ", event.arguments.input);
   // creamos el usuario
   const responseAgency = await createAgencyCognito(event.arguments.input);
   if (responseAgency.response === null)
     return JSON.stringify({ message: "Error al crear Usuario en Cognito" });
+  const agencyID = uuidv4();
+  // Agregamos imagen al s3 si suben imagen
+
+  if (base64Image !== "") {
+    const base64Data = new Buffer.from(
+      base64Image.replace(/^data:image\/\w+;base64,/, ""),
+      "base64"
+    );
+    const type = base64Image.split(";")[0].split("/")[1];
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: `public/agency/${agencyID}/profile.${type}`, // type is not required
+      Body: base64Data,
+      ContentEncoding: "base64", // required
+      ContentType: `image/${type}`, // required. Notice the back ticks
+    };
+    resultS3 = await PUT_OBJECT_S3(params);
+  }
+  console.log("QUE HAY EN S3: ", resultS3);
 
   // // creamos el usuario en dynamodb
   const responseCreateAgency = await CUSTOM_API_GRAPHQL(createAgency, {
     input: {
+      id: agencyID,
       cognitoID: responseAgency.response.User.Username,
       name: name,
       rif: rif,
       email: username,
       phone: phone,
       owner: responseAgency.response.User.Username,
+      identityID,
+      image: resultS3?.url ? resultS3?.url : "",
     },
   });
   // le asignamos al usuario en cognito el agencyID
@@ -363,4 +402,23 @@ const SEND_EMAIL_ZOHO = async (username, claveTemporal) => {
       }
     });
   });
+};
+
+const PUT_OBJECT_S3 = async (params) => {
+  const command = new PutObjectCommand(params);
+
+  try {
+    const response = await s3.send(command);
+    console.log(response);
+    return {
+      url: `https://${BUCKET_NAME}.s3.amazonaws.com/${params?.Key}`,
+      response: response,
+    };
+  } catch (err) {
+    console.log("ERROR AR CARGAR IMAGEN", err);
+    return {
+      url: null,
+      response: null,
+    };
+  }
 };

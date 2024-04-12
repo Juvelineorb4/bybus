@@ -31,7 +31,7 @@
         },
         "createAdminAgency": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/createAdminAgency-4d454959754b7671646b-build.zip"
+          "s3Key": "amplify-builds/createAdminAgency-6a5750644c6442596f47-build.zip"
         },
         "createUserCognito": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
@@ -55,7 +55,7 @@
         },
         "uploadAgencyImage": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/uploadAgencyImage-6a743474616a797a794a-build.zip"
+          "s3Key": "amplify-builds/uploadAgencyImage-6e4f2b46644752625a53-build.zip"
         },
         "getTodayTasaCambio": {
           "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
