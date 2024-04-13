@@ -74,5 +74,63 @@
         "bybusgraphql": {}
       }
     }
+  },
+  "test": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bybus-test-205019-authRole",
+      "UnauthRoleArn": "arn:aws:iam::086563672363:role/amplify-bybus-test-205019-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::086563672363:role/amplify-bybus-test-205019-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bybus-test-205019-deployment",
+      "UnauthRoleName": "amplify-bybus-test-205019-unauthRole",
+      "StackName": "amplify-bybus-test-205019",
+      "StackId": "arn:aws:cloudformation:us-east-1:086563672363:stack/amplify-bybus-test-205019/cee02800-f92f-11ee-aeb7-0eb71a9451a7",
+      "AmplifyAppId": "dft9u5phdbugq"
+    },
+    "categories": {
+      "auth": {
+        "bybus": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries43e2835c": {},
+        "calculeBookingStock": {},
+        "checkTicketScan": {},
+        "createAdminAgency": {},
+        "createUserCognito": {},
+        "getTodayTasaCambio": {},
+        "preSignInCognito": {},
+        "scheduleBookingAgency": {},
+        "sheduleBookingUpdate": {},
+        "tasaCambio": {},
+        "triggerContactNotification": {},
+        "uploadAgencyImage": {},
+        "bybus": {},
+        "bybusgraphql": {},
+        "s3storagebybus": {}
+      }
+    }
+  },
+  "produ": {
+    "categories": {
+      "function": {
+        "AdminQueries43e2835c": {},
+        "calculeBookingStock": {},
+        "checkTicketScan": {},
+        "createAdminAgency": {},
+        "createUserCognito": {},
+        "getTodayTasaCambio": {},
+        "preSignInCognito": {},
+        "scheduleBookingAgency": {},
+        "sheduleBookingUpdate": {},
+        "tasaCambio": {},
+        "triggerContactNotification": {},
+        "uploadAgencyImage": {},
+        "bybus": {},
+        "bybusgraphql": {},
+        "s3storagebybus": {}
+      }
+    },
+    "awscloudformation": {}
   }
 }
