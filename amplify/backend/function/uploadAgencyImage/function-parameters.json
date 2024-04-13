@@ -6,11 +6,12 @@
         "Mutation"
       ]
     },
-    "auth": {
-      "bybus": [
+    "storage": {
+      "s3storagebybus": [
         "create",
         "read",
-        "update"
+        "update",
+        "delete"
       ]
     }
   },

@@ -592,7 +592,7 @@ type Mutation {
     @auth(rules: [{ allow: groups, groups: ["admin", "sp"] }])
   uploadAgencyImage(input: String): String
     @function(name: "uploadAgencyImage-${env}")
-    @auth(rules: [{ allow: groups, groups: ["agency"] }])
+    @auth(rules: [{ allow: groups, groups: ["sp"] }])
 }
 
 type Query {
@@ -619,6 +619,8 @@ input RegisterUserInput {
   phone: String!
   agencySubsTableID: String!
   percentage: String!
+  identityID: String
+  base64Image: String
 }
 
 input updateAgencyCognitoInput {
@@ -627,6 +629,4 @@ input updateAgencyCognitoInput {
   agencyID: String
   reason: String
   description: String
-  identityID: String
-  base64Image: String
 }
