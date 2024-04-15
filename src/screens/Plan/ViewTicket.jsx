@@ -14,7 +14,10 @@ import { BackHandler } from "react-native";
 const ViewTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, customer, quantity } = route.params;
-  const total = quantity * (data?.price + data?.price / data?.percentage);
+  const total = (
+    quantity *
+    (data?.price + data?.price * (data?.percentage / 100))
+  ).toFixed(2);
   console.log("HOLA: ", data.price, data.percentage);
   let tickets = data?.tickets?.items?.filter(
     (item) => item.orderDetailID === order

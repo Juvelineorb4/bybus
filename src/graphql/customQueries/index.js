@@ -15,6 +15,8 @@ export const listBookings = /* GraphQL */ `
         transport
         departureCity
         arrivalCity
+        transportParking
+        transportFeatures
         departure {
           time
           date
@@ -196,6 +198,7 @@ export const getAgency = /* GraphQL */ `
     getAgency(id: $id) {
       name
       percentage
+      image
     }
   }
 `;
@@ -237,6 +240,8 @@ export const getUserOrderDetails = /* GraphQL */ `
             officeID
             percentage
             departureCity
+            transportParking
+            transportFeatures
             arrivalCity
             departure {
               time

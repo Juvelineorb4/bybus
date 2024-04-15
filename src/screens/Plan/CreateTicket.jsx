@@ -24,7 +24,6 @@ const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const userSelected = useRecoilValue(userSelectedPlan);
   const { booking } = route.params;
-  console.log(booking);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
   const [maxAge, setMaxAge] = useState(false);
@@ -32,6 +31,8 @@ const CreateTicket = ({ navigation, route }) => {
   const [user, setUser] = useState(null);
   const [quantityCustomer, setQuantityCustomer] = useState([]);
   const [stockVerify, setStockVerify] = useState(booking?.stock);
+
+
   const onHandleOrder = async (data) => {
     navigation.navigate("PaymentTicket", {
       booking: booking,
@@ -43,6 +44,8 @@ const CreateTicket = ({ navigation, route }) => {
       customerTicket: quantityCustomer,
     });
   };
+
+
   const User = async () => {
     const { attributes } = await Auth.currentAuthenticatedUser();
     setUser(attributes);
@@ -69,7 +72,6 @@ const CreateTicket = ({ navigation, route }) => {
     }).subscribe({
       next: ({ provider, value: { data } }) => {
         setStockVerify(data?.onUpdateBooking?.stock);
-        console.log(data);
       },
       error: (error) => console.warn(error),
     });
@@ -228,8 +230,8 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.optionTariff}>
               <Text style={[styles.subtitleTariff, global.black]}>Total:</Text>
               <Text style={[styles.priceTariff, global.black]}>
-                {(booking.price + booking.price / booking.percentage) *
-                  quantity}
+                {((booking.price + (booking.price * booking.percentage / 100)) *
+                  quantity).toFixed(2)}
                 $
               </Text>
               <View style={styles.buttonsTariff}>
@@ -245,7 +247,6 @@ const CreateTicket = ({ navigation, route }) => {
                   onPress={() => {
                     if (quantity === 1) return;
                     setQuantity(quantity - 1);
-                    console.log("resta", quantity);
                     setQuantityCustomer((e) => {
                       let nuevoArreglo = [...e];
                       nuevoArreglo.pop();
@@ -268,7 +269,6 @@ const CreateTicket = ({ navigation, route }) => {
                   onPress={() => {
                     if (quantity === 4 || stockVerify === quantity) return;
                     setQuantity(quantity + 1);
-                    console.log("suma", quantity);
                     setQuantityCustomer([
                       ...quantityCustomer,
                       {
@@ -477,10 +477,12 @@ const CreateTicket = ({ navigation, route }) => {
           handlePress={() => {
             if (!maxAge) {
               setErrorAge(true);
+              console.log('aqui')
               return;
             }
+            console.log('aqui 2')
             setErrorAge(false);
-            handleSubmit(onHandleOrder);
+            onHandleOrder()
           }}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.mainBgColor]}

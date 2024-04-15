@@ -36,15 +36,43 @@ const ResultView = ({ data }) => {
           },
         },
       });
-      let array = list.data.listBookings.items.sort(
+      const fetchAllBookings = async (nextToken, result = []) => {
+        const response = await API.graphql({
+          query: customQueries.listBookings,
+        authMode: "AWS_IAM",
+        variables: {
+          filter: {
+            and: [
+              { departureCity: { eq: data.departureCity } },
+              { arrivalCity: { eq: data.arrivalCity } },
+            ],
+          },
+          nextToken
+        },
+        });
+  
+        const items = response.data.listBookings.items;
+        result.push(...items);
+  
+        if (response.data.listBookings.nextToken) {
+          return fetchAllBookings(response.data.listBookings.nextToken, result);
+        }
+  
+        return result;
+      };
+  
+      const allBookings = await fetchAllBookings();
+
+
+      let array = allBookings.sort(
         (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
       );
       setSearch(array);
       setLoading(false);
-      const viajesDisponibles = list.data.listBookings.items.filter(
+      const viajesDisponibles = allBookings.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
-      const viajesPartidos = list.data.listBookings.items.filter(
+      const viajesPartidos = allBookings.filter(
         (viaje) => viaje.status === "DEPARTED"
       );
 

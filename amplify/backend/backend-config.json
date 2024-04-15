@@ -62,7 +62,7 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": 6
         },
         "signupAttributes": [
           "EMAIL",
@@ -165,6 +165,13 @@
           ],
           "category": "auth",
           "resourceName": "bybus"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3storagebybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -183,6 +190,21 @@
         {
           "attributes": [
             "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getTodayTasaCambio": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
@@ -243,7 +265,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "triggerContactNotification": {
+    "tasaCambio": {
       "build": true,
       "dependsOn": [
         {
@@ -253,6 +275,50 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "updateAgencyCognito": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "uploadAgencyImage": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3storagebybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -340,6 +406,22 @@
         }
       ]
     },
+    "AMPLIFY_function_getTodayTasaCambio_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getTodayTasaCambio"
+        }
+      ]
+    },
+    "AMPLIFY_function_getTodayTasaCambio_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getTodayTasaCambio"
+        }
+      ]
+    },
     "AMPLIFY_function_preSignInCognito_deploymentBucketName": {
       "usedBy": [
         {
@@ -388,19 +470,51 @@
         }
       ]
     },
-    "AMPLIFY_function_triggerContactNotification_deploymentBucketName": {
+    "AMPLIFY_function_tasaCambio_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "triggerContactNotification"
+          "resourceName": "tasaCambio"
         }
       ]
     },
-    "AMPLIFY_function_triggerContactNotification_s3Key": {
+    "AMPLIFY_function_tasaCambio_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "triggerContactNotification"
+          "resourceName": "tasaCambio"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateAgencyCognito_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateAgencyCognito"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateAgencyCognito_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateAgencyCognito"
+        }
+      ]
+    },
+    "AMPLIFY_function_uploadAgencyImage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadAgencyImage"
+        }
+      ]
+    },
+    "AMPLIFY_function_uploadAgencyImage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadAgencyImage"
         }
       ]
     }

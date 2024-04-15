@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.3.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifyAdmin\",\"createdWith\":\"12.8.0-rc.2398b84d61e1899.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -27,6 +27,10 @@
     "apibybusgraphqlGraphQLAPIEndpointOutput": {
       "Type": "String",
       "Default": "apibybusgraphqlGraphQLAPIEndpointOutput"
+    },
+    "storages3storagebybusBucketName": {
+      "Type": "String",
+      "Default": "storages3storagebybusBucketName"
     }
   },
   "Conditions": {
@@ -90,6 +94,9 @@
             },
             "API_BYBUSGRAPHQL_GRAPHQLAPIENDPOINTOUTPUT": {
               "Ref": "apibybusgraphqlGraphQLAPIEndpointOutput"
+            },
+            "STORAGE_S3STORAGEBYBUS_BUCKETNAME": {
+              "Ref": "storages3storagebybusBucketName"
             }
           }
         },
@@ -351,6 +358,45 @@
                       {
                         "Ref": "authbybusUserPoolId"
                       }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": "s3:ListBucket",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storages3storagebybusBucketName"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storages3storagebybusBucketName"
+                      },
+                      "/*"
                     ]
                   ]
                 }

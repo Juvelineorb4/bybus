@@ -58,7 +58,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
               marginTop: 15,
             }}
           >
-            Bancaribe (0114)
+            Bancamiga (0172)
           </Text>
         </View>
 
@@ -72,7 +72,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
             Documento:
           </Text>
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity onPress={() => copyToClipboard("26992319")}>
+            <TouchableOpacity onPress={() => copyToClipboard("504932558")}>
               <Feather name="clipboard" size={18} color="black" />
             </TouchableOpacity>
             <Text
@@ -82,7 +82,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 marginLeft: 5,
               }}
             >
-              V-26992319
+              J-504932558
             </Text>
           </View>
         </View>
@@ -97,7 +97,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
             Telefono:
           </Text>
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity onPress={() => copyToClipboard("04145683397")}>
+            <TouchableOpacity onPress={() => copyToClipboard("04265523463")}>
               <Feather name="clipboard" size={18} color="black" />
             </TouchableOpacity>
             <Text
@@ -107,7 +107,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 marginLeft: 5,
               }}
             >
-              04145683397
+              04265523463
             </Text>
           </View>
         </View>

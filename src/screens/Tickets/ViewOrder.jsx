@@ -15,10 +15,11 @@ import { CustomButton } from "@/components";
 const ViewOrder = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const { order, payment, data, quantity, tickets, available } = route?.params;
-  const total =
+  const total = (
     quantity *
-    (data?.booking?.price + data?.booking?.price / data?.booking?.percentage);
-  console.log(data.booking);
+    (data?.booking?.price +
+      (data?.booking?.price * data?.booking?.percentage) / 100)
+  ).toFixed(2);
   const openWhatsApp = () => {
     let phoneNumber = "+58 426-5523463"; // Reemplaza esto con el número de teléfono deseado
     let message = "Hola, quisiera devolver un ticket que compre"; // Reemplaza esto con el mensaje deseado
