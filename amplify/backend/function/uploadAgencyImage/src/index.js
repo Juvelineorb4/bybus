@@ -5,6 +5,7 @@
 	REGION
 	STORAGE_S3STORAGEBYBUS_BUCKETNAME
 Amplify Params - DO NOT EDIT */
+
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import crypto from "@aws-crypto/sha256-js";
 import { defaultProvider } from "@aws-sdk/credential-provider-node";

@@ -62,7 +62,7 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": 6
         },
         "signupAttributes": [
           "EMAIL",
@@ -280,7 +280,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "triggerContactNotification": {
+    "updateAgencyCognito": {
       "build": true,
       "dependsOn": [
         {
@@ -290,6 +290,13 @@
           ],
           "category": "api",
           "resourceName": "bybusgraphql"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bybus"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -479,19 +486,19 @@
         }
       ]
     },
-    "AMPLIFY_function_triggerContactNotification_deploymentBucketName": {
+    "AMPLIFY_function_updateAgencyCognito_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "triggerContactNotification"
+          "resourceName": "updateAgencyCognito"
         }
       ]
     },
-    "AMPLIFY_function_triggerContactNotification_s3Key": {
+    "AMPLIFY_function_updateAgencyCognito_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "triggerContactNotification"
+          "resourceName": "updateAgencyCognito"
         }
       ]
     },

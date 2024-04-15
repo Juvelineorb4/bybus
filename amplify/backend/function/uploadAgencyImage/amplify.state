@@ -4,6 +4,6 @@
   "useLegacyBuild": true,
   "defaultEditorFile": "src\\index.js",
   "scripts": {
-    "build": "npm.cmd install --no-bin-links --production"
+    "build": "npm install --no-bin-links --production"
   }
 }
