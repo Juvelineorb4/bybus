@@ -19,7 +19,7 @@ const PaymentTicket = ({ navigation, route }) => {
   const [stockVerify, setStockVerify] = useState(booking?.stock);
   const [refresh, setRefresh] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
-  const total = tickets * (booking.price + (booking.price/booking.percentage));
+  const total = (tickets * (booking.price + (booking.price * booking.percentage/100))).toFixed(2);
 
   console.log(total);
   console.log(booking);

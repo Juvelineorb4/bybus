@@ -7,13 +7,13 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "@/utils/styles/ResultView.module.css";
-import { RouteCard } from "@/components";
-import { Auth, API } from "aws-amplify";
+import { CustomButton, RouteCard } from "@/components";
+import { API } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as customQueries from "@/graphql/customQueries";
 import * as mutations from "@/graphql/mutations";
-import { loadingSearch } from "@/atoms/Modals";
-import { useRecoilState } from "recoil";
+import { loadingSearch, userAuthenticated } from "@/atoms/Modals";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const ResultView = ({ data }) => {
   const global = require("@/utils/styles/global.js");
@@ -22,6 +22,8 @@ const ResultView = ({ data }) => {
   const [timeline, setTimeline] = useState(false);
   const [qAvailable, setQAvailable] = useState(0);
   const [loading, setLoading] = useRecoilState(loadingSearch);
+  const userAuth = useRecoilValue(userAuthenticated);
+  const [sendReport, setSendReport] = useState(false);
   const Bookings = async () => {
     try {
       const list = await API.graphql({
@@ -36,13 +38,42 @@ const ResultView = ({ data }) => {
           },
         },
       });
-      let array = list.data.listBookings.items.sort((a, b) => new Date(a.departure.date) - new Date(b.departure.date));
+      const fetchAllBookings = async (nextToken, result = []) => {
+        const response = await API.graphql({
+          query: customQueries.listBookings,
+          authMode: "AWS_IAM",
+          variables: {
+            filter: {
+              and: [
+                { departureCity: { eq: data.departureCity } },
+                { arrivalCity: { eq: data.arrivalCity } },
+              ],
+            },
+            nextToken,
+          },
+        });
+
+        const items = response.data.listBookings.items;
+        result.push(...items);
+
+        if (response.data.listBookings.nextToken) {
+          return fetchAllBookings(response.data.listBookings.nextToken, result);
+        }
+
+        return result;
+      };
+
+      const allBookings = await fetchAllBookings();
+
+      let array = allBookings.sort(
+        (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
+      );
       setSearch(array);
       setLoading(false);
-      const viajesDisponibles = list.data.listBookings.items.filter(
+      const viajesDisponibles = allBookings.filter(
         (viaje) => viaje.status === "AVAILABLE"
       );
-      const viajesPartidos = list.data.listBookings.items.filter(
+      const viajesPartidos = allBookings.filter(
         (viaje) => viaje.status === "DEPARTED"
       );
 
@@ -79,6 +110,23 @@ const ResultView = ({ data }) => {
     console.log(search);
   }, [data]);
 
+  const sendReportTrips = async () => {
+    setSendReport(true);
+
+    try {
+      // const apiName = "api-gateway"; // replace this with your api name.
+      // const path = "/sendTripReport"; //replace this with the path you have configured on your API
+      // const myInit = {
+      //   body: {}, // replace this with attributes you need
+      //   headers: {}, // OPTIONAL
+      // };
+      // const result = await API.post(apiName, path, myInit);
+      console.log("REPORT RESULT: ", API.Auth._config.API);
+    } catch (error) {
+      console.log("ERROR AL ENVIAR REPORTE: ", error);
+    }
+    setSendReport(false);
+  };
   return (
     <View style={styles.container}>
       <Text style={[styles.title, global.black]}>
@@ -103,7 +151,7 @@ const ResultView = ({ data }) => {
             (item, index) =>
               item.status === "AVAILABLE" &&
               item.status !== "SOLDOUT" &&
-              fecha2.getTime() <=  new Date(item?.departure?.date).getTime() && (
+              fecha2.getTime() <= new Date(item?.departure?.date).getTime() && (
                 <RouteCard data={item} key={index} />
               )
           )
@@ -112,17 +160,9 @@ const ResultView = ({ data }) => {
             style={{
               flex: 1,
               alignItems: "center",
-              marginTop: 20,
+              marginTop: 0,
             }}
           >
-            <Image
-              style={{
-                width: 100,
-                height: 100,
-                resizeMode: "cover",
-              }}
-              source={require("@/utils/images/search-big.png")}
-            />
             <Text
               style={[
                 {
@@ -134,6 +174,26 @@ const ResultView = ({ data }) => {
             >
               {`No hay viajes disponibles hasta: ${data.arrivalState}, ${data.arrivalCity}`}
             </Text>
+            <Text
+              style={[
+                {
+                  fontFamily: "regular",
+                  textAlign: "center",
+                  marginBottom: 10,
+                  marginTop: 20,
+                },
+                global.black,
+              ]}
+            >
+              ¿Quieres que existan viajes para estos destinos?
+            </Text>
+            <CustomButton
+              disabled={sendReport}
+              text={sendReport ? <ActivityIndicator /> : "Comunícanoslo"}
+              handlePress={sendReportTrips}
+              textStyles={[styles.textResult, global.white]}
+              buttonStyles={[styles.result, global.mainBgColor]}
+            />
           </View>
         )}
       </TouchableOpacity>

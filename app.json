@@ -15,15 +15,13 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/405c0b8f-173f-4074-9680-cad80d10c052"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "runtimeVersion": "exposdk:48.0.0",
+      "runtimeVersion": "exposdk:49.0.0",
       "supportsTablet": true
     },
     "android": {
-      "runtimeVersion": "exposdk:48.0.0",
+      "runtimeVersion": "exposdk:49.0.0",
       "intentFilters": [
         {
           "action": "VIEW",
@@ -35,10 +33,7 @@
               "pathPrefix": "/"
             }
           ],
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         }
       ],
       "package": "com.bybus.viajes",
@@ -59,11 +54,7 @@
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": [
-        "js",
-        "jsx",
-        "css"
-      ]
+      "sourceExts": ["js", "jsx", "css"]
     },
     "plugins": [
       [
@@ -83,6 +74,13 @@
           "ios": {
             "deploymentTarget": "13.0"
           }
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./src/utils/images/logo_notifi.png",
+          "color": "#ffffff"
         }
       ]
     ],

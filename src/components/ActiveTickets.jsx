@@ -96,7 +96,7 @@ const ActiveTickets = ({ route }) => {
           No tienes tickets activos
         </Text>
       )}
-      {checkStatus && (
+      {/* {checkStatus && (
         <Text
           style={[
             {
@@ -110,7 +110,7 @@ const ActiveTickets = ({ route }) => {
         >
           No tienes tickets activos
         </Text>
-      )}
+      )} */}
     </ScrollView>
   );
 };

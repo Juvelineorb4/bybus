@@ -14,12 +14,27 @@ import { Amplify } from "aws-amplify";
 import awsconfig from "./src/aws-exports";
 import { Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
-
-// Configuracion de Amplify
-Amplify.configure(awsconfig);
+import * as Constants from "expo-constants";
+import { api } from "@/utils/constants/api.jsx";
+const ENDPOINT =
+  Constants?.AppOwnership?.Expo === "expo"
+    ? api?.stage_endpoint?.dev
+    : api?.stage_endpoint?.prod;
+console.log("ENDPOINT: ", ENDPOINT);
+Amplify.configure({
+  ...awsconfig,
+  API: {
+    endpoints: [
+      {
+        name: "api-gateway",
+        endpoint: "https://pnr67971jf.execute-api.us-east-1.amazonaws.com/stage",
+      },
+    ],
+  },
+});
+console.log(Amplify.Auth._config.API);
 SplashScreen.preventAutoHideAsync();
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     thin: require("@/utils/fonts/Montserrat-Thin.ttf"),
     regular: require("@/utils/fonts/Montserrat-Regular.ttf"),

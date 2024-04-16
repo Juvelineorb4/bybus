@@ -12,30 +12,40 @@ import { ScrollView } from "react-native-gesture-handler";
 import { API, Storage, Auth } from "aws-amplify";
 import * as queries from "@/graphql/queries";
 import * as mutation from "@/graphql/customMutations";
-import { MaterialCommunityIcons, Ionicons, Octicons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  Octicons,
+  Feather,
+} from "@expo/vector-icons";
 import * as subscriptions from "@/graphql/customSubscriptions";
 
 const CreateTicket = ({ navigation, route }) => {
   const global = require("@/utils/styles/global.js");
   const userSelected = useRecoilValue(userSelectedPlan);
   const { booking } = route.params;
-  console.log(booking);
   const { control, handleSubmit } = useForm();
   const [quantity, setQuantity] = useState(1);
+  const [maxAge, setMaxAge] = useState(false);
+  const [errorAge, setErrorAge] = useState(false);
   const [user, setUser] = useState(null);
   const [quantityCustomer, setQuantityCustomer] = useState([]);
   const [stockVerify, setStockVerify] = useState(booking?.stock);
+
+
   const onHandleOrder = async (data) => {
     navigation.navigate("PaymentTicket", {
       booking: booking,
       tickets: quantity,
       customer: {
-          fullName: user.name,
-          email: user.email,
+        fullName: user.name,
+        email: user.email,
       },
       customerTicket: quantityCustomer,
     });
   };
+
+
   const User = async () => {
     const { attributes } = await Auth.currentAuthenticatedUser();
     setUser(attributes);
@@ -62,12 +72,10 @@ const CreateTicket = ({ navigation, route }) => {
     }).subscribe({
       next: ({ provider, value: { data } }) => {
         setStockVerify(data?.onUpdateBooking?.stock);
-        console.log(data);
       },
       error: (error) => console.warn(error),
     });
     return () => {
-
       updateSub.unsubscribe();
     };
   }, []);
@@ -222,7 +230,9 @@ const CreateTicket = ({ navigation, route }) => {
             <View style={styles.optionTariff}>
               <Text style={[styles.subtitleTariff, global.black]}>Total:</Text>
               <Text style={[styles.priceTariff, global.black]}>
-                {(booking.price + (booking.price/booking.percentage)) * quantity}$
+                {((booking.price + (booking.price * booking.percentage / 100)) *
+                  quantity).toFixed(2)}
+                $
               </Text>
               <View style={styles.buttonsTariff}>
                 <TouchableOpacity
@@ -237,7 +247,6 @@ const CreateTicket = ({ navigation, route }) => {
                   onPress={() => {
                     if (quantity === 1) return;
                     setQuantity(quantity - 1);
-                    console.log("resta", quantity);
                     setQuantityCustomer((e) => {
                       let nuevoArreglo = [...e];
                       nuevoArreglo.pop();
@@ -260,7 +269,6 @@ const CreateTicket = ({ navigation, route }) => {
                   onPress={() => {
                     if (quantity === 4 || stockVerify === quantity) return;
                     setQuantity(quantity + 1);
-                    console.log("suma", quantity);
                     setQuantityCustomer([
                       ...quantityCustomer,
                       {
@@ -300,11 +308,15 @@ const CreateTicket = ({ navigation, route }) => {
             <Text style={[styles.titleTariff, global.mainColor]}>
               Ticket a nombre de:
             </Text>
-            <Text style={{
-              fontFamily: 'bold',
-              fontSize: 14,
-              marginBottom: 5
-            }}>Nombre completo</Text>
+            <Text
+              style={{
+                fontFamily: "bold",
+                fontSize: 14,
+                marginBottom: 5,
+              }}
+            >
+              Nombre completo
+            </Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.fullName}
@@ -327,11 +339,15 @@ const CreateTicket = ({ navigation, route }) => {
                 }}
               />
             </View>
-            <Text style={{
-              fontFamily: 'bold',
-              fontSize: 14,
-              marginBottom: 5
-            }}>Cedula</Text>
+            <Text
+              style={{
+                fontFamily: "bold",
+                fontSize: 14,
+                marginBottom: 5,
+              }}
+            >
+              Cedula
+            </Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.ci}
@@ -354,11 +370,15 @@ const CreateTicket = ({ navigation, route }) => {
                 }}
               />
             </View>
-            <Text style={{
-              fontFamily: 'bold',
-              fontSize: 14,
-              marginBottom: 5
-            }}>Correo electronico</Text>
+            <Text
+              style={{
+                fontFamily: "bold",
+                fontSize: 14,
+                marginBottom: 5,
+              }}
+            >
+              Correo electronico
+            </Text>
             <View style={[styles.inputContainer, global.bgWhiteSoft]}>
               <TextInput
                 value={item.email}
@@ -416,12 +436,68 @@ const CreateTicket = ({ navigation, route }) => {
         ))}
       </View>
       <View style={styles.button}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            // justifyContent: 'flex-end',
+            marginBottom: 15,
+          }}
+        >
+          <TouchableOpacity
+            style={[
+              {
+                width: 20,
+                height: 20,
+                borderColor: "#1f1f1f",
+                borderWidth: 0.7,
+                borderRadius: 5,
+                backgroundColor: !maxAge ? "#ffffff" : "#0077B6",
+              },
+            ]}
+            onPress={() => {
+              setMaxAge(!maxAge);
+            }}
+          >
+            {maxAge && <Feather name="check" size={18} color="white" />}
+          </TouchableOpacity>
+          <Text
+            style={{
+              fontFamily: "medium",
+              fontSize: 14,
+              marginLeft: 5,
+            }}
+          >
+            Tengo 18 años de edad
+          </Text>
+        </View>
+
         <CustomButton
           text={`Continuar`}
-          handlePress={handleSubmit(onHandleOrder)}
+          handlePress={() => {
+            if (!maxAge) {
+              setErrorAge(true);
+              console.log('aqui')
+              return;
+            }
+            console.log('aqui 2')
+            setErrorAge(false);
+            onHandleOrder()
+          }}
           textStyles={[styles.textContinue, global.white]}
           buttonStyles={[styles.continue, global.mainBgColor]}
         />
+        {errorAge && !maxAge && <Text
+          style={{
+            fontFamily: "medium",
+            fontSize: 13,
+            color: "red",
+            marginTop: -10,
+            marginBottom: 5
+          }}
+        >
+          Tienes que aceptar tener 18 años para continuar
+        </Text>}
       </View>
     </ScrollView>
   );
