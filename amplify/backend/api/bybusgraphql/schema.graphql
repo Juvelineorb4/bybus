@@ -1,3 +1,17 @@
+type PagoMivil
+  @model
+  @auth(
+    rules: [
+      { allow: private, provider: iam }
+      { allow: groups, groups: ["admin", "sp"] }
+    ]
+  ) {
+  id: ID!
+  documento: String!
+  telefono: String!
+  codigoBanco: String!
+  nombreBanco: String!
+}
 type TasaCambio
   @model
   @auth(
@@ -299,26 +313,28 @@ type Booking
   ) {
   id: ID!
   status: BookingStatus @default(value: "AVAILABLE")
-  code: String! @index(name: "bookingbyCode", queryField: "getBookingbyCode")
-  agencyID: ID! @index(name: "byAgencyToBooking")
+  code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
+  agencyID: ID
+    @index(name: "byAgencyToBooking", queryField: "getBookingbyAgencyID")
   agency: Agency @belongsTo(fields: ["agencyID"])
-  officeID: ID! @index(name: "byOfficeToBooking")
+  officeID: ID
+    @index(name: "byOfficeToBooking", queryField: "listBookingbyOfficeID")
   office: Office @belongsTo(fields: ["officeID"])
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
   tickets: [Ticket] @hasMany(indexName: "byBookingToTicket", fields: ["id"])
   stops: [StopBooking]
     @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
-  departureCity: String!
-  arrivalCity: String!
-  departure: DepartureArrivalStopFields!
-  arrival: DepartureArrivalStopFields!
-  stock: Int!
-  price: Float!
-  percentage: Float!
+  departureCity: String
+  arrivalCity: String
+  departure: DepartureArrivalStopFields
+  arrival: DepartureArrivalStopFields
+  stock: Int
+  price: Float
+  percentage: Float
   createdBy: ID
-  driver: String!
-  transport: transporType!
+  driver: String
+  transport: transporType
   transportParking: String
   transportFeatures: [String]
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])

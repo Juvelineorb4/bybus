@@ -69,9 +69,6 @@ export const handler = async (event) => {
       );
 
       console.log("RESUTLADO DE GUARDADO:", responseUpdateAgencyAgency);
-      if (responseUpdateAgencyAgency?.errors) {
-        throw new Error(`${responseUpdateAgencyAgency?.errors[0]?.message}`);
-      }
     }
     return JSON.stringify({
       statusCode: 200,
