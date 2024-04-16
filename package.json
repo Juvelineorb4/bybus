@@ -11,7 +11,7 @@
     "@expo/webpack-config": "^18.0.1",
     "@gorhom/bottom-sheet": "^4.4.5",
     "@react-native-async-storage/async-storage": "^1.17.11",
-    "@react-native-community/datetimepicker": "6.7.3",
+    "@react-native-community/datetimepicker": "7.2.0",
     "@react-native-community/netinfo": "9.3.7",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-native-picker/picker": "^2.4.8",
@@ -20,8 +20,7 @@
     "@react-navigation/native-stack": "^6.9.9",
     "@react-navigation/stack": "^6.3.12",
     "amazon-cognito-identity-js": "^6.1.2",
-    "aws-amplify": "^5.3.11",
-    "aws-amplify-react-native": "^7.0.2",
+    "aws-amplify": "^5.3.18",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "expo": "^49.0.23",
@@ -30,6 +29,7 @@
     "expo-clipboard": "~4.1.2",
     "expo-constants": "~14.2.1",
     "expo-device": "~5.2.1",
+    "expo-font": "~11.4.0",
     "expo-image-picker": "~14.1.1",
     "expo-notifications": "~0.18.1",
     "expo-sharing": "~11.2.2",
@@ -57,8 +57,7 @@
     "react-native-view-shot": "3.5.0",
     "react-native-web": "~0.18.9",
     "react-navigation": "^4.4.4",
-    "recoil": "^0.7.6",
-    "expo-font": "~11.4.0"
+    "recoil": "^0.7.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

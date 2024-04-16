@@ -2,8 +2,7 @@
   "permissions": {
     "api": {
       "bybusgraphql": [
-        "Query",
-        "Mutation"
+        "Query"
       ]
     }
   },

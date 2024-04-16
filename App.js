@@ -10,14 +10,15 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { RecoilRoot } from "recoil";
 // exportaciones amplify
-import { Amplify } from "aws-amplify";
-import awsconfig from "./src/aws-exports";
+
 import { Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Amplify, API } from "aws-amplify";
+import awsconfig from "./src/aws-exports";
 import * as Constants from "expo-constants";
 import { api } from "@/utils/constants/api.jsx";
 const ENDPOINT =
-  Constants?.AppOwnership?.Expo === "expo"
+  Constants?.AppOwnership?.Expo === ""
     ? api?.stage_endpoint?.dev
     : api?.stage_endpoint?.prod;
 console.log("ENDPOINT: ", ENDPOINT);
@@ -26,13 +27,13 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "api-gateway",
-        endpoint: "https://pnr67971jf.execute-api.us-east-1.amazonaws.com/stage",
+        name: "apibybus",
+        endpoint: ENDPOINT,
       },
     ],
   },
 });
-console.log(Amplify.Auth._config.API);
+
 SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts({

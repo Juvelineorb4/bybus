@@ -16,7 +16,7 @@ import { tasaBCV } from "@/atoms/Modals";
 import { useRecoilValue } from "recoil";
 
 const ActiveTicketsCard = ({ data, route, available }) => {
-  console.log("toy aqui", data.total);
+  // console.log("toy aqui", data.total);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
@@ -234,7 +234,7 @@ const ActiveTicketsCard = ({ data, route, available }) => {
                     alignItems: "center",
                   }}
                 >
-                  {console.log("aqui", features)}
+                  {/* {console.log("aqui", features)} */}
                   <Ionicons
                     name="snow-sharp"
                     size={18}
