@@ -130,7 +130,7 @@ const ResultView = ({ data }) => {
       console.log("REPORT RESULT: ", result);
       setViewReport(false);
     } catch (error) {
-      console.log("ERROR AL ENVIAR REPORTE: ", error.message);
+      console.log("ERROR AL ENVIAR REPORTE: ", error);
       setViewReport(false);
     }
     setSendReport(false);
