@@ -1,17 +1,3 @@
-type PagoMivil
-  @model
-  @auth(
-    rules: [
-      { allow: private, provider: iam }
-      { allow: groups, groups: ["admin", "sp"] }
-    ]
-  ) {
-  id: ID!
-  documento: String!
-  telefono: String!
-  codigoBanco: String!
-  nombreBanco: String!
-}
 type TasaCambio
   @model
   @auth(
@@ -314,11 +300,9 @@ type Booking
   id: ID!
   status: BookingStatus @default(value: "AVAILABLE")
   code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
-  agencyID: ID
-    @index(name: "byAgencyToBooking", queryField: "getBookingbyAgencyID")
+  agencyID: ID @index(name: "byAgencyToBooking", queryField: "getBookingbyAgencyID")
   agency: Agency @belongsTo(fields: ["agencyID"])
-  officeID: ID
-    @index(name: "byOfficeToBooking", queryField: "listBookingbyOfficeID")
+  officeID: ID @index(name: "byOfficeToBooking", queryField: "listBookingbyOfficeID")
   office: Office @belongsTo(fields: ["officeID"])
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
