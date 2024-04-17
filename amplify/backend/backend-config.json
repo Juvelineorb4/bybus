@@ -280,6 +280,21 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "triggerContactNotification": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "bybusgraphql"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "updateAgencyCognito": {
       "build": true,
       "dependsOn": [
@@ -483,6 +498,22 @@
         {
           "category": "function",
           "resourceName": "tasaCambio"
+        }
+      ]
+    },
+    "AMPLIFY_function_triggerContactNotification_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "triggerContactNotification"
+        }
+      ]
+    },
+    "AMPLIFY_function_triggerContactNotification_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "triggerContactNotification"
         }
       ]
     },

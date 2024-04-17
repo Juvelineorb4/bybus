@@ -64,6 +64,10 @@
         "uploadAgencyImage": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/uploadAgencyImage-2b4b5a53643249514a57-build.zip"
+        },
+        "triggerContactNotification": {
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/triggerContactNotification-774d2b43742b71375359-build.zip"
         }
       },
       "storage": {

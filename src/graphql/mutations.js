@@ -591,6 +591,57 @@ export const deleteTicket = /* GraphQL */ `
     }
   }
 `;
+export const createPagoMivil = /* GraphQL */ `
+  mutation CreatePagoMivil(
+    $input: CreatePagoMivilInput!
+    $condition: ModelPagoMivilConditionInput
+  ) {
+    createPagoMivil(input: $input, condition: $condition) {
+      id
+      documento
+      telefono
+      codigoBanco
+      nombreBanco
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updatePagoMivil = /* GraphQL */ `
+  mutation UpdatePagoMivil(
+    $input: UpdatePagoMivilInput!
+    $condition: ModelPagoMivilConditionInput
+  ) {
+    updatePagoMivil(input: $input, condition: $condition) {
+      id
+      documento
+      telefono
+      codigoBanco
+      nombreBanco
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deletePagoMivil = /* GraphQL */ `
+  mutation DeletePagoMivil(
+    $input: DeletePagoMivilInput!
+    $condition: ModelPagoMivilConditionInput
+  ) {
+    deletePagoMivil(input: $input, condition: $condition) {
+      id
+      documento
+      telefono
+      codigoBanco
+      nombreBanco
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const createTasaCambio = /* GraphQL */ `
   mutation CreateTasaCambio(
     $input: CreateTasaCambioInput!

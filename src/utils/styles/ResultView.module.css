@@ -53,3 +53,17 @@
   border-radius: 15px;
 }
 
+.result {
+  text-align: center;
+  width: 100%;
+  padding: 20px 10px;
+  /* background-color: #1a1528; */
+  border-radius: 16px;
+}
+
+.textResult {
+  text-align: center;
+  /* color: white; */
+  font-size: 14px;
+  font-family: "bold";
+}

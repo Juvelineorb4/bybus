@@ -16,7 +16,7 @@ const ActiveTickets = ({ route }) => {
   const onHandlePayment = async (data) => {
     try {
       const { attributes } = await Auth.currentAuthenticatedUser();
-      console.log("QUIERO ESTOS: ", attributes);
+
       const list = await API.graphql({
         query: queries.getUserOrderDetails,
         authMode: "AMAZON_COGNITO_USER_POOLS",
@@ -26,14 +26,14 @@ const ActiveTickets = ({ route }) => {
       });
 
       setListOrders(list.data.getUser.orders.items);
+
       const checkOrders = list.data.getUser.orders.items.filter(
         (item) =>
-          item.booking.status === "SOLDOUT" ||
-          item.booking.status === "AVAILABLE" ||
-          item.booking.status === "BOARDING"
+          item.booking?.status === "SOLDOUT" ||
+          item.booking?.status === "AVAILABLE" ||
+          item.booking?.status === "BOARDING"
       );
-      console.log(checkOrders.length)
-      console.log(checkOrders)
+
       if (checkOrders.length === 0) setCheckStatus(true);
     } catch (error) {
       console.log(error);
@@ -41,7 +41,6 @@ const ActiveTickets = ({ route }) => {
   };
   useEffect(() => {
     onHandlePayment();
-    console.log(checkStatus);
   }, [route]);
 
   return (
@@ -70,9 +69,9 @@ const ActiveTickets = ({ route }) => {
       {listOrders.length !== 0 ? (
         listOrders.map(
           (item, index) =>
-            (item.booking.status === "SOLDOUT" ||
-              item.booking.status === "AVAILABLE" ||
-              item.booking.status === "BOARDING") && (
+            (item.booking?.status === "SOLDOUT" ||
+              item.booking?.status === "AVAILABLE" ||
+              item.booking?.status === "BOARDING") && (
               <ActiveTicketsCard
                 key={index}
                 data={item}
@@ -96,7 +95,7 @@ const ActiveTickets = ({ route }) => {
           No tienes tickets activos
         </Text>
       )}
-      {checkStatus && (
+      {/* {checkStatus && (
         <Text
           style={[
             {
@@ -110,7 +109,7 @@ const ActiveTickets = ({ route }) => {
         >
           No tienes tickets activos
         </Text>
-      )}
+      )} */}
     </ScrollView>
   );
 };
