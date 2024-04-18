@@ -10,16 +10,32 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import { RecoilRoot } from "recoil";
 // exportaciones amplify
-import { Amplify } from "aws-amplify";
-import awsconfig from "./src/aws-exports";
+
 import { Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Amplify, API } from "aws-amplify";
+import awsconfig from "./src/aws-exports";
+import * as Constants from "expo-constants";
+import { api } from "@/utils/constants/api.jsx";
+const ENDPOINT =
+  Constants?.AppOwnership?.Expo === ""
+    ? api?.stage_endpoint?.dev
+    : api?.stage_endpoint?.prod;
+console.log("ENDPOINT: ", ENDPOINT);
+Amplify.configure({
+  ...awsconfig,
+  API: {
+    endpoints: [
+      {
+        name: "apibybus",
+        endpoint: ENDPOINT,
+      },
+    ],
+  },
+});
 
-// Configuracion de Amplify
-Amplify.configure(awsconfig);
 SplashScreen.preventAutoHideAsync();
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     thin: require("@/utils/fonts/Montserrat-Thin.ttf"),
     regular: require("@/utils/fonts/Montserrat-Regular.ttf"),

@@ -3,7 +3,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { routeSearch } from "@/atoms/Modals";
 import { useRecoilState } from "recoil";
-import { Octicons } from '@expo/vector-icons';
+import { Octicons } from "@expo/vector-icons";
 
 const CustomTimeDatePicker = ({ styled = {}, state }) => {
   const [newDate, setNewDate] = useState(new Date());

@@ -16,7 +16,7 @@ import { tasaBCV } from "@/atoms/Modals";
 import { useRecoilValue } from "recoil";
 
 const ActiveTicketsCard = ({ data, route, available }) => {
-  console.log("toy aqui", data.total);
+  // console.log("toy aqui", data.total);
   const global = require("@/utils/styles/global.js");
   const navigation = useNavigation();
   const [agency, setAgency] = useState(null);
@@ -234,11 +234,11 @@ const ActiveTicketsCard = ({ data, route, available }) => {
                     alignItems: "center",
                   }}
                 >
-                  {console.log("aqui", features)}
+                  {/* {console.log("aqui", features)} */}
                   <Ionicons
                     name="snow-sharp"
                     size={18}
-                    color={features.includes("AIRE") ? "#0077B6" : "#1f1f1f"}
+                    color={features?.includes("AIRE") ? "#0077B6" : "#1f1f1f"}
                     style={{
                       opacity: features.includes("AIRE") ? 1.0 : 0.3,
                     }}
@@ -246,25 +246,25 @@ const ActiveTicketsCard = ({ data, route, available }) => {
                   <MaterialCommunityIcons
                     name="human-male-female"
                     size={20}
-                    color={features.includes("BANO") ? "#0077B6" : "#1f1f1f"}
+                    color={features?.includes("BANO") ? "#0077B6" : "#1f1f1f"}
                     style={{
-                      opacity: features.includes("BANO") ? 1.0 : 0.3,
+                      opacity: features?.includes("BANO") ? 1.0 : 0.3,
                     }}
                   />
                   <Entypo
                     name="power-plug"
                     size={20}
-                    color={features.includes("ENCHUFE") ? "#0077B6" : "#1f1f1f"}
+                    color={features?.includes("ENCHUFE") ? "#0077B6" : "#1f1f1f"}
                     style={{
-                      opacity: features.includes("ENCHUFE") ? 1.0 : 0.3,
+                      opacity: features?.includes("ENCHUFE") ? 1.0 : 0.3,
                     }}
                   />
                   <Ionicons
                     name="wifi"
                     size={20}
-                    color={features.includes("WIFI") ? "#0077B6" : "#1f1f1f"}
+                    color={features?.includes("WIFI") ? "#0077B6" : "#1f1f1f"}
                     style={{
-                      opacity: features.includes("WIFI") ? 1.0 : 0.3,
+                      opacity: features?.includes("WIFI") ? 1.0 : 0.3,
                     }}
                   />
                 </View>
