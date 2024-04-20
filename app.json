@@ -52,7 +52,7 @@
         "com.google.android.gms.permission.AD_ID"
       ],
       "googleServicesFile": "./google-services.json",
-      "versionCode": 20
+      "versionCode": 21
     },
     "web": {
       "favicon": "./src/utils/images/icon.png"
