@@ -331,10 +331,7 @@ const MULTIPLE_CREATE_BOOKING = async (
       const code = await GENERATE_CODE({ id: ID, booking });
       const inputParams = {
         id: ID,
-        agencyID: booking?.agencyID,
-        officeID: booking?.officeID,
-        transport: booking?.transport,
-        driver: booking?.driver,
+        ...booking,
         code: code,
         departure: {
           ...booking?.departure,
@@ -344,12 +341,8 @@ const MULTIPLE_CREATE_BOOKING = async (
           ...booking?.arrival,
           date: aDay,
         },
-        departureCity: booking?.departureCity,
-        arrivalCity: booking?.arrivalCity,
-        stock: booking?.stock,
         price: totalPrice,
         percentage: percentage,
-        createdBy: booking?.createdBy,
         owner: owner,
       };
       const result = await CUSTOM_API_GRAPHQL(createBooking, {

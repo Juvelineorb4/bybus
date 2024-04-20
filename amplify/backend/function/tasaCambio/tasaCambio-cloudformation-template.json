@@ -103,12 +103,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bybusLambdaRole4de270f7",
+            "bybusLambdaRoleb1d63fbd",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bybusLambdaRole4de270f7",
+                  "bybusLambdaRoleb1d63fbd",
                   "-",
                   {
                     "Ref": "env"
