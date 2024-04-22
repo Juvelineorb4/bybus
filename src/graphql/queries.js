@@ -6,42 +6,6 @@ export const getTodayTasaCambio = /* GraphQL */ `
     getTodayTasaCambio
   }
 `;
-export const getPagoMivil = /* GraphQL */ `
-  query GetPagoMivil($id: ID!) {
-    getPagoMivil(id: $id) {
-      id
-      documento
-      telefono
-      codigoBanco
-      nombreBanco
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listPagoMivils = /* GraphQL */ `
-  query ListPagoMivils(
-    $filter: ModelPagoMivilFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPagoMivils(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        documento
-        telefono
-        codigoBanco
-        nombreBanco
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
 export const getTasaCambio = /* GraphQL */ `
   query GetTasaCambio($id: ID!) {
     getTasaCambio(id: $id) {
@@ -1436,15 +1400,15 @@ export const listEmployees = /* GraphQL */ `
     }
   }
 `;
-export const employeesByAgencyID = /* GraphQL */ `
-  query EmployeesByAgencyID(
+export const listEmployeesByAgency = /* GraphQL */ `
+  query ListEmployeesByAgency(
     $agencyID: ID!
     $sortDirection: ModelSortDirection
     $filter: ModelEmployeeFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    employeesByAgencyID(
+    listEmployeesByAgency(
       agencyID: $agencyID
       sortDirection: $sortDirection
       filter: $filter
@@ -2799,6 +2763,176 @@ export const listBookingbyOfficeID = /* GraphQL */ `
   ) {
     listBookingbyOfficeID(
       officeID: $officeID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        status
+        code
+        agencyID
+        agency {
+          id
+          cognitoID
+          identityID
+          image
+          pin
+          name
+          rif
+          email
+          phone
+          percentage
+          status
+          history {
+            nextToken
+            __typename
+          }
+          officies {
+            nextToken
+            __typename
+          }
+          employees {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        officeID
+        office {
+          id
+          agencyID
+          name
+          state
+          city
+          address
+          email
+          phone
+          status
+          employees {
+            nextToken
+            __typename
+          }
+          transports {
+            nextToken
+            __typename
+          }
+          bookings {
+            nextToken
+            __typename
+          }
+          owner
+          createdAt
+          updatedAt
+          __typename
+        }
+        customers {
+          items {
+            id
+            fullName
+            ci
+            email
+            bookingID
+            ticketID
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        tickets {
+          items {
+            id
+            code
+            bookingID
+            orderDetailID
+            stop
+            customerID
+            seating
+            status
+            description
+            url
+            owner
+            createdAt
+            updatedAt
+            stopBookingTicketsId
+            orderDetailTicketsId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        stops {
+          items {
+            id
+            bookingID
+            price
+            owner
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        departureCity
+        arrivalCity
+        departure {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+          __typename
+        }
+        stock
+        price
+        percentage
+        createdBy
+        driver
+        transport
+        transportParking
+        transportFeatures
+        owner
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const listbookingsByCityD = /* GraphQL */ `
+  query ListbookingsByCityD(
+    $departureCity: String!
+    $arrivalCity: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelBookingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listbookingsByCityD(
+      departureCity: $departureCity
+      arrivalCity: $arrivalCity
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit

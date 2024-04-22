@@ -215,7 +215,8 @@ type Employee
   phone: String
   pin: String
   type: EmployeeType!
-  agencyID: ID @index(name: "byAgencyToEmployee")
+  agencyID: ID
+    @index(name: "byAgencyToEmployee", queryField: "listEmployeesByAgency")
   agency: Agency @belongsTo(fields: ["agencyID"])
   officeID: ID @index(name: "byOfficeToEmployee")
   office: Office @belongsTo(fields: ["officeID"])
@@ -300,9 +301,11 @@ type Booking
   id: ID!
   status: BookingStatus @default(value: "AVAILABLE")
   code: String @index(name: "bookingbyCode", queryField: "getBookingbyCode")
-  agencyID: ID @index(name: "byAgencyToBooking", queryField: "getBookingbyAgencyID")
+  agencyID: ID
+    @index(name: "byAgencyToBooking", queryField: "getBookingbyAgencyID")
   agency: Agency @belongsTo(fields: ["agencyID"])
-  officeID: ID @index(name: "byOfficeToBooking", queryField: "listBookingbyOfficeID")
+  officeID: ID
+    @index(name: "byOfficeToBooking", queryField: "listBookingbyOfficeID")
   office: Office @belongsTo(fields: ["officeID"])
   customers: [Customer]
     @hasMany(indexName: "byBookingToCustomer", fields: ["id"])
@@ -310,6 +313,11 @@ type Booking
   stops: [StopBooking]
     @hasMany(indexName: "byBookingToStopBooking", fields: ["id"])
   departureCity: String
+    @index(
+      name: "listbookingsByCityD"
+      sortKeyFields: ["arrivalCity"]
+      queryField: "listbookingsByCityD"
+    )
   arrivalCity: String
   departure: DepartureArrivalStopFields
   arrival: DepartureArrivalStopFields

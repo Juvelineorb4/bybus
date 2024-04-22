@@ -51,7 +51,7 @@
         },
         "sheduleBookingUpdate": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/sheduleBookingUpdate-38632b48614c45316e75-build.zip"
+          "s3Key": "amplify-builds/sheduleBookingUpdate-6e6a5830626257376b2f-build.zip"
         },
         "tasaCambio": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
@@ -59,7 +59,7 @@
         },
         "triggerContactNotification": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/triggerContactNotification-774d2b43742b71375359-build.zip"
+          "s3Key": "amplify-builds/triggerContactNotification-77744d586a485a786433-build.zip"
         },
         "updateAgencyCognito": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
@@ -72,6 +72,10 @@
       },
       "storage": {
         "s3storagebybus": {}
+      },
+      "api": {
+        "AdminQueries": {},
+        "bybusgraphql": {}
       }
     }
   }

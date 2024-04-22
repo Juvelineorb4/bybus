@@ -26,64 +26,65 @@ const ResultView = ({ data }) => {
   const [sendReport, setSendReport] = useState(false);
   const [viewReport, setViewReport] = useState(true);
   const Bookings = async () => {
+    console.log("SE PRESIONO PARA BUSCAR ", data);
     try {
-      const list = await API.graphql({
-        query: customQueries.listBookings,
-        authMode: "AWS_IAM",
-        variables: {
-          filter: {
-            and: [
-              { departureCity: { eq: data.departureCity } },
-              { arrivalCity: { eq: data.arrivalCity } },
-            ],
-          },
-        },
-      });
-      const fetchAllBookings = async (nextToken, result = []) => {
+      const fetchAllBookings = async (nextToken = null, result = []) => {
+        console.log("BUSCANDO INFO");
         const response = await API.graphql({
-          query: customQueries.listBookings,
+          query: customQueries.listbookingsByCityD,
           authMode: "AWS_IAM",
           variables: {
-            filter: {
-              and: [
-                { departureCity: { eq: data.departureCity } },
-                { arrivalCity: { eq: data.arrivalCity } },
-              ],
-            },
+            departureCity: data.departureCity,
+            arrivalCity: { eq: data.arrivalCity },
             nextToken,
           },
         });
-
-        const items = response.data.listBookings.items;
+        console.log(response);
+        const items = response.data.listbookingsByCityD.items;
         result.push(...items);
+        let array = result.sort(
+          (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
+        );
+        setSearch(array);
 
-        if (response.data.listBookings.nextToken) {
-          return fetchAllBookings(response.data.listBookings.nextToken, result);
+        const viajesDisponibles = result.filter(
+          (viaje) => viaje.status === "AVAILABLE"
+        );
+        const viajesPartidos = result.filter(
+          (viaje) => viaje.status === "DEPARTED"
+        );
+
+        const cantidadDisponibles = viajesDisponibles.length;
+        const cantidadPartidos = viajesPartidos.length;
+        setQAvailable(cantidadDisponibles);
+        setQDeparted(cantidadPartidos);
+        if (response.data.listbookingsByCityD.nextToken) {
+          return fetchAllBookings(response.data.listbookingsByCityD.nextToken, result);
         }
 
         return result;
       };
-
-      const allBookings = await fetchAllBookings();
-
-      let array = allBookings.sort(
-        (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
-      );
-      setSearch(array);
+      console.log("SI LLEGUE AQUI");
+      await fetchAllBookings();
+      console.log("SI TERMINE");
+      // let array = allBookings.sort(
+      //   (a, b) => new Date(a.departure.date) - new Date(b.departure.date)
+      // );
+      // setSearch(array);
       setLoading(false);
-      const viajesDisponibles = allBookings.filter(
-        (viaje) => viaje.status === "AVAILABLE"
-      );
-      const viajesPartidos = allBookings.filter(
-        (viaje) => viaje.status === "DEPARTED"
-      );
+      // const viajesDisponibles = allBookings.filter(
+      //   (viaje) => viaje.status === "AVAILABLE"
+      // );
+      // const viajesPartidos = allBookings.filter(
+      //   (viaje) => viaje.status === "DEPARTED"
+      // );
 
-      const cantidadDisponibles = viajesDisponibles.length;
-      const cantidadPartidos = viajesPartidos.length;
-      setQAvailable(cantidadDisponibles);
-      setQDeparted(cantidadPartidos);
+      // const cantidadDisponibles = viajesDisponibles.length;
+      // const cantidadPartidos = viajesPartidos.length;
+      // setQAvailable(cantidadDisponibles);
+      // setQDeparted(cantidadPartidos);
     } catch (error) {
-      console.log(error);
+      console.log("ERROR EN BUSCQUEDA DE BOOKINGS: ", error);
     }
   };
   let fecha = new Date();
@@ -99,14 +100,11 @@ const ResultView = ({ data }) => {
     fecha1 = new Date(dateToday);
     fecha2 = new Date(data?.date);
     if (fecha2.getTime() > fecha1.getTime()) {
-     
       setTimeline(false);
     } else if (fecha2.getTime() < fecha1.getTime()) {
       setTimeline(true);
-    
     } else if (fecha2.getTime() === fecha1.getTime()) {
       setTimeline(false);
-      
     }
 
     setViewReport(true);
@@ -127,7 +125,7 @@ const ResultView = ({ data }) => {
       };
 
       const result = await API.post(api, path, params);
-      console.log("REPORT RESULT: ", result);
+
       setViewReport(false);
     } catch (error) {
       console.log("ERROR AL ENVIAR REPORTE: ", error);

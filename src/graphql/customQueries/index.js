@@ -49,6 +49,67 @@ export const listBookings = /* GraphQL */ `
   }
 `;
 
+export const listbookingsByCityD = /* GraphQL */ `
+  query ListbookingsByCityD(
+    $departureCity: String!
+    $arrivalCity: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelBookingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listbookingsByCityD(
+      departureCity: $departureCity
+      arrivalCity: $arrivalCity
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ){
+      items {
+        id
+        status
+        code
+        agencyID
+        officeID
+        percentage
+        transport
+        departureCity
+        arrivalCity
+        transportParking
+        transportFeatures
+        departure {
+          time
+          date
+          city
+          state
+          address
+        }
+        arrival {
+          time
+          date
+          city
+          state
+          address
+        }
+        stock
+        price
+        tickets {
+          items {
+            id
+          }
+        }
+        driver
+        transport
+        createdBy
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+
 export const listOrderDetails = /* GraphQL */ `
   query ListOrderDetails(
     $filter: ModelOrderDetailFilterInput
