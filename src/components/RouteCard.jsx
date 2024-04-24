@@ -237,7 +237,7 @@ const RouteCard = ({ data }) => {
                   alignItems: "center",
                 }}
               >
-                {console.log("aqui", features)}
+                {/* {console.log("aqui", features)} */}
                 <Ionicons
                   name="snow-sharp"
                   size={18}

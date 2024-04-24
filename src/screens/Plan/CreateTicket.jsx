@@ -477,10 +477,10 @@ const CreateTicket = ({ navigation, route }) => {
           handlePress={() => {
             if (!maxAge) {
               setErrorAge(true);
-              console.log('aqui')
+              // console.log('aqui')
               return;
             }
-            console.log('aqui 2')
+            // console.log('aqui 2')
             setErrorAge(false);
             onHandleOrder()
           }}

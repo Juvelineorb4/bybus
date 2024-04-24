@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "api": {
+      "bybusgraphql": [
+        "Query",
+        "Mutation"
+      ]
+    },
+    "storage": {
+      "s3storagebybus": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
