@@ -123,6 +123,7 @@ const RouteCard = ({ data }) => {
                     width: 32,
                     height: 32,
                     resizeMode: "cover",
+                    borderRadius: 32
                   }}
                   source={{ uri: agency?.image }}
                 />
