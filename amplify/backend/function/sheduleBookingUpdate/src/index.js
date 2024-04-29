@@ -78,45 +78,18 @@ const updateBooking = /* GraphQL */ `
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
   let bodyresponse = "";
-  const fetchBookingsAvailables = async (nextToken, result = []) => {
-    const response = await CUSTOM_API_GRAPHQL(listBookings, {
-      filter: {
-        or: [{ status: { eq: "AVAILABLE" } }, { status: { eq: "SOLDOUT" } }],
-      },
-      nextToken,
-    });
-    console.log("RESPUESTA: ", response)
-    const items = response.data.listBookings.items;
-    result.push(...items);
-
-    if (response.data.listBookings.nextToken) {
-      return fetchBookingsAvailables(response.data.listBookings.nextToken, result);
-    }
-
-    return result;
-  };
-  const fetchBookingsBoarding = async (nextToken, result = []) => {
-    const response = await CUSTOM_API_GRAPHQL(listBookings, {
-      filter: { status: { eq: "BOARDING" } },
-      nextToken,
-    });
-
-    const items = response.data.listBookings.items;
-    result.push(...items);
-
-    if (response.data.listBookings.nextToken) {
-      return fetchBookingsBoarding(response.data.listBookings.nextToken, result);
-    }
-
-    return result;
-  };
-
-  const allBookingsAvalaibles = await fetchBookingsAvailables();
-  const allBookingsBoarding = await fetchBookingsBoarding();
+  const response = await CUSTOM_API_GRAPHQL(listBookings, {
+    filter: {
+      or: [{ status: { eq: "AVAILABLE" } }, { status: { eq: "SOLDOUT" } }],
+    },
+  });
+  const response2 = await CUSTOM_API_GRAPHQL(listBookings, {
+    filter: { status: { eq: "BOARDING" } },
+  });
   // Obtiene la fecha y hora actual en formato ISO 8601
-  console.log("BOOKINGS AVA: ", allBookingsAvalaibles);
+  console.log("RESPONSE: ", response.data.listBookings.items);
 
-  for (const item of allBookingsAvalaibles) {
+  for (const item of response?.data?.listBookings?.items) {
     // formamos la hora de la base de dtaos con date and time como objecto moment
     const departure = item.departure;
     const departureDatetime = moment(
@@ -126,9 +99,11 @@ export const handler = async (event) => {
     // Compara con la fecha y hora actual
     const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
 
+    console.log("Hora Servidor: ", now);
+    console.log("Hora DB: ", departureDatetime);
     // Calcula la diferencia en minutos entre la hora del servidor y la hora de la tarea
     const diffInMinutes = departureDatetime.diff(now, "minutes");
-
+    console.log("Diferencia de minutos: ", diffInMinutes);
     if (diffInMinutes <= 17) {
       await CUSTOM_API_GRAPHQL(updateBooking, {
         input: {
@@ -139,7 +114,7 @@ export const handler = async (event) => {
     }
   }
 
-  for (const item of allBookingsBoarding) {
+  for (const item of response2?.data?.listBookings?.items) {
     // formamos la hora de la base de dtaos con date and time como objecto moment
     const arrival = item.arrival;
     const arrivalDatatime = moment(
@@ -149,9 +124,10 @@ export const handler = async (event) => {
     // Compara con la fecha y hora actual
     const now = moment().format("YYYY-MM-DDTHH:mm:ssZ");
 
+    console.log("Hora DB ARRIVAL: ", arrivalDatatime);
     // Calcula la diferencia en minutos entre la hora del servidor y la hora de la tarea
     const diffInMinutes = arrivalDatatime.diff(now, "minutes");
-
+    console.log("Diferencia de minutos entre ahora y Arrival: ", diffInMinutes);
     if ((diffInMinutes) => 0 || diffInMinutes <= 1) {
       await CUSTOM_API_GRAPHQL(updateBooking, {
         input: {
@@ -162,7 +138,10 @@ export const handler = async (event) => {
     }
   }
 
-  if (allBookingsAvalaibles?.length > 0 || allBookingsBoarding.length > 0) {
+  if (
+    response?.data?.listBookings?.items > 0 ||
+    response2?.data?.listBookings?.items
+  ) {
     bodyresponse = `Elemento actualizados`;
   } else {
     bodyresponse = `No hay elementos para actualizar`;

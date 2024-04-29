@@ -16,8 +16,8 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Verification code: {####} Bybus App",
     "emailVerificationMessage": "Verification code: {####} Bybus App",
-    "defaultPasswordPolicy": false,
-    "passwordPolicyMinLength": 6,
+    "defaultPasswordPolicy": true,
+    "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
       "email",
