@@ -1,14 +1,14 @@
 {
-  "stage": {
+  "prod": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-bybus-stage-193751-authRole",
-      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-stage-193751-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-stage-193751-authRole",
+      "AuthRoleName": "amplify-bybus-prod-234733-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-prod-234733-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074471573912:role/amplify-bybus-prod-234733-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-bybus-stage-193751-deployment",
-      "UnauthRoleName": "amplify-bybus-stage-193751-unauthRole",
-      "StackName": "amplify-bybus-stage-193751",
-      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-stage-193751/aa7348b0-686d-11ee-9b32-0a0d469e4a87",
+      "DeploymentBucketName": "amplify-bybus-prod-234733-deployment",
+      "UnauthRoleName": "amplify-bybus-prod-234733-unauthRole",
+      "StackName": "amplify-bybus-prod-234733",
+      "StackId": "arn:aws:cloudformation:us-east-1:074471573912:stack/amplify-bybus-prod-234733/d3e6a160-9491-11ee-b490-0e3080d934bd",
       "AmplifyAppId": "d2rxqiq1km3s0s"
     },
     "categories": {
@@ -18,60 +18,60 @@
       },
       "function": {
         "AdminQueries43e2835c": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/AdminQueries43e2835c-3349747968426d587847-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/AdminQueries43e2835c-71366e496e6c6d4f4133-build.zip"
         },
         "calculeBookingStock": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/calculeBookingStock-3435686a4b5554615469-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/calculeBookingStock-78742b61726e66346852-build.zip"
         },
         "checkTicketScan": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/checkTicketScan-6332593244726a447964-build.zip"
         },
         "createAdminAgency": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/createAdminAgency-6a5750644c6442596f47-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/createAdminAgency-6e756667566a4f5a4a65-build.zip"
         },
         "createUserCognito": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/createUserCognito-3030554164786774574f-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/createUserCognito-37356c32397158537a49-build.zip"
         },
         "getTodayTasaCambio": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/getTodayTasaCambio-34327778785969734c63-build.zip"
         },
         "preSignInCognito": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
           "s3Key": "amplify-builds/preSignInCognito-73754256584d4a75566e-build.zip"
         },
         "scheduleBookingAgency": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/scheduleBookingAgency-557230424a326f454e66-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/scheduleBookingAgency-686a7347527a456b4b2f-build.zip"
         },
         "sheduleBookingUpdate": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/sheduleBookingUpdate-7374702b786c7a596955-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/sheduleBookingUpdate-6e6a5830626257376b2f-build.zip"
         },
         "tasaCambio": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/tasaCambio-6546474e537767735567-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/tasaCambio-5564684a53752f41424e-build.zip"
         },
         "triggerContactNotification": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/triggerContactNotification-774d2b43742b71375359-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/triggerContactNotification-77744d586a485a786433-build.zip"
+        },
+        "updateAgencyCognito": {
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/updateAgencyCognito-2b574f53795572316450-build.zip"
         },
         "uploadAgencyImage": {
-          "deploymentBucketName": "amplify-bybus-stage-193751-deployment",
-          "s3Key": "amplify-builds/uploadAgencyImage-6e4f2b46644752625a53-build.zip"
+          "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
+          "s3Key": "amplify-builds/uploadAgencyImage-2b4b5a53643249514a57-build.zip"
         }
       },
       "storage": {
         "s3storagebybus": {}
-      },
-      "api": {
-        "AdminQueries": {},
-        "bybusgraphql": {}
       }
     }
   }

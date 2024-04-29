@@ -329,6 +329,7 @@ type Booking
   transport: transporType
   transportParking: String
   transportFeatures: [String]
+  lastNotificationTime: String
   owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
 }
 

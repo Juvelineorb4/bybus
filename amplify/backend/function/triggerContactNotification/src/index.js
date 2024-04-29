@@ -7,11 +7,13 @@ exports.handler = async (event) => {
     console.log(record.eventID);
     console.log(record.eventName);
     console.log("DynamoDB Record: %j", record.dynamodb);
-    const dataJson = convertDynamoDBType(record.dynamodb.NewImage);
-    console.log("JSON DB: ", dataJson);
+    if (record.eventName === "INSERT") {
+      const dataJson = convertDynamoDBType(record.dynamodb.NewImage);
+      console.log("JSON DBS: ", dataJson);
 
-    // Agrega esta línea para enviar el correo electrónico con la plantilla HTML
-    await SEND_EMAIL_ZOHO(dataJson);
+      // Agrega esta línea para enviar el correo electrónico con la plantilla HTML
+      await SEND_EMAIL_ZOHO(dataJson);
+    }
   });
 
   await Promise.all(promises);
