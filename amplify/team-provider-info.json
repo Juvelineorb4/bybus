@@ -35,7 +35,7 @@
         },
         "createUserCognito": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
-          "s3Key": "amplify-builds/createUserCognito-37356c32397158537a49-build.zip"
+          "s3Key": "amplify-builds/createUserCognito-64504c4d654b36725566-build.zip"
         },
         "getTodayTasaCambio": {
           "deploymentBucketName": "amplify-bybus-prod-234733-deployment",
@@ -72,6 +72,10 @@
       },
       "storage": {
         "s3storagebybus": {}
+      },
+      "api": {
+        "AdminQueries": {},
+        "bybusgraphql": {}
       }
     }
   }

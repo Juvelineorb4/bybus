@@ -1,10 +1,10 @@
 /* Amplify Params - DO NOT EDIT
-	API_BYBUSGRAPHQL_GRAPHQLAPIIDOUTPUT
-	API_BYBUSGRAPHQL_USERTABLE_ARN
-	API_BYBUSGRAPHQL_USERTABLE_NAME
-	AUTH_BYBUS_USERPOOLID
-	ENV
-	REGION
+  API_BYBUSGRAPHQL_GRAPHQLAPIIDOUTPUT
+  API_BYBUSGRAPHQL_USERTABLE_ARN
+  API_BYBUSGRAPHQL_USERTABLE_NAME
+  AUTH_BYBUS_USERPOOLID
+  ENV
+  REGION
 Amplify Params - DO NOT EDIT */
 
 import {
@@ -79,6 +79,10 @@ export const handler = async (event) => {
 const CREATE_USERTABLE = async (data) => {
   const { sub, email, name } = data;
   const ID = uuidv4();
+  let notificationToken = ""
+  if (data["custom:notificationToken"]) {
+    notificationToken = data["custom:notificationToken"]
+  }
   // parametros de items table
   const info = {
     id: { S: ID },
@@ -86,7 +90,7 @@ const CREATE_USERTABLE = async (data) => {
     email: { S: email },
     status: { S: STATUS.ALLOWED },
     previousBalance: { N: "0" },
-    notificationToken: { S: data["custom:notificationToken"] },
+    notificationToken: { S: notificationToken },
     owner: { S: sub },
   };
 

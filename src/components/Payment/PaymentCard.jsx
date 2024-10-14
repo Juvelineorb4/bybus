@@ -97,7 +97,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
             Telefono:
           </Text>
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity onPress={() => copyToClipboard("04265523463")}>
+            <TouchableOpacity onPress={() => copyToClipboard("04122589833")}>
               <Feather name="clipboard" size={18} color="black" />
             </TouchableOpacity>
             <Text
@@ -107,7 +107,7 @@ const PaymentCard = ({ button, text, order, handlePress }) => {
                 marginLeft: 5,
               }}
             >
-              04265523463
+              04122589833
             </Text>
           </View>
         </View>
